@@ -1,0 +1,22 @@
+创建SSH key
+ssh-keygen -t rsa -C "自己注册git账号时的邮箱"
+
+cd Users/.ssh/
+
+  id_rsa  id_rsa.pub  known_hosts
+
+  cat id_rsa.pub
+
+  复制到github网站上的ssh上
+
+  ssh -T git@github.com
+
+添加到远程仓库
+  git remote add origin SSH
+推送到远程仓库
+  git pull origin master --allow-unrelated-histories
+
+  git push -u(第一次指定时使用) origin master
+
+进入文本修改
+  vim name

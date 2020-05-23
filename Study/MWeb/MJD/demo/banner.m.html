@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;   
+    }
+    .content{
+        background-color: #7a1c2d;
+        width: 600px;
+        height: 600px;
+        margin: 20px auto;
+        overflow: hidden;
+        position: relative;
+        }
+    .content ul:first-child{
+        width: 600%;
+    }
+    .content ul:first-child::after, .content ul:last-child::after{
+        content: "";
+        width: 0;
+        height: 0;
+        display: block;
+        clear: both;
+        visibility: hidden;
+    }
+    .content ul:first-child li {
+        width: 16.66666%;
+        display: block;
+        float: left;
+    }
+    .content ul:first-child li img{
+        width: 100%;
+        vertical-align: bottom;
+    }
+
+    .content ul:last-child{
+        position:absolute;
+        top: 220px;
+        left: 50%;
+        margin: 0 0  0 -48px;
+
+    }
+    .content ul:last-child li{
+        width: 6px;
+        height: 6px;
+        border-radius: 3px;
+        background-color: rgba(255, 255, 255, .8);
+        margin: 0 0  0 10px;
+        float: left;
+    }
+    .content ul:last-child li:first-child{
+            margin: 0;
+    }
+    .content ul:last-child  .now{
+            margin: 0;
+            background-color: #666666;
+    }
+
+
+</style>
+<body>
+
+    <div class="content">
+        <ul>
+            <li><img src="https://gss0.bdstatic.com/5bVWsj_p_tVS5dKfpU_Y_D3/res/r/image/2019-03-15/66968b48e32a21296b4513b4e17e77a3.jpg" alt="" srcset=""></li>
+            <li><img src="https://gss0.bdstatic.com/5bVWsj_p_tVS5dKfpU_Y_D3/res/r/image/2019-03-15/a0cbf06da8bcd943736d9a720d8b453f.gif" alt="" srcset=""></li>
+            <li><img src="https://gss0.bdstatic.com/5bVWsj_p_tVS5dKfpU_Y_D3/res/r/image/2019-03-15/f3d4e05298582710917548c0b7125937.jpg" alt="" srcset=""></li>
+            <li><img src="https://gss0.bdstatic.com/5bVWsj_p_tVS5dKfpU_Y_D3/res/r/image/2019-03-15/993253d912267993bbc7b44563b7cda6.gif" alt="" srcset=""></li>
+            <li><img src="https://gss0.bdstatic.com/5bVWsj_p_tVS5dKfpU_Y_D3/res/r/image/2019-03-15/9f94ca1c26ad2425a895c466c8842d3e.jpg" alt="" srcset=""></li>
+            <li><img src="https://gss0.bdstatic.com/5bVWsj_p_tVS5dKfpU_Y_D3/res/r/image/2019-03-15/a24946e380504351ec26cd8d15c8f1c2.jpg" alt="" srcset=""></li>
+        </ul>
+        <ul>
+            <li class="now"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    
+
+    <script>
+             
+    </script>
+</body>
+</html>

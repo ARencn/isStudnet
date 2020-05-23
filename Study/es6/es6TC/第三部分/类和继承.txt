@@ -1,0 +1,75 @@
+人:person
+    属性:name
+    方法:showName
+
+    ES5之前
+            function Person(){
+                this.name=''
+
+            }
+            person.prototype.showName=function(){}
+     ES6变形
+            class person{
+                 constructor(){
+                        this .name=''
+
+                 }
+                 showname(){
+
+
+                 }
+
+
+
+            }
+
+=============================等同
+            const person= class{}
+            -----------------------
+            let a='str'
+            let b='method'
+
+            class person{
+
+                  //变量名可以放表达式
+                  [a+b](){}
+
+            }
+
+            注意: 1.class 并没有预解析 不会提升,在es5中是可以提升的
+                  2.this
+
+
+                  矫正this :
+                                1.fn.call(this指向谁,args1,args2...)
+                                2.fn.apply(this指向谁,[args,args2])
+                                3.fn.bind()
+
+
+
+    -------------------------------------
+
+            class 里面取值函数(getter),存值函数(setter)
+------------------------------------------
+    静态方法:就是类上的方法 在方法前加上static
+
+    static a(){}
+
+    父类.a
+        ------------------------------------
+
+    继承;
+            之前:
+
+            person
+            student
+            ES6: 子类 extends 父类{
+                假如想要有自己的方法
+                    需要先构造函数中加上父类的方法
+                        constructor(){
+                            super()
+                        }
+            }
+
+            在父级的基础上更改 父级的方法  利用 super关键字 super.
+

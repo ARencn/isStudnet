@@ -1,0 +1,44 @@
+const component={
+    template : '<div> this is component</div>'
+    data(){
+        return{
+            text:123  在自定义组件时需要使用data属性需要是个方法return  防止数据污染 同名的其他组件
+        }
+    },
+    props:{
+        限制传入数据的类型
+        不应当主动改父组件传入的值   单向数据流
+        active : Boolean
+        也可以
+    }
+
+    props:['active','obj']
+    还可以
+    props:{
+        active:{
+            type:Boolean  类型限制,
+            required: true  必须传入,
+            default: ' '  默认值 如果默认值是一个对象需要在default 中使用方法然后return 一个对象 
+            default(){
+                return{
+
+                }
+            },
+            validator(value){
+                接受参数 value 可用于对 传入的值进行更严格的判断
+            }
+        }
+    }
+}
+Vue.component('CompOne',component)
+            //在给组件命名的时候最好使用大驼峰时命名规则 如 CompOne
+            在此注册 之后就可以在模板中使用使用时连接用连接符 如<comp-one>
+            这种方式为全局注册
+new Vue({
+    el : '#root',
+    template: '<comp-one></comp-one>',
+    components:{
+        CompOne: component   //这是局部注册
+    }
+
+})

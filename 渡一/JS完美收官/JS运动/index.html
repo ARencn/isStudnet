@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    /* div {
+        width: 300px;
+        height: 300px;
+        position: absolute;
+        left:  0;
+        top: 0;
+        background-color: #adadad;
+    }
+
+    button {
+        position: absolute;
+        top: 400px;
+    }
+
+    span {
+        width: 1px;
+        height: 300px;
+        position: absolute;
+        left: 700px;
+        background-color: red;
+    } */
+
+
+    /* //伸缩来回 */
+    /* .wrapper{
+        width:400px;
+        height: 80px;
+        background-color: orange;
+        position: absolute;
+        left : -400px;
+        top:200px;
+    }
+    .wrapper span{
+        width: 50px;
+        height: 80px;
+        background: red;
+        position: absolute;
+        top: 0;
+        right: -50px;
+    } */
+
+    /*多物体运动  */
+    /* div{
+        width: 100px;
+        height: 100px;
+        background-color:red;
+        opacity: 1;
+        margin-bottom: 50px;
+        border: 5px solid #000000
+    } */
+
+
+    /* 多物体运动加回调 */
+  
+        div{
+            position: absolute;
+            left: 0px;
+        width: 100px;
+        height: 100px;
+        background-color:red;
+        opacity: 1;
+    }
+    #topDiv{
+        top: 200px;
+
+    }
+    #bottom{
+        top: 400px;
+    }
+</style>
+
+
+
+<body>
+    <!-- 缓冲.匀速运动 -->
+    <!-- <div id='Odiv'></div>
+    <span id='Ospan'></span>
+    <button id='btn'>run</button> -->
+
+
+        <!-- 伸缩 -->
+    <!-- <div class="wrapper">
+        <span></span>
+    </div> -->
+
+    <!-- 多物体运动  多物体不同值运动-->
+    <!-- <div></div>
+    <div></div>
+    <div></div>
+    <div></div> -->
+
+    <!-- 多物体不同值加回调 -->
+        <div id='topDiv'></div>
+        <div id='bottomDiv'></div>
+</body>
+<script>
+    //获取样式
+    function getStyle (dom,attr){
+        if(window.getComputedStyle){
+            return window.getComputedStyle(dom,null)[attr];
+        }else{
+            return dom.currentStyle[attr]
+        }
+    }
+       let timer = null;
+
+
+
+// 多物体不同值加回调
+let oTopDiv = document.getElementById('topDiv');
+let oBottomDiv = document.getElementById('bottomDiv');
+console.log(oBottomDiv)
+oTopDiv.onclick =function(){
+
+    startMove(this,{width:400,height:400,left:200,top:300,opacity:50},function(){
+        console.log(1)
+        startMove(oBottomDiv,{width:400,height:400,left:200,top:300,opacity:50},function(){
+            console.log('over');
+        })
+    })
+}
+
+
+function startMove(dom,attrObj,callback){
+    
+    clearInterval(dom.timer);
+    let iSeppd=null,iCur =null;
+  
+    dom.timer = setInterval(function(){
+        let bStop = true;
+        for(let attr in attrObj){
+            if(attr == 'opacity'){
+                iCur = parseFloat(getStyle(dom,attr)) * 100;
+            }else{
+                iCur = parseInt(getStyle(dom,attr));
+            }
+            iSeppd = (attrObj[attr] - iCur) / 7;
+            iSeppd = iSeppd > 0 ? Math.ceil(iSeppd) : Math.floor(iSeppd);
+            if(attr == 'opacity'){
+                dom.style.opacity = (iCur + iSeppd )/100
+            }else{
+                dom.style[attr]= iCur+iSeppd + 'px'
+            }
+            if (iCur != attrObj[attr]){
+                bStop = false ;
+            }
+
+        }
+        if(bStop){
+            clearInterval(timer);
+            typeof callback == 'function' && callback();
+        }
+    },30);
+}
+
+
+
+//多物体不同值运动
+
+// let oDiv = document.getElementsByTagName('div');
+
+// oDiv[0].onclick = function(){
+//     startMove(this,'opacity',0.2);
+// }
+// oDiv[1].onclick = function(){
+//     startMove(this,'width',400);
+
+// }
+// oDiv[2].onclick = function(){
+//     startMove(this,'height',400);
+// }
+// oDiv[3].onclick = function(){
+//     startMove(this,'borderWidth',40);
+// }
+// function startMove(dom,attr,target){
+//     clearInterval(dom.timer);
+//     let iSeppd=null,iCur =null;
+//     dom.timer = setInterval(function(){
+//         if(attr == 'opacity'){
+//             iCur = parseFloat(getStyle(dom,attr)) * 100;
+//         }else{
+//             iCur = parseInt(getStyle(dom,attr));
+//         }
+//         iSeppd = (target - iCur) / 7;
+//             iSeppd = iSeppd > 0 ? Math.ceil(iSeppd) : Math.floor(iSeppd);
+//             if(iCur == target){
+//                 clearInterval(dom.timer);
+//             }
+//             if(attr == 'opacity'){
+//                 dom.style.opacity = (iCur + iSeppd )/100
+//             }else{
+//                 dom.style[attr]= iCur+iSeppd + 'px'
+//             }
+//     },30)
+// }
+
+
+
+
+
+//多物体运动
+    // let oDiv = document.getElementsByTagName('div');
+    // for (let index = 0; index < oDiv.length; index++) {
+    //     oDiv[index].onmouseenter = function(){
+    //         console.log(11)
+    //         startMove(this,400);
+    //     };
+    //     oDiv[index].onmouseleave =function(){
+    //         startMove(this,100);
+    //     };
+        
+    // }
+
+        //多物体运动
+    // function startMove(dom,target){
+    //     //给每一个标签分配自己的定时器
+
+    //     clearInterval(dom.timer);
+    //     let iSeppd=null,iCur =null;
+    //     dom.timer =setInterval(function(){
+    //         iCur = parseInt(getStyle(dom,'width'));
+    //         iSeppd = (target - iCur) / 7;
+    //         iSeppd = iSeppd > 0 ? Math.ceil(iSeppd) : Math.floor(iSeppd);
+    //         if(iCur == target){
+    //             clearInterval(timer);
+    //         }else{
+    //             dom.style.width = iCur + iSeppd +'px';
+    //         }
+    //     },30)
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //伸缩来回
+        //利用冒泡 防止回闪
+        // let wrapper = document.getElementsByClassName('wrapper')[0];
+        // wrapper.onmouseenter = function(){
+        //     startMove(this,0)
+        // }
+        // wrapper.onmouseleave = function(){
+        //     startMove(this,-400)
+        // }
+
+
+
+
+    // let Zdiv = document.getElementById('Odiv');
+    // let Zspan = document.getElementById('Ospan');
+    // let Zbtn = document.getElementById('btn');
+ 
+
+
+    // //匀速直线运动
+    // btn.onclick = function () {
+    //    //匀速直线运动
+    //    // startMove(Zdiv, Zspan, '6');
+    //     //缓冲运动
+    //     startMove(Zdiv,700);
+    // }
+    //匀速直线运动
+    // function startMove(ele, target, speed) {
+    //     clearInterval(timer);
+    //     let elePos = ele.offsetLeft - ele.offsetWidth;
+    //     let targetPos = target.offsetLeft - target.offsetWidth;
+    //     let Speed = targetPos - elePos > 0 ? speed : -speed;
+
+    //    // debugger
+    //     timer = setInterval(function () {
+    //         if (Math.abs((target.offsetLeft + target.offsetWidth) - (ele.offsetLeft + ele.offsetWidth)) <Math.abs(Speed)) {
+    //             clearInterval(timer);
+    //            ele.style.left = targetPos - ele.offsetWidt + 'px';
+    //         } else {
+    //             console.log(Speed)
+    //             ele.style.left = parseInt(div.offsetLeft) + parseInt(Speed) + 'px';
+    //             console.log(ele.style.left)
+    //         }
+           
+    //     }, 3)
+
+
+    // }
+    //缓冲运动
+        // function startMove(dom,target){
+        //     console.log(dom.style.left)
+        //     clearInterval(timer);
+        //     let Speed = null;
+        //     timer = setInterval(function(){
+        //         Speed = (target - dom.offsetLeft) / 7;
+        //         //Math.ceil  向上取整 当除到小数后 使小数部分变成1后继续向前  fllor  向下取整
+        //         Speed = Speed>0? Math.ceil(Speed) : Math.floor(Speed);
+        //         if(dom.offsetLeft == target){
+        //             clearInterval(timer)
+        //         }
+        //         dom.style.left =parseInt( dom.offsetLeft + Speed) + 'px';
+             
+        //     },30)
+        // }
+</script>
+
+</html>

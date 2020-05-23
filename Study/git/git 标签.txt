@@ -1,0 +1,20 @@
+查看当前标签
+git tag
+基于当前分支创建标签
+git tag name
+
+将创建的标签推送到远程仓库
+
+git push origin name
+
+提交标签信息
+
+git tag -a name -m "comment"
+
+删除标签
+
+git tag -d name
+
+标签发布
+
+git push origin name

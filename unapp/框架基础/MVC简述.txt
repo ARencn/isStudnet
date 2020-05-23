@@ -1,0 +1,5 @@
+MVC 模式
+1.M:model - 模型层 ,数据的增删改查
+2.V:view -视图层,前端页面(html,javascript,css)
+3.C:controller - 控制层 ,处理业务
+

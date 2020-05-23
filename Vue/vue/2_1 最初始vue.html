@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">{{content}}</div>
+
+    <script>
+        // var dom=document.getElementById("app");
+        // dom.innerHTML='hello word';
+        //
+        // setTimeout(function(){
+        //     dom.innerHTML='bye world';
+        // },1000)
+
+        var app = new Vue({
+
+            /*el : 指明此实例的作用范围 */
+            el : '#app',
+            /* data: 数据的定义*/
+            data:{
+                content : 'hello word'
+            }
+        })
+        setTimeout(function(){
+            app.$data.content='bye word';
+        },2000)
+    </script>
+</body>
+</html>

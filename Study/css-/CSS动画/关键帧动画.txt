@@ -1,0 +1,2 @@
+﻿不一定要有状态的变更
+animation-timing-function： steps(1) 控制有几个画面

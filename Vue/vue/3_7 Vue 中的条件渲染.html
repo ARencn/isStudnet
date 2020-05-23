@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--v-if  判断是否存在该模板中的值-->
+    <!--v-if 与 v-else 一同使用时 不得在中间添加其他元素 否则会报错-->
+    <!--<div v-if="show === 'a'">This is A</div>-->
+    <!--<div v-else-if="show === 'b'">This is B</div>-->
+    <!--<div v-else>This is others</div>-->
+    <!--v-show 判断 是否显示该模板 通过display : none 来操作  操作效率比 v-if 高一些-->
+    <!--<div v-show="show">{{message}}</div>-->
+
+
+    <!--Vue 会在 if中 尽量高度复用 相同内容 因此  在 用户名中的 input 框中输入的内容 会在 邮箱名之后继续复用  所有里面的内容没有清空 比如以下代码-->
+    <!--<div v-if="show">-->
+        <!--用户名 : <input type="text">-->
+    <!--</div>-->
+    <!--<div v-else>-->
+        <!--邮箱名 :<input type="text">-->
+    <!--</div>-->
+
+    <!--如果想要不被复用 可以在input 中添加 key值 这样 VUE就会 把这个框当做唯一的值 而不复用 key值一样则会复用  如以下代码-->
+    <div v-if="show">
+        用户名 : <input type="text" key="username">
+    </div>
+    <div v-else>
+        邮箱名 :<input type="text" key="password">
+    </div>
+</div>
+<script>
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            show:"a",
+            message:"Hello world"
+        }
+    })
+</script>
+</body>
+</html>

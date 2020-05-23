@@ -1,0 +1,15 @@
+﻿盒模型
+
+    margin
+      border
+      padding
+       content    height
+        width
+display/position
+  确定元素的显示类型 
+   block/inline/inline-block
+
+确定元素的位置 position
+static/relative（不会因为偏移而脱离文本流）
+/absolute（脱离文档流 相对于最近的一个relative或者absolute）
+/fixed

@@ -1,0 +1,92 @@
+
+view {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+.uni-flex {
+	width: 100%;
+	background: #FFFFFF;
+}
+.icon-text {
+	margin-top: 26rpx;
+}
+.tag-img {
+	border-radius: 60rpx;
+	width: 110rpx;
+	height: 110rpx;
+}
+.title {
+	font-size: 36rpx;
+	color: #8f8f94;
+}
+.swiper {
+	height: 300rpx;
+	margin-bottom: 26rpx;
+}
+.swiper-item {
+	display: block;
+	height: 300rpx;
+	line-height: 300rpx;
+	text-align: center;
+}
+.swiper-item-img {
+	width: 100%;
+	/* width: 750upx; */
+	display: block;
+	height: 100%;
+}
+.swiper-list {
+	margin-top: 40rpx;
+	margin-bottom: 0;
+}
+.uni-padding-wrap {
+	padding: 0;
+	width: 100%;
+}
+.uni-common-mt {
+	margin: 15rpx 0rpx;
+	position: relative;
+}
+.flex-item {
+	width: 100%;
+	height: 300rpx;
+	text-align: center;
+	line-height: 300rpx;
+}
+.flex-item-V {
+	width: 100%;
+	height: 150rpx;
+	text-align: center;
+	line-height: 150rpx;
+}
+.flex-item-img {
+	width: 100%;
+	height: 300rpx;
+}
+.flex-item-v-img {
+	width: 100%;
+	height: 150rpx;
+}
+.scroll-Y {
+	height: 300rpx;
+}
+.scroll-view_H {
+	white-space: nowrap;
+	width: 100%;
+}
+.scroll-view-item {
+	height: 300rpx;
+	line-height: 300rpx;
+	text-align: center;
+	font-size: 36rpx;
+}
+.scroll-view-item_H {
+	display: inline-block;
+	width: 100%;
+	line-height: 300rpx;
+	text-align: center;
+	font-size: 36rpx;
+}
+

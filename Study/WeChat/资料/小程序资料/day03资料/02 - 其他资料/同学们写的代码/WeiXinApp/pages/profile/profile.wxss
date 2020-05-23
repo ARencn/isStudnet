@@ -1,0 +1,13 @@
+.avatar{
+  background-color: #f60;
+  height: 400rpx;
+}
+.avatar image{
+  height: 200rpx;
+  width: 200rpx;
+  border: 10rpx solid rgba(0,0,0,0.3);
+  border-radius: 50%
+}
+page{
+  background-color: #f1f1f1
+}

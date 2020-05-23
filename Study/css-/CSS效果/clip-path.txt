@@ -1,0 +1,9 @@
+﻿clip-path
+对容器进行裁剪
+常见几何图形
+自定义路径
+
+clip-path 不会影响容器本身大小
+clip-path：inset（宽，高）矩形
+clip-path：circle（圆形的像素 at 在多大的范围宽 高）圆形
+clip-path：polygon（点的宽 点的高） 

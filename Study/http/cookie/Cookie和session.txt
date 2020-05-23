@@ -1,0 +1,18 @@
+
+
+COOKIE
+
+通过Set-cookie设置
+
+下次请求会自动带上
+
+键值对，可以设置多个
+
+
+    max-age(设置多久过期) 和 expires（设置到哪个时间点过期） 设置过期时间
+
+    Secure只在https的时候发送
+
+    HTTPOnly无法通过document.cookie访问
+
+    

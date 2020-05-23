@@ -1,0 +1,2 @@
+<import src="./leftlist.vue.wxml" />
+    <template is="0b74916d" data="{{ ...$root['0'], $root }}"/>

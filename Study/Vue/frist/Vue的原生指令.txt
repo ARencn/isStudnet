@@ -1,0 +1,12 @@
+v-text ="变量"  用于绑定标签的内容使用了之后 标签里的内容就会被无视
+v-html =""      把html内容显示出来
+v-show=""       是否把节点显示出来 display:"none"
+v-if=""         是否渲染出该节点 
+v-else='"       配合if使用
+v-else-if=""    
+v-for="(item , index,) in arr"  在使用 for 时最后最好加上 key 不要使用 index 作为key
+v-on =""        事件绑定
+v-mode=""      数据双向绑定  可以 实现都单选框等的数据动态 可以加修饰符 进行类型转换 如 v-mode.number .trim(去除收尾空格)  .lazy(与input的change事件类似)
+v-pre           不会解析标签里的字符串模板
+v-cloak         在vue数据未解析完成的时候不显示 解析完后展示
+v-once          数据绑定的内容只执行一次  用于基本不会改变的一些静态内容 减少性能开销

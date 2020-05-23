@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <child :content="123"></child>
+    </div>
+    <script>
+        Vue.component('child',{
+            /*假如 要约束父组件传入的值 就不用 []数组的形式了 用对象的形式 变量名 加 约束的 类型 */
+            props:{
+                /*如果要同时约束两个 就用数组的语法*/
+                // content: Number
+                /*还可以定义更复杂的规则 用对象*/
+                // content: [Number,String]
+
+
+            content:{
+                type: String,
+                required:true , //必须传入此参数
+                default: 'default value'
+            }
+            },
+            template:"<div>{{content}}</div>"
+        })
+        var vm=new Vue({
+            el:"#root"
+
+        })
+
+    </script>
+</body>
+</html>

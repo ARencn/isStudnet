@@ -1,0 +1,39 @@
+版本号:40位
+
+
+利用版本号相连
+c1->c2->c3
+
+
+配置用户信息
+  git config --global user.name ""   配置用户名
+  git config --global user.email ""   配置用户邮箱  --global代表所有仓库使用此配置
+  git config --list 查看git配置
+
+显示当前的目录
+pwd
+展示所有文件的详细信息
+ll
+展示文件名
+ls  -a(可选 表示显示隐藏目录)
+创建文件
+mkdir name
+进入目录
+cd 
+上一级
+..
+把content追加到xxx
+echo "content" >> xxx
+把content覆盖到xxx
+echo "content" > xxx
+展示当前文件的内容
+cat name
+
+初始化版本库
+  git init
+
+添加文件到版本库
+  git add  name 
+  git commit -m "添加的描述信息"
+查看仓库状态
+  git status 

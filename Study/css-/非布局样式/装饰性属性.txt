@@ -1,0 +1,4 @@
+﻿字重（粗体） font-weight 默认400 取决于浏览器
+斜体 font-style：itatic
+下划线 text-decoration
+指针 cursor

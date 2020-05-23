@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+模块（module）
+
+通常以单个文件形式存在的功能片段，入口文件通常称之为入口模块或主模块
+
+库（library，简称lib）
+
+以一个或多个模块组成的完整功能块，为开发中某一方面的问题提供完整的解决方案
+
+包（package）
+
+包含元数据的库，这些元数据包括：名称、描述、git主页、许可证协议、作者、依赖等等
+
+官网：https://www.npmjs.com/
+查询包
+注册、登录、管理个人信息
+     -->
+
+
+     <!-- NPM -->
+
+     <!-- 
+        包的安装
+            更改 淘宝镜像
+            npm config set registry https://registry.npm.taobao.org
+
+        本地安装
+
+        使用 命令 npm  install  或  npm i  即可完成本地 安装 
+        本地安装的包出现在当前目录下的node_modules
+
+        通常使用 .gitignore  文件忽略该目录中的内容
+
+        安装包的时候 npm  会自动 管理依赖,它会下载依赖包到node_modules 目录中
+        如果本地安装的包中带有cli  npm  会将他的cli 脚本文件放置到 node_modules/.bin 
+        
+        使用 npx  命令名 即可调用
+
+
+        全局安装 的 包放置在一个特殊的全局目录,该目录可以通过命令 你怕吗config 哥特 prefix 查看
+        使用命令npm  install[i] --global  [-g]
+        
+        全局安装的包 并没所有工程 可用, 它仅提供全局的cli  工具
+
+        大部分情况下都不需要全局的安装包,  除非:
+        1.包的版本非常稳定,很少有大的更新
+        2.提供cli 工具在各个工程 中 使用的 非常频繁
+        3.cli 工具仅为开发环境提供支持,而非部署环境
+      -->
+      <!-- 
+        包的配置
+
+            配置文件
+
+
+            npm 将每个使用 npm 的工程本身都看作是一个包,包的信息需要通过一个名称固定的配置文件来描述
+
+            配置文件的名称固定为 : package.json
+
+            可以手动创建该文件,而更多的时候是 通过 命令 npm  init  创建的
+
+            配置文件中可以描述大量的信息 包括:
+            name  包的名称,该名称 必须是英文单词字符,支持连接符
+            version:  版本
+
+                版本规范: 主版本号.此版本号.补丁版本号
+            description: 包的描述
+            homepage: 官网地址
+            author:包的作者 必须是有效的 npm 账户名 , 书写规范是 account<mail>  例如  arencn<arencn@163.com>
+            repository:包的仓储地址,通常指 git 或 svn 的地址, 它是一个对象
+            type: 仓储类型, git  或 svn
+            url: 地址
+
+            main:包的入口文件,使用包的人默认从该入口文件导入包的内容
+            keywords:搜索关键字,发布包后 ,可以通过该数组中的关键字搜索到包
+
+
+            使用npm init --yes   或  npm  init  -y  可以在生成配置文件的时候自动填充默认配置
+
+
+            package.json 文件最重要的作用 是 记录当前 工程的依赖
+
+            dependencies:生产环境的依赖包
+            
+                本地安装所有依赖  dependencies  + devDependencies
+                npm  install
+                npm  i
+
+                仅安装生产环境依赖
+
+                npm install --production
+
+                安装依赖到生产环境
+
+                npm i 包名
+                npm i --save 包名
+                npm i -S 包名
+                这种  -G -D -S  简写要写大写 不然没效果
+
+                安装依赖到开发环境
+
+                npm --save --dev 包名
+                npm i -D 包名
+            -->
+            <!-- 
+                
+
+                nodejs  对 npm 支持非常良好
+
+                当使用nodejs 导入模块时,如果模块路径不是以./或../开头,则 node 会认为导入的模块来自于node_modules目录
+
+                如  var _ = require('lodash');
+
+                它首先会从当前目录的以下位置 寻找文件
+
+                node_modules/lodash.js
+                node_modules/loadsh/入口文件
+
+                若是当前目录没有这样的文件,则会回溯到上级目录按照同样的方式查找
+                如果到顶级目录都无法找到文件,则抛出错误
+
+                上面提到的入口文件按照以下规则 确定
+
+                1.查看导入包的package.json文件 ,读取main字段作为入口文件
+                2.若 不包含 main 字段,则使用index.js 作为入口文件
+
+                
+
+
+             -->
+
+             <!-- 
+                语义版本
+
+                版本规范:主版本号.次版本号.补丁版本号
+
+                主版本: 仅当程序发生了重大的变化是才会增长,如新增了重要功能, 新增了 大量的API  
+                
+                object oriented programming
+                aspect oriented
+                dependencies
+                development
+                extension
+                alias
+                cross-evn
+                process.env.NODE_ENV
+
+                符号	描述	示例	示例描述
+                >	大于某个版本	>1.2.1	大于1.2.1版本
+                >=	大于等于某个版本	>=1.2.1	大于等于1.2.1版本
+                <	小于某个版本	<1.2.1	小于1.2.1版本
+                <=	小于等于某个版本	<=1.2.1	小于等于1.2.1版本
+                -	介于两个版本之间	1.2.1 - 1.4.5	介于1.2.1和1.4.5之间
+                x	不固定的版本号	1.3.x	只要保证主版本号是1，次版本号是3即可
+                ~	补丁版本号可增	~1.3.4	保证主版本号是1，次版本号是3，补丁版本号大于等于4
+                ^	此版本和补丁版本可增	^1.3.4	保证主版本号是1，次版本号可以大于等于3，补丁版本号可以大于等于4
+                *	最新版本	*	始终安装最新版本
+
+
+                npm 假如 两个包安装了不同版本的同一个依赖 
+                则两个包会分别安装不同的依赖
+
+              --> 
+              <!-- 
+                npm  脚本  (npm scripts)
+
+                只需要在 package.json中配置scripts  字段  ,即可配置各种脚本名称
+
+                之后, 就可以运用简单的命令 来完成各种操作了
+
+                运行方式是 npm run  脚本名称
+
+                不仅如此,npm 还对  常用的脚本名称进行了 简化,下面的脚本名称是不需要使用run的
+
+                start
+                stop
+                test
+
+                一些细节:
+                脚本中可以省略 npx
+                start 脚本有默认值  node server.js  可以 重写 去 覆盖
+
+
+                cross-env NODE_ENV=production webpack --config webpack.config.vendor.js --progress
+
+                process.env.NODE_ENV 检测运行环境
+               -->
+               <!-- 
+                    运行环境 的配置
+
+                    一般有三种运行环境
+
+                    1.开发环境
+                    2.生产环境
+                    3.测试环境
+
+
+                    通常有如下处理方式 
+
+                    node 中有一个全局变量  global  
+
+                    global 中有一个属性 process 包含了 当前运行node 程序的计算机的信息,其中有一个信息就是 env  是一个对象, 包含了 计算机中所有的系统变量 
+                    通常,我们通过系统变量  NODE_ENV 的值
+                    1.永久设置
+                    2.临时设置
+
+                    我们一般使用临时设置
+
+                    因此我们可以配置 scripts 脚本, 在设置好了node_env 启动程序 
+
+                    为了避免不同系统的设置方式差异,可以使用第三方库  cross-env 对环境变量进行设置
+
+                    在node 中读取 package.json
+
+                    有时候可能会在  package.json  中 配置一些自定义字段, 这些字段需要在node 中读取
+
+                    在node 中,可以直接导入一个json 格式的文件,它会自动将其转换为js  对象
+
+
+                -->
+
+
+
+                
+                <!-- 
+
+
+                    其他npm 命令
+
+
+                    安装 
+
+                            精确安装最新版本
+
+                            npm install  --save-exact 包名
+                            npm  install -E 包名
+
+                            安装指定版本
+
+                            npm install 包名@版本号
+
+
+                    查询
+
+                        1.查询 包安装路径
+
+                        npm root [-g]
+
+                        2.查看包的信息
+
+                        npm view(v info show) 包名
+
+                        3.查询安装包
+
+                        npm list(ls la ll) [-g] [--depth](深度依赖)
+
+
+                    更新
+
+                        1.检查有那些包需要更新 
+
+                        npm outdated
+
+                        2.更新包
+
+                        npm update [-g] [包名]
+
+                    
+                    卸载包
+
+                        npm uninstall(remove rm r un unlink) [-g] 包名
+
+
+                    npm 配置
+
+
+                        npm 的配置 会对其他命令产生或多或少的影响 
+                        安装好 npm 后,最终会产生两个配置文件,一个是用户配置,一个是系统配置
+                        当两个文件的配置项有冲突的时候,用户配置会覆盖系统配置
+
+                        通常我们不会关心具体的 配置文件,儿只关心最终生效的配置 
+
+                        通过下面命令可以查询目前生效的各种配置
+
+                        npm config ls [-l] [-json]
+
+                        另外可以通过下面的命令操作配置
+
+                        1.获取某个配置项
+
+                        npm config get  配置项
+
+                        2.设置某个配置项
+
+                        npm config ste 配置项 = 值
+
+                        3.移除某个配置项
+
+                        npm config delete 配置项
+                 -->
+                 <!-- 
+                    发布包
+
+                        1.移除淘宝镜像源
+                        2.到npm 官网注册一个账号,并完成邮箱认证
+                        3.本地使用npm cli 进行登录
+                            -1.使用命令 npm login登录
+                            -2.使用命令 npm whoami 查看当前登录的账号
+                            -3.使用明亮 npm logout 注销
+                        4.创建工程根目录
+                        5.使用npm init 进行初始化
+
+                    
+                    发布
+
+                    1.开发 
+                    2.确定版本
+                    3.使用命令 npm publish 完成发布
+
+
+                    可以通过网站 选择协议 并复制协议内容
+                     http://choosealicense.online/appendix/ 
+                  -->
+
+
+
+
+
+
+
+
+
+
+
+
+                  <!--yarn  -->
+
+                  <!-- 
+                        yarn 官网：https://www.yarnpkg.com/zh-Hans/
+
+                        yarn 是有 Facebook google exponent 和 tilde联合推出的新 js 包管理工具,它仍然使用npm registry 不过提供了全新的 cli 来对包进行管理
+
+                    依赖目录嵌套层次深：过去，npm 的依赖是嵌套的，这在 windows 系统上是一个极大的问题，由于众所周知的原因，windows 系统无法支持太深的目录
+                        下载速度慢
+                        由于嵌套层次的问题，所以npm对包的下载只能是串行的，即前一个包下载完后才会下载下一个包，导致带宽资源没有完全利用
+                        多个相同版本的包被重复的下载
+                        控制台输出繁杂：过去，npm 安装包的时候，每安装一个依赖，就会输出依赖的详细信息，导致一次安装有大量的信息输出到控制台，遇到错误极难查看
+                        工程移植问题：由于 npm 的版本依赖可以是模糊的，可能会导致工程移植后，依赖的确切版本不一致。
+
+
+
+                            目录扁平化
+                            并行下载
+                            本地缓存
+                            使用package-lock记录确切依赖
+                            增加了大量的命令别名
+                            内置了npx，可以启动本地的CLI工具
+                            极大的简化了控制台输出
+
+                   -->
+                   <!-- 
+                        核心命令
+
+                        1.初始化
+
+                        初始化 yarn init [--yes /-y]
+
+                        2.安装 
+
+                        添加指定报:
+
+                        yarn [global] add package-name [-dev/-D] [--exact/E]
+
+                        安装 package.json 中所有的依赖: yarn install [--production/--prod]
+
+                        3.脚本和本地cli 
+
+                        运行脚本 : yarn run 脚本名
+
+                        start stop test 可以省略 run
+
+                        运行本地安装的cli  :yarn run cli 名
+
+                        4.查询 
+
+                        查看bin 目录:yarn [global] bin
+
+                        查询包的信息: yarn info 包名 [子字段]
+
+                        列举已安装的依赖:yarn [global] list [--depth] 
+
+                        yarn 的list命令 和 npm  的list 命令 不同 ,yarn 输出的信息更加丰富,包括顶级目录结构,每个包的依赖版本号
+
+
+                        5.更新 
+
+                        列举需要更新的包  : yarn outdated
+
+                        更新包:yarn [global] upgrade [包名]
+
+                        6.卸载
+
+                        卸载包: yarn remove 包名
+
+
+                    -->
+
+                    <!-- 
+                        yarn 的 特别指令
+
+                        yarn check
+                        
+                        使用yarncheck 命令, 可以验证package.json 文件的依赖记录和lock 文件是否一致
+
+                        这对防止篡改非常有用
+
+                        2.yarn audit
+
+                        使用 yarn audit 命令,可以检查本地安装的包有哪些已知漏洞,以表格的形式列出来,漏洞级别分为以下几种
+
+                           -1.info:信息级别
+                           -2.low : 低级别
+                           -3.moderate:中级别
+                           -4.high:高级别
+                           -5. critical : 关键级别
+
+                    
+                        3.yarn why
+                        使用 yarn why 包名  命令 ,可以在控制台打印出为什么安装了这个包,那些包会用到它
+
+
+                        4.yarn create 
+
+
+                        yarn create react-app my-app  用于安装脚手架
+
+
+
+                     -->
+
+                     <!-- 
+                        cnpm
+
+                        官网地址：https://npm.taobao.org/
+
+                        为解决国内用户连接npm registry缓慢的问题，淘宝搭建了自己的registry，即淘宝npm镜像源
+
+                        过去，npm没有提供修改registry的功能，因此，淘宝提供了一个CLI工具即cnpm，它支持除了npm publish以外的所有命令，只不过连接的是淘宝镜像源
+
+                        如今，npm已经支持修改registry了，可能cnpm唯一的作用就是和npm共存，即如果要使用官方源，则使用npm，如果使用淘宝源，则使用cnpm
+
+                      -->
+
+                      <!--  -->
+</body>
+</html>

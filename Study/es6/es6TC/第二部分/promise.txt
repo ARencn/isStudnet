@@ -1,0 +1,79 @@
+promise 承诺 许诺
+        作用:解决异步回调问题
+
+        传统方式,大部分用回调函数,事件
+
+        ajax(url,{  //获取token
+            ajax(url,()=>{   //获取用户信息
+                ajax(url,()=>{
+                                 //获取用户相关新闻
+
+
+                })
+            })
+        })
+
+
+        new promise(function(resolve,reject){
+                //resolve  成功调用
+                //reject   失败调用
+        })
+
+
+        let a=1;
+        let promise = new Promise(function(resolve,reject){
+                if(a==10){
+                    resolve('成功');
+                }else{
+                    reject('失败');
+                }
+
+        });
+
+        promise.then(success,fail)
+        promise.then(res=>{
+
+        },err=>{
+
+        })
+
+
+        promise.catch(err=>{
+            //reject 发生错误 别名
+        })
+
+
+等同
+
+        new promise((resolve,reject)=>{
+
+        }).then(res=>{
+
+        }).catch(err=>{
+
+        })
+
+
+        ====================================
+
+        new promise(resolve=>{
+
+        })
+        等同
+        promise.resolve('');将现有的东西转换成一个promise对象, resolve状态,成功
+
+
+        promise.reject('');将现有的东西转成一个promise对象,reject状态,失败
+
+
+
+        ======================================
+
+        promise.all(): 把promise打包  扔到一个数组里面,打包完还是一个promise对象
+
+                    必须确保 所有的promise对象,都是resolve状态,都是成功
+        promise.race([p1,p2,p3]):
+                    只要有一个成功就返回
+
+
+

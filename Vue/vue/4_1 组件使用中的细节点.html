@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!--<table>-->
+            <!--<tbody>-->
+            <!--&lt;!&ndash;表示 这个tr虽然是tr元素但是 显示的是 row 的组件&ndash;&gt;-->
+           <!--<tr is="row"></tr>-->
+            <!--</tbody>-->
+        <!--</table>-->
+
+        <!--需要操作dom 时可以使用 ref 如果在模板中使用 ref 则会指向模板 的引用-->
+        <div ref="hello" @click="handleClick">hello world</div>
+    </div>
+    <script>
+        Vue.component('row',{
+            /*data 非实例中必须与 函数的形式出现并返回 需要的值*/
+            /*主要目的 是为了 防止 多个子组件 重用一个数据源*/
+            data:function(){
+                return {
+                    content:'this is content'
+                }
+            },
+           template:"<tr><td>{{content}}</td></tr>"
+        });
+        var  vm=new Vue({
+            el:"#root",
+          methods:{
+                handleClick:function()
+                {
+                    /*获取dom 节点*/
+                    alert(this.$refs.hello.innerHTML);
+                }
+          }
+        })
+    </script>
+</body>
+</html>

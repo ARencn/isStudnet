@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+                        <!-- v-model="数据名"   用于与data中的数据进行双向绑定 -->
+        <input type="text" v-model="inputValue">
+
+        <!-- v-on: 事件名 = "绑定的函数"-->
+        <button v-on:click="handBtnClick">提交</button>
+        <ul>
+            <!-- v-for 把list 的每一项放入 item中 -->
+            <!--<li v-for="item in list">{{item}}</li>-->
+                        <!--v-bind 用于绑定数据 可简写成 :-->
+                        <!--v-for 中 (item(中间变量名),index(数组下标)) in list(数据来源)-->
+            <todo-item :content="item"
+                       :index="index"
+                       v-for="(item,index) in list"
+                       @delete="handItemDelete">
+                        <!--监听delete事件 一旦监听到 delete 就会触发 handItemDelete方法-->
+            </todo-item>
+          </ul>
+    </div>
+    <script>
+
+        /*创建全局组件的方法*/
+        // Vue.component("TodoItem",{
+        //     /*接收参数*/
+        //     props:['content'],
+        //     /*模板*/
+        //     template: "<li>{{content}}</li>"
+        // })
+
+        /*局部组件的创建*/
+        var TodoItem={
+            /*子组件接收父组件的参数组 */
+            props:['content','index'],
+                    /*@+事件名快速绑定事件*/         /*使用父组件传入的值*/
+            template: "<li @click='handItemClick'>{{content}}</li>",
+            /*子组件的方法组*/
+            methods:{
+                handItemClick:function(){
+                    /*向父组件传递事件  $emit()中的参数是自定义的事件名称 在父组件中 @自定义的事件名称即可绑定*/
+                   this.$emit("delete",this.index);
+                                    /*将子组件中的index 传给了父组件 */
+                }
+            }
+        }
+
+
+        var app=new Vue({
+
+            /*用于为局部组件注册*/
+            components:{
+                /*把局部组件的注册 到ToduItem */
+                TodoItem:TodoItem
+            },
+            /*用于确定该实例的作用域*/
+            el:'#app',
+            /*用于储存数据*/
+            data:{
+                list: [],
+                inputValue: ''
+            },
+            /*用于储存方法*/
+            methods:{
+                handBtnClick:function(){
+                    /*使用 this 可以获取到当前vue 实例中的data内容*/
+                    // alert(this.inputValue);
+                    this.list.push(this.inputValue);
+                    this.inputValue='';
+                },
+                handItemDelete:function(index){
+                  /*父组件 监听到delete事件后调用的方法*/
+                    /*splice() 从数组的第几个下标开始删除 删除几项*/
+                    this.list.splice(index,1);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

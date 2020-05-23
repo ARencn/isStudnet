@@ -1,0 +1,47 @@
+vue是异步渲染的 需要渲染的值有一个渲染序列 一次性渲染 比如 i++ i++ i++ 写了三次 那页面上首次出现的时候就已经是3了
+
+const app = new Vue({
+    el: ""
+    template: ""
+    data:{
+
+    }
+    直接通过vue属性来注册watch事件在路由之后会自动注销掉watch事件
+    watch:{
+        text (newText,oldText){
+            ${newText}
+        }
+    }
+})
+app.$mount("要挂载到的html节点 可用css选择器")
+
+app.$data  就是data
+app.$props
+    .$el  就是挂载的html节点
+    .$options vue实例的所有  直接修改 options 对象上的data是没有用的
+    .$options.render= (h)=>{
+        //在值有变化时 页面重新渲染的时候 就会生效
+        return h('div,{}," new render function")
+    }
+    .$root  代表了vue对象本身
+    .$children 该组件下的子元素
+    .$slots 
+    .$scopedSlots 引用组件
+    .$refs 返回组件  ref属性值不能重名 如果绑定的原生的标签 那么返回的是原生的js dom对象  如果是一个组件获取到的则是 vue组件
+    .$isServer
+    .$watch('要监听的值',(newText,oldText)=>{
+        监听到的每一次值的改变都会有变化
+        在路由后不会自动注销watch事件
+    })
+    .$on('要监听的事件',()=>{
+        触发之后的回调函数
+        监听的是哪个对象就需要哪个对象去触发才会调用  不会冒泡
+    })
+    .$once('',()=>{
+        只监听一次触发事件
+    })
+    .$emit('要触发的事件',可以参数)
+    .$forceUpdata()  强制渲染一次页面  因为vue是响应式框架假如直接赋值未在实例中设置过的值会导致页面不渲染 可以用此方法处理  不推荐使用 可能使用到的值最好全部写好  以节省性能
+    .$set(要设置的属性,'要设置的属性名','要设置的值')
+    .$delete(要删除的值)
+    .$nextTick (function(){}) 在下次dom渲染的完成之后执行的回调函数

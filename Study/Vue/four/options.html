@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="../vue.js"></script>
+<script src="../axios.js"></script>
+
+
+<script>
+
+
+    // 在 局部的项目中的话 因为  axios 对象不是 全局作用域的  但vue是 全局 作用域的所以需要把 axios 挂载到 vue 的prototype 上
+    Vue.prototype.$axios = axios;
+
+    let App={
+        template:`<div>
+                        <button @click="sendAjax"> send ajax</button>
+                   </div>`,
+        methods:{
+            sendAjax(){
+                this.$axios.defaults.baseURL='http://127.0.0.1:8888/';
+
+                this.$axios.get("",{
+                    params:{
+                        id:1
+                    },
+                    //在数据响应但 未传入 res 前做数据 处理 如把字符串解析为json类型
+                    transformResponse:[data=>{
+                          console.log(data);
+
+                        return JSON.parse(data);
+                    }]
+
+                })
+                    .then(response=>{
+                        console.log(response.data.msg);
+                    })
+                    .catch(error=>{
+                        console.log(error);
+                    });
+
+                this.$axios.post('/add','name=jack',{
+                    // `transformRequest` 允许在向服务器发送前，修改请求数据
+                    // 只能用在 'PUT', 'POST' 和 'PATCH' 这几个请求方法
+                    // 后面数组中的函数必须返回一个字符串，或 ArrayBuffer，或 Stream
+                    transformRequest: [function (data) {
+                        // 对 data 进行任意转换处理
+                        console.log(data);
+                        return data;
+                    }]
+                }).then(res=>{
+                    console.log(res);
+                }).catch(err=>{
+                    console.log(err);
+                })
+            }
+        }
+    };
+
+    new Vue({
+        template:`<App/>`,
+        components:{
+            App
+        },
+        el:'#app'
+    })
+
+</script>
+
+</body>
+</html>

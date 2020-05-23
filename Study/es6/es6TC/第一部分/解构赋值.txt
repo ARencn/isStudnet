@@ -1,0 +1,29 @@
+解构赋值:
+        非常有用,特别是在数据交互 ajax
+
+        let [a,b,c]=[12,5,6]
+
+        左右两边,解构格式要保持一致
+
+        json :
+
+                            let json={
+                                name: '',
+                                age:'',
+                                job:''
+                            }
+
+                             let {name:别名,age='默认值',job}=json;
+                                               假如后台传的是null 则默认值不会生效需要手动判断
+                            let {name,age,job}={
+                                name: '',
+                                age:'',
+                                job:''
+                            }
+
+
+           交换数字
+                let a=5;
+                let b=12;
+
+                [a,b]=[b,a];

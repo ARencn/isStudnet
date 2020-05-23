@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #fff;
+        }
+        div{
+
+            /* rgb = ( )>  */
+            position: absolute;
+            width: 300px;
+            height: 300px; /* */
+            left: calc( 50%  - 150px );
+            top: calc( 50%  - 150px ) ;
+            border: 10px solid #000;
+            border-image-source: url(./179BF0F0-97D1-4DB3-8A5E-5D482C417F5C.JPG);
+            border-image-slice: 10 ;/*填满*/   /* 分割线的距离 */   
+            border-image-outset: 100;    /* 使border向外衍生*/
+            border-image-width: 1;  /* 倍数 显示的图片背景的宽度  auto 会向slice看齐  就是 slice 的值 加 px*/
+            border-image-repeat: stretch;
+            /* stretch 默认值 拉伸 round 不满足一块的时候就拉伸满足时就加一个 repeat 平铺  space*/
+
+            /* 最后一个属性不能加 ,  不然会报错 */
+            /* box-shadow: 
+                        inset  0px 0px 50px  #fff,
+                        inset  10px 0px 80px  #f0f,
+                        inset -10px 0px 80px  #0ff,
+                        inset 10px 0px 300px  #f0f,
+                        inset -10px 0px 300px  #0ff */
+
+
+                      
+            /*  box-shadow: inset 0px 0px 50px #fff,
+                inset 10px 0px 80px #f0f,
+                inset -10px 0px 80px #0ff,
+                inset 10px 0px 300px #f0f,
+                inset -10px 0px 300px #0ff,
+                0px 0px 50px #fff,
+                -10px 0px 80px #f0f,
+                10px 0px 80px #0ff; */
+                        
+        }
+     
+    </style>
+</head>
+<body>
+    <div></div>
+   
+    <!-- 
+        calc()  计算函数
+        border-radius: 10 
+        border-radius: 10px(左上) 20px(右上) 30px 40px
+        border-top-right-radius:10px
+        border-top-right-radius:10px 10px
+
+
+        border-radius     就是利用  多少半径的圆来切割
+
+        box-shadow: inset(写了就是内阴影) 0px(水平偏移量) 0px(垂直偏移量) 0px(模糊的量  基于边框 ,向两边同时模糊) 0px(增大的量) #f0f1 (颜色) 
+        阴影在背景的上面 在文字的下面
+
+     -->
+</body>
+</html>

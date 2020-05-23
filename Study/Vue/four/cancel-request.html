@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="../vue.js"></script>
+<script src="../axios.js"></script>
+
+
+<script>
+
+
+    // 在 局部的项目中的话 因为  axios 对象不是 全局作用域的  但vue是 全局 作用域的所以需要把 axios 挂载到 vue 的prototype 上
+    Vue.prototype.$axios = axios;
+
+    let App={
+        template:`<div>
+                        upload progress:{{ rate }} %
+                        select file: <input type="file" name="file" @change="changeHandler">
+
+                        <button @click="sendAjax"> send ajax</button>
+                        <button @click="cancelHandler">Cancel Request</button>
+                        <button @click="resume">Resume transmission</button>
+                   </div>`,
+        methods:{
+            sendAjax(){
+
+
+                this.$axios.defaults.baseURL='http://127.0.0.1:8888/';
+
+                let CancelToken = this.$axios.CancelToken;
+                let source = CancelToken.source();
+
+                this.source = source;
+                let fd=new FormData();
+                fd.append('file',this.file);
+                this.$axios.post('upload',fd,{
+                    //携带取消标识
+                    cancelToken: source.token,
+                    onUploadProgress:(progressEvent)=>{
+                        //对原生事件进度的处理
+                        console.log(progressEvent);
+                        this.currentLoaded = progressEvent.loaded;
+
+
+                        let progress= (progressEvent.loaded/progressEvent.total)*100;
+                        //涉及到dom视图层的更新所以调用 nextTick方法
+                        this.$nextTick(()=>{
+                            this.rate=Math.ceil(progress);
+                        })
+                    }
+                }).then(res=>{
+                    console.log(res);
+                }).catch(err=>{
+                    console.log(err);
+                })
+
+            },
+            changeHandler(e){
+                let target=e.target || e.srcElement;
+                this.file = target.files[0];
+            },
+            cancelHandler(){
+                this.source.cancel('Request cancelled');
+
+            },
+            resume(){
+                let CancelToken = this.$axios.CancelToken;
+                let source = CancelToken.source();
+
+                this.source = source;
+                let fileData = this.file.slice(this.currentLoaded,this.file.size);
+                let fd=new FormData();
+                fd.append('file',fileData);
+                this.$axios.post('upload',fd,{
+                    //携带取消标识
+                    cancelToken: source.token,
+                    onUploadProgress:(progressEvent)=>{
+                        //对原生事件进度的处理
+                        console.log(progressEvent);
+                        this.currentLoaded += progressEvent.loaded;
+
+
+                        let progress= (this.currentLoaded/progressEvent.total)*100;
+                        //涉及到dom视图层的更新所以调用 nextTick方法
+                        this.$nextTick(()=>{
+                            this.rate=Math.ceil(progress);
+                        })
+                    }
+                }).then(res=>{
+                    console.log(res);
+                }).catch(err=>{
+                    console.log(err);
+                })
+            }
+        },
+        data(){
+            return {
+                file:{},
+                rate:0,
+                source:null,
+                currentLoaded:0
+            }
+        }
+    };
+
+    new Vue({
+        template:`<App/>`,
+        components:{
+            App
+        },
+        el:'#app'
+    })
+
+</script>
+
+</body>
+</html>

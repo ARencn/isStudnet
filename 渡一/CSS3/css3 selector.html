@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .color{
+            width: 100vw;
+            height: 100vh;
+            background-color: red;
+        }
+        .color:nth-child(2){
+            background-color: green;
+        }
+        .color:nth-child(3){
+            background-color: yellow;
+        }
+        div:target{
+            background-color: #000;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="color" id="a">
+        <a href="#b">toB</a>
+    </div>
+    <div class="color" id="b">
+        <a href="#c">toC
+        </a>
+    </div>
+    <div class="color" id="c">
+        <a href="#a">toA</a>
+    </div>
+</body>
+</html>
+
+
+<!-- 
+    选择器 
+    E + F  选择下一个兄弟元素 满足条件
+    E ~ E  选择所有兄弟元素 满足条件的
+
+    属性选择器
+    E[attr ~= ]  选择独立的一个 结果的 选择器  这个结果左右被空格隔开了 也算是独立
+
+    E[attr |= ]  选择 以某某开头  或 以某某开头 带 - 的元素
+
+    E[attr ^= ]  某某开头
+    E[attr $= ]  某某结尾
+    E[attr *= ]  只要包含这个字符串
+
+    伪元素选择
+
+    ::placeholder{
+        只能改颜色
+    }
+    ::selection{
+        color:
+        background-color:
+        text-shadow:
+    }
+
+    伪类选择
+
+    :not()
+    :root()(根标签选择器) 包含 html{}
+    :target  目标点选择器
+
+    location.hash    也就是 url #之后的值
+    哪个 标签的id = location.hash ,
+    哪个标签就会被选中
+
+    例如:
+    <a href="#box">
+    <p id="#box"/>
+    p:target{
+        backgorund-color:red
+    }
+
+    点击a时 锚节点发生改变,p由于ID = 锚节点 也就会被选中,从而触发 target 伪类
+
+    :last-child 从右往左看,是不是 别人的子元素, 是不是最后一个,所以应当是被选中元素的伪类
+    :first-child
+    :only-child  唯一的儿子
+    :nth-child(n)     n 从 1 开始 数 ,不能写负数
+
+    :nth-last-child()  倒着查 从最后一个是第一个
+
+    nth 的都考虑其他元素的影响
+
+    :first-of-type  这个类型的第一个孩子
+    :only-of-type   我这个类型的儿子 ,你只有一个
+    :nth-of-type()  只管自己的类型的元素
+    p 
+    
+    :empty   这个元素里什么有没有  在css中 html注释不算节点
+
+    :checked  选中时改变
+    :disabled  有 disable 属性的
+    :enabled    无disable 属性的
+    :reay-only   有 reayonly属性的
+    :reay-write   可以输入的
+ -->

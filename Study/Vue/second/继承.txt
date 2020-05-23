@@ -1,0 +1,64 @@
+ const component={
+    template : '<div> this is component</div>'
+    data(){
+        return{
+            text:123  在自定义组件时需要使用data属性需要是个方法return  防止数据污染 同名的其他组件
+        }
+    },
+    props:{
+        限制传入数据的类型
+        不应当主动改父组件传入的值   单向数据流
+        active : Boolean
+        也可以
+    }
+
+    props:['active','obj']
+    还可以
+    props:{
+        active:{
+            type:Boolean  类型限制,
+            required: true  必须传入,
+            default: ' '  默认值 如果默认值是一个对象需要在default 中使用方法然后return 一个对象 
+            default(){
+                return{
+
+                }
+            },
+            validator(value){
+                接受参数 value 可用于对 传入的值进行更严格的判断
+            }
+        }
+    }
+}
+
+也可以这样继承
+
+const comp2 = {
+    extends: component 
+    data(){
+        return {
+            依旧可以覆盖原有的data
+        }
+    }
+}
+
+const CompVue=Vue.extend(component);
+    这样继承了vue就是vue的一个子类就可以new
+    与直接写一个组件差不多
+new CompVue({
+    el : '',
+      需要传入props的数据
+      propsData:{
+
+      }
+      data:{
+          可以覆盖原有的数据
+      }
+})
+new Vue({
+    parent : parent diss
+})
+
+可以在子组件中使用  $parent 改变父组件的数据等
+
+只有new Vue 出来的组件才可以指定parent 

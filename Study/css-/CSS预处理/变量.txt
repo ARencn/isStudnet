@@ -1,0 +1,4 @@
+变量的声明:
+ less:   @name:value  (可以是颜色,数字需要带单位,乘法不用带单位)
+ sass:   $name:value
+颜色变浅函数 lighten(颜色,程度%);

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 
+        // 
+        // 第一个 :值  第二个:索引  self:自身数组          第二个参数  this指向
+        /* foreach(function(index, value ,self,thix){},{this指向谁})
+        
+        
+        
+        
+        */
+        var personArr = [{
+            name: '王港',
+            src: './src/img/3.png',
+            des: '颈椎不好',
+            sex: 'm',
+            age: 18
+        }, {
+            name: '刘莹',
+            src: './src/img/5.png',
+            des: '我是谁',
+            sex: 'f',
+            age: 23
+        }, {
+            name: '王秀莹',
+            src: './src/img/4.png',
+            des: '我很好看',
+            sex: 'f',
+            age: 25
+        }, {
+            name: '刘金雷',
+            src: './src/img/1.png',
+            des: '你没有见过陌生的脸',
+            sex: 'm',
+            age: 15
+        }, {
+            name: '刘飞翔',
+            src: './src/img/2.png',
+            des: '瓜皮刘',
+            sex: 'm',
+            age: 20
+        }];
+
+        //     Array.prototype.myForeach =function(func){
+        //         let param2 = arguments[1] || window,len = this.length;
+        //         for(let i =0; i<len;i++){
+        //             func.call(param2,this[i],i,this);
+        //         }
+
+        //     };
+        //    personArr.myForeach(function(value,index,self){
+        //         console.log(index,value,self,this)
+        //     },{code:'me'})
+
+
+
+        // filter  过滤
+        //需要返回 true 或者false  不会改变原数组
+        //  let newArr =   personArr.filter(function(value,index,self){
+        //         return value.sex == 'm'
+        //     },{fi:1})
+        // console.log(newArr)
+
+        //     Array.prototype.myFilter = function(func){
+        //         let param2 = arguments[1] || window , _arr = this,len = _arr.length,result = [];
+        //         for(let i =0;i<len;i++){
+        //             func.apply(param2,[_arr[i],i,_arr]) ? result.push[_arr[i]] : ''
+        //         }
+        //         return result
+
+        //     }
+        //      let newArr =   personArr.myFilter(function(value,index,self){
+        //        // return value.sex == 'm'
+        //     },{fi:1})
+        // console.log(newArr)
+
+
+        //map  映射 x -> y
+
+        //map  返回新数组   function  value index  self  {}
+        //      按照规则返回数据  如果返回的是引用值则会影响到原始数据
+
+        // var newArr = personArr.map(function(value,index,self){
+        //     return value.name + 10
+
+        // },{a:2})
+        // console.log(newArr) 
+
+        // Array.prototype.myMpa = (func) =>{
+        //     let _arr = this,len = _arr.length,param2 = arguments[1] || window,result = [];
+        //     for(let i =0;i<len ;i++){
+        //         result.push(func.apply(param2,[_arr[i],i,_arr]));
+        //     }
+        //     return result
+        // }
+        // var newArr = personArr.map(function(value,index,self){
+        //     return value.name + 10
+
+        // },{a:2})
+        // console.log(newArr) 
+
+
+
+        // some 与  every   类似于 逻辑或    逻辑与
+        //     Array.prototype.myEvery = function(func){
+        //         let _arr = this,len = _arr.length,param2 = arguments[1] || window;
+        //         for(let i =0;i<len ;i++){
+        //           if( !func.apply(param2,[_arr[i],i,_arr])){
+        //             return false;
+        //           }
+        //         }
+        //         return true;
+        //     }
+
+        //   let flag =  personArr.myEvery(function(value,index){
+        //         return value.age > 10 ? true : false
+        //     })
+
+
+
+        // Array.prototype.mySome = function (func){
+        //     let _arr = this ; len = _arr.length ; param2 = arguments[1] || window ;
+        //     for(let i = 0;i<len; i++){
+        //         if(func.apply(param2,[_arr[i],i,_arr])){
+        //             return true;
+        //         }
+        //     }
+        //     return false;
+        // }
+
+
+
+
+
+
+
+
+      
+
+    //     Array.prototype.myReduce  =  function (func){
+    //         let _arr = this,len = _arr.length,initValue = arguments[1],temp = null;
+    //         for(let i = 0; i<len; i++){
+    //             initValue =  func(initValue,_arr[i],i,_arr)
+    //         }
+    //         return initValue
+        
+    //     }
+
+    //         function parseCooike(cookieStr){
+    //           let arrCookie = cookieStr.split('; '),result = {};
+    //             // arrCookie.myReduce(function(prevValue,curValue,index,self){
+    //             //    let temp =  curValue.split('=');
+    //             //     result[temp[0]] = temp[1];
+    //             // },result)
+    //                 arrCookie.forEach(element => {
+    //                     let temp = element.split('=')
+    //                     result[temp[0]] = temp[1];
+    //                 });
+
+    //             return  result
+    //         }
+
+
+
+
+
+    //     let cookie =
+    //         "BAIDUID=FEE84C43CA8696835C812FDFB00EDBE3:FG1; BIDUPSID=FEE84C43CA8696835C812FDFB00EDBE3; PSTM=1557287118; BD_UPN=12314353; MSA_WH=1366_663; MCITY=-289%3A; H_WISE_SIDS=130610_125704_133104_114553_135585_136286_114746_134982_126062_120174_132909_130763_132378_131518_118880_118862_118854_118832_118801_107313_136060_133351_129655_136193_132250_127027_134854_128968_135307_135812_133847_132552_135432_135874_134256_131423_135864_134600_136165_135595_110085_136142_134155_127969_131953_135671_135458_127417_135036_134652_134231_134351_135835; BDORZ=FFFB88E999055A3F8A630C64834BD6D0; COOKIE_SESSION=53198_0_6_4_19_2_0_0_4_2_0_0_53198_0_138_0_1568908389_0_1568908251%7C9%23199819_15_1566316517%7C5; BDRCVFR[NWFO4h1YEm_]=f5-36A3VxvfrH64rjc1PjR8IAqs; BD_HOME=1; BDRCVFR[KIvjRtxCYBD]=mk3SLVN4HKm; delPer=0; BD_CK_SAM=1; PSINO=3; H_PS_645EC=a303866jzRX0pY1%2BqcuW8vs2nctg7tcCDb98efVlrOGl7H%2FvYBM1NivWj6Rn%2FVRoJ0RjMQet; H_PS_PSSID=1429_21114_29522_29721_29568_29221_29589";
+       
+       
+    //       let result =   parseCooike(cookie)
+    //         console.log(result)
+    //     let initValue = {
+    //         name: 'zzr'
+    //     }
+
+    //       //reduce       reduceRight 就是从右向左
+
+    //     //reduce  返回  一个值   function  prevValue  curValue  index  self,  initialValue  初始化值 第一次遍历时候第一个值的之前一个值就是 prevValue
+    //     let lastValue = personArr.myReduce(function (prevValue, curValue, index, self) {
+    //        // console.log(prevValue, curValue, index, self)
+    //         return  prevValue.name += 1
+    //         //需要返回一个值给下一次遍历时候使用 prevValue
+
+    //     }, initValue)
+    // </script>
+</body>
+
+</html>

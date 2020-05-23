@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+    <div id="app"></div>
+    <script src="vue.min.js"></script>
+    <script src="vue-router.js"></script>
+    <script>
+
+
+        // 如果vue是一个局部作用域下的对象 那么必须Vue.use(VueRouter)
+        Vue.use(VueRouter);
+
+
+        let Login={
+          template:`<div>我是登录界面</div>`,
+            created() {
+              console.log(this.$route);
+            }
+        };
+        let Register ={
+            template:`<div>我是注册界面</div>`,
+            created() {
+                console.log(this.$route);
+            }
+        };
+        let router=new VueRouter({
+            routes:[
+                {
+                    path: `/login/:id`,
+                    name:`login`,
+                    component: Login
+                },
+                {
+                    path: `/register`,
+                    name:'register',
+                    component:Register
+                }
+            ]
+        });
+        //抛出两个全局组件 router-link router-link
+
+        let App={
+          template:`
+          <div>
+            <div>
+                <router-link :to = "{name:'login',params:{id:1},query:{userId:2}}">登陆</router-link>
+                <router-link :to = "{name:'register',query:{userId:2}}">注册</router-link>
+            </div>
+            <router-view></router-view>
+          </div>
+                `};
+
+
+        //Cannot read property 'matched' of undefine  未将对象挂载到实例化对象里面
+        new Vue({
+            el:'#app',
+            router:router, //将配置好的router对象关联到 vue实例化对象中
+            template:`<App/>`,
+            components:{
+                App
+            }
+        })
+    </script>
+</body>
+</html>

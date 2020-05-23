@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <div @click="handleClick">{{message}}</div>
+    </div>
+    <script>
+
+        /*vm.destroy()  销毁实例*/
+         var vm=new Vue({
+             el: '#root',
+             data:{
+                 message:'hello world '
+             },
+             methods:{
+                 handleClick:function(){
+                     alert("hello world");
+                 }
+             }
+         })
+    </script>
+</body>
+</html>

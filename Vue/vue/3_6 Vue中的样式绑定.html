@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>                              <!--class  的对象绑定 改变样式 用{}的都是 对象-->
+<div id="app">                  <!-- :class="{activated: isActivated}" 给div 绑定一个属性 class 它的名字叫 activated   这个类显示不显示 取决于一个叫 isActivated的属性 -->
+    <!--<div @click="handleDivClick" :class="{activated: isActivated}">Hello World</div>-->
+                                <!--:class="[activated] class  中显示 activated这个 变量的内容-->
+    <!--<div @click="handleDivClick" :class="[activated]">Hello World</div>-->
+
+            <!--  style 属性中的一个叫style 的对象1-->
+    <div :style="styleObj" @click="handleDivClick">Hello World</div>
+</div>
+<script>
+    var vm=new Vue({
+        el:"#app",
+        data:{
+          // isActivated:false
+          //   activated:""
+
+            styleObj:{
+                color: "black"
+            }
+        },
+        methods:{
+            // handleDivClick:function()
+            // {                       /*给当前值取反*/
+            //     // this.isActivated=!this.isActivated;
+            //
+            //     // if(this.activated==="activated") {
+            //     //     this.activated = "";
+            //     // }else{
+            //     //     this.activated = "activated";
+            //     // }
+            //
+            //     this.activated =this.activated==="activated" ? "" : "activated";
+            // }
+
+            handleDivClick:function(){
+                this.styleObj.color= this.styleObj.color === "black" ? "red" : "black";
+            }
+
+        }
+    })
+</script>
+</body>
+</html>

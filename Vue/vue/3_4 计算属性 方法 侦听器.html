@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">{{fullName}}{{age}}</div>
+<script>
+    var vm=new Vue({
+        el: "#app",
+        data:{
+            firstName:"Dell",
+            lastName:"Lee",
+            fullName:"Dell Lee",
+            age:28
+        },
+        /*侦听器 有缓存机制 页面其他内容进行渲染时 不发生变化*/
+        watch:{
+            /*直接使用 变量名 */
+            firstName:function(){
+                console.log("计算了一次");
+                this.fullName=this.firstName + " " + this.lastName;
+            },
+            lastName: function(){
+                console.log("计算了一次");
+                this.fullName=this.firstName + " " + this.lastName;
+            }
+        }
+
+
+        /*方法*/
+        // methods:{
+        //     /*方法的调用需要加上()*/
+        //     /*调用方法时并没有内置缓存  每一次渲染的改变都会造成数据的刷新*/
+        //     fullName:function(){
+        //         console.log("计算了一次");
+        //         return this.firstName + " " +this.lastName;
+        //     }
+        // }
+        // 计算属性 是内置缓存的 就是计算过一次  再一次渲染其他属性时 不会再次计算 而是直接依赖于缓存 可以直接使用差值表达式 调用
+        // computed:{
+        //     fullName: function(){
+        //         console.log("计算了一次");
+        //      return this.firstName + " "+this.lastName;
+        //     }
+        // }
+    })
+</script>
+</body>
+</html>

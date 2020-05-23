@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="root">
+    <!--父组件向子组件传递数据时 直接在 组件上 定义变量即可 假如 不加: 即传入的是字符串  加 : 表示传入 了 JS表达式-->
+    <!--单向数据流: 父组件可以向子组件 传随意值 但 子组件不要去更改父组件 的值 因为 假如 父组件传入的是对象类型 而其他组件可能也在 引用此数据 如果直接对父组件进行更改 可能会改变其他组件-->
+    <counter :count="0" @change="handleChange"></counter>
+    <counter :count="1" @change="handleChange"></counter>
+    <div>{{total}}</div>
+</div>
+<script>
+    var counter={
+        /*接收 父组件 的数据*/
+        props:['count'],
+
+        /*j将父组件传递给子组件的值 复制一份 就不用修改 父组件的值了
+        */
+        data:function(){
+          return{
+              number: this.count
+          }
+        },
+        template:"<div @click='handleClick'>{{number}}</div>",
+        methods: {
+            handleClick:function
+                (){
+                this.number++;
+                this.$emit('change',1);
+            }
+        }
+    }
+
+
+
+var vm=new Vue({
+    el:"#root",
+    components:{
+        counter :counter
+    },
+    methods:{
+        handleChange:function(stpe){
+          this.total= this.total+stpe;
+        }
+    },
+    data:{
+        total:5
+    }
+})
+
+</script>
+</body>
+</html>

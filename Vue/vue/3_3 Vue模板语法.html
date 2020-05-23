@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <!--这三种模板语法是JS表达式 可以进行变量操作-->
+
+    <!--使用这两个指令时 会无视 该元素中的值-->
+    <!--v-text  文本显示变量 不会做解析 与 {{name}} 差值表达式 没有不同-->
+    <div>{{name +'Lis'}}</div>
+    <div v-text="name +'Lis'"></div>
+    <div v-html="name +'Lis'"></div>
+    <!--v-html 使该元素的innerHTML内容与 name 进行绑定  会进行html 元素解析-->
+
+</div>
+<script>
+    var vm=new Vue({
+        el:"#app",
+        data:{
+            // name:"<h1>dell</h1>"
+            name:"dell"
+        }
+    })
+</script>
+</body>
+</html>

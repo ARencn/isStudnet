@@ -1,0 +1,21 @@
+创建新的分支
+
+git branch name
+
+查看所有分支
+
+git branch
+
+切换分支
+
+git checkout name
+
+合并分支
+
+git checkout master
+
+git merge name
+
+删除分支
+
+git branch -d name

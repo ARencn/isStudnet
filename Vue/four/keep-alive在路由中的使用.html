@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="../vue.js"></script>
+<script src="../vue-router.js"></script>
+
+<script>
+
+    Vue.use(VueRouter);
+
+
+    let Series={
+        template: `<div>I am Series please  select the following button</div> `,
+        created(){
+            console.log('Series is created')
+        },
+        mounted(){
+            console.log('Series end of mount')
+        },
+        destroyed(){
+            console.log('Series  is destroy')
+        }
+    };
+
+    let Topics={
+        template:`<div>I am topics
+            <button @click="clickHandle">click me</button>
+
+                </div>`,
+        methods:{
+            clickHandle(e){
+                let target = e.target || e.srcElement;
+               target.style.color='red';
+            }
+        },
+        created(){
+            console.warn('Topics is created')
+        },
+        mounted(){
+            console.warn('Topics end of mount')
+        },
+        destroyed(){
+            console.warn('Topics  is destroy')
+        }
+    };
+
+    let router=new VueRouter({
+        routes:[
+            {
+                path: `/Series`,
+                name:`Series`,
+                component: Series
+            },
+            {
+                path: `/Topics`,
+                name:'Topics',
+                component:Topics
+            }
+        ]
+    });
+    //在 router-view 前面加上keep-alive 可以使得 组件被缓存起来
+    let App={
+        template:`<div>
+                        <router-link :to="{name:'Series'}">付费栏目</router-link>
+                        <router-link :to="{name:'Topics'}">专题广场</router-link>
+                       <keep-alive><router-view></router-view></keep-alive>
+                   </div>`
+    };
+
+  new Vue({
+      template:`<App/>`,
+      components:{
+          App
+      },
+      router:router,
+      el:'#app'
+  })
+
+</script>
+
+</body>
+</html>

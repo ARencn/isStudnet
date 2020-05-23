@@ -1,0 +1,23 @@
+为了从CSS层面解决代码复用
+
+less:
+可以直接把class来重用
+可以既是一个class 又是一个mixin
+.class(parameter){
+
+}
+.class{
+
+}
+.class{
+  .class();
+}
+
+sass:
+强制要求必须要有 mixin  
+名称不是一个class  不用加.
+使用时使用 include 
+@mixin class(){
+
+}
+

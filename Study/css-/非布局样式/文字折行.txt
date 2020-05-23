@@ -1,0 +1,5 @@
+﻿overflow-wrap(word-wrap)通用换行控制
+是否保留单词
+word-break针对多字节文字
+中文句子也是单词
+white-space 空白处是否断行

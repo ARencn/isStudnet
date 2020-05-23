@@ -1,0 +1,21 @@
+﻿实现两栏（三栏）布局的方法
+	表格布局
+  	float+margin布局（主流）
+ 	inline-block 间隙问题
+	flexbox布局
+position:absolute/fixed有什么区别？
+ 前者相对最近的absolute or relative
+ 后者相对屏幕（viewport）
+display：inline-block的间隙
+  原因：字符间距
+  解决：消灭字符或者消灭间距
+如何清除浮动？
+  让盒子负责自己的布局
+  overflow：hidden（auto）
+
+  ::after{clear:both}
+  
+如何适配移动端页面
+  viewport
+  rem/viewport/media query
+  设计上:隐藏 折行 自适应

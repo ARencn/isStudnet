@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="../vue.js"></script>
+<script src="../axios.js"></script>
+
+
+<script>
+
+
+    // 在 局部的项目中的话 因为  axios 对象不是 全局作用域的  但vue是 全局 作用域的所以需要把 axios 挂载到 vue 的prototype 上
+    Vue.prototype.$axios = axios;
+
+    let App={
+        template:`<div>
+                        <h2>response one {{res1}}</h2>
+                        <h2>response tow {{res2}}</h2>
+                        <button @click="sendAjax"> merge request</button>
+                   </div>`,
+        data(){
+            return{
+                res1:'',
+                res2:''
+            }
+        },
+        methods:{
+            sendAjax(){
+                //请求 1 get: /
+                //请求2 post; /add
+                this.$axios.defaults.baseURL='http://127.0.0.1:8888/';
+                let q1=this.$axios.get('');
+                let q2=this.$axios.post('add','a=1');
+
+                this.$axios.all([q1,q2])
+                    .then(this.$axios.spread((res1,res2)=>{
+                        this.res1=res1.data;
+                        this.res2=res2.data;
+                }))
+                    .catch(err=>{
+                       // 其中有一个失败
+                        console.log(err);
+                    })
+
+
+            }
+        }
+    };
+
+    new Vue({
+        template:`<App/>`,
+        components:{
+            App
+        },
+        el:'#app'
+    })
+
+</script>
+
+</body>
+</html>

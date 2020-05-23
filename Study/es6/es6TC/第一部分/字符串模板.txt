@@ -1,0 +1,20 @@
+ 使用
+``反引号
+    不知道为啥控制台可以使用浏览器不能使用
+
+        let name='serve';
+        let str=`叫${name};
+
+        可以随意换行
+                字符串的查找
+                        str.indexOf(要找的东西)  返回索引 没找到返回-1
+                        str.includes(要找的东西)返回 布尔值
+                字符串是否以谁开头:
+                        str.startsWith(检测的东西)
+                       是否以谁结尾:
+                        str.endsWith()
+                 重复字符串:
+                        str.repeat(要重复的次数);
+            字符串填充:
+                str.padStart(整个字符串的长度,填充的东西)  往前填充
+                str.padEnd(整个字符串的长度,填充的东西)  后后填充

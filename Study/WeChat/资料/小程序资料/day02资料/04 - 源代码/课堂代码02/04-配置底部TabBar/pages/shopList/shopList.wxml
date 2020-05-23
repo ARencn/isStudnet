@@ -1,0 +1,27 @@
+<view class="shop">
+    <image class="shop-img" src="http://p0.meituan.net/200.0/deal/5511b4e5b25fdd67aea0bbca8656ec581139488.jpg@200_0_800_800a%7C267h_267w_2e_90Q"></image>
+    <view class="shop-info">
+        <text class="shop-title">店铺名称</text>
+        <text class="shop-tel">电话：</text>
+        <text class="shop-address">地址：</text>
+        <text class="shop-time">营业时间：</text>
+    </view>
+    <view class="shop-star">
+        <view class='star-after'>★★★★★</view>
+        <view class='star-before' style="width:50%;">★★★★★</view>
+    </view>
+</view>
+
+<view class="shop">
+    <image class="shop-img" src="http://p0.meituan.net/200.0/deal/fe9997c0d2b1ad208e3100e3734ce7ef1188619.jpg@680_0_2720_2720a%7C267h_267w_2e_90Q"></image>
+    <view class="shop-info">
+        <text class="shop-title">店铺名称</text>
+        <text class="shop-tel">电话：</text>
+        <text class="shop-address">地址：</text>
+        <text class="shop-time">营业时间：</text>
+    </view>
+    <view class="shop-star">
+        <view class='star-after'>★★★★★</view>
+        <view class='star-before' style="width:50%;">★★★★★</view>
+    </view>
+</view>

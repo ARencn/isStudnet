@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script>
+
+       
+
+
+       // 同一个函数每次执行都会产生一个独一无二的执行期上下文 函数执行后被销毁 
+        /* 
+            function a(){
+                function b(){
+                    b 在定义时 b.[[scope]] 0: aAo 1:GO
+                    在运行时  b.[[scope]]  0:bAO 1:aAo 2:GO  拿到的是aAO的引用
+  
+                }
+                b()
+            }
+            var glob = 100;
+            a();
+
+            a defined  a.[[scope]]  --> 0 : GO{}   在 a 函数被定义时  作用域链顶端存入 GO
+            a doing     a.[[scope]]  -->0 : AO{} 1:GO  在函数执行时 第一位装的是AO  第二位变成GO
+        
+        
+        
+         */
+
+    
+    </script>
+</body>
+</html>

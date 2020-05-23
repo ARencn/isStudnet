@@ -1,0 +1,24 @@
+<view class='slider'>
+  <swiper indicator-dots="{{true}}" circular autoplay="{{true}}" interval="2500" duration="400">
+    <swiper-item wx:for="{{swiperList}}" wx:key="id">
+      <navigator url='{{item.link}}'>
+        <image mode='aspectFill' src="{{item.image}}" />
+      </navigator>
+    </swiper-item> 
+  </swiper>
+</view>
+<view class='index-nav'>
+  <navigator wx:for="{{navList}}" wx:key="id" class='nav-item bdr' url='/pages/shopList/shopList?cate_id={{item.id}}&cate_name={{item.name}}'>
+    <image src='{{item.icon}}'></image>
+    <text>{{item.name}}</text>
+  </navigator>
+</view>
+<view class='divider'></view>
+<view class='index-enter'>
+  <navigator class='enter-item'>
+    <image src='/assets/images/link-01.png'></image>
+  </navigator>
+   <navigator class='enter-item'>
+    <image src='/assets/images/link-02.png'></image>
+  </navigator>
+</view>

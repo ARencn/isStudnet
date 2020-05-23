@@ -1,0 +1,23 @@
+﻿难理解 兼容性好 常用
+
+元素“浮动”
+脱离文档流
+但不脱离文本流
+
+float
+对自身的影响：
+  形成块（BFC）拥有宽高
+  位置尽量向上靠
+  位置尽量左（right）
+对兄弟影响：
+  上面贴非float元素
+  旁边贴float元素
+    不影响其他块级元素位置
+    影响其他块级元素内部文本
+对父级元素的影响
+    从布局上“消失”
+    高度塌陷   
+	overflow解决塌陷  
+	::after{content：‘ ’；clear：both；display：block；visibility：hidden；height：0}
+	使用margin
+   

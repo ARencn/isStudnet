@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery.js"></script>
+    <!-- <script src="./jquery.js"></script> -->
+</head>
+
+<body>
+    <!-- <div class="wrapper"></div>
+    <div class="demo"></div>
+    <input type="text" class="aa" value="aaa">
+
+    <div class="demo"></div>
+    <div class="demo"></div> -->
+
+    <ul>
+        <li class="aa bb cc">9</li>
+        <li>9</li>
+        <li>9</li>
+        <li>9</li>
+        <li>9</li>
+    </ul>
+    <script>
+        // console.log($('.wrapper').add('.demo'));
+
+        // console.log($('.wrapper').add('.demo').end())
+        //  console.log($(".wrapper").next('.demo'))
+    </script>
+    <script>
+        //DomContentLoaded
+        //window.onload
+        //$.ready
+
+        //两个选择器
+        //$('ul','.wrapper')
+
+        //jQuery 封闭作用域
+        //链式操作
+
+
+        //Jquery 选择元素的方法
+        /**
+         * .get() 填元素索引 取出的是已选中 的所有元素中的该元素 并且为原生
+         * .eq()  与get不同的是 如果没有传入返回空  并且返回的是jQuery 对象
+         * .find() 在原对象基础上 查找对象 可传入任意选择器
+         * .filter() 用于过滤 不能往下查找  字符串可以填 even odd function(index,ele){}
+         * .not()   与 filter 相反
+         * .is()   返回 bool 里面是否有某元素
+         * .has() 筛选  里面有什么的元素
+         * 
+         * 
+         * .add()集中操作  .end 回退操作
+         * 
+         * 
+         * Array.prototype.slice  将类数组变成数组
+         * 
+         * prveObject  记录前一个对象
+         * 
+         * **/
+
+
+        //JQuery dom 操作
+        /**
+         * 
+         * 
+         * .css("width",100)  .css({width:100,height:100}) .css("width","+=100")  还可以取值 .css('backgroundColor') 
+         * 
+         * 
+         * 
+         * 
+         * attr 基于 setAttribue getAttribute
+         * 
+         * $(.demo).attr('class') 取出属性
+         * 
+         * 赋值
+         * 
+         * attr('class','aa')
+         * 
+         * 
+         * 在获取 selected checked disabled等值时
+         * 使用 .attr()  获取不到真实值 因为只要写了就会有 此时应使用prop
+         * 
+         * attr 用于属性值
+         * prop  用于取特性值 
+         * 
+         * 
+         * 
+         * innerHtml
+         * html()
+         * 
+         * 取得html值如果是一组元素则返回其中第一个 的字符串值 
+         * 
+         * 赋值时却会全部都赋
+         * 例如:
+         * 
+         * ul
+         *  li /li
+         *  li /li
+         *  li /li
+         *  li /li
+         * /ul
+         *      $('ul li').html('9')
+         * 结果
+         *  * ul
+         *  li 9/li
+         *  li 9/li
+         *  li 9/li
+         *  li 9/li
+         * /ul
+         * 
+         * 
+         * 也可以更改其html 结构  html('<p>123</p>')
+         * 还可以传入 function
+         * html(function(index,ele){
+         *  return 内容
+         * })
+         * 
+         * 
+         * 
+         * text()
+         * 
+         * 取出的是元素内所有文本值  也可以填function
+         * 
+         * 
+         * size()
+         * 获取长度 和 length一样
+         * 
+         * 
+         * 
+         * 
+         * 
+         * -----------html5 class listclass api  
+         * 
+         * classList.add()一次只能添加一个类名  classList.remove() 不传参数则无效 传没有的就会报错 classList.contains()是否包含此类名   classList.toggle() 有此类名就删除 没有就添加
+         * 
+         * 
+         * -------
+         * JQuery
+         * addClass("class1  class2 class3")  可以直接在一个字符串里添加多个类名 也可以添加function(index,ele)
+         * removeClass()  啥都不填就把所有类名去掉     
+         * hasClass()
+         * 
+         * 
+         * 
+         * 
+         * 
+         * 
+         * 
+         * 取赋值相关的方法 val()
+         * 
+         * 获取表单相关的value值   如果获取一堆只拿第一个
+         * 
+         * 
+         * val()可以传入function 赋值
+         * 
+         * val(function(index,oldValue){
+         * 
+         *      return 
+         * })
+         * 
+         * 也可以直接赋值 val('aaa')  只有元素本身具有value 特性才会在元素上显示出来 但是虽然不显示的依旧可以取得
+         *  
+         * 
+         * 
+         * 使用val 给input 设值时 并没有与元素行内的value值形成映射关系  但是依旧可以取得正确结果
+         * 
+         *       attr                   prop                    val
+         * 用于设置或取得属性值     用于设置或取得特性值       用于设置或取得表单value值
+         * 
+         * 
+         * serialize()  获取form表单中的值 json格式  serializeArray 获取数组形式
+         * 
+         * **/
+
+
+        //jQuery dom增删改查操作
+        /**
+         * 
+         * next()   获取该元素的下一个兄弟元素   可以传入过滤条件 标签选择器 odd even    
+         * prev()   获取该元素的上一个兄弟元素     
+         * nextAll()  获取该元素的所有下面的兄弟元素   可以传入过滤条件 标签选择器 odd even  
+         * prevAll()
+         * 
+         * 
+         * nextUntil('','') 传入条件 1. 到某某为止前的所有兄弟元素  2.到某某为止前的所有兄弟元素中符合第二个条件的元素
+         * prevUntil()
+         * 
+         * 
+         * 
+         * 
+         * siblings() 获取所有的兄弟节点  可传入筛选条件
+         * 
+         * parent() 查找上一级元素 可填入过滤元素
+         * 
+         * parents() 查找上级元素如果不传参 则获取所有上级  可以传入过滤节点
+         * 
+         * 
+         * closest() 离你最近的满足条件的父级 从自己开始找 parents 不是 如果不传参则什么都没有
+         * 
+         * offsetParent()  获取最近的定位元素 符合条件
+         * 
+         * slice() 截取元素  包含左边不包含右边  1,6  则为截取第1位-第5位
+         * 
+         * 
+         * 
+         * 
+         * 
+         * JQuery对象发生位置改变
+         * 
+         * 
+         * insertBefore()  把调用的元素放到传入 的元素前
+         * 
+         * before()  把传入的元素放到调用的元素前 只能传入JQuery 对象
+         * 
+         * 
+         * insertAfter()  把调用的元素放到传入 的元素后
+         * 
+         * after()  把传入的元素放到调用的元素后 只能传入JQuery 对象
+         * 
+         * 
+         * 
+         * appendTo()  把调用的元素添加到传入的元素里 的最后面
+         * 
+         * append()   把传入的元素添加到调用的元素里  的最后面  
+         * 
+         * 
+         * prepend()   把传入的元素添加到调用的元素里  的最前面
+         * 
+         * prependTo()  把调用的元素添加到传入的元素里 的最前面
+         * 
+         * 
+         * 
+         * 
+         * 
+         * remove()  剪切元素后事件也会清空
+         * 
+         * detach()  剪切元素后事件不会清空
+         * 
+         * 
+         * 
+         * $('</div>')   可以直接填入标签以创建元素 
+         * 
+         * 
+         * wrap()  
+         * 在该元素的外部包裹一层元素 可以直接传入字符串html 
+         * 模板 $('.demo').wrap('<div></div>') 也可以传入 原生dom对象  或者JQuery对象
+         * 在处理循环操作时还可以传入function()
+         * 
+         * 
+         * wrapInner()  给元素的里面的元素包裹上一层元素
+         * 
+         * 
+         * wrapAll()  给所选所有元素添加一个父级元素
+         * 
+         * unwrap() 删除选中的一个元素的父级
+         *  **/
+    </script>
+</body>
+
+</html>

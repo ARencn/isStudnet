@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="../vue.js"></script>
+<script src="../axios.js"></script>
+
+
+<script>
+
+
+    // 在 局部的项目中的话 因为  axios 对象不是 全局作用域的  但vue是 全局 作用域的所以需要把 axios 挂载到 vue 的prototype 上
+    Vue.prototype.$axios = axios;
+
+    let App={
+        template:`<div>
+                        <button @click="sendAjax"> send ajax</button>
+                   </div>`,
+        methods:{
+            sendAjax(){
+                this.$axios.get("http://localhost:8888/")
+                    .then(response=>{
+                        console.log(response);
+                    })
+                    .catch(error=>{
+                        console.log(error);
+                    })
+            }
+        }
+    };
+
+    new Vue({
+        template:`<App/>`,
+        components:{
+            App
+        },
+        el:'#app'
+    })
+
+</script>
+
+</body>
+</html>

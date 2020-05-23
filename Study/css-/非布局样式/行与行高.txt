@@ -1,0 +1,6 @@
+﻿行高的构成   
+---inline box 决定行高
+行高相关的现象和方案  
+ ----垂直居中 line-height  
+vertical-align：middle（以基线对齐，可以以像素的方式控制对齐 不推荐）
+图片3px问题 block bottom

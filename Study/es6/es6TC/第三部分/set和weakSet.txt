@@ -1,0 +1,50 @@
+数据结构
+        数组
+        json 二叉树
+
+
+        set数据结构:
+                类似数组,但是里面不能有重复值
+
+set用法:
+        new Set(['a','b']);  定义时却不能直接定义对象
+        set.add()  增加一项  可以添加任意包括对象
+
+        set.delete()删除一项
+
+        set.has()  寻找有没有这项
+
+        set.size   长度
+
+        set.clear()  清除所有
+
+        循环:
+                a).for(let item of set){
+                            //默认是value
+                }
+                b).for(let item of set.keys()){
+                            //keys===values
+
+                }
+
+                d).for(let[k,v] of set.entries)
+
+                e).set.forEach((index,value)=>{
+
+                })
+
+
+
+                set用处:
+                        数组去重
+
+
+                        let arr=[1,2,1,3,4]
+                        let set =[...new set(arr)]
+
+
+                        new weakSet({})推荐存储json没啥卵用 没有size 也没有clear
+
+
+                   使用 new Set
+

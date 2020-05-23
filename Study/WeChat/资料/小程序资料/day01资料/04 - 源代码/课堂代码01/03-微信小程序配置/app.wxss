@@ -1,0 +1,45 @@
+/* 功能封装1：白色底色，间隔封装 */
+
+/* page {
+    background-color: #ccc;
+} */
+
+/* 
+    1.给page设置背景色，
+    2.给分区填充白色，
+    3.再通过margin隔开 
+*/
+.bgw {
+    background-color: #fff;
+}
+
+.mt20 {
+    margin-top: 20rpx;
+}
+
+/* 功能封装2：专门用于做间隔的类，设定高度，填充底色 */
+
+.divider {
+    height: 20rpx;
+    background-color: #f1f1f1;
+    box-shadow: 0 5rpx 5rpx rgba(0, 0, 0, 0.1) inset;
+}
+
+/* 功能封装3：细线边框 */
+/* 移动端边框问题：右边框普通写法占位置，也容易"对不齐" */
+/* 解决办法：伪元素+定位 实现 */
+.bdr{    
+    /* 2.3.子绝父相 */
+    position: relative;
+}
+.bdr::after {
+    /* 2.1.通过伪元素绘制一像素的右边框 */
+    content: "";
+    width: 1rpx;
+    height: 100%;
+    background-color: #ddd;
+    /* 2.2.定位，不占位置 */
+    position: absolute;
+    right: 0;
+    top: 0;
+}

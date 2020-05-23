@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div id="qq">
+        <div id="ll">
+            <div id="tp"></div>
+        </div>
+    </div>
+    <div class="tp"></div>
+    <script>
+        window.onload =function(){
+            console.log(getDom('#ll'));
+        // console.log(getDom('.tp'));
+        // console.log(getDom('span'));
+        let result =[];
+        function save(obj){
+           result.push(obj)
+        }
+        function domRecursive(dom,str){
+            if(dom.children.length == 0){
+                console.log(0)
+                return 0
+            }
+            for(let i =0;i<dom.children.length;i++){
+                if(dom.children[i].id == str){
+                    save(dom.children[i].id)
+                  return dom.children[i]
+                }else{
+                    domRecursive(dom.children[i],str);
+                }
+            }
+        }
+        function getDom(str) {
+            //首先截取是否 有# 或者. 暂不考虑多类名  
+            let newStr = str.slice(0, 1);
+            let endStr = str.slice(1);
+            let allNode = document.children[0].children[1];
+            let resArr = [];
+            let result = [];
+            switch (newStr) {
+                case '#':
+                   domRecursive(allNode,endStr) ;
+                    console.log(result)
+                   
+                    return new Error('Not Found Node')
+                    break;
+                case '.':
+                    resArr =[];
+                    for (let i = 0; i < allNode.length; i++) {
+                        if (allNode[i].className == endStr) {
+                          resArr.push(allNode[i]);
+                        }
+                    }
+                    if(resArr.length!=0){
+                        return resArr
+                    }else{
+                        return new Error('Not Found Node')
+                    }
+                    break;
+                default:
+                    resArr=[];
+                    for (let i = 0; i < allNode.length; i++) {
+                        if (allNode[i].localName == str) {
+                           resArr.push(allNode[i]);
+                        }
+                    }
+                    if(resArr.length!=0){
+                        return resArr;
+                    }else{
+                        return new Error('Not Found Node')
+                    }
+                    break;  
+            }
+        }
+        }
+       
+    </script>
+</body>
+
+</html>

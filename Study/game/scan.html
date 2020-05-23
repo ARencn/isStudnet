@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul{
+            width: 500px;
+            height: 500px;
+
+        }
+        li{
+            float: left;
+            width: 50px;
+            height: 50px;
+            color: #000;
+            border: 1px solid silver;
+            list-style: none;
+            box-sizing: border-box;
+            text-align: center;
+padding-top: 2%        }
+    </style>
+</head>
+<body>
+<ul>
+
+</ul>
+<script>
+    let Mine =[];
+    let li =document.getElementsByTagName('li');
+    let col = 10;
+    mineInitial(20,100);
+    quantityInitial(30);
+    function mineInitial(mineNum,liNum){
+
+        let mineSet=new Set();
+        for (let i = 0; i < liNum; i++) {
+            document.getElementsByTagName('ul')[0].appendChild(document.createElement('li'));
+
+        }
+        while(mineSet.size<mineNum){
+            mineSet.add(Math.round(Math.random()*liNum));
+        }
+        Mine= Array.from(mineSet);
+        for (let i = 0; i < Mine.length; i++) {
+            li[Mine[i]].innerHTML = -1;
+        }
+    }
+    function quantityInitial(liNum){
+
+
+        for (let n = 0; n < li.length; n++) {
+            let k =0;
+            for (let i = 0; i < Mine.length; i++) {
+
+                if(n===Mine[i]){
+                    k++;
+                }
+            }
+            if(k===0){
+                // if(checkNumber(n)===0){
+                //
+                // }else{
+                    li[n].innerHTML=checkNumber(n,liNum);
+
+               // }
+            }
+
+        }
+
+
+
+
+    }
+    function checkNumber(n){
+        let j=0;
+        if(li[n-(col+1)]){
+            if(parseInt(li[n-(col+1)].innerHTML)===-1){
+                j++;
+            }
+        }
+
+        if(li[n-col]){
+            if(parseInt(li[n-col].innerHTML)===-1){
+                j++;
+            }
+        }
+
+        if(li[n-(col-1)]){
+            if(parseInt(li[n-(col-1)].innerHTML)===-1){
+                j++;
+            }
+        }
+
+        if(li[n-1]){
+            if(parseInt(li[n-1].innerHTML)===-1){
+                j++;
+            }
+        }
+
+        if(n===0||n%col!==0){
+            if(li[n+1]){
+                if(parseInt(li[n+1].innerHTML)===-1){
+                    j++;
+                }
+            }
+        }
+
+
+
+        if((n%col===0||n%col===1)&&n!==1){
+
+        }else{
+            if(li[n+(col-1)]){
+                if(parseInt(li[n+(col-1)].innerHTML)===-1){
+                    j++;
+                }
+            }
+        }
+
+
+        if(li[n+col]){
+            if(parseInt(li[n+col].innerHTML)===-1){
+                j++;
+            }
+        }
+        if(li[n+(col+1)]){
+            if(parseInt(li[n+(col+1)].innerHTML)===-1){
+                j++;
+            }
+        }
+
+        return j;
+    }
+</script>
+</body>
+</html>

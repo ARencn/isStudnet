@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>文档标题</title>
+    <style>
+        .father{
+            border: 1px solid #f00;
+            width: 500px;
+            height: 500px;
+            position: relative;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            border:1px solid deepskyblue;
+            position: absolute;
+            left: 50%;
+            top:50%;
+            /*margin-left: -50px;*/
+            /*margin-top: -50px;*/
+            transform: translate(-50%,-50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son">盒子</div>
+    </div>
+</body>
+</html>

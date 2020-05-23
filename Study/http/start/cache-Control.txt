@@ -1,0 +1,65 @@
+              可缓存性
+
+public：http经过的任何地方都可以缓存
+
+
+private ： 只有发起请求的浏览器可以缓存 代理不可以缓存
+
+no-cache ： 可以在本地进行缓存  但每次使用时都需要服务器端验证
+
+
+到期 
+
+max-age=<seconds>  ： 过了多久 才会向服务器端再次发起请求
+
+
+
+----------------------以上为常用---------------
+
+
+s-maxage=<seconds>  : 在代理服务器中生效的  缓存期限
+
+max-stale=<seconds>  : 即使 max-age 到期了  依旧可以在 max-stale的有效期内 使用过期缓存
+
+重新验证
+
+must-revaildate   ： 如果max-age已经过期 就必须重新请求 是否还能再使用过期缓存
+
+proxy-revaildate  ： 再代理服务器中 如果max-age已经过期 就必须重新请求 是否还能再使用过期缓存
+
+其他
+
+no-store： 不允许缓存
+no-transform ：不允许代理服务器改动内容（如压缩等）
+
+只是声明而不是强制性的
+
+
+在浏览器中的缓存在何时 使用缓存 何时更新？   在打包时随机生成的hash码 假如hash码变动了 就用新的请求
+
+
+资源验证
+
+
+   browser        (create request)--> search in local cache  ---> search in agent cache       ---->  search in source server    
+                                            |                                 |                                     |
+                 <--------------------------|                                 |                                     |
+                                        <-------------------------------------|                                     | 
+                                                              <-----------------------------------------------------|
+
+
+
+验证头 
+
+  Last-Modified（上次修改时间）
+
+
+            配合IF-Modified-Since  或者 If-Unmodified-Since使用
+  
+  
+  
+  Etag  
+
+        数据签名
+        配合 if-match 或者 if-non-match使用  
+        对比资源的签名判断是否使用缓存

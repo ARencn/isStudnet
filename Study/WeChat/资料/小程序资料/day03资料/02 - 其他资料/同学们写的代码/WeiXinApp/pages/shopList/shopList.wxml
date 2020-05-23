@@ -1,0 +1,16 @@
+<view class='shop' wx:for="{{shopList}}" wx:key="id">
+  <image class='shop-img' src='{{item.images[0]}}'></image>
+  <view class='shop-info'>
+    <text class='shop-title ell'>店铺名称：{{item.name}}</text>
+    <text class='shop-tel'>电话：{{item.phone}}</text>
+    <text class='shop-address'>地址：{{item.address}}</text>
+    <text class='shop-time'>营业名称：{{item.tags[0]}}</text>
+  </view>
+  <view class='shop-star'>
+    
+    <view class='star-before' style='width:{{item.score}}%'>★★★★★</view>
+    <view class='star-after'>★★★★★</view>
+  </view>
+</view>
+
+

@@ -1,0 +1,29 @@
+nodeJS
+        读取文件 fs.readFile
+
+
+        ----------------------
+            语法: async function fn(){
+            //表示异步.这个函数里面又异步
+
+            await 表示后面的结果需要等待
+        }
+
+
+        async特点
+                1:await只能放在async函数中
+                2.相比generator语义化更强
+                3.await后面可以是promise对象,可以是数字等
+                4.async返回的是promise对象
+                5.只要await的promise的状态变成了rejected,那么整个async函数就会中断执行
+
+
+                如何解决async中出错影响后续代码执行:
+                a). try{
+                    涉及网络请求最好都try catch
+                }catch(e){
+
+
+                }
+
+                b).promise本身的捕获

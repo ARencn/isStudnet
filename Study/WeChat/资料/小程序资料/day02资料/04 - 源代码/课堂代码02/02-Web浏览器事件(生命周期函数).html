@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script type="text/javascript" src="lib/jquery-1.12.2.js"></script>
+    <script type="text/javascript">
+    /* 浏览器的生命周期函数：可以理解为浏览器在某个阶段自己触发的某个事件 */
+    /* 当页面加载完毕后自动执行，浏览器自己触发的 */
+    window.onload = function () {
+        console.log("A：当页面加载完毕后自动执行");
+    }
+    /* 当DOM准备完毕后自动执行，浏览器自己触发的 */
+    $(document).ready(function(){
+        console.log("B：DOM准备完毕后自动执行");
+    });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

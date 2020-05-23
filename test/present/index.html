@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <title>礼物</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+
+        }
+
+        body {
+            height: 100%;
+            width: 100%;
+            font-family: 'MyNewFont';
+            font-size: 25px;
+        }
+
+        #wrapper {
+            width: 100vw;
+            height: 100vh;
+            background-image: url('/male.jpg');
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            display: none;
+            position: relative;
+
+        }
+
+        ul {
+            list-style: none;
+            width: 50vw;
+            height: 80%;
+            position: absolute;
+            left: calc(50% - 25vw);
+            margin: 2%;
+        }
+
+        #tWraooer>ul {
+            width: 40vw;
+            position: absolute;
+            left: calc(50% - 20vw);
+        }
+
+        #tWraooer>ul:hover {
+            background-image: url('/mei.jpg');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+
+        @font-face {
+            font-family: 'MyNewFont';
+            /*字体名称*/
+            src: url('/xjlFont.fon')
+        }
+
+        li {
+            text-align: center;
+            animation: change 5s linear 0s infinite;
+            font-size: 20px;
+
+        }
+
+        .h1 {
+            text-align: center;
+            animation: change 5s linear 0s infinite;
+            display: none;
+            padding-top: 3%;
+        }
+
+        li:hover {
+            font-size: 30px;
+        }
+
+        .inputDay {
+
+            border-radius: 5%;
+            width: 200px;
+            height: 30px;
+            font-size: 15px;
+            margin-top: 3%;
+
+        }
+
+        .inputDay::placeholder {
+            font-family: 'MyNewFont';
+        }
+
+        @keyframes change {
+            0% {
+                color: #01ccff;
+            }
+
+            5% {
+                color: #03d5ff;
+            }
+
+            10% {
+                color: #04d0ff;
+            }
+
+            15% {
+                color: #04b0ff;
+            }
+
+            20% {
+                color: #049eff;
+            }
+
+            25% {
+                color: #066aff;
+            }
+
+            30% {
+                color: #015eff;
+            }
+
+            35% {
+                color: #0844ff;
+            }
+
+            40% {
+                color: #0322ff;
+            }
+
+            45% {
+                color: #0825ff;
+            }
+
+            50% {
+                color: #0608ff;
+            }
+
+            55% {
+                color: #0608ff;
+            }
+
+            60% {
+                color: #0825ff;
+            }
+
+            65% {
+                color: #0322ff;
+            }
+
+            70% {
+                color: #0844ff;
+            }
+
+            75% {
+                color: #015eff;
+            }
+
+            80% {
+                color: #066aff;
+            }
+
+            85% {
+                color: #049eff;
+            }
+
+            90% {
+                color: #04b0ff;
+            }
+
+            95% {
+                color: #04d0ff;
+            }
+
+            100% {
+                color: #03d5ff;
+            }
+        }
+
+        #tWraooer {
+            position: relative;
+            background-image: url('/female.jpg');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="load">
+        等它加载一会好不好..
+    </div>
+    <div id="wrapper">
+        <ul>
+
+        </ul>
+    </div>
+    <div id="tWraooer">
+        <h2 class="h1">其实我惟愿你被世界温柔以待</h2>
+        <ul>
+
+        </ul>
+    </div>
+
+
+    <script>
+        let say, template, ul, audio, audio1, a = 0;
+        audio = document.createElement('audio');
+        audio.loop = true;
+        audio.src = '/lai.mp3';
+        say = ['小张敏阿',
+                '你来啦',
+                '等你好久了',
+                '没陪着你的这些年',
+                '也不知道你经历了什么',
+                '才把你变成这个样子',
+                '但是',
+                '这些年 你一个人辛苦啦',
+                '以后有我在',
+                '我会保护你的',
+                '保护你很久很久',
+                '还是想感慨一下',
+                '全世界有七十亿人',
+                '每个人都有着各自的小世界',
+                '恰恰是那一分那一秒',
+                '我们相遇了',
+                '哪怕是晚一点点',
+                '我们可能就是两个一生也不会有交集的人看',
+                '不知道你有没有听过平行宇宙论',
+                '就是说',
+                '为什么我能遇到你呢',
+                '因为还有很多个宇宙里的我',
+                '没有遇到你',
+                '恰好 我在这个宇宙,你也在这',
+                '真好',
+                '对不起啊',
+                '我是一个连自己都照顾不好的人',
+                '更不是一个会安慰别人的人',
+                '也做不到能够一直陪在你身边',
+                '但是我也想一直一直能够陪着你',
+                '陪着你长大',
+                '看着你去更远的地方',
+                '其实 要说我最希望你怎样',
+                '那应该就是希望你每天都能开心',
+                '你也一定要每天都开心啊',
+            '答应我好么?'];
+        ul = document.getElementsByTagName('ul')[0];
+     
+        audio.autoplay = true;
+        window.onload= function(){
+           
+            wrapper.style.display = 'block';
+            load.style.display = 'none';
+            audio1 = document.createElement('audio');
+            audio1.src = '/yu.mp3'
+
+            audio1.loop = true;
+            setTimeout(function () {
+                for (let i = 0; i < say.length; i++) {
+                    alert(say[i]);
+                    template = document.createElement('li');
+                    template.innerHTML = ` <li> ${say[i]}</li> `;
+                    ul.append(template);
+                }
+                template = document.createElement('li');
+                let inputDay = document.createElement('input');
+                inputDay.type = 'text';
+                inputDay.placeholder = '请输入 我保证每天开心';
+                inputDay.classList.add('inputDay');
+                template.append(inputDay);
+                ul.append(template);
+                document.getElementsByClassName('inputDay')[0].focus();
+                inputDay.onclick = () => {
+
+                    inputDay.onblur = () => {
+                        if (inputDay.value.trim() == '') {
+                            alert('啥都没输入!');
+                            a++;
+                        } else if (inputDay.value.trim() != '我保证每天开心') {
+                            alert('输错啦 笨蛋!');
+                            a++;
+                        } else if (inputDay.value.trim() == '我保证每天开心') {
+                            twoHtml()
+                        }
+                        if (a == 3) {
+                            alert('你好笨好笨好笨');
+                        } else if (a == 4) {
+                            alert('哦 假如你再笨一点猴子都能上树了!');
+                        } else if (a == 5) {
+                            alert('不指望你了,进去吧!');
+                            twoHtml();
+                        }
+                    }
+                    inputDay.onkeydown = (e) => {
+                        if (e.keyCode == 13) {
+                            inputDay.onblur();
+                        }
+                    }
+                    inputDay.onclick = null;
+                }
+
+            }, 1000)
+
+        }
+      
+        
+        function twoHtml() {
+            audio.pause();
+            audio1.autoplay = true;
+            audio1.play();
+            wrapper.style.display = 'none';
+            tWraooer.style.display = 'block';
+            var d;
+            var list = ['我们每个人啊',
+                '在面对世界的时候',
+                '都会无助',
+                '会迷茫',
+                '但我们都不能放弃生活呀',
+                '你知道这个世界有多美吗',
+                '阿尔卑斯的山麓',
+                '南极的万年玄冰',
+                '北极的极光,',
+                '普罗旺斯的薰衣草',
+                '贝加尔湖的湖畔',
+                '富士山的樱花',
+                '夏威夷的火山湖',
+                '西藏的冈仁波齐',
+                '这个宇宙又有多大啊',
+                '一百六十多亿光年',
+                '连光都走了一百六十多亿年才遇到你',
+                '我们有什么理由不好好活下去啊',
+                '去做自己想做的事吧',
+                '其实',
+                '我们最该担心的',
+                '不是自己何时死去',
+                '而是从未活过阿',
+                '如果 你遇到了实在不知道怎么解决的问题',
+                '而我又恰好不在',
+                '在下面的输入框里写上你的问题吧',
+                '它会随机告诉你一个答案'
+            ];
+            var daList=['千万别在这上面押宝','采取一个大胆的态度','听取专家建议',
+    '你会发现你自己无法妥协','专注在你的家庭生活上吧','研究,然后享受它',
+    '当然','它仍然无法预测','绝对不','带着好玩的好奇心去探索它','最好等等看',
+    '它好像是确定的','趁早做','对别人保密','可能会发生一些令人吃惊的事作为结局','答案可能会是以另一种语言形式来到你身边','你将需要适当调整一下','怀疑它','它将会带来好运',
+    '要有耐心点','你会发现你所需要知道的一切','有一个实质性的连接链接到另外一种情况','你将会很开心你这样做了','把它写下来','千万别陷入你的个人感情','改变你的焦点','这时候非常不顺利,' ,
+    '用人呢过和你能做到的方式去提升','如果你照你说的做','如果它是做的很好的;如果不是 ,就再也不要做它了','这个时候不要要求更多','避开第一个解决方案','观察,看看会发生什么事','它将会影响到它人怎么看你','你会说了算','以一个更加轻松的速度行进把','最好的解决方法可能不是显而易见的那个','保持灵活性','这不是你所能控制的','假如你说 谢谢','享受体验','谨慎的处理',
+    '注意细节','当你要去做的时候,小心行事','毫无保留的把它说出来','不要犹豫了','它有着非常重要的意义','更换一下重要事项的优先顺序','这是一个做一个新计划的最好时机了','继续前进','做个为什么不这样的清单','不要等待','它将是你无法忘怀的事','期待能够解决','找出更多选择','履行你自己的义务','稍后处理它','跟随它人的指引','做一个为什么的清单','冒险一试','接受你习惯的改变','你需要采取主动','这可保证不了','情况将会转变的非常快','你将不得不妥协','你需要更多的信息','相信你最初的想法','它将引起一场轰动',
+    '意识到太多的选择难如太少','是的','更加仔细的聆听,然后你就会知道','答案就在你身边','让它过去吧','那将会是一种金钱的浪费','全力以赴','你不要真正的在意','你需要考虑其它方式','从现在起的一年都没有什么所谓','不要浪费你的时间了','它可能是非凡的','数到10 再问一次','装作它已经是真的了' ,
+    '不知优先次序将会是过程中一个必须的部分','运用你的想象','它将一定会更好','确保最好的决定,镇定下来','等待','当你行动的时候,你将需要不断弥补','一笑置之','别人也同样取决于你的选择','你将会后悔的','无可非议','当然','你知道现在比之前更好了','相信你的直觉','考虑到它的机会','问问你的母亲','可能,当你老的时候','只能做一次','可能','千万别在这上面押宝','采取一个大胆的态度' ,
+    '不行','行','你的行动将会改善一切','别傻了','欣然的确定它','最好等等看','对别人保密','问问你的父亲','绝不','你将需要适当调整一下','怀疑它','当然','它将会带来好运','把它写下来','这时候非常不顺利','用任何你能做到的方式去提升如果你照你说的做','移除你自己的阻碍','最好把注意力放在你的工作上','赌一下','先把其它事完成','你可能有敌对的人','你太靠近看了','情况还不清楚','需要一个实质性的努力','先让你自己休息一下','这个机会不会很快再来','咋重新考虑你的方法','它将是不可取的','等到一个更好的提议','早点定下来','是的,但别强迫','去取得一个更加清晰的视野','实际点',
+    '节省你的能量吧','冒险一试','现在你可以','不要做的太过火了','它将会扶持你','你将为它付出代价','它肯定会把事情变得有趣','结果会是积极的','不管什么','它是肯定的','它将是一种乐趣','它是不确定的','更加慷慨点','你可能必须要丢下其它东西','不用担心','对意外情况做好准备','它没有什么意义','告诉别人它对你意味着什么','你可能必须要丢下其它东西','无论你做什么,结果都将会继续持续下去','保持开放的心态','制作计划的好时机',
+    '它可能很难 但是你会发现它是有价值的','它是一个非常只得注意的麻烦','采取一个大胆的态度','听取专家的意见','将会有一个阻碍需要去克服','相关联的问题可能会浮出水面','你肯定需要支持','协助将会是你向成功发展','合作将会是至关重要的','接管','不能失败','温和的坚持会有回报的 ','你将不会是失望','找到更多的提议','它可能是一个木已成舟的事','贯彻你的良好心愿','花多点时间去决定','不要被迫太快行动','不要忽略那些显而易见的事','你必须现在行动','它不值得努力','如果你不抵抗','遵守规则','别忘记享受乐趣','不要怀疑','一个有力的承诺将会获得更好的结果','实施一个不太可能的解决方案','放弃老的解决方案','不,如果你独自一个人的话','灾难是极有可能的','迫切要求停止','听取专家意见','你会发现你自己无法妥协','专注在你的家庭生活上吧','研究它 然后享受它','当然','绝对不','带着好玩的好奇心去探索它','最好等等看','它好像是确定的','趁早做','对别人保密','可能会发生一些令人吃惊的事情作为结局','答案可能会是以另一种语言形式来到你身边','你将需要适当调整一下','怀疑你','它将会带来好运','要有耐心点','你会发现你所需要知道的一切','有一个实质性的连接链接到另种情况','你将会开心 你这样做了',
+    '把它写下来','千万那别陷入你的个人感情','改变你的焦点','这时候非常不利','用任何你能做到的方式去提升','如果照你说的做','如果它是做的很好的,如果不是,就别再做它了','这个时候不需要求更多','避开第一个解决方案','观察看看会发生什么','它将会影响到别人怎么看你','你说了不算','以一个更加轻松的速度行进吧','最好的解决方法可能不是最显而易见的那个','保持灵活性','这不是你所能控制的','假如你说 谢谢','享受体验',
+    '谨慎的处理','注意细节','当你要去做的时候,小心行事','毫无保留的把它说出来','不要犹豫了','它有着非常重要的意义','更换一下重要事项的优先顺序','这是做一个新计划的最好时机了','继续前进','做一个不为什么这么做的清单','不要等待','它将是你无法忘怀的事','期望能够解决','找出更多的选择','履行你自己义务','稍后处理它','跟随它人的引导','做一个为什么的清单','冒险一试','接受你习惯的改变','你需要采取主动','这可保证不了','我爱你','情况将会转变的非常快','你将不得不妥协','你需要更多的信息','相信你最初的想法','它将引起一场轰动','可能会发生一些令人吃惊的事情作为结局','它将会带来好运','如果它是做的很好的,如果不是,就再也不要去做它了','这个时候不要要求更多','可能会更好','意识到太多的选择难如太少','是的','更加仔细的聆听,然后你将会知道','答案就在你身边','让它过去吧','那将会是一种金钱的浪费','全力以赴','我爱你'];
+            var ul2 = document.getElementsByTagName('ul')[1];
+            setTimeout(function () {
+                for (let i = 0; i < list.length; i++) {
+                    alert(list[i]);
+                    template = document.createElement('li');
+                    template.innerHTML = ` <li> ${list[i]}</li> `;
+                    ul2.append(template);
+                }
+                let inputDaan = document.createElement('input');
+                inputDaan.type = 'text';
+                inputDaan.placeholder = '请输入要问的问题';
+                inputDaan.onclick = () => {
+                    inputDaan.onkeydown = (e) => {
+                        if (e.keyCode == 13) {
+                            if (inputDaan.value.trim() == '') {
+                            alert('你什么都没问啊!');
+                        } else {
+                             d = daList[random(0,266)];
+                            alert(d);
+                            let xhr = new XMLHttpRequest();
+                            xhr.open('POST', 'http://49.232.171.71/save')
+                            xhr.onreadystatechange = function () {
+                                if (xhr.readyState == 4 && xhr.status == 200) {
+                                    console.log(xhr.response);
+                                }
+                            };
+                            let date = new Date();
+                            xhr.send(JSON.stringify({query:inputDaan.value,date:`${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`,daan:d}));
+                        }
+                        }
+                    }
+                    inputDaan.onclick = null;
+                }
+                inputDaan.classList.add('inputDay');
+                template.append(inputDaan);
+                ul2.append(template);
+                setTimeout(function () {
+                    alert('其实我惟愿你被世界温柔以待');
+                    document.getElementsByTagName('h2')[0].style.display = 'block';
+                }, 2000);
+
+            }, 1000)
+
+
+        }
+        function random(lower, upper) {
+            return Math.floor(Math.random() * (upper - lower+1)) + lower;
+        }
+
+
+
+    </script>
+</body>
+
+</html>

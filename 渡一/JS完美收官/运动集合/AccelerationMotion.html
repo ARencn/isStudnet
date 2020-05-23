@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        background-color:red;
+    }
+</style>
+<body>
+    <div id="wrapper"></div>
+    <script>
+        let oWrapper = document.getElementById('wrapper');
+        oWrapper.onclick = function(){
+            moveStart(this);
+        }
+        
+        function moveStart(dom){
+            clearInterval(dom.timer);
+            let a = 2;
+            let iSpeed = 20;
+            setInterval(function(){
+                iSpeed = iSpeed + a;
+                dom.style.left = iSpeed + dom.offsetLeft +'px'
+            },30)
+        } 
+    
+    </script>
+</body>
+</html>

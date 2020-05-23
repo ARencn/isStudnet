@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">{{fullName}}</div>
+<script>
+    var vm=new Vue({
+        el : "#app",
+        data :{
+            firstName:"Ming",
+            lastName:"Li"
+        },
+        computed:{
+            fullName:{
+                /*获取时执行*/
+                get:function () {
+                    return this.firstName + " " + this.lastName;
+                },/*设置时执行*/
+                set:function (value) {
+                    /*将 值 以空格为基准打散 变为一个数组*/
+                    var arr=value.split(" ");
+                    this.firstName =arr[0];
+                    this.lastName=arr[1];
+                    console.log(value);
+                }
+
+            }
+        }
+
+    })
+</script>
+</body>
+</html>

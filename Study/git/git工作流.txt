@@ -1,0 +1,35 @@
+清理面板上的语句
+clear  在cmd中是cls
+
+从暂存区回滚到工作区
+git reset HEAD name
+
+清除工作区未提交的文件
+
+git checkout --name
+
+查看版本
+
+git log
+
+工作区和暂存区都回滚到某版本
+
+git reset --hard version number
+
+清空某文件
+
+rm 'name'
+
+
+
+工作区 ------------------  版本库 
+                          index            head->master
+1                           
+2 -------add ----------->   2  ------commit --->  2
+3 <------checkout --<file>--3   <----reset HEAD---3 
+4            rm --cached X--4         |-----------4
+5   checkout HEAD<flie><--------------|    
+6
+7                                   objects 
+
+checkout HEAD<flie>  head指向的版本替换到工作区和暂存区

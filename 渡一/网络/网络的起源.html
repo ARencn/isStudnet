@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        let jsonp =  document.createElement('script');
+        jsonp.src = 'http://developer.duyiedu.com/edu/testJsonp?callback=abc'
+        
+        document.body.appendChild(jsonp);
+        //先定义这个方法  后端会返回一个参数 来执行这个方法  
+        function abc(data){
+            console.log(data);
+        }
+
+    </script>
+
+<!-- 
+
+        计算机 使用 二进制编码存储的原因 
+
+                    1.技术上容易实现 用电路的开合闭合表示 0  1 两种状态
+                    2.可靠性高 不易出错
+                    3.运算规则相较其他进制较为简单  等等
+
+        因此计算机 内部原理编译时都是 使用二进制 
+
+        Bit，乃BInary digit（二进制数）位的缩写，
+        是数学家John Wilder Tukey提议的术语（可能是1946年提出，但有资料称1943年就提出了）。
+        这个术语第一次被正式使用，是在香农著名的《信息论》，
+        即《通信的数学理论》(A Mathematical Theory of Communication)论文之第1页中
+        
+
+
+        8 比特 一个字节 可以存放 8位 二进制数字  
+              一个字节最大可以表示成  十进制数字  255  二进制数字 111111111   
+
+
+        ASCII 有128 个字符 
+            ASCII编码只有128位 明明  7位二进制数字就可以表示完全 却用了 8位 
+            因为 最高位 用作了奇偶校验位 
+        
+        Unicode  是一个 统一的字符串编码集   Unicode 占两个字节
+
+        国际标准化组织（ISO） -> ISO/IEC 10646 项目    多语言软件制造商组成的  统一码联盟  -> 开发了Unicode标准
+
+        1991年前后  双方认识到世界不需要两套不兼容的编码集  于是开始共同协作
+
+        所以从Unicode 2.0开始 
+        Unicode采用了与ISO 10646-1相同的字库和字码；
+        ISO也承诺，ISO 10646将不会替超出U+10FFFF的UCS-4编码赋值，以使得两者保持一致
+
+        Unicode 字符分为17组编排，0x0000 至 0x10FFFF，每组称为平面（Plane），而每平面拥有65536个码位，共1114112个
+        
+        对比	        UTF-8	    UTF-16	        UTF-32	        UCS-2	    UCS-4
+        编码空间	    0-10FFFF	0-10FFFF	    0-10FFFF	    0-FFFF  	0-7FFFFFFF
+        最少编码字节数	    1	        2	            4	            2	        4
+        最多编码字节数	    4	        4	            4	            2	        4
+        是否依赖字节序	    否	        是	            是	             是	         是
+
+
+
+
+            
+        冯诺依曼式计算机   --现代计算机之父     图灵  ----计算机科学之父
+
+                特点:
+                五大组成部分
+                运算器:
+                    CPU --整数运算 GPU  --浮点数运算
+                存储器:
+                    内存(断点数据清空,读写速度快)
+                    硬盘(辅存):数据持久化 读写速度相对较慢
+                控制器:
+                    主板上的一些器件
+                输入设备:
+                    键盘鼠标 麦克风 网口
+                输出设备
+                    显示器 耳机 网口
+
+        手机 平板等也属于冯诺依曼式计算机
+
+
+ -->
+
+
+    <!-- 
+        1969年 网络起源 
+        
+        
+        加利福尼亚大学洛杉矶分校
+        加利福尼亚大学
+        斯坦福大学
+        犹他州大学
+
+        最初是各自学校用于学术研究 之后这四个大学 把各自网络连接起来 共享资料 形成简易互联网雏形
+
+        互联网 -- Internet    学名 网际网路
+
+        1989年
+
+        欧洲粒子研究所  ----  协议(格式)  --- WWW(world Wide Web)
+
+
+        1991年 开始普及 民用
+     -->
+
+     <!-- 
+        局域网 :局部地区形成的一个区域网络
+
+        刚开始时 为了数据交互方便 每个 计算机 开一个端口去连接想要交互的计算机 
+
+        后来需要交互的越来越多 于是 把数据都发给中转站 然后发给目标计算机 因此需要统一计算机数据发送格式
+
+        家中的路由器也是就是这个中转站  
+        
+        多个设备连接了中转站(路由器)   也就形成了 局域网
+
+        两个局域网之间不可以互相访问
+
+        所以需要建立一个 公共的路由器 来连接不同的局域网之间 
+
+        此时就需要 IP地址 来设置不同局域网之间的连接规则
+
+
+        公网地址 是先由五大地区性互联网注册管理机构 发放的
+   
+        IP地址的格式:
+        IP地址分为四个段 : xxx.xxx.xxx.xxx , 每个段的数字可以是 0 ~ 255  ,每个段都是由8个 0 或 1组成的
+
+        IP地址的分类:
+        一个ip地址分为两个部分: 网络ID,主机ID,
+
+        根据主机数量分发的ip地址  abc 都是统一发放
+        A:0~127(2^7) 0.0.0.0 ~ 127.255.255.255 (一个网络能有1600+万台)
+        B:128.0.0.0 ~ 191.255.255.255 (172.16.0.0 ~ 172.31.255.255)
+        C:192.0.0.0 ~ 223.255.255.255 (192.168.xxx.xxx)
+        D: 多播地址
+        E:  暂留
+
+      -->
+
+      <!-- 
+          域名与DNS解析
+
+          用域名和ip形成 映射关系
+ 
+          当输入域名后 电脑会在路由器进行查找 一级级向上查找到DNS服务器 实在不行 最终会到总DNS服务器  全球一共十三台 然后返回到计算机 然后缓存
+
+          当向浏览器的地址栏中输入一个url 回车之后  网络中会发生什么?
+
+          看浏览器的缓存没有的话
+          再看本机host  本机host文件 不缓存 但是可以手动添加或者更改
+          C:Windows/system32/drivers/etc/host  
+          127.0.0.1 localhost 就是本机 
+            0.0.0.0  就是不知道ip  不知道ip 默认到自己本机
+        
+        家里路由器
+        上级DNS
+       -->
+
+       <!-- 
+           0 低电平
+           1 高电平
+
+        五层网络模型
+
+        应用层  HTTP协议 dns协议 
+
+        运输层      TCP协议 UDP协议
+
+        网络层      ip地址 -- ip协议
+
+        数据链路层
+                         介质 硬件码
+        物理层
+
+
+        发送请求 先浏览器 套上 http协议 再操作系统 套上 TCP/IP协议    然后数据链路层 物理层 然后才能来回传输
+        -->
+
+        <!-- 
+            http 协议
+            请求:request
+            请求头
+            数据体
+
+            请求方式 URL 协议版本
+
+             请求方式 是希望你遵守而不是强制的  GET/POST --HEAD PUT DELETE
+
+             userAnget 起初是用于 标识浏览器  后来由于 微软 等企业 不断的去伪装自己 而去获取更多更好的页面 导致现在越来越乱
+
+
+             GET  和 POST 的区别 ?
+            1.基于什么前提?如果什么前提都没有 不使用任何规范,只考虑语法 和 理论上的HTTP 协议 .
+                GET 和 POST 几乎没有什么区别 
+            2.如果基于RFC规范.
+                1. 理论上的(Specification):
+                    get和post是具有相同语法的,但是有不同的语义 get 是用来获取数据 post 是用来发送数据的 ,其他方面没有区别.
+                2.实现上的(implementation): 各种浏览器就是这个规范的实现者
+                    常见上的不同 : 
+                        1.GET 的数据在url 是可见的  POST请求 不显示在url里    即使 get url也不一定会全部显示在浏览器地址栏上
+                        2.GET 对长度有限制 ,post 长度是无限制的
+                        3.get请求的的数据 可以收藏为书签 ,post 请求到的不可被收藏为书签
+                        4.get 请求后,按后退按钮 刷新按钮无影响 post 数据会被重新提交
+                        5.get编码类型: application/x-www-form-url ,post 编码类型: 有很多种  encodeapplication/x-www-form-urlencoded  multipart/form-data
+                        6.GET 历史参数会被保留在浏览器里 post 不会保存在浏览器里
+                        7.get 只允许ASCII码  post 没有编码限制 允许发 二进制
+                        8.get 与 post 相比 get 的安全性较差 因为所发的数据是url的一部分
+
+        
+
+            cookie 与 session    
+            1.js存储的数据 不能持久化 
+            2.正常http协议做不到存储 登录状态  (上下文无关协议)
+
+            3.所以前端页面需要一个 能够使数据持久化的东西  就是cookie
+
+            cookie 是有限制的   
+            cookie 是存在浏览器里的,不是某个页面里的  是可以长期存储的  cookie 即使是存在浏览器里 也是存放在不同的域名下的
+            每次向那个域名发送请求 浏览器会自动带上 那个域名的cookie
+
+            缺点 : 可以伪造cookie 信息 
+
+            XSS注入攻击
+
+            session 是存在服务器上的
+
+            数据存在session 也有缺点
+            在用户量很大的时候 服务器很耗资源
+
+            因为后端可能不止一台服务器,用户的登录信息一般只存在一台服务器上,
+            因为用户的登录操作,在哪台机器上 执行的一般就存在哪个机器上
+            需要通过反向代理(轮询,IP哈希)
+         -->
+
+         <!-- 
+            html  的正确打开方式
+
+            Browser / Server BS结构     Client / Server  cs结构 
+
+            页面的本质是 字符串 带有 html格式的字符串
+            浏览器向服务器请求一个页面的本质是 
+
+            需要搭建 服务容器才能提供 http协议的服务
+
+            
+        -->
+
+        <!-- 
+            如何发送网络请求
+            1.直接在浏览器中输入网址  (无法用代码控制)
+            2.location.href =" url" ,可以发出网络请求但是页面会发生跳转  在DeveloperTool network 中 勾选 Preserve log 就不会在该页面发生url 变化时清除上一个页面的 网络请求  (虽然能发送 页面会跳转)
+            3.带有 src 属性的标签  请求是可以发出的 服务端是可以处理的  也是可以response 的  但是 response 后 能否被应用  还要看浏览器 (页面无法处理返回结果)
+            4.带有href属性的标签 (页面无法处理返回结果)
+            5.带有 action 属性的标签 例如form表单  但是也会页面跳转  (虽然能发送 页面会跳转)
+            //希望有一种方式 可以用代码控制 页面不会跳转 服务端返回的结果可以用js 继续处理
+            6.ajax
+
+         -->
+         <script>
+
+            //跨域问题
+            //同源策略
+            /* 
+                所有src属性的资源都是可以被跨域请求的 href
+
+            以下资源算是跨域资源
+            1.后端接口的数据
+            2.其他域的cookie 
+            3.其他域的缓存
+
+
+            什么是其他域? 怎么算跨域
+
+            页面本身 : 有协议(http/https),域名,端口
+            要请求的数据 
+
+            协议 域名 端口 任意一个不一样就算跨域
+
+            跨域行为发生在哪里
+
+            即使跨域了 请求也可以发出 服务端  也可以response  
+            浏览器也能接收到 接收到发现 请求的域和自己的域不一样  所有判定为跨域  不会把结果传给代码
+
+
+            解决跨域问题:
+            1.后端是否配合跨域
+                1.jsonp  (正常情况下 返回的数据都是json格式  jsonp 是一种特殊格式)
+                2.后端设置 Access-Control-Allow-Origin   以支持跨域
+
+            2.后端不配合
+
+                1.可以用iframe 只能显示不能控制
+                2.通过后端代理
+
+
+
+
+            */
+           //兼容ie 6 
+            var  xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHttp');
+      
+            xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+            xhr.open('GET','http://developer.duyiedu.com/edu/testAjaxCrossOrigin',true); //异步请求
+       
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState  == 4 && xhr.status  == 200 ){    //请求已完成
+                    console.log(JSON.parse(xhr.response) );
+                } 
+            }
+            xhr.send('data');
+         </script>
+
+         <!-- 
+             通过JQuery 发送 jsonp
+
+             发送的时候会带上一个参数 callback
+             返回的结果不是 json 
+             是callback的名  + {+json+}
+             jsonp跨域只能使用 GET 方法 即使设置 post  JQuery 也会 自动转为get
+
+             JQuery 会先判断是否 同源 ,如果同源 那么设置啥就是啥 
+             如果不是同源 无论设置 啥都是get
+             $.ajax({
+                 url:
+                 type:
+                 dataType:'jsonp'
+             })
+          -->
+
+          <!-- 
+            jsonp 原理
+
+            script 标签 有src 属性虽然可以请求不同域的资源 浏览器不限制 
+                             但是会将返回的内容作为js代码执行   
+            所以在使用时 需要传入一个callback  后端把数据作为参数传给callback
+
+            1. 判断 与当前页面的域 是否同源  如果同源则发送正常ajax 
+            2.不同源 则 生成一个script 标签 
+            3. 再生成一个随机的callback 名字
+            4.设置 script 的src     设置为要请求的接口
+            5. 将callback 作为参数拼接在后面    
+
+            6.  后端拼接字符串 将内容返回  后端返回的不是 方法定义 而是 方法执行  所以会直接执行 之前定义的方法
+
+            7  浏览器接受的内容 当做js代码来执行   
+
+            URL 对象
+           -->
+</body>
+</html> 

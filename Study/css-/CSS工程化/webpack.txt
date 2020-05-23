@@ -1,0 +1,12 @@
+webpack
+
+js是整个应用的核心入口
+一切资源均由JS管理依赖
+一切资源均由webpack打包
+
+css-loader 将CSS变成JS
+style-loader 将JS样式插入head
+ExtractTextPlugin将CSS从JS中提取出来
+css modules解决CSS命名冲突的问题
+less-loader sass-loader 各类预处理器
+postcss-loader PostCSS处理

@@ -1,0 +1,12 @@
+﻿CSS只是体系中的重中之重
+早起以table为主（简单）
+后来以技巧性布局为主（难）
+现在有flexbox/grid（偏简单）
+响应式布局
+
+常用布局方法
+
+table 表格布局
+float 浮动 +margin
+inline-block 布局
+flexbox布局

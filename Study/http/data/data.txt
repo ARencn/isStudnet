@@ -1,0 +1,23 @@
+数据协商
+
+分类
+
+    请求 
+    
+    
+
+    Accept ：指定希望得到的数据类型
+
+    Accept-Encoding ：主要限制服务端如何进行数据压缩
+
+    Accept-Language ：指定不同的语言
+
+    User-Agent ： 浏览器不同的端
+
+
+    返回
+    Content
+
+    Content-type  ： 数据格式进行返回
+    Content-Encoding：   告诉浏览器用了哪种压缩
+    Content-Language： 返回的语言 

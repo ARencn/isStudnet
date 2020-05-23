@@ -1,0 +1,306 @@
+注:boostrap 一般情况下为字体设置为全局12px 行间距 line-height为字体大小1.428倍(20px) p元素会有一个额外的底部外边距 大小事行间距的一般默认10px  此文档中一切加<>的都是标签名
+
+bootstrap 标准文档形式
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <h1>你好，世界！</h1>
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
+
+
+
+
+------此工具使用能检测开发文档---------(提示错误)
+
+
+<script>
+    
+	/*Bootlint是一个Bootstrap使用方面的错误检测工具*/
+    
+javascript:(function () {
+        
+	var s = document.createElement("script");
+ 
+       		s.onload = function () {
+      
+      			bootlint.showLintReportForCurrentDocument([]);
+      
+  		};
+      
+  	s.src = "https://maxcdn.bootstrapcdn.com/bootlint/latest/bootlint.min.js";
+    
+  	  document.body.appendChild(s)
+    
+	})();
+
+</script>
+	
+
+---使浏览器开启高速渲染模式-------(目前仅360浏览器支持此标签)
+
+<meta name="renderer" content="webkit">
+
+
+-----禁用在小屏幕上的缩放----
+这句话的作用是确保适当的绘制和触屏缩放
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+ 加入 user-scalable=no
+
+媒体查询
+
+/* 超小屏幕（手机，小于 768px） */
+/* 没有任何媒体查询相关的代码，因为这在 Bootstrap 中是默认的（还记得 Bootstrap 是移动设备优先的吗？） */
+
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: @screen-sm-min) { ... }
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: @screen-md-min) { ... }
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media (min-width: @screen-lg-min) { ... }
+
+
+
+
+栏珊布局
+
+container   	设置栏珊宽度容器
+container-fluid 设置为100%宽度
+row	     	设置为行 如果在一个 .row 内包含的列（column）大于12个，包含多余列（column）的元素将作为一个整体单元被另起一行排列
+col-lg-*  	设置大屏幕时所占比例 >1200px
+col-md-*	设置中等屏幕所占比例 >992px
+col-sm-*	设置小屏幕时所占比例 >768px
+col-xs-*	设置超小屏幕所占比例 <768px
+clearfix	可消除一列中高度不同一的情况
+列的偏移与排序 (以col-md-*为例)
+
+col-md-offset-* 	设置元素向右偏移几格
+col-md-push-*		设置元素向右排几格
+col-md-pull-*		设置元素向左排几格
+
+
+基础排版
+
+h1-h5			设置为标题样式 为的是给内联（inline）属性的文本赋予标题的样式
+lead			增大字体为 16px(大中型屏幕中为21px)
+strong			设置字体为粗体
+small			设置字体为标准的80% 可以用来为题记的副标签
+em			将文字设置为斜体
+<small>			设置小号文字的标签
+<mark>			是标签而不是类名!可为文字设置为黄色以突出显示
+<del>			为文字设置删除线
+<s>			设置为无用文字  跟del差不多 加条删除线在字体的中间
+<ins>			插入文本 没啥用 就是在字下面加了条下划线
+<u>			带下划线的文字
+<b> 			用于高亮单词或短语，不带有任何着重的意味
+<i> 			标签主要用于发言、技术词汇等
+<abbr>			用于标记一个缩写  自己查相关用法
+initialism		显示在 <abbr> 元素中的文本以小号字体展示，且可以将小写字母转换为大写字母
+blockquote-reverse	设定引用右对齐
+<blockquote>		常引用 就是加长版<p>
+<kbd>			套用此标签的文字可显示出键盘按键的效果  一般用于提示用户按键
+
+代码部分
+
+<code>			把字变红背景变黄  标签包裹内联样式的代码片段
+<pre>			多行代码
+pre-scrollable		作用是设置 max-height 为 350px ，并在垂直方向展示滚动条。
+<var>			用于标记变量
+<samp>			用来标记程序输出的内容
+
+表格
+
+table 			可以为其赋予基本的样式 — 少量的内补（padding）和水平方向的分隔线
+table-striped		使用前需再加入table类名 IE8不支持  设置为一条白一条黄的斑马式条纹
+table-bordered		使用前需再加入table类名 为每个单元格加上边框
+table-hover		可以让 <tbody> 中的每一行对鼠标悬停状态变灰
+table-condensed		可以让表格更加紧凑，单元格中的内补（padding）均会减半
+  
+	表格中的状态类(为表格)
+		active	鼠标悬停在行或单元格上时所设置的颜色(灰色)
+		success	标识成功或积极的动作
+		info	标识普通的提示信息或动作
+		warning	标识警告或需要用户注意
+		danger	标识危险或潜在的带来负面影响的动作
+
+
+对齐
+text-left		设置文本向左对齐
+text-center		中央对齐
+text-right		向右对齐
+text-justify		设定文本对齐,段落中超出屏幕部分文字自动换行
+text-nowrap		段落中超出屏幕部分不换行
+
+
+text-lowercase		设定文本小写
+text-uppercase		设定文本大写
+text-capitalize		设定首字母大写
+
+列表
+
+list-unstyled		无样式列表
+list-inline		设置ul的li元素为行内元素
+dl-horizontal		设置dl中的元素 以dt为单位排在一列中
+
+表单
+
+form-inline		设置表单元素为行内元素(只会>768px时生效)
+form-horizontal		设置为横向表单 以一组.form-group为一行(基本未设置属性,需要配合栏珊布局一起使用)
+form-group		设置为一组表单内容(使用此类后无需再设置row即可使用栏珊布局)
+form-control		设置为输入框
+
+设置输入框颜色(添加至父级元素)
+
+has-warning		设置表单的边框颜色为黄色
+has-error		设置表单的边框颜色为红色
+has-success		设置表单的边框颜色为绿色
+
+按钮样式
+
+btn btn-default(灰色)
+	primary(深蓝色)
+	success(绿色)
+	info(天蓝色)
+	warning(黄色)
+	danger(红色)
+	link(链接)
+btn-lg 			设置大型按钮
+btn-sm			设置小型按钮
+btn-xs			设置超小型按钮
+
+
+
+图片
+
+img-responsive		设置图片宽度100% 高度自适应 块级元素
+
+图片形状
+
+img-rounded		设置为圆角
+img-circle		设置为圆形(使用时必须保证图片是正方形的,否则会变成椭圆)
+img-thumbnail		设置一个圆角边框
+
+
+小图标(查询 www.getbootstrap.com/components)
+
+glyphicon glyphicon-*		为任意的内联元素添加一个小图标 此类不能与其他类存在于同一标签中  只对内容为空的元素起作用 
+
+下拉菜单
+
+dropdown open		设置菜单的向下收缩打开
+dropup	open		设置菜单的向上收缩打开
+<button data-toggle="dropdown">		设置按钮(用于与js做交互)
+caret			设置向下小三角
+dropdown-menu		设置下拉菜单的ul
+active			设置为选中状态
+divider			设置分界线
+ 	
+分离式下拉菜单
+在第二个按钮上添加 类名 dropdown-toggle
+
+
+输入框
+
+input-group		设置输入框的父元素为输入框组
+input-group-addon	设置需要添加的元素上(显示为小图标式)
+inout-group-btn		将addon式小图标设置为按钮(设置为该属性后不必再设置addon)
+
+尺寸大小
+
+input-group-lg		设置在父元素上该组件变大
+input-group-sm		设置在父元素上该组建变小
+
+导航
+
+nav			消除list圆点 所有菜单项都是相对定位  块级显示 a链接相对定位 块级显示 移动或焦点时链接显示效果  li上禁止时效果 
+			和btn一样在使用nav-tabs前需要加入此类
+			
+选项卡导航
+
+nav-tabs		设置为选项卡式的导航  设置在ul上
+active			设置为被选中转台 	设置在li上
+
+
+胶囊式选项卡导航
+
+nav-pills		设置为胶囊式导航栏
+
+
+导航调整
+nav-justified		设置导航为自适应宽度 通常需要在 nav-pills  和nav-tabs 后面(会使ul填充满整个父级元素)
+pull-left(right)	可添加在nva-tabs或nav-pills后调整导航的向左向右浮动
+
+
+模态框
+
+这是一个小的模态框
+div#mymodal.modal.fade.bs-example-modal-sm>(div.modal-dialog.modal-sm+(div.modal-content>((div.modal-header>(btn[data-dismiss="modal"].close{&times;}+h4.modal-title{我是标题}))+(div.media-body>p.body_info{我是内容})+(div.modal-footer>(btn[data-dismiss="modal"].btn.btn-default{关闭}+btn.btn.btn-primary{保存})))))
+
+这是一个大的模态框
+div#mymodal.modal.fade.bs-example-modal-lg>(div.modal-dialog.modal-lg+(div.modal-content>((div.modal-header>(btn[data-dismiss="modal"].close{&times;}+h4.modal-title{我是标题}))+(div.media-body>p.body_info{我是内容})+(div.modal-footer>(btn[data-dismiss="modal"].btn.btn-default{关闭}+btn.btn.btn-primary{保存})))))
+
+
+data-dismiss="modal" 关闭模态框的意思
+bs-example-modal-sm(lg)  加在模态框的父级div 模态框变小(变大)
+
+在 按钮上加上此语句 即可触发模态框 data-toggle="modal" data-target="#mymodal"
+
+
+这是一个轮播图
+
+div[data-ride="carousel"]#myCarousel.carousel.slide>((div.carousel-inner>(div.item.active>img[src="图片路径"])+(div.item>img[src="图片路径"])))+(ol.carousel-indicators>((li[data-target="#myCarousel",data-slide-to="0"].active)+(li[data-target="#myCarousel",data-slide-to="1"])))+(a[href="#myCarousel",data-slide="prev"].left.carousel-control>(span.glyphicon.glyphicon-chevron-left))+(a[href="#myCarousel",data-slide="next"].right.carousel-control>(span.glyphicon.glyphicon-chevron-right))
+
+在item中添加一个 .carousel-caption容器即可添加其与文字
+
+data-interval  默认值5000ms     用于设置多长时间换一张图片 false即为不轮播
+data-pause   默认值 hover    默认鼠标停留在幻灯片区域图片停止轮播,鼠标离开即开启
+data-wrap   默认值 true     设置轮播是否循环
+data-ride="carousel"		设置页面加载出来后自动实现图片轮播
+
+通过js开启 页面加载出来后自动实现图片轮播
+$(".carousel").carousel({
+	//中间可以使用上述的三个参数 不过要把data去掉例如
+	data-interval  :5000ms    
+	data-pause  : hover   
+	data-wrap  : true  
+});
+
+方法
+
+$(".carousel").carousel('cycle');    循环各帧(默认时从左到右)
+$(".carousel").carousel('pause');  	停止播放
+$(".carousel").carousel(number);	轮播到指定的图片 (下表从0开始)
+$(".carousel").carousel('prev');	播放上一张
+
+事件
+
+slide.bs.carousel   此事件在slide方法被调用之后(但还未开始处理下一张图片之前)立即触发
+slid.bs.carousel	在一张图片结束轮播之后触发
+$(".carousel").carousel('next');	播放下一张

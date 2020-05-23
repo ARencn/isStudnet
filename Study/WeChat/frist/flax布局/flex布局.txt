@@ -1,0 +1,43 @@
+display: flex
+将父元素设置为flex布局
+    特征:1.子元素默认水平排列
+
+flex-direction(排列方式): row(默认,水平排列) row-reverse(反向水平排列) column(垂直排列) column-reverse(反向垂直排列);
+justify-content(水平对齐方式) : center(中间对齐)
+align-items(垂直对齐方式):canter(中间对齐) space-between(平均空白对齐 两边不留空白) space-around(平均空白对齐 两边留空白)
+flex-wrap: wrap(相应的拆行)
+
+
+注意小程序里的像素用rpx  一般开发时使用iPhone 6 屏幕为基准
+
+image  的model属性 可控制图片的裁切方式 aspectFill  
+
+
+一个可用作分隔的类
+.divider{
+  height: 20rpx;
+  background-color: #f1f1f1;
+  box-shadow: 0 10rpx 10rpx rgba(0,0,0,.1) inset;
+}
+
+一个可用作增添边框的类
+/* 给所有元素添加右边的边框 通过伪类元素 */
+.sum-item .item::after{
+  content: '';  
+  width: 1rpx;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #adadad;
+}
+/* 去除第三行右边的边框 */
+.sum-item .item:nth-child(3n)::after{
+  width: 0;
+}
+
+
+轮播图
+
+  <swiper indicator-dots='是否显示面板指示点' autoplay='是否自动切换' interval='自动切换间隔的时间' duration="滑动动画时长">
+  swiper 高度默認150px

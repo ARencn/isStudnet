@@ -1,0 +1,17 @@
+如何  解决CSS模块化问题
+  less sass 等CSS预处理器
+  postCss插件(postcss-import/precss)
+  webpack解决CSS(css-loader+style-loader)
+
+PostCSS可以做什么?
+  取决于插件可以做什么
+  autoprefixer cssnext precss等 兼容性处理
+  import模块合并
+  css语法检查 兼容性检查
+  压缩文件
+CSS modules是做什么的,如何使用
+  解决类名冲突的问题
+  使用PostCSS或者webpack等构建工具进行编译
+  在HTMl模板中使用编译过程产生的类名
+  将组件的结构 样式 行为封装到一起 增强内聚
+  可以做到更多处理(webpack)

@@ -1,0 +1,9 @@
+必须使用严格的嵌套
+
+less 编译
+npm i less -g(全局安装)
+lessc xxx.less > xxx.css
+
+sass 编译
+npm i node-sass -g
+node-sass xxx.scss > xxx.css

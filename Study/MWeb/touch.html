@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .box{
+        background-color: #000000;
+        height: 300px;
+        width: 300px;
+        position: relative;
+    }   
+    .son{
+        background-color: blue;
+        width: 20px;
+        height: 20px;
+        margin-left: -10px;
+        margin-top: -10px;
+    }
+
+</style>
+
+<body>
+    <div class="box">
+        <div class="son"  style="position:absolute;top: 10px;left: 10px;">
+
+        </div>
+    </div>
+    <script>
+     let box= document.getElementsByTagName('div')[0];
+        let son=document.getElementsByTagName('div')[1];
+     box.addEventListener('touchstart',function(e){
+
+         console.log(e.changedTouches[0].screenX);
+         console.log(e.changedTouches[0].screenY);
+         son.style.backgroundColor= 'red';
+    
+         
+     })
+     box.addEventListener('touchmove',function(e){
+
+    
+        if(parseInt(son.style.left)>=box.offsetWidth){
+            son.style.left=(box.offsetWidth-10)+"px";
+        }else{
+            son.style.left=e.changedTouches[0].clientX+"px";
+        }
+        if(parseInt(son.style.top)>=box.offsetHeight){
+             son.style.top=(box.offsetHeight-20)+"px";
+        }else{
+             son.style.top=e.changedTouches[0].clientY+"px";
+        }
+    
+     })
+     box.addEventListener('touchend',(e)=>{
+         console.log('touch is end');
+        //  son.style.left="10px";
+        //  son.style.top="10px";
+         son.style.backgroundColor= 'blue';
+     })
+    
+     
+    </script>
+</body>
+</html>

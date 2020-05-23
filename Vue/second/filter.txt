@@ -1,0 +1,23 @@
+过滤器:  
+
+局部过滤器的声明：：
+
+var app=new Vue({
+    el: '#root',
+    template：'
+    
+        <h3>{{ price | filterName}}<h3>
+    '
+    ，
+    data(){
+        return{
+            price: 0 
+        }
+    },
+    filters:{
+        name:function(value要处理的数据){
+            必须要有返回值
+            return 
+        }
+    }
+}) 

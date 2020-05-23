@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>文档标题</title>
+    <style>
+        .father{
+            border: 1px solid #f00;
+            /* 1. 把父盒子设置成伸缩盒布局
+                特征：子元素默认水平排列
+            */
+            display: flex;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            border:1px solid deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+    </div>
+</body>
+</html>

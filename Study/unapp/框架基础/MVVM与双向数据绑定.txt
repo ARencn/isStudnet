@@ -1,0 +1,1 @@
+每个.Vue文件 都只能包含 这三个标签各一个 <template/>: View <style/>           </script>:VM 协调者调度器  data:是 Model

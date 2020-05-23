@@ -1,0 +1,9 @@
+2017 best2
+
+兼容 IE10+
+使用flexbox布局
+抛弃Nomalize.css
+提供布局和reboot版本
+
+
+基础样式      常用组件        JS插件

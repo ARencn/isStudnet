@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .red{
+        color:red;
+    }
+</style>
+<div id="app">
+
+
+</div>
+
+
+</body>
+<script src="vue.min.js"></script>
+<script>
+    let App= {
+          template:`
+                    <div>
+                        <p :style="style">{{ str }}</p>
+                        <p :style="style2">{{inStr}}</p>
+                        <input type="text" v-model="inputStr" @input="inputChangeHandle">
+                    </div>`,
+        props:{
+            str:{
+                required : true,
+                type : String
+            },
+            inStr:{
+                required : true,
+                type : String
+            }
+        },
+        data(){
+              return{
+                    style:{
+                        position: 'relative'
+                    },
+                    style2:{
+                        position:'absolute',
+                        left:0,
+                        top:0,
+                        color:`red`
+                    },
+                  inputStr:``
+              }
+        },
+        methods:{
+            inputChangeHandle(){
+                this.$emit('inputChange',this.$data.inputStr);
+            }
+        }
+    };
+
+    // let filter=(value,name)=>{
+    //     return value+ name
+    // };
+    // Vue.filter(`filter`,filter);
+
+    new Vue({
+        template:`<App :str="str" :inStr="inStr"  @inputChange="inputChangeH"/>`,
+        data:{
+            str: `see；the goose, with knife and fork still in her breast, jumped down from the dish, and waddled along the floor right up to the poor child. The match was burnt out, and only the thick, hard wall was beside her.`,
+            inStr:``
+
+        },
+        methods:{
+            inputChangeH(str){
+                let temp=``;
+                for (let j = 0; j < str.length; j++) {
+                    temp+=str.charAt(j);
+                    if(str.charAt(j)===this.$data.str.charAt(j)){
+                      this.$data.inStr = temp;
+                    }
+                }
+            }
+        },
+        filters:{
+
+        },
+        components:{
+           App
+        }
+    }).$mount('#app');
+
+</script>
+</html>

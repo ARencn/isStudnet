@@ -1,0 +1,1 @@
+<template name="059ac20d"><view class="_view 059ac20d content"><page-head title="{{title}}" class="_page-head 059ac20d"></page-head><view class="_view 059ac20d title">{{title}}</view><view class="_view 059ac20d art-content"><rich-text class="_rich-text 059ac20d richText" nodes="{{strings}}"></rich-text></view></view></template>

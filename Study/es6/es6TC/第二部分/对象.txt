@@ -1,0 +1,68 @@
+对象
+        json
+
+
+        对象有简介的语法
+
+        let name=`a`;
+        let age=`12`;
+
+            let json={
+                name :name
+                age :age
+
+            }
+
+
+
+          let name=`a`;
+          let age=`12`;
+
+                let json={
+                    name ,
+                    age,
+                    function a(){} //不要用箭头函数
+
+                }
+
+
+       object.is()  //比较两个值是否相等
+       object.is('a','a');
+
+       在使用object.is 比较NAN 与NAN 时  返回true
+                        比较 +0 与 -0时 返回false
+
+
+object.assign();  用来合并对象  在合并的时候如果有属性冲突后面覆盖前面的
+       let 新的对象 =  object.assign(目标对象,source1,source2...)
+
+        复制对象
+        合并参数
+
+ES2017
+object.keys()
+
+    for(let key of object.keys(json)){
+
+    }
+
+
+
+
+
+    let {keys,values,entries} =object
+
+    let json={
+        a:1,
+        b:2,
+        c:3
+    };
+       for(let key of keys(json)){
+
+        }
+
+
+object.entries()
+object.values()
+
+对象也可以用 ...

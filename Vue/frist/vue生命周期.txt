@@ -1,0 +1,56 @@
+const app = new Vue({
+    el: ""
+    template: ""
+    data:{
+
+    }
+    watch:{
+        text (newText,oldText){
+            ${newText}
+        }
+    }
+    beforeCreate(){
+        在new Vue实例时最先执行
+        拿不到dom节点
+    },
+    created(){
+        在new Vue实例时第二执行
+        拿不到dom节点
+    },
+    beforeMount(){
+
+      没有指定el就不会执行    在new Vue实例时第三执行  服务端渲染的时候不会被调用
+    },
+    mounted(){
+     没有指定el 没有指定的渲染就不会执行  在new Vue实例时第四执行 服务端渲染的时候不会被调用
+     做数据操作
+    },
+    beforeUpdate(){
+        在每次数据更新之前执行
+    },
+    updated(){
+        每次数据更新完了执行
+    },
+    activated(){
+
+    },
+    deactivated(){
+
+    },
+    beforeDestroy(){
+        组件销毁时执行的方法
+    },
+    destroyed(){
+        组件销毁完之后执行的方式
+    },
+    render (h) {
+        return h('要创建的节点名称 如 div',{要传入的数据},节点内容)
+    },
+    renderError (h,err) {
+        在本组件的render方法调用报错时调用 子组件报错也不会管 只用于生产环境
+            err.stack 报错信息 
+    },
+    errorCaptured(){
+        除非子组件把向上冒泡给阻止掉了否则都会调用 正式环境可以用
+    }
+})

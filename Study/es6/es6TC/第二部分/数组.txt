@@ -1,0 +1,113 @@
+数组
+        ES5新增的一些东西
+
+        循环:
+                1.for
+                2.while
+
+
+                arr.forEach();代替for
+                arr.forEach(function(val,index,arr){
+
+                })
+                arr.map(); 做数据交互 '映射'
+                            正常情况下配合return 返回一个新的数组
+                            若没有return相当于forEach
+
+                            平时只要用map,一定是要有return
+
+                            多用于重新整理数据结构:
+                                    [{title:'aaa'}] -> [{t:'aaa'}]
+
+
+                arr.filter();
+                    过滤,过滤一些不合格的'元素',如果回调函数返回的是true,就留下来
+                arr.some()
+                       类似查找 数组里面的某一个元素符合条件,返回true
+                arr.every()
+                        数组里的所有元素都符合条件才返回true
+
+                 上面的的都可以接收两个参数
+                    arr.forEach(循环的回调函数,this指向谁(在箭头函数中无效))
+
+---------------------------------------------------------------------------------
+
+                arr.reduce()  从左往右
+
+                     前一个元素  当前  当前索引 现在的数组
+                 arr.reduce((prev,cur,index,arr)=>{
+
+                        return prev+cur;
+                 })
+                 用于阶乘
+
+                 es2017新增运算符
+                        幂
+                            Math.pow(2,3); 求2的3次方
+                            2**4
+
+
+
+                arr.reduceRight()  从右往左
+
+
+              ----------------------------------
+
+              es6
+                    for...of..:
+
+                arr.keys() 数组的下标
+                arr.entries()  数组的某一项
+
+
+                 for(let val of arr){
+
+                 }
+
+                 for(let index of arr.keys()){
+
+                 }
+
+                  for(let item of arr.entries()){
+
+                  }
+                  for(let [key,val] of arr.entries()){
+
+                  }
+
+             ========================================
+             扩展运算符
+                        ...
+
+                        let arr=[1,2,3]
+                        let arr2=[...arr]
+
+                        let arr2 = array.from(arr); //es6
+                        let arrLi= [].slice.call(aLi);  //es5
+
+                  array.from
+                            作用:把类数组(获取一组元素,arguments...)对象转成数组 只要具有length属性就可以转换
+
+                  array.of():把一组值转化为数组
+
+                  let arr = array.of(1,23,4)
+
+
+                  arr.find()
+
+                  arr.find((val,index,arr)=>{
+                    return 条件
+                  })
+                        找出第一个符合条件的的数组成员,如果没找到就返回undefined
+                  arr.findIndex():找第一个位置没找到返回-1
+
+
+
+                arr.fill() 填充
+
+                            arr.fill(填充的东西,开始的位置,结束的位置)
+
+
+                 es2016新增
+                        arr.includes();  是否包含该内容
+

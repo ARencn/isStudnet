@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+
+    <!--为了提升性能 我们通常会给 list 中循环出 的每一项都加一个 唯一的标识符  key  通常我们 使用后端返回的 数据库操作符  id  来进行显示 而不是  index数组的下标-->
+    <!--在控制台中 操作数组时 我们不能通过  数组下标的方式 来进行  操作  虽然  数据 依旧会被添加入数组 但是 却不会 被渲染出来
+    我们需要通过 vue提供的七种操作数组的方法 来操作数组才能够使得内容得到有效的渲染-->
+    <!--七种方法 分别是  push() 添加一项,  pop 删除最后一项 shift 删除第一项 unshift 向数组中的第一项加入内容
+            splice(1,2,3) 1:从下标为几的数据开始修改 2:修改几个数据(包括也算一个) 3:需要向其中加入的内容  做数组截取 sort 对数组进行排序  reverse 对数组进行取反-->
+    <!--<div v-for="(item,index) of list" :key="item.id">-->
+        <!--{{item.text}}&#45;&#45;&#45;&#45;{{index}}-->
+    <!--</div>-->
+    <!--还有一种方法就是操作数据的引用 使 list 中的引用内容发生改变 页面也 会 发生 新的渲染-->
+
+
+    <!--如果想要循环同一组的两组内容却又不想用一个  新的父级元素包裹可以 使用 template 占位符 该占位符并不会被渲染出来-->
+    <!--<template v-for="(item,index) of list" :key="item.id">-->
+        <!--<div >-->
+            <!--{{item.text}}&#45;&#45;&#45;&#45;{{index}}-->
+        <!--</div>-->
+        <!--<span>{{item.text}}</span>-->
+    <!--</template>-->
+
+
+    <!--循环 对象-->  <!--在进行对象 循环时 如果动态加值  想要被页面改变  可以更改 为新的引用 与list 相似 还有 set方法-->
+    <!--
+        Vue.set(vm.userInfo.address='')  这样可以动态添加变量 并且渲染
+        实例中也有 set 方法
+        vm.$set(vm.userInfo.address='')
+
+
+        在修改数组 时也可以使用 set方法
+         Vue.set(vm.userInfo.下标,新的值)  这样可以动态添加变量 并且渲染
+        实例中也有 set 方法
+        vm.$set(vm.userInfo.下标,新的值)
+    -->
+    <div v-for="(item,key,index) of userInfo">
+        {{item}}----{{key}}----{{index}}
+    </div>
+</div>
+
+<script>
+    var vm =new Vue({
+        el:"#app",
+        data:{
+
+       // list: [{
+       //     id :1231241,
+       //     text :" hello"
+       // },{
+       //     id: 12312411,
+       //     text:"nice"
+       // },{
+       //     id: 143,
+       //     text:"meet"
+       // }]
+
+            userInfo:{
+                name:"Li",
+                age :12,
+                gender: "male",
+                salary: "secret"
+            }
+        }
+    })
+
+</script>
+
+</body>
+</html>

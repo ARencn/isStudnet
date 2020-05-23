@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+    <div id="root"></div>
+
+    <script src="vue.js"></script>
+<script src="vue-router.js"></script>
+<script>
+
+    Vue.use('VueRouter');
+
+
+    let Login={
+      template: `<div>
+                    <div>I'm Login,Please select the following app</div>
+                        <div>
+                        <router-link :to="{name:'iPhone'}">iPhone</router-link>
+                        <router-link :to="{name:'Android'}">Android</router-link>
+                      </div>
+                      <div>
+                        <router-view></router-view>
+                      </div>
+
+                 </div>`
+    };
+        let iPhone={
+            template:   `
+                <p>this is iPhone</p>`
+        };
+        let Android={
+            template:`<p>this is Android</p>`
+        };
+
+    let Register={
+        template : `<p>I'm Register</p>`
+    };
+
+    let router=new VueRouter({
+        routes:[
+            {
+                path:`login/:id`,
+                name:`Login`,
+                component: Login,
+                children:[
+                    {
+                        path:`iphone`,
+                        name:`iPhone`,
+                        component:iPhone,
+
+                    },
+                    {
+                        path:  `android`,
+                        name: 'Android',
+                        component: Android
+                    }
+                ]
+            },
+            {
+                path : `register`,
+                name: `Register`,
+                component: Register
+            }
+
+        ]
+    });
+
+    let App={
+      template:`0
+                <div>
+            <div>
+
+                     <router-link :to="{name:'Login',params:{id:1}}">登陆</router-link>
+                     <router-link :to="{ name:'Register',query:{sum:'is_a'}}">注册</router-link>
+                    </div>
+                    <div>
+                        <router-view></router-view>
+                    </div>
+                </div>`
+
+    };
+
+
+
+    new Vue({
+        template:`<App/>`,
+        router:router,
+        components:{
+            App
+        },
+        el:`#root`
+    })
+
+</script>
+</body>
+</html>

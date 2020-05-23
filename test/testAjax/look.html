@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .no {
+            display: none !important;
+        }
+       
+    </style>
+</head>
+
+<body>
+    <p>稍等片刻..</p>
+    <table class="no" border="1">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>ip</th>
+                <th>query</th>
+                <th>daan</th>
+                <th>date</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        let tpl, tr, tbody, data, xhr;
+
+        xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://49.232.171.71:8888/lookData')
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                document.getElementsByTagName('p')[0].classList.add('no');
+                document.getElementsByTagName('table')[0].classList.remove('no');
+                data = JSON.parse(xhr.response).data;
+                tbody = document.getElementsByTagName('tbody')[0];
+                data.forEach(function (val, index) {
+                    tpl = `
+            <tr>
+                <td>${val.id}</td>
+                <td>${val.ip}</td>
+                <td>${val.query}</td>
+                <td>${val.daan}</td>
+                <td>${val.date}</td>
+            </tr>`
+                    tr = document.createElement('tr');
+                    tr.innerHTML = tpl;
+                    tbody.append(tr);
+                })
+                tbody.append(tr);
+            }
+        }
+        xhr.send();
+    </script>
+</body>
+
+</html>

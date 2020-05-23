@@ -1,0 +1,67 @@
+/* 设置轮播图区域的大小 */
+.nav,
+.nav swiper,
+.nav image{
+  width: 100%;
+  height: 390rpx;
+}
+/* 
+设置轮播图的图片大小
+ */
+
+/* 设置子导航 */
+.item{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width:33.333333%;
+  height: 200rpx;
+  /* border-right: 1rpx solid #adadad;*/
+  border-bottom: 1rpx solid #adadad; 
+  box-sizing: border-box;
+  position: relative;
+  font-size: 14px;
+}
+/* 给所有元素添加右边的边框 通过伪类元素 */
+.sum-item .item::after{
+  content: '';  
+  width: 1rpx;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #adadad;
+}
+/* 去除第三行右边的边框 */
+.sum-item .item:nth-child(3n)::after{
+  width: 0;
+}
+/* 设置里面的小图标宽高 */
+.item image{
+  width:80rpx;
+  height: 80rpx;
+}
+
+/* 设置所有的子项目自动拆行 */
+.sum-item{
+ display: flex;
+  flex-wrap: wrap;
+}
+/* 首页分区入口 */
+.index-enter{
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20rpx; 
+}
+/* 设置首页分区入口的子元素的居中对齐 */
+.enter-item{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+/* 设置子元素图片的大小 */
+.index-enter image{
+  width: 320rpx;
+  height:178rpx;
+}

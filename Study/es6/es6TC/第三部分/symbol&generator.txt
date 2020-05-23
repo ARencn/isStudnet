@@ -1,0 +1,64 @@
+数据类型
+        新增
+            symbol
+
+            定义
+                let syml=Symbol()''
+
+            注意:Symbol不能加new
+                symbol返回一个唯一值
+                    做一个key 或者私有的一个东西
+                 symbol是一个单独的数据类型 基本类型
+                 如果 symbol作为key 用 for  in循环 出不来
+
+
+            generator函数
+                    生成器
+
+
+
+
+                    解决异步,深度嵌套的问题,
+
+            语法:
+                    function * name(){
+                        yield '1'
+                        yield '2'
+                        return '3';
+                    }
+
+
+                    调用
+
+                            let g1=gen();
+                            g1.next() //{value:'1',done:false}
+                            g1.next()//{value:'2',done:false}
+                            g1.next()//{value:'3',done:true}
+
+
+                            上述调用,手动调用 ,麻烦
+
+
+                            for..of 自动遍历 generator
+                                    return 的东西,不会遍历
+
+                        generator 不仅可以配合for .. of ..
+
+                        还可以:
+                            1.解构赋值
+                                let[a,..b]=gen();
+                             2.扩展运算符
+                                ...gen()
+                              3.arr.form
+                    generator结合axios数据请求:
+
+
+                    ----------------------
+                    异步解决:
+                            回调函数
+                            事件监听
+                            订阅发布
+                            promise
+
+
+                            ES2017  async

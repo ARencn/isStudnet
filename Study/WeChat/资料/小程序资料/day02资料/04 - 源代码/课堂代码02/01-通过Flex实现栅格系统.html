@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<title>flex实现栅格系统</title>
+<style>
+    
+    .row > div{
+        height: 100px;
+        background-color: skyblue;
+        border: 1px solid #f00;
+        box-sizing: border-box;
+    }
+    .row{
+        display: flex;
+    }
+    .row .col{
+        flex:1;
+    }
+    .row .col-12{
+        flex:0 0 100%;
+    }
+    .row .col-6{
+        flex:0 0 50%;
+    }
+    .row .col-4{
+        flex:0 0 33.33333%;
+    }
+    .row .col-3{
+        flex:0 0 25%;
+    }
+    .row-wrap{
+        display:flex;
+        flex-wrap: wrap;
+    }
+
+</style>
+</head>
+<body>
+    
+  <h1>同等大小网格</h1>
+
+  <div class="content">
+
+    <div class="row row-wrap">
+        <div class="col-12">
+            水平12
+        </div>
+        <div class="col-6">
+            水平6
+        </div>
+        <div class="col-6">
+            水平6
+        </div>
+        <div class="col-4">
+            水平3
+        </div>
+        <div class="col-4">
+            水平3
+        </div>
+        <div class="col-4">
+            水平3
+        </div>
+      <div class="col">
+        首页
+      </div>
+      <div class="col">
+        消息
+      </div>
+      <div class="col">
+        个人中心
+      </div>
+      <div class="col">
+        再增加也没问题
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

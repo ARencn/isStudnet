@@ -1,0 +1,15 @@
+﻿位置-平移
+	（left/right/margin/transform）
+方位-旋转
+	（transform）
+大小-缩放
+	（transform）
+透明度（opacity）
+其他-线性变换（transform）
+
+transition（过渡）：动画属性  动画时间，可以用逗号指定多个属性 以及不同时长
+transition-delay(延迟):
+transition-timing-function(动画的形式):
+	Ceaser曲线  https://matthewlein.com
+
+一定要有状态的变更

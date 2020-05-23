@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    div {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100px;
+            height: 100px;
+            background: orange;
+        }
+        span {
+            position: absolute;
+            left: 300px;
+            top: 0px;
+            background: black;
+            width: 1px;
+            height: 100px;
+            }
+    
+    </style>
+</head>
+<body>
+    <div id="wrapper"></div>
+    <span></span>
+    <script>
+        let oWrapper = document.getElementById('wrapper');
+        oWrapper.onclick = function(){
+            startMove(this,300)
+        }
+      function startMove(dom,target){
+        clearInterval(dom.timer);
+        let a =3;
+        let iSpeed = 0;
+        dom.timer = setInterval(function(){
+            a = (target - dom.offsetLeft) / 5;
+            iSpeed += a;
+            iSpeed *= 0.8;
+            if(Math.abs(iSpeed)<1&&Math.abs(target - dom.offsetLeft) < 1){
+                clearInterval(dom.timer);
+                dom.style.left = target + 'px';
+            }else{
+                dom.style.left = dom.offsetLeft + iSpeed + 'px';
+            }
+        },30)
+      }
+    </script>
+    
+</body>
+</html>

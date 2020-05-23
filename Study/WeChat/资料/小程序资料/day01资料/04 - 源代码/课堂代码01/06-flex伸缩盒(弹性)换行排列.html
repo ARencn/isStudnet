@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>文档标题</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            border: 1px solid #f00;
+            width: 750px;
+            height: 1000px;
+            margin: 0 auto;
+        }
+        .nav{
+            display: flex;
+            /* 伸缩盒换行 */
+            flex-wrap: wrap;
+        }
+        .item{
+            width: 20%;
+            height: 100px;
+            background-color: pink;
+            border:1px solid deepskyblue;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="nav">
+            <div class="item">分类</div>
+            <div class="item">大聚惠</div>
+            <div class="item">苏宁超市</div>
+            <div class="item">红孩子母婴</div>
+            <div class="item">服装城</div>
+            <div class="item">爆款手机</div>
+            <div class="item">赚钱</div>
+            <div class="item">领云钻</div>
+            <div class="item">身边苏宁</div>
+            <div class="item">生活家电</div>
+        </div>
+    </div>
+</body>
+</html>

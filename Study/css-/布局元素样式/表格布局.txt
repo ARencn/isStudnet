@@ -1,0 +1,6 @@
+﻿ 易理解 有方格 文字居中 
+
+新版本表格布局
+
+display： table
+display：table-cell

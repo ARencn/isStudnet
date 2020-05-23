@@ -1,0 +1,35 @@
+﻿字体族
+
+
+
+衬线字体  装饰性文字（例如：宋体）弯弯钩钩
+-serif 
+非衬线字体
+sans-serif 
+等宽字体
+monospace 
+手写体
+cursive 
+花体
+fantasy
+
+多字体 fallback   （只有一个平台有的字体写在前面）
+可以设置多字体一直往后找
+
+网络字体(跨域问题) 自定义字体
+
+iconfont 图标字体
+
+
+-----------------------
+自定义字体
+
+ @font-face{
+	font-family："name"
+	src url('')
+}
+
+------------------------
+图标字体
+
+iconfont.cn

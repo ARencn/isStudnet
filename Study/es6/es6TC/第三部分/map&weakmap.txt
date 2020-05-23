@@ -1,0 +1,25 @@
+map 类似于json,但是json的key只能是字符串
+
+        map 的key可以是任意类型
+
+
+        用法 :
+                new map
+
+                map.set(key,value); 添加
+                map.get(key)   获取
+                map.has
+                map.clear
+
+
+                循环
+                    for(let [key,value] of map){
+                                    //default entries
+
+                    }
+
+                    map.forEach()
+
+
+
+                    weakmap : key 只能是对象

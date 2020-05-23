@@ -1,0 +1,98 @@
+路由原理:
+(1) 传统 开发方式 url 改变后 立刻发生请求响应整个页面 有可能资源过多  ,传统开发会让页面出现白屏
+(2) SPA Single Page Application 单页面应用
+    锚点值的改变不会立即发送请求而是在某个合适的时机发起ajax请求,局部改变页面的数据
+
+
+    优点:页面不立即跳转页面 用户体验好
+
+    window.onhashchange  当页面哈希改变时
+    location.hash       获取当前位置的哈希
+
+
+
+       // 如果vue是一个局部作用域下的对象 那么必须Vue.use(VueRouter)
+      //   第一步: 使用 VueRouter    Vue.use(VueRouter);
+
+
+
+            let Login={
+              template:`<div>我是登录界面</div>`
+            };
+            let Register ={
+                template:`<div>我是注册界面</div>`
+            };
+
+     //   第二步: 声明 router对象
+            let router=new VueRouter({
+                给  router 对象制定 匹配规则
+                routes:[
+                    {
+                        //动态路由参数 以冒号开头  xxx.html#/user/1  params
+                        path: '/login/:id',  路由的地址
+                        name:'login',   路由的名字
+                        component: Login   路由要显示的组件
+                        ,                                          嵌套路由使用children属性匹配规则
+                        children:[
+                            {
+                                path:song,
+                                component:Song
+                            }
+
+                        ]
+                    },
+                    {
+                        //
+                        path: `/register`,
+                        name:`register`,
+                        component:Register
+                    }
+                ]
+            });
+            //抛出两个全局组件 router-link router-link
+            //抛出两个对象 $router $route(路由信息对象)挂载到了Vue 实例化对象里
+
+
+
+         //   第三部: 在组件中使用 路由
+            let App={
+              template:`
+    <div>
+               <div>        在匹配路由规则的时候一定要注意要加:才算是绑定对象  动态 传值的用  params  ?的用 query  第二个参数的名字是不能换的  两个对象是可以同时存在一个路由中的比如  {name:'login',params:{id:1},query:{userId:2}}  一样能够显示成功
+                        <router-link :to = "{name:'login',params:{id:1},query:{userId:2}}">登陆</router-link>
+                         <router-link :to = "{name:'register',query:{userId:2}}">注册</router-link>
+                </div>
+             <router-view></router-view></div>
+    `
+
+            };
+
+
+            //Cannot read property 'matched' of undefine  未将对象挂载到实例化对象里面
+            new Vue({
+                el:'#app',
+
+               //第四部  :讲路由挂载到vue 实例中
+                router:router, //将配置好的router对象关联到 vue实例化对象中
+                template:`<App/>`,
+                components:{
+                    App
+                }
+            })
+
+
+            ------------------------------------------------------------------------------------------------------
+
+            地址栏 路由范式;
+
+            (1) xxx.html#/user/1   params  动态路由参数
+            (2) xxx.html/user?userId=1  query
+
+
+
+            在使用模板渲染的时候  vue会吧组件复用这也就 不会调用created钩子  可以用watch来检测
+            watch:{
+                `$route`(to,from){
+                    this.msg=to.params.id
+                }
+            }

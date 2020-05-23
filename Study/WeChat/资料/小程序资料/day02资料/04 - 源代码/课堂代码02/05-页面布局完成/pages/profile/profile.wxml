@@ -1,0 +1,3 @@
+<view class="avatar center">
+    <image src='/assets/images/avatar.png'></image>
+</view>

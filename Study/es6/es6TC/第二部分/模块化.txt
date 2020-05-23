@@ -1,0 +1,57 @@
+模块化:
+    js 不支持模块化
+
+
+        在ES6之前,社区制定一套模块化规则
+            commonJS        主要服务端node.js  require()
+            AMD             requireJs,curlJs
+            CMD             seajS
+
+
+
+
+         ES6统一服务端和客户端模块规范:
+                import{xx}
+
+
+         模块化:
+                注意: 需要放到服务器环境
+                1.如何定义模块?
+                    export 东西
+                    export default 东西
+
+
+                2.如何使用?
+                              import {a as q,b} form src
+                                            可以起别名
+
+                                              import {* as name} form src
+
+                                              name.a
+                                使用模块
+
+                                        <script type="module">
+
+                    import: 特点
+                            a).import 可以使相对路径,也可以
+                            b).import模块只会导入一次,无论你引入多少次
+                            c).import './modules/1.js' 如果这么用,相当于引入文件
+                            d).有提升效果,import 会自动提升到顶部首先执行
+                            e).导出去模块内容,如果里面有定时器更改,外面也会改动,不像common规范缓存
+
+
+                            import() 类似node里面的require ,可以动态引入
+                                返回值是一个promise对象
+
+                            引入export default的东西的时候不用加 { },默认import语法不能写到if之类的里面
+                                import('').then(res=>{
+
+                                });
+                                优点:按需加载
+                                    可以写到if中
+                                    路径也可以是动态的
+                                    -----------------------------
+                                    ES2017加 async await
+
+
+

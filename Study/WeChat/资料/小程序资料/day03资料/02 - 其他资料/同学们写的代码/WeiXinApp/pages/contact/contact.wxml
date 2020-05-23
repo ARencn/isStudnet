@@ -1,0 +1,8 @@
+<view class='cell'>
+  <navigator class='cell-item rArrow'>
+    <text>设置</text>
+  </navigator>
+    <navigator class='cell-item rArrow'>
+    <text>使用条款</text>
+  </navigator>
+</view>

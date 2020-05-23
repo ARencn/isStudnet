@@ -1,0 +1,36 @@
+最好不要在watch 和computer中进行值的更改  最重要不能改监听的属性的值
+
+new Vue({
+    el: ''
+    template:` `,
+    data:{
+    firstName : '',
+    lastName:''
+    },
+    computer:{
+        name(){
+            computer有缓存机制 如果方法内数据没有变化就不会重新 运算   直接在模板中调用方法的话就会每次重新执行函数  会造成性能严重耗损 最好不要使用set()
+            return ` ${this.firstName} ${this.lastName}`
+        }
+    },
+    watch:{
+        firstName(){
+
+        },
+        lastName{
+            handle(){
+                定义完成后不会主动触发 有变化的时候才会执行
+            }, 
+            immediate: true  渲染之后就触发  
+            deep:true  深入观察  如果obj 对象里面的属性改变了handle默认不会触发 但是deep为true时会触发 性能开销比较大  可以直接在watch里写深入的属性调用 
+        },
+         " lastName.a" :{
+            handle(){
+                定义完成后不会主动触发 有变化的时候才会执行
+            }, 
+            immediate: true  渲染之后就触发  
+        
+        
+        }
+    }
+})

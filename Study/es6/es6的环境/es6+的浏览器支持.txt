@@ -1,0 +1,42 @@
+
+最新版本的现代浏览器除模块化外几乎全部支持
+现代浏览器的历史版本的支持度较为一般
+IE8,9仍占大量份额,IE6,7几乎绝迹(不到3%)
+
+
+所需工具
+
+工程化工具 webpack
+ES6+语法编译工具 Babel
+一个合适的脚手架工具
+
+webpack配置
+
+现代前端使用最广泛的打包工具
+  webpack用于支持模块化开发
+  配置babel-loader将ES6+转化为ES5
+  压缩 合并等其他前端优化
+
+
+Babel
+  ES6实用化的核心
+    可以通过.babelrc配置文件进行配置
+    与webpack或gulp等打包工具配合
+    在浏览器中引入Babel-polyfill转化新的API
+
+HTML-bundle
+  脚手架工具(https://github.com/be-fe/html-bundler)
+
+  创建项目
+  hb create name -w(使用webpack)
+启动项目
+ cd name&npm i& hb dev 
+
+运行文件(在修改了webpack.dll.js后)
+  npm run dll
+
+
+安装环境依赖
+  npm i es5-shim --save-dev
+  npm i babel-polyfill --save-dev
+  npm i gulp-file-include --save-dev

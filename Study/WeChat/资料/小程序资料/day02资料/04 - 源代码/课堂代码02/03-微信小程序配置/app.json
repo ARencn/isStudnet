@@ -1,0 +1,15 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/message/message",
+        "pages/profile/profile",
+        "pages/contact/contact",
+        "pages/logs/logs"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#f60",
+        "navigationBarTitleText": "本地宝",
+        "navigationBarTextStyle": "white"
+    }
+}

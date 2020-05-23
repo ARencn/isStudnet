@@ -1,0 +1,20 @@
+解决重复代码过多 利用选择器 而不是mixin的复制代码
+
+less
+      在.mixin的基础上扩展
+.clss:extend(.mixin){
+    
+}
+
+等于
+
+.class{
+  &:extend{
+
+  }
+}
+
+sass:
+    .class{
+      @extend .class
+    }

@@ -1,0 +1,32 @@
+
+
+组织    优化    构建     维护
+
+
+PostCSS 后处理语言
+
+CSS->PostCSS解析转化(模块化 加前缀 兼容性)->CSS
+
+PostCSS本身只有解析能力
+各种神奇的特性全靠插件
+目前至少有200个插件
+
+
+PostCSS
+
+import 模块合并
+autoprefixier 自动加前缀
+cssnano  压缩代码
+cssnext  使用css新特性
+precss    变量 mixin 循环等
+
+安装
+  npm i postcss-cli -g
+
+  编译
+  postcss input address -o output address
+
+  PostCSS支持的构建工具
+    CLI命令行工具
+    webpack postcss-loader
+    Gulp gulp-postcss

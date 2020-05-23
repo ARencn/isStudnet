@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .wrapper {
+            width: 300px;
+            height: 50px;
+            background-color: orange;
+            position: absolute;
+            left: -250px;
+            top: 200px;
+        }
+
+        .wrapper span {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            right: 0;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <span></span>
+    </div>
+    <script>
+        let oWrapper = document.getElementsByClassName('wrapper')[0];
+        let oSpan = document.getElementsByTagName('span')[0];
+        oWrapper.onmousemove = function (e) {
+            startMove(this, '0');
+        }
+        oWrapper.onmouseleave = function(e){
+            console.log(e)
+            startMove(this, '-250')
+        }
+        let timer = null;
+        function startMove(dom, target) {
+            let iSpeed = (target - dom.offsetLeft) / 7;
+            console.log(iSpeed)
+
+            timer = setInterval(function () {
+                if ((dom.offsetLeft + iSpeed) >= target) {
+                    clearInterval(timer);
+                    dom.style.left = target + 'px';
+                } else {
+                    console.log(iSpeed)
+                    dom.style.left = dom.offsetLeft + iSpeed + 'px';
+                    console.log(dom.offsetLeft)
+
+                }
+
+
+            }, 30)
+
+
+
+        }
+    </script>
+</body>
+
+</html>

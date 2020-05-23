@@ -1,0 +1,38 @@
+{{里面可以写通过一行一句就能有返回结果的一元运算等 不支持复杂运算 可以调用js 的原生对象 自己定义的外层对象不可以访问 可以调用自定义的一些方法来完成复杂的运算 推荐用computed来做}}
+{{在这里写入html模板的时候需要直接使用v-html指令}}]
+v-mode:可以实现数据双向绑定
+template : '<div><p v-html='html'></p><div>'
+v-bind:id="aaa"
+        可以动态绑定数据
+        可以简写为:id
+    @事件 可是v-on:的简写  可以绑定事件
+
+html:'<span>123</span>'
+
+在绑定类名的时候
+
+    可以使用这种方式
+        :class="{ active ? isActive }"  意为假如 isActive 是 true class 就显示 active
+    还可以用数组的方式绑定
+        :class = '[isActive ? 'active' : '']'
+    结合的写法也是可以的
+        :class = '[{active ? isActive}]'
+
+绑定style 的时候与 class类似
+
+    :style="style1"
+
+    data:{
+
+        style1:{
+            color :red
+        }
+    }
+
+
+computed:{
+    classNames(){
+
+    }
+
+}

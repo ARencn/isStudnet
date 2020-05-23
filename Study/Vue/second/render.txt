@@ -1,0 +1,53 @@
+const component={
+    name : 'comp',
+    template:`
+        <div :style="style">
+            <slot></slot>
+        </div>
+    
+    `,
+    data(){
+        return{
+            style:{
+                width:"100px",
+                height:"100px",
+                border:"1px solid #adadad"
+            }
+        },
+        value:'component value'
+    },
+    render(createElement){
+        return createElement('div'{
+            style: this.style,
+            nativeOn:{
+                会自动把事件绑定到根节点上面
+            },
+            还可以绑定dom原生
+            domProps:{
+                innerHTML:"<SPAN>"
+            },
+            attrs:{
+                绑定属性
+                id : ''
+            }
+        },this.$slots.default)   //在传递vue 内建组件的时候直接使用 this .$slots来调用 在未命名时使用 default 可调用   如有命名直接点name就可以了
+    }                                   //createElement创建的是虚拟dom 存于内存之中  会与 真正的dom进行对比 如果 发现有dom需要更新才会进行更新渲染
+}
+
+new Vue({
+    el:"#root",
+    template:`
+        <comp-one ref="comp">
+            <span ref="span"></sapn>
+    
+        <comp-one>
+    `,
+    render(createElement){  //vue会直接传入一个 创建节点的函数 声明就可以用了就
+      //  return this.$createElement()
+        return createElement('comp-one',{
+            ref: 'comp'
+        },[createElement('span',{
+            ref : 'span'
+        },this.value)]) 传入子节点的时候必须使用数组 
+    }
+})

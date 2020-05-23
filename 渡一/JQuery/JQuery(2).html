@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="demo"></div>
+    <script>
+        let dom = {
+            a: 111,
+            b: [222, {
+                a: 111
+            }],
+            c: '222'
+        }
+
+
+        // 
+        function clone(origin, target) {
+            var target = target || {};
+            let toStr = Object.prototype.toString;
+            for (const key in origin) {
+                if (origin.hasOwnProperty(key)) {
+                    if (typeof origin[key] != 'object') {
+                        target[key] = origin[key]
+                    } else {
+                        if (toStr.call(origin[key]).indexOf('Array') != -1) {
+                            target[key] = [];
+                        } else {
+                            target[key] = {};
+                        }
+                        clone(origin[key], target[key])
+                    }
+                }
+            }
+            return target
+        }
+
+    </script>
+    <script>
+        
+        //复习知识
+        /**
+        *
+        * undefined == null   true
+        *
+        * 判断变量类型的四种方法
+        *
+        * 1. typeof
+        *
+        *     typeof('')   //'string'
+        *     typeof(123)  //'number'
+        *     typeof(true)  //'boolean'
+        *     typeof(NaN)   //'number'
+        *     typeof(function(){})  //'function'
+        *     typeof(null)    //'Obejct'
+        *     typeof([])    //'Obejct'
+        *      typeof(new Date())  //'Object'
+        * 缺点无法区分出对象与数组还有null
+        *
+        * 2. constructor
+        * 原理判断构造函数
+        * ''.constructor == String  //true
+        * [].constructor == Array //true
+        *  let a = {};a.constructor == Obejct //true
+        * null.constructor   // error : Cannot read property 'constructor' of null
+        * let b = 1; b.constructor == Number //true
+        *
+        *
+        *
+        * 3.instanceof
+        *
+        * 判断原型链上是否有此对象
+        *
+        * instanceof 与 constructor 应用于 ifrom 中有可能会出错
+        *
+        * 因此推荐使用第四种
+        *
+        * 4.Object.prototype.toString
+        *
+        *
+        * Object.prototype.toString.call('')     //[object String]
+        * Object.prototype.toString.call({})     //[object Object]
+        * Object.prototype.toString.call(123)     //[object Number]
+        * Object.prototype.toString.call([])     //[object Array]
+        * Object.prototype.toString.call(function(){})     //[object Function]
+        * Object.prototype.toString.call(Null)     //[object Null]
+        * Object.prototype.toString.call(undefined)     //[object Undefined]
+        * Object.prototype.toString.call(true)     //[object Boolean]
+        * Object.prototype.toString.call(NaN)     //[object Number]
+        *
+        *
+        *
+        *
+        *
+        *
+        * //clone
+        *
+        *  function clone(origin,target){
+        *     let target = target || {};
+        *     let toStr = Object.prototype.toString;
+        *     for(const key in origin){
+        *         if(origin.hasOwnProperty(key)){
+        *             if(typeof origin[key] != 'object'){
+        *                 target[key] = origin[key]
+        *              }else{
+        *                 if(toStr.call(origin[key]).indexOf('Array') != -1){
+        *                       target[key] = [];
+        *                 }else{
+        *                       target[key] = {};
+        *                 }
+        *                 clone(origin[key],target[key])
+        *             }
+        *         }
+        *     }
+        *  }
+
+
+
+
+
+        * **/
+
+        //jQuery  clone
+        /* 
+        clone()  克隆一个基本一样的dom 对象 行间样式 自定义属性都会赋值  默认不克隆事件 可以传入参数 true  就会克隆事件  可以用作模板修改
+        data()   给dom元素 的jQuery对象存入信息  由于其有映射关系 不会在行间显示 取出的是存入的数据类型 prop取出的是字符串
+        
+        data() 利用data做统一数据管理  相较于 attr 效率更高      
+
+        方便生成视图
+        data -> jQuery -> dom -< data => view
+
+        比较 data() 适用于需要给dom形成较多映射关系但没必要直接体现在dom行内的 attr()适用于一般的dom信息存储和必要的行内存储 prop()适用于特性值的获取与赋予 val()适用于表单元素
+
+
+
+        */
+
+        //dom事件操作
+
+        /* 
+        .on()  传入四个参数 事件类型 选择器(可选) 触发函数参数(可选) 触发函数  
+
+        与js不同的是jQuery 的 事件绑定 如果绑定了两次 后一次不会覆盖前一次的执行函数 而是都执行
+
+        //如果第二个参数没有填 直接填了字符串  jQuery 就会把字符串当做一个选择器
+        $('.demo').on('click',{cs:1},function(e){
+            e.data   // { cs : 1 }
+        })
+
+        使用第二个参数的情况  事件委托
+
+        <ul class='demo'>
+            <li>1</li>    
+            <li>2</li>
+            <li>3</li> 
+            <li>4</li> 
+            <li>5</li> 
+        </ul>
+
+        <script>
+            $('.demo').on('click','li',function(e){
+                // Do something
+                //此时虽然事件依旧是绑定在ul 上但是 只有点击在li上时才会触发冒泡
+            })
+
+        
+        <script>
+        
+            在事件函数中 return false 就可以阻止默认事件
+        .one()  只触发一次 
+
+
+        .off()  解绑事件 如果不传参则所有事件都取消绑定 传入单个事件名 则取消单个  如果传入两个参数('click',clickOne) 
+                则会取消 click事件的clickOne函数执行 如果之前的on 用了选择器参数 那么解绑时需要 也跟on时一样写
+                也可以直接不传入参数 解绑所有
+
+
+
+        .triggle()
+            可以用来触发事件 以及自定义事件
+            $('.demo').triggle('click',[触发事件时传入的参数])
+
+             
+        .hover()
+            用法与css:hover类似
+            .hover(function(){//移入事件},function(){//移出事件})
+
+            
+        
+        */
+
+        //事件对象JQuery
+        /* 
+            e.pageX e.clienX e.which e.button
+
+            e.preventDefault()
+
+            e.stopPropagation()
+
+            return false 兼容阻止冒泡和默认事件
+        
+        */
+
+        //jQuery    动画
+
+        //
+        /* 
+        
+        动画相关方法
+
+
+        show() hide() toggle() 封装了 hide和show  
+                        参数:null & (duration,easing,callback)  能变的元素空间属性都会变
+        
+        
+        fadeIn fadeOut fadeTo 淡入到目标点(duration,target,easing,callback) fadeToggle   更注重于 透明度 淡入淡出
+        
+        slideDown slideUp 卷上卷下 slideToggle
+
+
+
+        //animate  param: target duration  easing callback
+
+        //可以链式写 animate 
+        内置队列
+        $('.demo').animate({width:'+=50',height:'100px'},3000,'swing',function(){}).animate({width:'+=50',height:'100px'},3000,'swing',function(){})
+
+
+
+
+         stop()  停止当前运动开始下一个运动 stop(true) 立即停止运动 stop(true,true) 停止当前运动 并瞬间移动到目标点
+
+
+         finish()   无论有几次运动直接达到最后一次的目标点  
+
+         delay()  传入参数 在这次运动完成后延迟多久进行下一次运动   
+        
+        jQuery.fx.off = true  关闭所有过渡动画 
+        
+
+        https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js 有许多的 easing 方法的插件 
+
+          
+        
+        JQuery  queue dequeue clearqueue
+
+         queue()  创建队列 第一个参数为队列的名称第二个为内容
+                type content
+
+        $('.demo').queue('name',function()).queue('name',function()).queue('name',function())  这样会为 一个名为name 的队列 添加三个值 队列用数组来存储值 也就是[,,]
+
+            入队时传入的function 会提供一个next参数 即下一个要执行的方法 可以提前拿出来执行加快速度  
+            即
+             $('.demo').queue('name',function(next){next()}).queue('name',function(next){next()}).queue('name',function(next){next()}) 
+            这样只需要出队一次就会把所有的都执行
+        只传入队列名称即可获取队列 
+
+        $('.demo').queue('name')  -->  [function(){},function(){},function(){}]
+
+        出队 dequeue
+
+          $('.demo').dequeue('name')  -->  [function(){},function(){}] 出队会按照入队的顺序出  先入的先出 会执行function
+
+
+          清空队列 clearqueue
+
+
+
+
+         */
+
+       
+
+
+
+
+
+
+
+
+
+
+
+        //jQuery 位置图形
+        /* 
+            位置坐标图形大小相关方法
+            .offset()
+                返回一个对象里面有left top  分别记录了该元素距离文档的距离
+                也可以更改
+                .offset({left:100,top:100})
+
+            .position()
+                相对于定位元素的距离
+
+            .scrollTop()
+            .scrollLeft()
+
+            获取滚动条的滚动距离 也可以设置 但是不能传入字符串只能传入数字
+
+
+            基于盒子模型获取
+            .width() .height()  只获取content 区域
+            innerWidth()  innerHeight() 获取包括padding区域的  
+            outerWidth()   outerWidth()  获取包括border区域的  
+            outerWidth(true)   获取包括margin 区域的
+        
+        
+        */
+
+        //jQuery 遍历索引
+        /* 
+        .each(function(index,ele){}) 
+        .children() 
+        
+        
+        index()
+        获取自己在兄弟元素中的排序  可以传入需要排名的 元素
+        */
+
+
+        //JQuery 工具方法
+
+        /* 
+
+        typeof  :里面的数据是什么类型
+        $.type() :里面的数据是什么
+        $.isArray()
+        $.isFunction()
+        $.isWindow
+        $.trim() 消除前后空格
+        
+
+        $.proxy('要改变this指向的方法',新的this)  改变this指向
+
+
+        $.noConflict()  防止冲突  防止 $命名冲突
+        var  c =  $.noConflict();  // c 就变成了$
+
+
+        $.each()
+
+        var arr =[1,2,3,4]
+        $.each(arr,function(index,ele){
+
+        })
+
+        $.map()
+
+        $.parseJSON  严格json字符串转换成对象 - 原生JSON.parse()
+
+
+        $.makeArray()
+        填两个参数的时候会把前面的加到数组里
+
+
+        $.extend() 插件扩展  
+        $.fn.extend()
+
+
+        1.扩展方法
+        2.浅层克隆
+        3.深层克隆 
+
+         $.extend({
+            deFinedMandom:function(start,final){
+                var len =final - start;
+                return Math.random() * len +start
+            }
+
+         })  把方法加到工具方法里 
+
+        $.fn.extend({
+
+            drag:function(){
+                var disX,
+                    disY,
+                    self = this;
+                
+                    $(this).on('mousedown',function(e){
+                        disX = e.pageX - $(this).offset().left
+                        disY = e.pageY - $(this).offset().top
+                        $(document).on('mousemove',function(e){
+                            $(self).css(left:e.pageX - disX,top:e.pageY - disY)
+                        })
+                        $(document).on('mouseup',function(e){
+                            $(document).off('mousemove').off('mouseup')
+                        })
+                    })
+                    return this;
+                }
+
+        }) 加到实例方法里
+
+
+        2.浅层克隆 
+
+        $.extend(target,origin,...)会无限将后面的参数放到target
+        
+        3.深层克隆 
+        $.extend(true,target,origin,...)
+
+
+        可用于合并对象
+
+
+
+        es6中 合并对象
+
+        Object.assign
+        */
+
+        //高级工具方法
+        /* 
+        
+        $.ajax() 基本使用
+
+
+        $.Callbacks() 回调
+        返回一个回调处理函数
+        var cb = $.Callbacks();  
+        //可以填入'once' 这样这个回调只能执行一次 
+                'memory' 就会具备记忆功能即使先 fire 后add 的函数 也会在第一次fire 时 调用
+                'unique' 在add时就会去重 传入重复的就会被去掉
+                'stopOnFalse' 当遇到函数中有return false时就不再执行下面的函数
+        cb.add(fuc)  //添加函数
+        cb.fire()   //使用回调 可以传参给add添加过的方法使用
+
+        $.Deferred() 异步
+
+        var df = $.Deferred()
+        //done 成功 fail 失败 progress正在进行
+
+
+        // resolve reject notify
+                notify 之后还可以继续执行 resolve() reject() 执行之后就不再触发     
+        //注册成功的回调函数        调用成功的函数  df.resolve()
+        df.done(function(){
+
+        })
+         //注册失败的回调函数     调用失败的函数  df.reject()
+        df.fail(function(){
+            
+        })
+ 
+        //注册进行时    调用进行时的 df.notify()
+        df.progress()
+
+
+        为防止外部触发 reject 可以在函数内利用闭包只返回 promise
+
+        function score(){
+            var  df = $.Deferred()
+            function (){
+                //do something
+            }
+            return df.promise  //这样就只返回 df 的done fail progress then 的注册
+
+        }
+        
+        //简化注册写法
+        df.then(done,fail,notify).then(function(){
+            //是第一个then状态 return的值
+        })
+
+        $.when()
+        
+        
+        
+        */
+    </script>
+</body>
+
+</html>
+10
