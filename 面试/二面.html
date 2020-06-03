@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        知识面要广
+        理解要深刻
+        内心要诚实
+        态度要谦虚
+        回答要灵活
+        要学会赞美   
+        不要和面试官争对错,在国内没有几个人 是真正看着 官方文档学习的前端
+
+
+
+        渲染机制
+
+        js运行机制
+
+        页面性能
+
+        错误监控
+     -->
+
+     <!-- 
+         渲染机制
+        
+            什么是DOCTYPE及作用  
+
+                DTD(文档定义类型) 是一系列的语法规则,用来定义XML或XHTML的文件类型,浏览器会根据它来判断文档类型,决定使用何种协议来解析,以及切换浏览器模式     
+
+                DOCTYPE是用来声明文档类型和DTD规范的,一个主要的用途 便是文件的合法性验证,如果代码不合法,那么浏览器解析时便会出些差错.
+
+                HTML5:
+                    <!DOCTYPE html>
+                HTML4.01 Strict  该DTD包含所有HTML元素和属性,但是   不包括展示性和弃用的元素(比如 font)
+                    <DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+                        宽松模式
+                            <DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+            浏览器渲染过程
+                html - >html tree
+                css  - > css  tree   
+                renderTree = > layout 计算宽高
+                绘制
+
+
+            重排 reflow
+                
+
+                dom结构中的各个元素都有自己的盒子,这些都需要浏览器根据样式来计算并将结果返回到该出现的位置, 称之为 reflow
+
+                触发 reflow
+                        增删改dom 会触发 重排或重绘
+                        移动dom位置
+                        修改css样式
+                        resize窗口的时候, 
+                        修改网页的默认字体
+            重绘 repaint
+                绘制dom元素的过程
+                
+                触发
+                    dom改动
+                    css改动
+            布局 layout  
+    -->
+    <!-- 运行机制
+    
+        异步队列在同步任务执行完成后执行
+
+        理解 js 的单线程
+
+        什么是任务队列
+            
+        什么是event loop
+
+        在 setTimeout 中最少等待4ms才会放入执行栈
+
+        异步任务
+
+            setTimeout setInterval
+
+            Dom事件
+
+            es6中 promise
+    
+    
+    -->
+    <!-- 
+
+        页面性能类
+
+                1.资源压缩合并 减少http请求
+
+                2.非核心代码 异步加载 =>异步加载的方式 =>异步加载的区别
+                    异步加载的方法
+                        1.动态脚本加载
+                        2.defer
+                        3.async
+                    区别:
+                        1.defer是在html解析完成后才会执行,如果是多个,按照加载的顺序依次执行
+                        2.async 是在加载完之后立即执行,如果是多个,执行舜玉和加载顺序无关
+
+                3.利用浏览器缓存  => 缓存的分类 =>缓存的原理
+                    分类:
+                        1.强缓存
+
+                            expires     绝对时间 按照浏览器端的时间设定值过期
+                            cache-control  相对时间 过多少秒之后 过期
+                            下发了 两个时间 以 cache-control 为准
+                        2.协商缓存
+
+                            last-modified If-Modified-Since  携带 最后下发的时间
+                            Etag If-None-Mactch  类似于hash值 比较是否更新缓存
+                4.使用 CDN
+
+                5.预解析DNS
+
+                    <meta http-equiv="x-dns-prefetch-control" content="on">
+                    <link rel ="dns-prefatch" href="//host_name_.com "
+     -->
+
+     <!-- 错误监控类
+        
+            前端错误的分类
+
+                即使运行错误:代码错误
+                    捕获方式:
+                    1.try..catch  2.window.onerror
+                    资源加载错误  不会冒泡 只能通过单个文件的去捕获错误
+                    1.object.onerror
+                    2.performance.getEntries()
+                    3.Error事件捕获 通过 error事件  addEventListener(,true)捕获错误 
+                资源加载错误
+
+            错误的捕获方式
+
+
+            上报错误的基本原理
+
+            1.采用ajax通信方式上报
+
+            2.利用image对象
+    
+    
+    -->
+</body>
+</html>

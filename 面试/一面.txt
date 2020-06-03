@@ -1,0 +1,407 @@
+     
+        页面布局
+
+            假设高度 已知,请写出三栏布局,其中左栏,右栏宽度各300px中间自适应
+                1.浮动
+                2.绝对定位
+                3.flexbox flex=1 center
+                4.表格布局  display: table;   display: table-cell;
+                5.网格布局 display:grid;width:100%;grid-template-rows:100px;grid-template-columns:300px auto 300px
+
+         
+          
+          css盒模型
+
+            基本概念: 标准模型 + IE模型
+            区别:计算宽高度的不同
+            css如何设置这两种模型
+            js如何获取设置盒模型的宽高
+            边距重叠
+            BFC 边距重叠解决方案
+
+
+
+
+            标准模型的 width  不包括  padding 和 margin
+            IE模型 包含 padding 和 border
+
+
+            如何设置模型
+
+                box-sizing:content-box   标准模型  默认  
+                          :border-box    
+
+            js 如何设置获取盒模型对应的宽高
+            
+                dom.style.width/height    只能取内联样式的
+                getCpmputeStyle(dom,null)['style']  IE: dom.currentStyle()['style']  
+                dom.getBoundingClientRect().width/height   根据视口位置的 四个位置
+
+
+                重绘与回流
+
+        
+            边距重叠解决方案
+
+                BFC:块级格式化上下文
+                    BFC原理:
+                    如何创建 BFC
+                    BFC使用场景
+
+
+                    BFC子元素即使是 float 也会参加高度计算
+                
+
+            Dom 事件
+                    window.event? window.event.cancelBubble = true : e.stopPropagation();
+                    阻止冒泡 和 捕获 w3c的方法是e.stopPropagation()，IE则是使用e.cancelBubble = true
+                    取消默认事件  w3c的方法是e.preventDefault()，IE则是使用e.returnValue = false;
+
+
+
+                    dom事件 的级别
+
+                        dom0 ele.onclick
+                        dom2 ele.addEventListener('click',function(){},flase) 默认冒泡阶段触发
+                        dom3 ele.addEventListener('keyup')
+
+                    dom事件模型
+
+                        捕获:
+                            自上而下
+                        冒泡:
+                            自下而上
+                    dom事件流 
+
+                        捕获  事件通过捕获到达目标阶段 再到 冒泡
+                        目标阶段
+                        冒泡
+
+                    dom事件捕获的流程
+                        document.documentElement 获取 html
+                        window => document =>html =>body =>...=>目标元素
+                    event对象的常见应用
+                        event.preventDefault()   取消默认行为
+                        event.stopPropagation() 取消冒泡
+                        event.stopImmediatePropagation()  ab两个函数同时绑定于一个事件 取消b事件
+                        event.currentTarget    父级元素
+                        event.target  获取当前被点击元素
+                    自定义事件
+
+                        let eve=new Event('custome')
+                        ev.addEventListener('custome',function(){})
+                        ev.dispatchEvent(eve);
+
+                       new CustomeEvent('name',{prpo})
+
+
+
+
+
+            http:
+
+                http协议的特点
+
+                    简单快速 灵活   无连接 无状态
+                报文组成的部分
+                    请求报文
+
+                    请求行 请求头 空行 请求体
+                    
+                    响应报文
+
+                    状态行 响应头 空行 响应体
+
+                http方法
+                    get post put head delete
+                post 和 get 的区别
+                    1.get 在浏览器回退时是无害的,post会再次提交请求
+                    2.get 产生的地址可以收藏,post不可以
+                    3.get 会被浏览器主动请求 而post需要手动设置
+                    4.get 只能进行url编码,而post支持多种编码格式
+                    5.get 请求参数会被保存在浏览器的历史记录里,而post中的参数不会被保留
+                    6.get 请求在url中的参数是有长度限制的,而 post没有限制
+                    7.对参数数据类型,get只接受 ASCII字符,而post没有
+                    8.get 相比于 post 更不安全因为参数直接暴露在 post 中
+                    9.get 参数通过 url传递,post放在request body 中
+                http状态码
+                    1xx: 提示信息,表示请求已接收,继续处理
+                    2xx: 成功 ,表示请求已被成功接收
+                    206 完成了 带有 range 头 的get请求
+                    3xx: 重定向,要完成请求必须进行更进一步操作
+                    4xx: 客户端错误 请求语法错误或请求无法实现
+                    403资源禁止被访问
+                    5xx: 服务器内部报错
+                什么是持久连接
+
+                    http协议采用的是 "请求-应答模式",当使用普通模式,即非 keep-alive模式时,每个请求/应答客户和服务端都要新建一个连接,完成之后立即断开连接,http协议为无连接的协议
+
+                    当使用keep-alive模式(又称持久连接,连接重用)时,keep-alive 功能使客户端到服务器端的持久连接有效,当出现对服务器的后继请求时,keep-alive功能避免建立或重新建立  http 1.1支持
+                
+                什么是管线化
+
+                    在使用持久化连接的情况下,某个连接上消息的传递类似于
+                    请求 1->响应1->请求2->响应2->请求3->响应3
+
+                    管线化
+
+                    在持久连接的前提下
+                    请求1->请求2->请求3 ->响应1->响应2->响应3
+
+
+
+                    管线化机制通过持久连接完成,仅http/1.1支持此技术
+                    只有get 和 head 请求可以进行管线化而 post有所限制
+                    初次创建连接时, 不应启动管线化,因为服务器不一定支持 http1.1版本的协议
+                    管线化不会影响响应到来的顺序,
+                    http1.1要求服务端支持管线化,但并不要求服务端也对响应进行管线化处理,只是要求,对于管线化的请求不失败即可
+                    由于服务端的问题,开启管线化很可能并不会带来大幅度的性能提升,而且很多服务端和代理程序对管线化的支持并不好,因此现代浏览器Chrome 和 Firefox 默认并未开启管线化支持  
+          
+           
+           原型链
+
+           创建对象的几种方法
+                字面量
+             1.let o1 = {name:'o1'};
+                let o11=new Object({name:'o11'});
+            通过构造函数
+            2.let m = function(name){this.name=name}
+              let o2 = new M('o2');
+
+            3. let P ={name:'o3'}
+                let o3 = Object.create(P)
+           原型,构造函数,实例,原型链
+            每个函数都有一个 prototyoe 指向 原型对象
+            原型对象里有构造器 constructor指向 原型对象的构造函数
+            任何函数 都可以作为构造函数 只要被 new 使用了 都可以叫构造函数
+            构造函数 使用 new 运算符就可以生成一个实例
+            实例 的 __proto__指向了原型对象
+
+
+            只有函数有prototype
+            只有实例对象有 __proto__
+            函数M也有 __proto__
+            因为M也是 function的一个 实例
+            M.__proto__ === Function.prototype
+            functiom M (){
+
+            }
+            let a = new M();
+
+            a :实例
+            a.__proto__:指向 M
+            M.prototype :指向 Object 就是原型对象
+            M.prototype.constructor 指向 M也就是构造函数
+
+           instanceof 原理
+
+            实例对象(__proto__) 与构造函数(prototype) 的原型链上是否有一样的
+
+            用 .__proto__.constructor 来判断比 instanceof更严谨
+
+           new 运算符
+            
+                一个新对象被创建 它继承自foo.prototype
+
+                构造函数被执行, 执行的时候相应的参数被传入,同时上下文(this)会被指定为这个新实例,new foo 等同于 new foo(),只能用在不传递任何参数的情况下,
+
+                如果构造函数返回了一个对象,那么这个对象会取代整个new 出来的结果,如果构造函数没有返回对象,那么 new   出来的结果为 步骤一创建的对象   
+
+                原理
+
+                    let myNew = function (func){
+                        let o = Object.create(func.prototype);
+                        let k = func.call(o);
+                        if(typeof k === 'object'){
+                            return k
+                        }else{
+                            return o
+                        }
+                    }
+
+           
+
+            
+                面向对象
+
+
+                类与实例
+
+                    类的声明
+
+                        function Animal(){
+                            this.name = name
+                            通过this 表明这是一个类
+                        }
+
+                        es6
+
+                        class Animal{
+                            constructor(){
+                                this.name = name
+                            }
+                        }
+                    生成实例
+                
+                类与继承
+
+                    如何实现继承
+
+                        继承的本质就是原型链
+
+                        1.借助构造函数实现继承
+
+                            function Parent(){
+                                this.name = 'parent1'
+                            }
+                            function Child(){
+                                Parent.call(this);
+                                this.type=type;
+                            }
+                        2.借助原型链实现继承
+                            function Parent(){
+                                this.name = 'parent1'
+                            }
+                            function Child(){
+                                this.type=type;
+                            }
+                            Child.prototype = new Parent();
+                            
+                        3.组合继承 1
+                            function Parent(){
+                                this.name = ''
+                            }
+                            function Child(){
+                                Parent.call(this)
+                                this.type = ''
+                            }
+                            Child.prototype = new Parent()
+                             
+                        组合继承2
+                            
+                    继承的几种方式
+
+
+            
+             
+            通信类
+
+                    什么是同源策略及限制
+
+                        同源策略限制一个源加载的文档或脚本如何与来自另一个源的资源进行交互.
+                        这是一个用于隔离潜在恶意文件 的关键的安全机制
+
+                        cookie localStorage 和 IndexDB 无法读取
+                        Dom 无法获得
+                        ajax请求不能发送   
+                    前后端如何通信
+
+                        ajax 同源下的通信方式
+                        webSocket  不限制源      
+                        CORS
+                    如何创建 ajax
+                        XMLHttpRequest对象的工作流程
+                        兼容性处理
+                        事件的触发条件
+                        事件的触发顺序
+                    let xhr = XMLHttpRequest ?new XMLHttpRequest() : new window.ActiveXObject('Microsoft.XMLHTTP');
+                    xhr.open('GET','');
+                    xhr.onreadystatechange = function(){
+                        if(xhr.readyState === 4 && xhr.status === 200){
+                            console.log(xhr.respones);
+                        }
+                    }
+                    xhr.send()
+
+                    跨域通信的几种方式   
+                        JSONP
+
+                        Hash
+                            在地址后面加上 #
+
+                            b页面添加 
+                            onhashchange 就能监听到 hash
+                        postMessage
+                            window.postMessage('data','src')
+
+                            window.addEventListener('message',function(event){
+                                event.origin  地址
+                                     .source  源window
+                                     .data    数据
+                            })
+                        webSocket
+
+                            let ws = new WebSocket('wss://src');
+                            ws.onopen = function(e){
+                                ws.send();
+                            }
+                            ws.onmessage = function(e){
+                                console.log(e.data)
+                                ws.close()
+                            }
+                            ws.onclose = function(evnt){
+
+                            }
+                        CORS
+                            fetch('src',{
+                                method:'get'
+                            }).then(function(res){}).catch(function(err){})
+             
+              
+                安全类
+
+                    CSRF
+                        基本概念和缩写
+                            跨站请求伪造(Cross-site request forgery)
+                            
+                        攻击原理
+                            用户  --=>登录   网站A
+                                <===下发cookie
+
+                                  <====引诱点击       网站B
+                                    ==>访问 A
+                        防御措施
+                            token验证   
+                            referer验证
+                            隐藏令牌
+                    XSS
+
+                        跨域脚本攻击
+
+                        攻击原理
+
+                        防御
+            区别 一个是点击请求 一个是注入script脚本
+
+              
+           
+               算法
+        
+                排序
+                    算法        平均时间复杂度          最好情况        最坏情况        空间复杂度          排序方式        稳定性
+
+                    冒泡        O(n^2)                  O(n)        O(n^2)          O(1)               In-place     稳定
+                    选择        O(n^2)                  O(n^2)       O(n^2)          O(1)               In-place    不稳定
+                    插入        O(n^2)                  O(n)          O(n^2)           O(1)             In-place    稳定
+                    希尔        O(n log n)          O(n log^2 n)   O(n log^2 n)         O(1)            In-place    不稳定
+                    快速         O(n log n)          O(n log n)        O(n^2)           O(log n)        n-place    不稳定
+
+
+                    快速排序: https://segmentfault.com/a/1190000009426421
+                    希尔排序: https://segmentfault.com/a/1190000009461832
+                    选择排序: https://segmentfault.com/a/1190000009366805
+
+                堆栈
+                
+                队列 链表
+
+                递归 :https://segmentfault.com/a/1190000009857470
+
+                波兰式 逆波兰式
+                    理论: https://www.cnblogs.com/chenying99/p/3675876.html
+                    源码: https://github.com/Tairraos/rpn.js/blob/master/rpn.js
+        
+            算法面试 一定要 理解题目 如果,实在难以理解 可以请教面试官 ,通常情况下 面试官都会帮助解释 能想到哪写到哪 一定不要害羞不敢问面试官, 实在不行就解释原理 伪代码
+            通常面试官都是一些技术大牛,他们更喜欢好学 而不是不懂装懂的人 你去请教他 他可能还会觉得自己有优越感
+        
+        
