@@ -12,8 +12,235 @@
          const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
           new CleanWebpackPlugin(),
+ 
+          文件处理
+
+          在用js动态添加静态资源时会报错
+
+          file-loader
+            生成依赖模块到目录 然后将模块文件设置为一个导出路劲
+          url-loader
+             将依赖 的文件转换为:导出一个base64格式的字符串
+             options:{
+                 limit:3000  文件在3000字节以下转换为 base64 之上使用 file-loader 处理,并把配置传给file-loader
+                 name:'img/[name].[hash:5].[ext]'
+             }
+
+          解决路径问题
+           output:{
+               publicPath:'/'
+           }
+
+           内置插件
+
+           const webpack =require('./webpack');
+           new webpack.插件名()
+
+           用于定义一些全局的常量值
+            new webpack.DefinePlugin({
+                PI:'Math.Pi'   意思是  PI的值是 Math.Pi 而不是 字符串 Math.Pi
+            })
+
+            为chunk 生成 顶部注释
+          BannerPlugin({
+              banner:`
+                hash:[hash]
+                chunkhash:[chunkhash]
+                name:[name]
+                author:
+                corporation:
+                `
+          })
+
+          把常用的 块先导入就不用每个地方都导入
+          ProvidePlugin({
+              $:'jquery'
+          })
 
 
+
+          css划分
+
+
+          css-loader 把 css转化为字符串导出 如果有依赖就替换依赖
+          style-loader 把 css-loader导出的字符串 加入到页面中
+
+
+          BEM
+          css in js
+          css module
+          css-loader?modules 开启modules使用时 使用导出对象的 导出原本的名字 
+          :global(){
+              全局类名
+              使用global不会进行转换
+          }
+          :local(){
+              局部的 不写默认为局部
+          }
+          控制最终类名 配置css-loader 的localIdentName
+          不要使用 嵌套域名
+
+          less
+
+          less-loader less
+
+
+
+          postcss
+
+          postcss.config.js
+          {
+              map:false,
+              plugins:{
+                  "postcss-preset-env":{
+                      stage:2, //使用哪个阶段的css未来语法 默认为2
+                      preserve:false //不保留转换前的代码
+                    },
+                    " postcss-apply":{
+
+                    }
+
+              }
+          }
+          postcss-preset-env
+          css预设环境
+
+          1自动厂商前缀:
+            .browserslistrc
+
+            last 2 version
+            > 1%
+            not ie <= 8
+
+          2.未来的css语法
+
+            变量
+                :root{
+                    变量
+                    --red:#000
+                }
+                a{
+                    color:var(--red)
+                }
+            自定义选择器
+                @custom-selector: --heading h1,h2,h3
+
+                :--heading{
+
+                }
+
+                嵌套
+                嵌套时必须加&
+                a{
+                    $ > b{
+
+                    }
+                }
+            
+
+        postcss-apply
+
+                可以在css中书写属性集
+                :root{
+                    --red:{
+                        position:absolute;
+                        left:50%
+                    }
+                }
+                .item{
+                    @apply --red
+                }
+
+        postcss-color-function
+
+        支持颜色函数
+
+
+        在webpack使用postcss
+
+        安装postcss-loader postcss
+                编写 postcss.config.js
+
+
+        
+        抽离 css
+
+        mini-css-extract-plugin
+
+        提供了plugin 和loader
+        module:{
+            rules:[
+                {
+                    test:/\.css$/,
+                    use:[MiniCssExtractPlugin.loader,'css-loader']
+                }
+            ]
+        },
+        plugins:{
+            new MiniCssExtractPlugin({
+                filename:"css/[name].[contenthash:5].css"
+            })
+        }
+       
+
+
+
+        babel预设
+        文件:.babelrc
+        @babel/preset-env
+         {
+             "presets":[
+             
+                ["@babel/presets-env",{
+                    "useBuiltIns":true, //默认为false 对新api不转换 要配合安装core-js regenerator-runtime
+                    "corejs":3  //使用3版本的corejs
+                }]
+             
+             ],
+             "plugin":[
+                    ["@babel/plugin-proposal/class-properties",{
+                        "loose":true
+                    }],
+                    "@babel/plugin/proposal-function-bind",
+                    "@babel/plugin-proposal-optional-chaining",
+                    "@babel-plugin-transform-remove-console"
+             ]  
+         }
+        @babel/plugin-proposal/class-properties
+        可在类中书写初始化字段
+        class A{
+            a = 1;
+            constructor(){
+
+            }
+        }
+        @babel/plugin/proposal-function-bind
+        obj::Print() //相当于 Print.call(obj)
+
+
+        @babel/plugin-proposal-optional-chaining
+
+        const obj = {
+        foo: {
+            bar: {
+            baz: 42,
+            },
+        },
+        };
+
+const baz = obj?.foo?.bar?.baz; // 42
+
+   @babel-plugin-transform-remove-console
+        移除console
+
+
+    @babel/plugin-transform-runtime
+    从别的库引入而不是自己减小代码尺寸  同时要安装 @babel/runtime
+
+
+
+    与webpack 结合 babel 
+    @babel/core babel-loader
      -->
 </body>
 </html>
