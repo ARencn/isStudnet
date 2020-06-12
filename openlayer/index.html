@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/ol.css">
+    <script src="assets/ol.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+
+    <div id="map" style="width: 100%"></div>
+    <script>
+      // 创建地图
+      new ol.Map({
+            // 设置地图图层
+            layers: [ //可以有多个瓦片图层
+              // 创建一个使用Open Street Map地图源的瓦片图层 就是 地图来源
+              new ol.layer.Tile({source: new ol.source.OSM()})
+            ],
+            // 设置显示地图的视图
+            view: new ol.View({   //view 只有一个
+              center: [100, 0],    // 定义地图显示中心于经度0度，纬度0度处
+              zoom: 1            // 并且定义地图显示层级为2 显示地图的放大倍数
+            }),
+            // 让id为map的div作为地图的容器
+            target: 'map',
+            logo:false,
+            controls: ol.control.defaults({
+                attributionOptions: ({
+                    collapsible: false
+                })
+            }),
+        });
+
+        /**
+         * 
+         *
+         * 
+         * ol的组成部分
+         * 
+         * Map:  对应 ol.Map  是一个入口
+         * 
+         * View:  ol.View,控制地图的中心位置,范围,层级,
+         * 
+         * Layer: 瓦片图层 可以有多个不同类型的 ol.Layer.Tile
+         * 
+         * Source: 和图层一一对应,与 Layer 一样也有不同的数据源,都放在ol.source中 
+         * 
+         * 
+         * Control:为用户提供了与地图交互的入口 在ol.control 不会随地图的变化而变化 有固定的位置
+         * 
+         * Interaction:交互行为 的包 ol.interaction
+         * 
+         * map.setTarget()  //交换地图目标
+         * 
+         * 
+         * 
+         * View 方法
+         * 
+         * 
+         *  var map = new ol.Map({
+            layers: [
+                new ol.layer.Tile({source: new ol.source.OSM()})
+            ],
+            view: new ol.View({
+                // 设置成都为地图中心，此处进行坐标转换， 把EPSG:4326的坐标，转换为EPSG:3857坐标，因为ol默认使用的是EPSG:3857坐标
+                center: ol.proj.transform([104.06, 30.67], 'EPSG:4326', 'EPSG:3857'), //用于转换坐标系
+                zoom: 10,
+                 // 设置地图中心范围
+                extent: [102, 29, 104, 31],[minX, minY, maxX, maxY]
+                   // 限制地图缩放最大级别为14，最小级别为10
+                minZoom: 10,
+                maxZoom: 14
+            }),
+            target: 'map'
+            });
+         * 
+         * var view = map.getView();
+         * 
+         * 
+         * 
+         *  // 让地图的zoom减小1，从而实现地图缩小
+            view.setZoom(view.getZoom() - 1);
+         * 
+
+           // 设置地图中心为成都的坐标，即可让地图移动到成都
+            view.setCenter(ol.proj.transform([104.06, 30.67], 'EPSG:4326', 'EPSG:3857'));
+            map.render();
+
+            // 让地图中心的y值增加，即可使得地图向下移动，增加的值根据效果可自由设定
+            mapCenter[1] += 50000;
+            view.setCenter(mapCenter);
+            map.render();
+
+
+              // 让地图中心的x值减少，即可使得地图向右移动，减少的值根据效果可自由设定
+            mapCenter[0] -= 50000;
+            view.setCenter(mapCenter);
+            map.render();
+
+            目前OpenLayers 3支持两种投影，一个是EPSG:4326，等同于WGS84坐标系，参见详情。另一个是EPSG:3857，等同于900913，由Mercator投影而来，经常用于web地图，参见详情。一个是全球通用的，一个是web地图专用的
+
+
+             // 让地图最大化完全地显示区域[104, 30.6, 104.12, 30.74]
+          map.getView().fit([104, 30.6, 104.12, 30.74], map.getSize());
+
+
+
+
+
+
+          Source和Layer
+
+
+
+          source 和 layer 是1 1 对应的
+
+          一共有三种 ol.source.Tile，ol.source.Image和ol.source.Vector
+
+          ol.source.Tile对应的是瓦片数据源
+
+          ol.source.Image对应的是一整张图
+
+          ol.source.Vector对应的是矢量地图源，点，线，面等等常用的地图元素(Feature)
+
+
+
+
+
+    // Open Street Map 地图层
+    var openStreetMapLayer = new ol.layer.Tile({
+        source: new ol.source.OSM()
+    });
+
+    // Bing地图层
+    var bingMapLayer = new ol.layer.Tile({
+        source: new ol.source.BingMaps({
+            key: 'AkjzA7OhS4MIBjutL21bkAop7dc41HSE0CNTR5c6HJy8JKc7U9U9RveWJrylD3XJ',
+      imagerySet: 'Road'
+        })
+    });
+
+    // Stamen地图层
+    var stamenLayer = new ol.layer.Tile({
+        source: new ol.source.Stamen({
+            layer: 'watercolor'
+        })
+    });
+
+    // MapQuest地图层
+    var mapQuestLayer = new ol.layer.Tile({
+        source: new ol.source.MapQuest({
+            layer: 'osm'
+        })
+    });
+
+
+      // 创建地图
+  var map = new ol.Map({
+        layers: [
+            openStreetMapLayer
+        ],
+        view: new ol.View({
+            // 设置成都为地图中心
+            center: [104.06, 30.67],
+            projection: 'EPSG:4326',
+            zoom: 10
+        }),
+        target: 'map'
+  });
+
+      // 先移除当前的地图，再添加Open Street Map 地图
+      map.removeLayer(map.getLayers().item(0));
+      map.addLayer(openStreetMapLayer);
+
+
+
+      瓦片地图 
+
+
+       // Open Street Map 地图层
+        var openStreetMapLayer = new ol.layer.Tile({
+            source: new ol.source.XYZ({
+                url: 'http://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+            })
+        });
+
+        // 高德地图层
+var gaodeMapLayer = new ol.layer.Tile({
+    source: new ol.source.XYZ({
+        url:'http://webst0{1-4}.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=7&x={x}&y={y}&z={z}'
+    })
+});
+
+// yahoo地图层
+var yahooMapLayer = new ol.layer.Tile({
+    source: new ol.source.XYZ({
+        tileSize: 512,
+        url:'https://{0-3}.base.maps.api.here.com/maptile/2.1/maptile/newest/normal.day/{z}/{x}/{y}/512/png8?lg=ENG&ppi=250&token=TrLJuXVK62IQk0vuXFzaig%3D%3D&requestid=yahoo.prod&app_id=eAdkWGYRoc4RfxVo0Z4B'
+    })
+});
+
+
+矢量地图
+
+            new ol.layer.Vector({
+                source: new ol.source.Vector({
+                    url: '../data/geojson/line-samples.geojson',     // 地图来源
+                    format: new ol.format.GeoJSON()    // 解析矢量地图的格式化类
+                })
+            })
+
+            可以通过source的getFeatures方法来获取所有的矢量图形。
+             
+
+
+
+            <div id="map" style="width: 100%"></div>
+<div>矢量地图Feature总数： <span id="count"></span></div>
+<script type="text/javascript">
+
+    //创建地图
+    var map = new ol.Map({
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            })
+        ],
+        view: new ol.View({ 
+            center: [-72.980624870461128, 48.161307640513321],
+            zoom: 8,
+            projection: 'EPSG:4326'
+        }),
+        target: 'map'
+    });
+
+    var vectorLayer = new ol.layer.Vector({
+        source: new ol.source.Vector({
+            url: '../data/geojson/line-samples.geojson', 
+            format: new ol.format.GeoJSON()
+        })
+    });
+
+    // 因为是异步加载，所以要采用事件监听的方式来判定是否加载完成
+    var listenerKey = vectorLayer.getSource().on('change', function(){
+        if (vectorLayer.getSource().getState() === 'ready') {    // 判定是否加载完成
+            document.getElementById('count').innerHTML = vectorLayer.getSource().getFeatures().length;
+            vectorLayer.getSource().unByKey(listenerKey); // 注销监听器
+        }
+    });
+
+    map.addLayer(vectorLayer);
+    // 如果在此处调用vectorLayer.getSource().getFeatures()是完全有可能获取不到任何Feature的，这是常犯错误
+
+
+
+
+
+
+
+
+    
+         * */
+    </script>
+</body>
+
+</html>
