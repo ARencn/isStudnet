@@ -1,0 +1,557 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>弹出框</title>
+<link type="text/css" rel="stylesheet" href="popup_files/contentStyle.css">
+<script type="text/javascript" src="popup_files/allscript.htm"></script>
+<link type="text/css" rel="stylesheet" href="popup_files/shCore.css">		
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '../../../swf/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<h1>弹出框</h1>
+<h1>&nbsp;</h1>
+<h1>Popup </h1>
+<h2>描述</h2>
+<p>一个弹出浮云是一个很小的div，在地图上可以打开或者关闭，通常情况下打开响应点击一个标记，弹出的浮云不要求他们自己有层并且不要求在地图上添加使用OpenLayers.Map.addPopup方法。</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>autoSize</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>自动调整弹出的内容</p></td>
+    </tr>
+    <tr>
+      <td><p>minSize</p></td>
+      <td><p>OpenLayers.Size</p></td>
+      <td><p>在弹出的内容里允许有最小的尺寸大小</p></td>
+    </tr>
+    <tr>
+      <td><p>maxSize</p></td>
+      <td><p>OpenLayers.Size</p></td>
+      <td><p>在弹出的内容里允许有最大的尺寸大小</p></td>
+    </tr>
+    <tr>
+      <td><p>panMapIfOutOfView</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>当绘制时，地图的上下左右移动如同整个的弹出浮云是可见的</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Popup</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Popup(id,lonlat,contentSize,contentHTML,closeBox,closeBoxCallback)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>id-类型：String。弹出浮云的唯一标识，如果null是标识符，则将会自动生成</p>
+          <p>lonlat-类型：OpenLayers.LonLat，在地图上弹出的位置将会显示出来</p>
+        <p>contentSize-类型：OpenLayers.Size，内容的大小</p>
+        <p>contentHTML-类型：String，一个HTML字符串显示在弹出浮云的里面</p>
+        <p>closeBox-类型：Boolean，在弹出浮云的里面是否显示一个closeBox</p>
+        <p>closeBoxCallback-类型：Function，函数调用，并对closeBox点击</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个弹出的浮云</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>updateSize</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>updateSize:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>更新大小尺寸</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getSafeContentSize</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getSafeContentSize:function(size)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>size-类型：OpenLayers.Size，想要弹出的尺寸大小</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>弹出的这个大小既不是小于指定的最小尺寸，也不是大于最大的尺寸（计算相对于视口的大小）</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Size</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Popup.Anchored</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Popup</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Popup.Anchored</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Popup.Anchored</p>
+          <p>(id,lonlat,contentSize,contentHTML,anchor,closeBox,closeBoxCallback)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>id-类型：String。弹出浮云的唯一标识，如果null是标识符，则将会自动生成</p>
+          <p>lonlat-类型：OpenLayers.LonLat，在地图上弹出的位置将会显示出来</p>
+        <p>contentSize-类型：OpenLayers.Size，内容的大小</p>
+        <p>contentHTML-类型：String，一个HTML字符串显示在弹出浮云的里面</p>
+        <p>anchor-类型：Object，对象必须暴露OpenLayers.Size类型的size的属性和OpenLayers.Piexl类型的offset的属性</p>
+        <p>closeBox-类型：Boolean，在弹出浮云的里面是否显示一个closeBox</p>
+        <p>closeBoxCallback-类型：Function，函数调用，并对closeBox点击</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个弹出的浮云</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>destroy</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>show</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>Show:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>显示在更新的相对位置上</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>setSize</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setSize:function(contentSize)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>contentSize-类型：OpenLayers.Size，这个新的尺寸大小是弹出浮云内容的div</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>设置尺寸大小</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Popup.AnchoredBubble</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Popup.Anchored</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Popup.AnchoredBubble</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Popup.AnchoredBubble(id,lonlat,contentSize,contentHTML,anchor,    closeBox,closeBoxCallback)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>id-类型：String。弹出浮云的唯一标识，如果null是标识符，则将会自动生成</p>
+          <p>lonlat-类型：OpenLayers.LonLat，在地图上弹出的位置将会显示出来</p>
+        <p>contentSize-类型：OpenLayers.Size，内容的大小</p>
+        <p>contentHTML-类型：String，一个HTML字符串显示在弹出浮云的里面</p>
+        <p>anchor-类型：Object，对象必须暴露OpenLayers.Size类型的size属性和OpenLayers.Piexl类型的offset属性</p>
+        <p>closeBox-类型：Boolean，在弹出浮云的里面是否显示一个closeBox</p>
+        <p>closeBoxCallback-类型：Function，函数调用，并对closeBox点击</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个弹出的冒泡形状的浮云</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>setSize</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setSize:function(contentSize)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>contentSize-类型：OpenLayers.Size，这个新的尺寸大小是弹出浮云内容的div</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>设置尺寸大小</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>setBackgroundColor</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setBackgroundColor:function(color)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>color-类型：String，颜色</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>设置背景颜色</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>setOpacity</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setOpacity:function(opacity)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>opacity-类型：Float，透明度</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>设置透明度</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">常量名</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">描述</p></th>
+    <th><p align="center">域值说明</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>CORNER_SIZE</p></td>
+      <td><p>Integer</p></td>
+      <td><p>描述角落的大小，边界间隔的角落</p></td>
+      <td><p>5: 边界间隔的空间</p></td>
+    </tr>
+  </tbody></table>
+
+<p>&nbsp;</p>
+<h1>Popup.Framed</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Popup.Anchored</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>isAlphaImage</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>判断是否是Alpha图像</p></td>
+    </tr>
+    <tr>
+      <td><p>fixedRelative</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>选择适合的相对应的位置</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Popup.Framed</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Popup.Framed(id,lonlat,contentSize,contentHTML,anchor,closeBox,closeBoxCallback)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>id-类型：String。弹出浮云的唯一标识，如果null是标识符，则将会自动生成</p>
+          <p>lonlat-类型：OpenLayers.LonLat，在地图上弹出的位置将会显示出来</p>
+        <p>contentSize-类型：OpenLayers.Size，内容的大小</p>
+        <p>contentHTML-类型：String，一个HTML字符串显示在弹出浮云的里面</p>
+        <p>anchor-类型：Object，对象必须暴露OpenLayers.Size类型的size属性和OpenLayers.Piexl类型的offset属性</p>
+        <p>closeBox-类型：Boolean，在弹出浮云的里面是否显示一个closeBox</p>
+        <p>closeBoxCallback-类型：Function，函数调用，并对closeBox点击</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个弹出的浮云</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>setSize</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setSize:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>设置尺寸大小</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>setBackgroundColor</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setBackgroundColor:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>设置背景颜色</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>destroy</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁弹出的浮云</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>setOpacity</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setOpacity:function(opacity)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>opacity-类型：Float，透明度</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>设置透明度，每当弹出浮云的尺寸大小改变的时候，都需要重写，因为我们需要更新这个块</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Popup.FramedCloud</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Popup.Framed</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>autoSize</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>默认情况下，加边框浮云是自动的尺寸大小</p></td>
+    </tr>
+    <tr>
+      <td><p>panMapIfOutView</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>浮云在默认情况下是上下左右移动的观察</p></td>
+    </tr>
+    <tr>
+      <td><p>imageSize</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>加边框浮云没有使用一个alpha图像</p></td>
+    </tr>
+    <tr>
+      <td><p>fixedRelativePosition</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>这个加外框的浮云正好插进在一个适当的位置</p></td>
+    </tr>
+    <tr>
+      <td><p>minSize</p></td>
+      <td><p>OpenLayers.Size</p></td>
+      <td><p>最大的尺寸，大小</p></td>
+    </tr>
+    <tr>
+      <td><p>maxSize</p></td>
+      <td><p>OpenLayers.Size</p></td>
+      <td><p>最小的尺寸，大小</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Popup.FramedCloud</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Popup.FramedCloud(id,lonlat,contentSize,contentHTML,anchor,    closeBox,closeBoxCallback)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>id-类型：String。弹出浮云的唯一标识，如果null是标识符，则将会自动生成</p>
+          <p>lonlat-类型：OpenLayers.LonLat，在地图上弹出的位置将会显示出来</p>
+        <p>contentSize-类型：OpenLayers.Size，内容的大小</p>
+        <p>contentHTML-类型：String，一个HTML字符串显示在弹出浮云的里面</p>
+        <p>anchor-类型：Object，对象必须暴露OpenLayers.Size类型的size属性和OpenLayers.Piexl类型offset属性</p>
+        <p>closeBox-类型：Boolean，在弹出浮云的里面是否显示一个closeBox</p>
+        <p>closeBoxCallback-类型：Function，函数调用，并对closeBox点击</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个弹出的浮云</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+
+</body></html>

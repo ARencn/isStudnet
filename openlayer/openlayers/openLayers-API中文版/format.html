@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>格式解析器</title>
+<link type="text/css" rel="stylesheet" href="format_files/contentStyle.css">
+<script type="text/javascript" src="format_files/allscript.htm"></script>
+<link type="text/css" rel="stylesheet" href="format_files/shCore.css">		
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '../../../swf/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<h1>格式解析器</h1>
+<p>&nbsp;</p>
+<h1>Format.GML</h1>
+<h2>描述</h2>
+<p>读/写GML,创建一个新的实例要用OpenLayers.Format.GML构造方法。继承自OpenLayers.Format</p>
+<h2>属性</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+  </tr>
+  
+  <tr>
+    <td><p>featureNS</p></td>
+    <td><p>String</p></td>
+    <td><p>使用要素的命名空间属性</p></td>
+  </tr>
+  <tr>
+    <td><p>featurePrefix</p></td>
+    <td><p>String</p></td>
+    <td><p>String}要素节点的命名空间的别名</p></td>
+  </tr>
+  <tr>
+    <td><p>featureNam</p></td>
+    <td><p>String</p></td>
+    <td><p>要素的元素名字</p></td>
+  </tr>
+  <tr>
+    <td><p>layerName</p></td>
+    <td><p>String</p></td>
+    <td><p>数据层的名字</p></td>
+  </tr>
+  <tr>
+    <td><p>geometryName</p></td>
+    <td><p>String</p></td>
+    <td><p>几何元素的名字</p></td>
+  </tr>
+  <tr>
+    <td><p>collectionName</p></td>
+    <td><p>String</p></td>
+    <td><p>要素的元素集合的名字</p></td>
+  </tr>
+  <tr>
+    <td><p>gmlns</p></td>
+    <td><p>String</p></td>
+    <td><p>GML的命名空间</p></td>
+  </tr>
+  <tr>
+    <td><p>extractAttributes</p></td>
+    <td><p>Boolean</p></td>
+    <td><p>GML提取的属性</p></td>
+  </tr>
+  <tr>
+    <td><p>xy</p></td>
+    <td><p>Boolean</p></td>
+    <td><p>GML协调true(x,y)或者false(x,y)的顺序，不推荐改变，一个新的格式应该实例化</p></td>
+  </tr>
+</tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Format.GML</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>OpenLayers.Format.GML(options)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>options-类型：Object，一个可选的对象其属性将被设置在这个实例上</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>构造新的GML对象的实例</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<h2>方法</h2>
+<p>read</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>read:function(data)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>data-类型：String或者DOMElement，数据</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>从字符串中读取数据并且返回要素的列表</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：Array(OpenLayers.Feature.Vector)，一个数组类型的要素</p></td>
+  </tr>
+</tbody></table>
+
+<p>write</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>write:function(features)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>features-类型：Array(OpenLayers.Feature.Vector)，要素的列表序列化成一个字符串</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>给要素的列表生成一个GML文件的字符串</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：String，返回字符串类型，字符串代表GML的文件</p></td>
+  </tr>
+</tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+
+</body></html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>标注</title>
+<link type="text/css" rel="stylesheet" href="mark_files/contentStyle.css">
+<script type="text/javascript" src="mark_files/allscript.htm"></script>
+<link type="text/css" rel="stylesheet" href="mark_files/shCore.css">		
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '../../../swf/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<h1>标注</h1>
+<h1>&nbsp;</h1>
+<h1>Icon </h1>
+<h2>描述</h2>
+<p>图标表示在屏幕上的图形图标，通常使用结合OpenLayers.Marker类在屏幕上表示标记，一个图标有一个url,大小和位置。也包含一个偏移量允许中心点正确的表示，可以提供作为一个合适的偏移量，也可以提供一个函数计算期望的偏移量。</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Icon</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>OpenLayers.Icon(url,size,offset,calculateOffset)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>url-类型：String，图标的url路径</p>
+        <p>size-类型：OpenLayers.Size，图标的大小</p>
+      <p>offset-类型：OpenLayers.Pixel，图标的偏移量</p>
+      <p>calculateOffset-类型：Function，计算的偏移量</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>创建一个图标，在div中是一个图像的标签</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Marker</h1>
+<h2>描述</h2>
+<p>实例化OpenLayers.Marker要联合OpenLayers.LonLat和OpenLayers.Icon两个类，标记一般添加一个特殊的层叫做OpenLayers.Layer.Markers</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Marker</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>OpenLayers.Marker(lonlat,icon)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>lonlat-类型：OpenLayers.LonLat，标签的位置</p>
+        <p>icon-类型：OpenLayers.Icon，小图标的标记</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>在特殊的图层上添加标签</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<h2>方法</h2>
+<p>destory</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>destroy:function()</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>无</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>销毁这个标签</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Marker.Box</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Marker</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Marker.Box</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>OpenLayers.Marker.Box(bounds,bounderColor,borderWidth)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>bounds-类型：OpenLayers.Bounds，边界范围</p>
+        <p>borderColor-类型：String，标记边框的颜色</p>
+      <p>borderWidth-类型：Int，标记边框的宽度</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>创建一个标签</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+
+</body></html>

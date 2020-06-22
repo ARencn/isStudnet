@@ -1,0 +1,1188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>基础数据类型</title>
+<link type="text/css" rel="stylesheet" href="datatypes_files/contentStyle.css">
+<script type="text/javascript" src="datatypes_files/allscript.htm"></script>
+<link type="text/css" rel="stylesheet" href="datatypes_files/shCore.css">		
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '../../../swf/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<h1>基础数据类型</h1>
+<p>&nbsp;</p>
+<h1>OpenLayers.Bounds</h1>
+<h2>描述</h2>
+<p>此类的实例描述bounding boxes.含如left, bottom, right, top  floats数据。所有值初始化为null,在用bounds前应该确保已经设置好。</p>
+<h2>属性</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+  </tr>
+  
+  <tr>
+    <td><p>left</p></td>
+    <td><p>Number</p></td>
+    <td><p>最小的水平坐标</p></td>
+  </tr>
+  <tr>
+    <td><p>bottom</p></td>
+    <td><p>Number</p></td>
+    <td><p>最小的垂直坐标</p></td>
+  </tr>
+  <tr>
+    <td><p>right</p></td>
+    <td><p>Number</p></td>
+    <td><p>最大的水平坐标</p></td>
+  </tr>
+  <tr>
+    <td><p>top</p></td>
+    <td><p>Number</p></td>
+    <td><p>最大的垂直坐标</p></td>
+  </tr>
+</tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Bounds</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>OpenLayers. Bounds (left,bottom,right,top)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>left-类型：Number，左边界。注意考虑宽度，理论上小于right值</p>
+        <p>bottom-类型：Number，下边界。考虑高度，理论大于top值</p>
+      <p>right-类型：Number，右边界</p>
+      <p>top-类型：Number，上边界</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>创建一个新的bounds对象</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<h2>方法</h2>
+<p>toString</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>toString:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>获取字符串</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：String，返回bound对象的请求</p></td>
+    </tr>
+  </tbody></table>
+
+<p>toArray</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>toArray:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>左、下、右、上的顺序转换成的数组</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Array</p></td>
+    </tr>
+  </tbody></table>
+
+<p>toBBOX </p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>toBBOX:function(decimal)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>decimal-类型：Integer，bbox coords中有效数字个数，缺省为6</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到左、下、右、上的顺序转换成BBOX形式</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：String</p></td>
+    </tr>
+  </tbody></table>
+
+<p>toGeometry </p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>toGeometry:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在当前范围创建一个新的多边形</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Geometry.Polygon，返回一个新的相匹配边界的多边形</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getWidth</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getWidth:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>获取边界宽度</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Float</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getHeight </p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getHeight:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>获取边界高度</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Float</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getSize </p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getSize:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>获取边界大小</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Size</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getCenterPixel </p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getCenterPixel:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>获取bounds的像素空间的中心点</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Pixel</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getCenterLonLat</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getCenterLonLat:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>获取bounds的地图空间的中心点</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.LonLat</p></td>
+    </tr>
+  </tbody></table>
+
+<p>add </p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>add:function(x,y)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>x-类型：Float,x-坐标</p>
+          <p>y-类型：Float,y-坐标</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>添加新的bounds</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Bounds，一个经传入的x,y值移动过的和原来一样的新的bounds</p></td>
+    </tr>
+  </tbody></table>
+
+<p>extend</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>extend:function(object)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>object-类型：Object，能够包含提供的经纬度、点、或边界的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>调整bounds使得能够包含提供的经纬度、点、或边界</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>containsLonLat </p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>containsLonLat:function (ll, inclusive)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>ll-类型：OpenLayers. LonLat，经纬度</p>
+          <p>inclusive-类型： Boolean是否包含边沿，缺省为true</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>判断是否包含某经纬度</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，如果包含指定的经纬度返回true,否则返回false</p></td>
+    </tr>
+  </tbody></table>
+
+<p>containsPixel</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>containsPixel:function (px, inclusive)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>px-类型：OpenLayers.Pixel，给定点</p>
+          <p>inclusive-类型： Boolean是否包含边沿，缺省为true</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>判断是否包含某点</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean如果所给定的点在其范围内返回true,否则返回false</p></td>
+    </tr>
+  </tbody></table>
+
+<p>contains</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>contains:function (x, y,inclusive)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>x-类型：Float，x-坐标 </p>
+          <p>y-类型：Float，y-坐标 </p>
+        <p>inclusive-类型：Boolean，是否包含边沿，缺省为true.</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>判断是否包含某经纬度</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，所给坐标在其范围内返回true,否则返回false</p></td>
+    </tr>
+  </tbody></table>
+
+<p>intersectsBounds</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>intersectsBounds (bounds, inclusive)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>bounds-类型：OpenLayers.Bounds，边界范围</p>
+          <p>inclusive-类型Boolean，是否包含边沿。缺省为true</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>判断是否包含某经纬度</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean</p></td>
+    </tr>
+  </tbody></table>
+
+<p>containsBounds</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>containsBounds:function(Bounds,Partial,Inclusive)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>Bounds-类型：OpenLayers.Bounds，边界范围</p>
+          <p>Partial-类型：Boolean,如果为true,传入的bounds只有一部分在此bounds内部。如果为false,则传入的bounds全包含与此bounds，缺省为false </p>
+        <p>Inclusive-类型：Boolean,是否包含边沿。缺省为true </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>是否包含另外一个边界（分全包含和部分包含，分含边界线和不含）</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean</p></td>
+    </tr>
+  </tbody></table>
+
+<p>determineQuadrant</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>determineQuadrant:function(lonlat)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>lonlat-类型：OpenLayers.LonLat</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>获取象限</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：String,返回一个经纬度在边界中的象限(“br” “tr” “tl” “bl”)</p></td>
+    </tr>
+  </tbody></table>
+
+<p>transform</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>transform:function(source，dest)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>source-类型：OpenLayers.Projection，源投影。</p>
+          <p>dest-类型：OpenLayers.Projection，目标投影。</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>转换边界对象从源对象到目标对象</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Bounds返回本身，用于链接操作</p></td>
+    </tr>
+  </tbody></table>
+
+<p>wrapDateLine</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>wrapDateLine:function(maxExtent,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>maxExtent-类型:OpenLayers.Bounds，最大的边界范围</p>
+          <p>options-类型：Object，可选对象包括：leftTolerance-类型：float，边界的“left”值允许的误差幅度。缺省为0。rightTolerance-类型:float,边界的“right”值允许的误差幅度。缺省为0</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>水平方向调整 </p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Bounds</p></td>
+    </tr>
+  </tbody></table>
+
+<p>fromString</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>formString:function(str)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>str-类型：String，逗号隔开的bounds字符串</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>字符串创建bounds</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Bounds返回给定的字符串创建的新的边界对象</p></td>
+    </tr>
+  </tbody></table>
+
+<p>fromArray</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>fromArray:function(bbox)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>bbox-类型：Array(Float)，数组类型的浮点数，bbox参数按照(最小x轴坐标，最小y轴坐标，最大x轴坐标，最大y轴坐标)的顺序传进来</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>数组创建边界</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Bounds返回给定的数组创建的新的边界对象</p></td>
+    </tr>
+  </tbody></table>
+
+<p>fromSize</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>fromSize:function(size)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>size-类型：OpenLayers.Size,指定大小</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建指定大小的边界范围&nbsp;&nbsp; </p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Bounds返回给定大小的边界对象</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Class</h1>
+<h2>描述</h2>
+<p>OpenLayers.Class是所有类的基类，基类构造所有其它的类，包括支持多重继承</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers. Class</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Class ()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>构造新的    OpenLayers.Class对象的实例</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>inherit</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>inherit:function ()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>构造新的    OpenLayers. Class对象的实例</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Element</h1>
+<h2>描述</h2>
+<p>OpenLayers.Element是实现元素的显示，隐藏，删除，取得高度，取得范围等功能</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>方法</h2>
+<p>visible</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>visible:function(element)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>element-类型：DOMElement，DOM元素</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>DOM元素可见性</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，返回DOM元素可见性</p></td>
+    </tr>
+  </tbody></table>
+
+<p>toggle</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>toggle: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>反转DOM元素可见性</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>hide</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>hide: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>隐藏DOM元素</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>show</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>show: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>显示DOM元素</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>remove</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>remove:function(element)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>element-类型：DOMElement，DOM元素</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>从DOM元素中移除该元素</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getHeight</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getHeight:function(element)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>element-类型：DOMElement，DOM元素</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>获取给定元素的偏移高度</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Integer，返回给定元素的偏移高度</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getDimensions</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getDimensions:function(element)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>element-类型：DOMElement，DOM元素</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>获取给定元素高宽尺寸的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Object，返回给定元素高宽尺寸的对象</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getStyle</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getStyle:function(element)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>element-类型：DOMElement,DOM元素</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>取指定样式</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.LonLat</h1>
+<h2>描述</h2>
+<p>此类描绘一对经纬度。</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>lon</p></td>
+      <td><p>Float</p></td>
+      <td><p>纬度</p></td>
+    </tr>
+    <tr>
+      <td><p>lat</p></td>
+      <td><p>Float</p></td>
+      <td><p>经度</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. LonLat</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.LonLat (lon, lat)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>lon-类型：Number，地理单位的X轴坐标</p>
+          <p>lat-类型：Number，地理单位的Y轴坐标。</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的地理位置</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>toShortString</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>toShortString:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>返回处理后的经纬度字符串</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：String</p></td>
+    </tr>
+  </tbody></table>
+
+<p>clone</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>clone:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>克隆一个新的有相同经纬的OpenLayers.LonLat对象</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.LonLat返回一个新的有相同经纬度的OpenLayers.LonLat对象</p></td>
+    </tr>
+  </tbody></table>
+
+<p>add</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>add:function(lon, lat)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>lon-类型：Float，地理单位的X轴坐标</p>
+          <p>lat-类型：Float，地理单位的Y轴坐标</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>添加一个给定经纬的OpenLayers.LonLat对象</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.LonLat返回一个新的有相同经纬度的OpenLayers.LonLat对象</p></td>
+    </tr>
+  </tbody></table>
+
+<p>equals</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>equals:function(ll)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>ll-类型：OpenLayers.LonLat，经纬度对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>判断OpenLayers.LonLat对象的经纬度和所给经纬度是否一致</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，如果OpenLayers.LonLat对象的经纬度和所给经纬度一致则返回true,不一致或传入的ll为NULL则返回false.</p></td>
+    </tr>
+  </tbody></table>
+
+<p>transform</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>transform:function(source, dest)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>source-类型：OpenLayers.Projection，源投影</p>
+          <p>dest-类型：OpenLayers.Projection，目标投影</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>转换LonLat对象</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.LonLat,返回自身，用于连接操作</p></td>
+    </tr>
+  </tbody></table>
+
+<p>wrapDateLin</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>wrapDateLin:function(maxExtent)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>maxExtent-类型：OpenLayers.Bounds，最大边界的范围</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>水平方向调整</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.LonLat</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Pixel</h1>
+<h2>描述</h2>
+<p>此类用X,Y坐标描绘屏幕坐标。</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>x</p></td>
+      <td><p>Number</p></td>
+      <td><p>x坐标</p></td>
+    </tr>
+    <tr>
+      <td><p>y</p></td>
+      <td><p>Number</p></td>
+      <td><p>y坐标</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Pixel</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers. Pixel(x,y)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>x-类型: Number，x坐标</p>
+          <p>y-类型: Number,y坐标</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的OpenLayers.Pixel实例</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Pixel</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>clone</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>clone:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>克隆一个新的有相同x,y的OpenLayers.Pixel对象</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.    Pixel，返回一个新的有相同经纬度的OpenLayers. Pixel对象</p></td>
+    </tr>
+  </tbody></table>
+
+<p>add</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>add:function(x, y)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>x-类型：Integer</p>
+          <p>y-类型：Integer</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>添加一个给定x,y的OpenLayers. Pixel对象</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.    Pixel，返回一个新的有相同x,y的OpenLayers.    Pixel对象</p></td>
+    </tr>
+  </tbody></table>
+
+<p>equals</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>equals:function(px)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>px-类型：OpenLayers.Pixel，像素</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>比较两像素是否相等</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，如果传入的像素点和此像素点相同返回true,如果不同或传入参数为NULL则返回false</p></td>
+    </tr>
+  </tbody></table>
+
+<p>offset</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>offset:function(px)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>px-类型：OpenLayers.Pixel,像素</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>比较两像素是否相等</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Pixel,返回根据传入参数值偏移的新的像素点，并改变当前位置</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Size</h1>
+<h2>描述</h2>
+<p>此类的实例描绘一对高宽值。</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>w</p></td>
+      <td><p>Number</p></td>
+      <td><p>宽</p></td>
+    </tr>
+    <tr>
+      <td><p>h</p></td>
+      <td><p>Number</p></td>
+      <td><p>高</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Size</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers. Size(w,h)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>w-类型: Number,宽</p>
+          <p>h-类型: Number,高</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的OpenLayers.Size实例</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Size</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>clone</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>clone:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>克隆一个新的OpenLayers.Size对象</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Size返回一个新的有相同宽、高的OpenLayers.Size对象</p></td>
+    </tr>
+  </tbody></table>
+
+<p>equals</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>equals:function(sz)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>sz-类型：OpenLayers.Size,尺寸大小</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>比较大小是否相等</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，如果传入的size和此实例的高宽相等则返回true,不等或传入参数为空时返回值为false.注意：如果传入的size为空则返回false</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+
+</body></html>

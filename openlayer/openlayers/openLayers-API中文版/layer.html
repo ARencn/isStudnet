@@ -1,0 +1,1808 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>图层</title>
+<link type="text/css" rel="stylesheet" href="layer_files/contentStyle.css">
+<script type="text/javascript" src="layer_files/allscript.htm"></script>
+<link type="text/css" rel="stylesheet" href="layer_files/shCore.css">		
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '../../../swf/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<h1>图层</h1>
+<h1>&nbsp;</h1>
+<h1>Layer</h1>
+<h2>描述</h2>
+<p>图层(Layer)是一切操作的基本,首先要创建一个基础层才能在图层上显示控件，操作控件等功能。</p>
+<h2>属性</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th>属性项</th>
+    <th>类型</th>
+    <th>含义</th>
+  </tr>
+  <tr>
+    <td><p>Id</p></td>
+    <td><p>String</p></td>
+    <td><p>唯一标识，每个图层只有唯一的id属性值</p></td>
+  </tr>
+  <tr>
+    <td><p>Name</p></td>
+    <td><p>String</p></td>
+    <td><p>图层的名字</p></td>
+  </tr>
+  <tr>
+    <td><p>Div</p></td>
+    <td><p>DOMElement</p></td>
+    <td><p>图层包含在这个元素中</p></td>
+  </tr>
+  <tr>
+    <td><p>alwaysInRange</p></td>
+    <td><p>Boolean</p></td>
+    <td><p>布尔类型，如果一个图层显示的不是基本级别，</p>
+      <p>那么应该设置为true</p></td>
+  </tr>
+  <tr>
+    <td><p>Events</p></td>
+    <td><p>OpenLayers.Event</p></td>
+    <td><p>触发的事件，然后交由OpenLayers.Events类处理</p></td>
+  </tr>
+  <tr>
+    <td><p>Map</p></td>
+    <td><p>OpenLayers.Map</p></td>
+    <td><p>当这个图层添加到这个地图上时，设置变量，然后调用setMap方法</p></td>
+  </tr>
+  <tr>
+    <td><p>isBaseLayer</p></td>
+    <td><p>Boolean</p></td>
+    <td><p>布尔类型，判断是否是基础层，无论这个图层</p>
+      <p>是否是基础图层，他们都应该显示设置所有的</p>
+      <p>子类,默认为false</p></td>
+  </tr>
+  <tr>
+    <td><p>displayInLayerSwitcher</p></td>
+    <td><p>Boolean</p></td>
+    <td><p>布尔类型，显示图层的名字在图层开关器里面，</p>
+      <p>默认为true</p></td>
+  </tr>
+  <tr>
+    <td><p>visibility</p></td>
+    <td><p>Boolean</p></td>
+    <td><p>布尔类型，图层应该被显示在地图上，默认为</p>
+      <p>True</p></td>
+  </tr>
+  <tr>
+    <td><p>attribution</p></td>
+    <td><p>String</p></td>
+    <td><p>在OpenLayers.Control.Attribution被添加到地图上时候就显示</p></td>
+  </tr>
+  <tr>
+    <td><p>eventListeners</p></td>
+    <td><p>Object</p></td>
+    <td><p>如果设置一个选项在构造（初始化）阶段，那么这个事件的监听着对象将要注册在OpenLayers.Events</p></td>
+  </tr>
+  <tr>
+    <td><p>Gutter</p></td>
+    <td><p>Integer</p></td>
+    <td><p>忽略确定宽度（像素）的周边范围的图像瓦片</p></td>
+  </tr>
+  <tr>
+    <td><p>Units</p></td>
+    <td><p>String</p></td>
+    <td><p>图层的地图单位</p></td>
+  </tr>
+  <tr>
+    <td><p>Scales</p></td>
+    <td><p>Array</p></td>
+    <td><p>数组类型的地图大小</p></td>
+  </tr>
+  <tr>
+    <td><p>resolutions</p></td>
+    <td><p>Array</p></td>
+    <td><p>地图列表的分辨率</p></td>
+  </tr>
+  <tr>
+    <td><p>maxExtent</p></td>
+    <td><p>OpenLayers.Bounds</p></td>
+    <td><p>图层的最大范围</p></td>
+  </tr>
+  <tr>
+    <td><p>minExtent</p></td>
+    <td><p>OpenLayers.Bounds</p></td>
+    <td><p>图层的最小范围</p></td>
+  </tr>
+  <tr>
+    <td><p>maxResolution</p></td>
+    <td><p>Float</p></td>
+    <td><p>图层最大的分辨率，默认最大的是360度/250像素</p></td>
+  </tr>
+  <tr>
+    <td><p>minResolution</p></td>
+    <td><p>Float</p></td>
+    <td><p>图层最小的分辨率</p></td>
+  </tr>
+  <tr>
+    <td><p>numZoomLevels</p></td>
+    <td><p>Integer</p></td>
+    <td><p>缩放级别的大小</p></td>
+  </tr>
+  <tr>
+    <td><p>minScale</p></td>
+    <td><p>Float</p></td>
+    <td><p>最小的尺寸</p></td>
+  </tr>
+  <tr>
+    <td><p>maxScale</p></td>
+    <td><p>Float</p></td>
+    <td><p>最大的尺寸</p></td>
+  </tr>
+  <tr>
+    <td><p>displayOutsideMaxExtent</p></td>
+    <td><p>Boolean</p></td>
+    <td><p>布尔类型，判断请求地图瓦片是否完全超出了这个图层的最大范围</p></td>
+  </tr>
+  <tr>
+    <td><p>wrapDateLine</p></td>
+    <td><p>Boolean</p></td>
+    <td><p>布尔类型</p></td>
+  </tr>
+  <tr>
+    <td><p>transitionEffect</p></td>
+    <td><p>String</p></td>
+    <td><p>过渡效果的使用是在地图上下左右移动或者缩放的时候</p></td>
+  </tr>
+</tbody></table>
+<h2>构造方法</h2>
+<p>OpenLayers.Layer</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>OpenLayers.Layer(name,options)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>name-类型：String，图层的名字</p>
+    <p>options-类型：Object}，在图层上标记额外的哈希表的选项 </p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>构造新的OpenLayers.Layer的实例,实例对象构造后，就可以调用本类的属性和方法。</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<h2>方法</h2>
+<p>setName</p>
+
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>setName:function(newName)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>newName–类型：String，新的名字 </p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>设置新的图层名字，这样可以触发地图上一个改变图层的事件</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+  <p>addOptions</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>Adoptions:function(newOptions)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>newOptions-类型：Object，对象，新的选项</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>增加额外的选项</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>onMapResize</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>onMapResize:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>这个函数可以实现子类</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>redraw</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>redraw:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>重新绘制这个图层，如果这个图层被重绘了，就返回真(true)，不是则返回假(false)</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，判断图层是否被重绘了</p></td>
+    </tr>
+</tbody></table>
+<p>removeMap</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>removeMap:function(map)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>map-类型：OpenLayers.Map，map的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>移除图层所属的地图引用</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>getImageSize</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getImageSize:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到当前图像的大小尺寸</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Size</p></td>
+    </tr>
+</tbody></table>
+<p>setTileSize</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setTileSize:function(size)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>size-类型：OpenLayers.Size，瓦片大小</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在地图范围内设置瓦片的大小</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>getVisibility</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getVisibility:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>判断图层是否可见</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，这个图层是否可见 </p></td>
+    </tr>
+</tbody></table>
+<p>setVisibility</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setVisibility:function(visible)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>visible-类型：Boolean，是否显示这个图层 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>设置可见的图层标记，然后就可以实现隐藏/显示，重绘功能</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>display</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>display:function(display)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>display-类型：Boolean，布尔类型</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>隐藏或者显示图层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>setIsBaseLayer</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setIsBaseLayer:function(isBaseLayer)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>isBaseLayer-类型：Boolean，设置是否是基础层</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>设置判断是否是基础层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>getResolution</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getResolution:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到图像的分辨率</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Float</p></td>
+    </tr>
+</tbody></table>
+<p>getExtent</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getExtent:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到范围</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Bounds，边界的对象表示经纬度边界的当前视窗</p></td>
+    </tr>
+</tbody></table>
+<p>getZoomForExtent</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getZoomForExtent:function(bounds,closest)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>bounds-类型：OpenLayers.Bounds，边界对象</p>
+      <p>closest-类型：Boolean，默认是为假(false)</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>缩放级别的下标为当前地图通过的范围</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Integer&nbsp; </p></td>
+    </tr>
+</tbody></table>
+<p>getResolutionForZoom</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getResolutionForZoom:function(zoom)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>zoom-类型：Float，缩放大小</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>为了合适的缩放而选择一个合适的图像分辨率</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Float</p></td>
+    </tr>
+</tbody></table>
+<p>getZoomForResolution</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getZoomForResolution:function(resolution,closest)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>resolution-类型：Float，分辨率大小</p>
+      <p>closest-类型：Boolean，默认为false(假) </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>缩放级别的下标所对应的最适合的分辨率是通过值和规范来实现的</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Integer</p></td>
+    </tr>
+</tbody></table>
+<p>getLonLatFromViewPortPx</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getLonLatFromViewPortPx:function(viewPortPx)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>viewPortPx-类型：OpenLayers.Pixel，当前的视口像素对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在这个图层上的一个OpenLayers.LonLat是通过OpenLayers.Pixel视口转换成经/纬度而成的</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.LonLat </p></td>
+    </tr>
+</tbody></table>
+<p>getViewPortPxFromLonLat</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getViewPortPxFromLonLat:function(lonlat)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>lonlat-类型：OpenLayers.LonLat，经纬度对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>返回一个像素位置从而给出一个地图位置，这个方法将要返回部分的像素值</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Pixel,一个OpenLayers.Pixel通过OpenLayers.LonLat转换成视口像素. </p></td>
+    </tr>
+</tbody></table>
+<p>setOpacity</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setOpacity:function(opacity)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>opacity-类型：Float，设置透明度</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>整个图层(所有的图像)上设置透明度</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<h2>常量</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+    
+  <tbody><tr>
+    <th><p align="center">常量名</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">描述</p></th>
+    <th><p align="center">域值说明</p></th>
+  </tr>
+  <tr>
+    <td><p>EVENT_TYPES</p></td>
+      <td><p>Array(String)</p></td>
+      <td><p>支持应用事件的类型</p>
+    <p>&nbsp;</p></td>
+      <td><p>loadStart:当图层开始加载时触发事件</p>
+        <p>loadEnd:当图层结束加载时候触发事件</p>
+        <p>loadCancel:当图层取消加载时候触发事件</p>
+    <p>visibilitychanged:当图层改变为可见时候触发事件</p></td>
+    </tr>
+</tbody></table>
+<p>&nbsp;</p>
+<h1>Layer.FixedZoomLevels</h1>
+<h2>描述</h2>
+<p>有些图层已经设立了缩放级别，以替代试图决定它们和填充图形分辨率的值。</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Layer.FixedZoomLevels</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Layer.FixedZoomLevels()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的合适的缩放级别的图层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<h2>方法</h2>
+<p>getResolution</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getResolution:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到当前的地图分辨率</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Float，每一像素的地图分辨率</p></td>
+    </tr>
+</tbody></table>
+<p>getExtent</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getExtent:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到大小范围</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Bounds，一个边界范围对象代表当前视窗的经纬度的边界范围</p></td>
+    </tr>
+</tbody></table>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Layer.GML</h1>
+<h2>描述</h2>
+<p>通过解析GML文件来创建一个矢量图层，该GML文件是通过参数来传递。Layer.GML继承于OpenLayers.Layer.Vector</p>
+<h2>属性</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+    
+  <tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+  </tr>
+  <tr>
+    <td><p>Format</p></td>
+      <td><p>OpenLayers.Format</p></td>
+      <td><p>解析你想要的数据格式来进行解析</p></td>
+    </tr>
+    <tr>
+      <td><p>formatOptions</p></td>
+      <td><p>Object</p></td>
+      <td><p>必须通过构造方法来创建</p></td>
+    </tr>
+</tbody></table>
+<h2>构造方法</h2>
+<p>OpenLayers.Layer.GML</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Layer.GML(name,url,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>name-类型：String，图层名称</p>
+        <p>url-类型：String，GML文件的URL路径</p>
+      <p>options-类型：Object，在图层上的额外的哈希表的选项 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>加载并解析单独的文件，根据提供的“format”选项。默认为GML</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<h2>方法</h2>
+<p>setVisibility</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setVisibility:function(visible,noEvent)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>visible-类型：Boolean，布尔类型，是否显示这个图层 </p>
+      <p>noEvent-类型：Boolean，布尔类型，是否有事件</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>设置可见的图层标记，然后可以实现隐藏/显示和重绘功能。</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Layer.Grid</h1>
+<h2>描述</h2>
+<p>基类的图层使用网格状的瓦片，创建一个新的网格图层需要用到OpenLayers.Layer.Grid构造方法。继承于OpenLayers.Layer.HTTPRequest类</p>
+<h2>属性</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+  </tr>
+  
+    <tr>
+      <td><p>titleSize</p></td>
+      <td><p>OpenLayers.Size</p></td>
+      <td><p>瓦片的大小</p></td>
+    </tr>
+    <tr>
+      <td><p>singleTile</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>加载单个的瓦片</p></td>
+    </tr>
+    <tr>
+      <td><p>ratio</p></td>
+      <td><p>Float</p></td>
+      <td><p>只使用在单个瓦片模式，在地图的尺寸中来指定的单个瓦片大小比例</p></td>
+    </tr>
+    <tr>
+      <td><p>buffer</p></td>
+      <td><p>Integer</p></td>
+      <td><p>只使用在网格化的模式，这些指定的数目行和列的瓦片每边将环绕的最小的网格瓦片来覆盖整个地图</p></td>
+    </tr>
+    <tr>
+      <td><p>numLoadingTiles</p></td>
+      <td><p>Integer</p></td>
+      <td><p>当前瓦片加载的数量</p></td>
+    </tr>
+</tbody></table>
+<h2>构造方法</h2>
+<p>OpenLayers.Layer.Grid</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Layer.Grid(name,url,params,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>name-类型：String，图层的名字</p>
+        <p>url-类型：String，图层的URL</p>
+        <p>params-类型：Object，参数对象&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+      <p>options-类型：Object，在图层上额外的哈希表选项 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的网格图层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<h2>方法</h2>
+<p>destory</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destory:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>清除网格图层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>clone</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>clone:function(obj)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>obj-类型：Object，需要克隆的图层对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个克隆的图层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Layer.Grid，克隆一个额外的OpenLayers.Layer.Grid</p></td>
+    </tr>
+</tbody></table>
+<p>setTileSize</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setTileSize:function(size)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>size-类型：OpenLayers.Size，尺寸大小比例</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>如果我们在当个瓦片模式下使用，那么就设置这个大小作为地图大小的比例.</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>getTilesBounds</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getTilesBounds:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>返回一个网格状瓦片的边界</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Bounds,一个边界的对象代表这个边界所有当前加载的瓦片</p></td>
+    </tr>
+</tbody></table>
+<p>addTile</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>addTile:function(bounds,position)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>bounds-类型：OpenLayers.Bounds，边界对象</p>
+      <p>position-类型：OpenLayers.Pixel，定位</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>添加瓦片.</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Tile</p></td>
+    </tr>
+</tbody></table>
+<p>getTileBounds</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getTileBounds:function(viewPortPx)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>viewPortPx-类型：OpenLayers.Pixel，视口的位置</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>返回瓦片的边界一层的像素位置</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Bounds,瓦片的边界在给定的像素位置</p></td>
+    </tr>
+</tbody></table>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Layer.HTTPRequest</h1>
+<h2>描述</h2>
+<p>Layer.HTTPRequest继承于OpenLayers.Layer</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Layer.HTTPRequest</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Layer.HTTPRequest(name,url,params,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>name-类型：String，图层的名字</p>
+        <p>url-类型：String，图层的URL</p>
+        <p>params-类型：Object，参数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+      <p>options-类型：Object，在图层上额外的哈希表选项 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>通过httpRquest方式来创建图层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<h2>方法</h2>
+<p>destory</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destory:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁图层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>clone</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>Clone:function(obj)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>obj-类型：Object，对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>克隆一个额外的OpenLayers.Layer.HTTPRequest</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Layer.HTTPRequest</p></td>
+    </tr>
+</tbody></table>
+<p>setUrl</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setUrl:function(newUrl,url)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>newUrl-类型：String，重新设置的url路径</p>
+      <p>url-类型：String，原来的url路径</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>设置URL的路径</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>mergeNewParams</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>mergeNewParams:function(newParams)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>newParams-类型：Object，合并参数的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>合并成新的参数</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>redraw</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>redraw:function(force)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>force-类型：Boolean，重新加入随即参数</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>重新绘制这个图层，如果这个图层被重绘过就返回真，否则为假</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean</p></td>
+    </tr>
+</tbody></table>
+<h2>常量</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+    
+  <tbody><tr>
+    <th><p align="center">常量名</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">描述</p></th>
+    <th><p align="center">域值说明</p></th>
+  </tr>
+  <tr>
+    <td><p>URL_HASH_FACTOR</p></td>
+      <td><p>Float</p></td>
+      <td><p>使用哈希的URL参数字符串来选择多种WMS服务</p></td>
+      <td><p>(Math.sqrt(5) -    1) / 2:黄金比例</p></td>
+    </tr>
+</tbody></table>
+<p>&nbsp;</p>
+<h1>Layer.Vector</h1>
+<h2>描述</h2>
+<p>实例OpenLayers.Layer.Vector用来呈现矢量数据，创建一个新的矢量层要用到OpenLayers.Layer.Vector构造方法。继承于OpenLayers.Layer类</p>
+<h2>属性</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+    
+  <tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+  </tr>
+  <tr>
+    <td><p>isBaseLayer</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>判断是否是基础层</p></td>
+    </tr>
+    <tr>
+      <td><p>isFixed</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>当拖拽这个地图时，这个图层是否会仍然在同一个地方</p></td>
+    </tr>
+    <tr>
+      <td><p>isVector</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>判断图层是否是矢量图层</p></td>
+    </tr>
+    <tr>
+      <td><p>features</p></td>
+      <td><p>Array(OpenLayers.Feature.Vector)</p></td>
+      <td><p>图层的要素</p></td>
+    </tr>
+    <tr>
+      <td><p>reportError</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>当加载渲染失败的时候，显示友好的错误消息</p></td>
+    </tr>
+    <tr>
+      <td><p>style</p></td>
+      <td><p>Object</p></td>
+      <td><p>图层的预设样式</p></td>
+    </tr>
+    <tr>
+      <td><p>rendererOptions</p></td>
+      <td><p>Object</p></td>
+      <td><p>选项的渲染</p></td>
+    </tr>
+    <tr>
+      <td><p>geometryType</p></td>
+      <td><p>String</p></td>
+      <td><p>可以允许你限制这个图层支持的几何类型</p></td>
+    </tr>
+</tbody></table>
+<h2>构造方法</h2>
+<p>OpenLayers.Layer.Vector</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Layer.Vector(name,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>name-类型：String，矢量图层的名字</p>
+      <p>options-类型：Object，设置非默认属性的图层</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的矢量图层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Layer.Vector</p></td>
+    </tr>
+</tbody></table>
+<h2>方法</h2>
+<p>destroy</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>删除这个矢量图层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>addFeatures</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>addFeatures:function(features,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>features-类型：Array(OpenLayers.Feature.Vector)，要素</p>
+      <p>options-类型：Object，可选的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在这个矢量图层上增加要素</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>removeFeatures</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>removeFeatures:function(features,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>features-类型：Array(OpenLayers.Feature.Vector)，要素</p>
+      <p>options-类型：Object，可选的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在这个矢量图层上删除要素</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>destroyFeatures</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroyFeatures:function(features,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>features-类型：Array(OpenLayers.Feature.Vector)，销毁一个可选择的要素数组</p>
+      <p>options-类型：Object，可选的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在当前图层上销毁要素</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>drawFeature</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>drawFeature:function(feature,style)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>feature-类型：OpenLayers.Feature.Vector，要素</p>
+      <p>style-类型:Object,样式的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在图层上绘制一个要素。如果这个可选的样式参数包含了，这个样式将会被使用，如果没有包含，那么这个要素的样式将会被使用，如果这个要素没有样式，那么这个图层的样式将会被使用 </p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>getFeatureById</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getFeatureById:function(featureId)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>featureId-类型：String，要素的Id </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到一个要素的id,如果这个id存在在要素的数组元素中，那么就返回这个要素</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Feature.Vector，一个要素对应一个唯一的id.</p></td>
+    </tr>
+</tbody></table>
+<p>onFeatureInsert</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>onFeatureInsert:function(feature)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>feature-类型：OpenLayers.Feature.Vector，要素</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>插入要素的方法调用后，默认情况下不做任何事情。如果你需要做一些要素上的修改，可以重写这个方法</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无 </p></td>
+    </tr>
+</tbody></table>
+<p>preFeatureInsert</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>preFeatureInsert:function(feature)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>feature-类型：OpenLayers.Feature.Vector，要素</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>插入要素的方法调用之前，默认情况下不做任何事情。当要素第一次添加到这个图层时候，在要素绘制之前，可以重写这个方法</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无 </p></td>
+    </tr>
+</tbody></table>
+<p>getDateExtent</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getDateExtent:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>估量最大的范围，其中包括所有的要素</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Bounds</p></td>
+    </tr>
+</tbody></table>
+<h2>常量</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+    
+  <tbody><tr>
+    <th><p align="center">常量名</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">描述</p></th>
+    <th><p align="center">域值说明</p></th>
+  </tr>
+  <tr>
+    <td><p>EVENT_TYPES</p></td>
+      <td><p>Array(String)</p></td>
+      <td><p>描述为支持应用的事件类型 </p></td>
+      <td><p>Beforefeatureadded:在增加一个要素之前触发事件</p>
+        <p>Featureadded:在增加一个要素之后触发事件</p>
+        <p>Featureremoved:在移除要素之后触发事件</p>
+        <p>Featureselected:在选择一个要素之后触发事件</p>
+        <p>Featureunselected:没有选择要素之后触发事件</p>
+        <p>Beforefeaturemodify:当选择要素被修改时触发事件</p>
+    <p>Afterfeaturemodified:当要素将要完成修改时就触发事件</p></td>
+    </tr>
+</tbody></table>
+<p>&nbsp;</p>
+<h1>Layer.Markers</h1>
+<h2>描述</h2>
+<p>Layer.Markers继承于OpenLayers.Layer</p>
+<h2>属性</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+    
+  <tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+  </tr>
+  <tr>
+    <td><p>isBaseLayer</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>判断是否是基础层,标签层不是一个基础层</p></td>
+    </tr>
+</tbody></table>
+<h2>构造方法</h2>
+<p>OpenLayers.Layer.Markers</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Layer.Markers(name,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>name-类型：String，标签图层的名字</p>
+      <p>options-类型：Object，可选的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个有标签的图层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<h2>方法</h2>
+<p>destroy</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁这个标签图层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>setOpacity</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setOpacity:function(opacity)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>opacity-类型：Float，设置透明度</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>所有标记设置为不透明的</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>addMarker</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>addMarker:function(marker)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>marker-类型：OpenLayers.Marker，标签类型的对象 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>增加标签</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>removeMarker</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>removeMarker:function(marker)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>marker-类型：OpenLayers.Marker，标签对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>删除标签</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>getDateExtent</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getDateExtent:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>估量最大的范围，其中包括所有的标签</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Bounds </p></td>
+    </tr>
+</tbody></table>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Layer.WFS</h1>
+<h2>描述</h2>
+<p>Layer.WFS继承于OpenLayers.Layer.Vector和OpenLayers.Layer.Markers类</p>
+<h2>属性</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+    
+  <tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+  </tr>
+  <tr>
+    <td><p>isBaseLayer</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>判断是否是基础层，WFS图层在默认情况下不是一个基础图层</p></td>
+    </tr>
+    <tr>
+      <td><p>radio</p></td>
+      <td><p>Float</p></td>
+      <td><p>在地图上图像/瓦片尺寸的比例大小</p></td>
+    </tr>
+    <tr>
+      <td><p>featureClass</p></td>
+      <td><p>OpenLayers.Feature</p></td>
+      <td><p>如果要素类定义了，那么一个原先的样式标签是基于创建WFS图层而不是一个新的样式矢量层</p></td>
+    </tr>
+    <tr>
+      <td><p>format</p></td>
+      <td><p>OpenLayers.Format</p></td>
+      <td><p>用你想要的格式来进行数据的解析</p></td>
+    </tr>
+    <tr>
+      <td><p>encodeBBOX</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>BBOX编码</p></td>
+    </tr>
+    <tr>
+      <td><p>formatOptions</p></td>
+      <td><p>Object</p></td>
+      <td><p>格式的选项</p></td>
+    </tr>
+    <tr>
+      <td><p>extractAttributes</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>是否解析这个WFS图层的属性</p></td>
+    </tr>
+</tbody></table>
+<h2>构造方法</h2>
+<p>OpenLayers.Layer.WFS</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Layer.WFS(name,url,params,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>name-类型：String，图层名字</p>
+        <p>url-类型：String，图层的url路径</p>
+        <p>params-类型：Object，参数</p>
+      <p>options-类型：Object，在图层上额外的哈希表选项</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个WFS图层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<h2>方法</h2>
+<p>destroy</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁这个WFS图层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>mergeNewParams</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>mergeNewParams:function(newParams)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>newParams-类型：Object，新的参数对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在图层上修改参数和重绘</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>clone</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>clone:function(obj)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>obj-类型：Object，对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>克隆一个额外的OpenLayers.Layer.WFS类型</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Layer.WFS </p></td>
+    </tr>
+</tbody></table>
+<p>getFullRequestString</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getFullRequestString:function(newParams,altUrl)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>newParams-类型：Object，新的参数对象</p>
+      <p>altUrl-类型：String，使用当前的url而代替图层的url</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>结合图层的url的参数和新的参数</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：String</p></td>
+    </tr>
+</tbody></table>
+<p>commit</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>commit:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>写数据提交WFS服务上</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无 </p></td>
+    </tr>
+</tbody></table>
+<p>commitReport</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>commitReport:function(String,response)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>string-类型：String，描述字符串</p>
+      <p>response-类型：String，响应全部的XML</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>如果提交成功的话，就调用一个成功的信息，否则是一个失败的信息，全部的文本请求作为第二个参数来重写函数提供的事务处理</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>refresh</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>refresh:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在当前图层上刷新所有的要素</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无 </p></td>
+    </tr>
+</tbody></table>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Layer.WMS</h1>
+<h2>描述</h2>
+<p>实例化OpenLayers.Layer.WMS用来显示OGC地图服务网站的数据。创建一个新的WMS图层需要OpenLayers.Layer.WMS构造方法。继承于OpenLayers.Layer.Grid</p>
+<h2>属性</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+    
+    <tbody><tr>
+      <th><p align="center">属性项</p></th>
+      <th><p align="center">类型</p></th>
+      <th><p align="center">含义</p></th>
+    </tr>
+    <tr>
+      <td><p>isBaseLayer</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>判断是否是基础层，默认的是WMS图层</p></td>
+    </tr>
+    <tr>
+      <td><p>encodeBBOX</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>BBOX编码</p></td>
+    </tr>
+</tbody></table>
+<h2>构造方法</h2>
+<p>OpenLayers.Layer.WMS</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Layer.WMS(name,url,params,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>name-类型：String，图层名字</p>
+        <p>url-类型：String，图层的url路径</p>
+        <p>params-类型：Object，参数</p>
+      <p>options-类型：Object，在图层上额外的哈希表选项</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的WMS图层对象</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<h2>方法</h2>
+<p>mergeNewParams</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>mergeNewParams:function(newParams)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>newParams-类型：Object，新的参数对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在超类调用的改变参数之前捕获改变的参数和大写的新参数，一旦参数改变过，那么瓦片将要重新载入这个新的参数。</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+</tbody></table>
+<p>getFullRequestString</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getFullRequestString:function(newParams,altUrl)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>newParams-类型：Object，新的参数对象</p>
+      <p>altUrl-类型：String，使用当前的url而代替图层的url</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>结合图层的url的参数和新的参数</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：String</p></td>
+    </tr>
+</tbody></table>
+<h2>常量</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+    
+    <tbody><tr>
+      <th><p align="center">常量名</p></th>
+      <th><p align="center">类型</p></th>
+      <th><p align="center">描述</p></th>
+      <th><p align="center">域值说明</p></th>
+    </tr>
+    <tr>
+      <td><p>DEFAULT_PARAMS</p></td>
+      <td><p>Object</p></td>
+      <td><p>Hashtable的默认的参数键/值对 </p></td>
+      <td><p>Service:服务,默认为：WMS服务</p>
+        <p>Version:版本,默认为：</p>
+        <p>1.1.1</p>
+        <p>Request:请求类型，默认为：GetMap</p>
+        <p>Format:格式，默认为：</p>
+      <p>Image/jpeg</p></td>
+    </tr>
+</tbody></table>
+<p>&nbsp;</p>
+
+
+</body></html>

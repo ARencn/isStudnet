@@ -1,0 +1,962 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>事件句柄</title>
+<link type="text/css" rel="stylesheet" href="handler_files/contentStyle.css">
+<script type="text/javascript" src="handler_files/allscript.htm"></script>
+<link type="text/css" rel="stylesheet" href="handler_files/shCore.css">		
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '../../../swf/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<h1>事件句柄</h1>
+<h1>&nbsp;</h1>
+<h1>Handler </h1>
+<h2>描述</h2>
+<p>基类构建一个高级别的处理事件的序列。所有的处理都有激活和关闭的方法，此外，它们的方法名字像浏览器的事件。当处理事件激活时候，任何其它的方法名字象一个注册浏览器事件作为监听响应的事件。当事件是关闭的时候，一些方法没有注册事件的监听。</p>
+<p>事件处理通常也有一个回调函数对象的名字键。控件包装了事件处理定义这个方法相当于抽象的事件-所以代替了单独的监听的浏览器事件，它们只能监听到抽象定义的处理事件。</p>
+<p>事件处理所创建的控件，最终有责任去改变应用程序的状态。处理它们本身可能有临时的改变，但是一般期望返回的应用在相同的状态以至于找到它。</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>control</p></td>
+      <td><p>OpenLayers.Control</p></td>
+      <td><p>控件对象</p></td>
+    </tr>
+    <tr>
+      <td><p>keyMask</p></td>
+      <td><p>Integer</p></td>
+      <td><p>使用位运算符并且用一个或者多个的OpenLayers.Handler类型的常量来创建一个KeyMask</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Handler</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Handler(control,callbacks,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>control-OpenLayers.Control，初始化控件的事件处理，假设控件有一个有效的地图属性，那么地图使用自己事件的setMap 方法</p>
+          <p>callbacks-Object，一个对象的属性对应抽象事件或者浏览器事件的序列化，这个值是这些属性在函数定义用控件调用事件的时候得到的</p>
+        <p>options-Object，一个可选对象，其属性将会设置在事件中</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>activate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>activate:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>处理激活事件句柄，如果这个事件已经激活，则返回false</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，这个事件是激活的状态。</p></td>
+    </tr>
+  </tbody></table>
+
+<p>deactivate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>deactivate:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>处理关闭事件句柄，如果这个事件已经是关闭状态，则返回false</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，这个事件是关闭的状态</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">常量名</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">描述</p></th>
+    <th><p align="center">域值说明</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>MOD_NONE</p></td>
+      <td><p>int</p></td>
+      <td><p>如果设置这个KeyMask.如果任意按下Key,则checkModifier方法返回false</p></td>
+      <td><p>默认值为：0</p></td>
+    </tr>
+    <tr>
+      <td><p>MOD_SHIFT</p></td>
+      <td><p>int</p></td>
+      <td><p>如果设置这个KeyMask.如果按下Shift,则checkModifiers方法返回false</p></td>
+      <td><p>默认值为：1</p></td>
+    </tr>
+    <tr>
+      <td><p>MOD_CTRL</p></td>
+      <td><p>int</p></td>
+      <td><p>如果设置这个KeyMask.如果按下Ctrl,则checkModifiers方法返回false</p></td>
+      <td><p>默认值为：2</p></td>
+    </tr>
+    <tr>
+      <td><p>MOD_ALT</p></td>
+      <td><p>int</p></td>
+      <td><p>如果设置这个KeyMask.如果按下Alt,则checkModifiers方法返回false</p></td>
+      <td><p>默认值为：4</p></td>
+    </tr>
+  </tbody></table>
+<p>&nbsp;</p>
+<h1>Handler.Box</h1>
+<h2>描述</h2>
+<p>处理地图拖放一个矩形的事件，这个矩形显示是开始于在按下鼠标，然后移动鼠标，最后完成在松开鼠标。继承于OpenLayers.Handler</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>boxDivClassName</p></td>
+      <td><p>String</p></td>
+      <td><p>这个CSS类用于绘制这个矩形状的图形</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Handler.Box</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Handler.Box(control,callbacks,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>control-类型：OpenLayers.Control，初始化控件的事件处理，假设控件有一个有效的地图属性，那么地图使用自己事件的setMap 方法</p>
+          <p>callbacks-类型：Object，当拖放操作完成的时候，一个对象包含一个函数的调用，这个回调函数得到一个单个的参数</p>
+        <p>options-类型：Object，一个可选对象，其属性将会设置在事件中</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Handler.Click</h1>
+<h2>描述</h2>
+<p>点击鼠标的处理事件。这个事件处理的意图是控制更多的可灵活处理的单击。浏览器触发点击事件两次都是双击。用这个处理。控件可以决定是否忽略单击关
+联双击，通过设置pixlToerance属性，控件也可以忽略包含一个拖拉的单击。创建一个新的实例要用到
+OpenLayers.Handler.Click构造方法。继承自OpenLayers.Handler</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>delay</p></td>
+      <td><p>Number</p></td>
+      <td><p>在事件双击之前的单击间的毫秒数量</p></td>
+    </tr>
+    <tr>
+      <td><p>single</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>单个的点击事件</p></td>
+    </tr>
+    <tr>
+      <td><p>double</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>双击事件</p></td>
+    </tr>
+    <tr>
+      <td><p>pixelTolerance</p></td>
+      <td><p>Number</p></td>
+      <td><p>最大数量的像素在按下鼠标和松开鼠标之间认为是一个点击事件</p></td>
+    </tr>
+    <tr>
+      <td><p>stopSingle</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>从被通知点击的时候停止其它的监听</p></td>
+    </tr>
+    <tr>
+      <td><p>stopDouble</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>从被通知双击的时候停止其它的监听</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Handler.Click</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Handler.Click(control,callbacks,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>control-类型：OpenLayers.Control，控件利用这个事件，如果事件没有使用一个控件，那么这个事件的setMap方法必须重写</p>
+          <p>callbacks-类型：Object，一个对象与键对应的回调将会调用这个事件。这个回调得到单个的参数，点击事件。回调
+为了click和dbclick的支
+持&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>options-类型：Object，选择对象的属性将会被设置在这个事件中</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的点击事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>deactivate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>deactivate:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>处理关闭事件句柄，如果这个事件已经关闭，则返回false</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，这个事件已经成功的关闭</p></td>
+    </tr>
+  </tbody></table>
+
+<p>activate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>activate:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>处理激活事件句柄，如果这个事件已经激活，则返回false</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，这个事件是激活的状态。</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量 </h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Handler.Drag</h1>
+<h2>描述</h2>
+<p>拖放事件处理用来处理浏览器事件的序列有关的拖拉，拖放。事件处理使用的控件想知道什么时候发生一个拖拉和当它什么时候完成。控件使用拖拉处理事件
+通常情况下构建它要用到回调down，move和done事件, 
+当拖放开始时候回调这些键的调用，用每一次的移动和拖放来完成。此外，如果它们关心不同的事件类型之间相关的拖放序列，那么控件可以回调up和down的
+事件。创建一个新的拖放事件要用OpenLayers,Handler.Drag构造方法。继承自OpenLayers.Handler</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Handler.Drag</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Handler.Drag(control,callbacks,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>control-类型：OpenLayers.Control，控件利用这个事件，如果事件没有使用一个控件，那么这个事件的setMap方法必须重写</p>
+          <p>callbacks-类型：Object，当拖拉操作完成时，一个对象包含一个单独的方法调用</p>
+        <p>options-类型：Object，可选的对象&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    &nbsp;&nbsp;</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的拖拉事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Handler.Drag</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Handler.Feature</h1>
+<h2>描述</h2>
+<p>处理响应鼠标事件相关的绘制要素，回调的下列键将会通知下列事件想关联的要素：单击，单击后离开，移出，将要移出，双击鼠标左键。</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Handler.Feature</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Handler.Feature(control,layer,callbacks,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>control-类型：OpenLayers.Control，控件对象 </p>
+          <p>layer-类型：Array(OpenLayers.Layer.Vector)，数组形式的矢量图层对象</p>
+        <p>callbacks-类型：Object，当鼠标移出一个要素的时候，对象的over属性值作为一个函数的回调。这个回调在这个要素上得到单个的参数，</p>
+        <p>options-类型：Object，可选的对象&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的绘制要素的事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Handler.Hover</h1>
+<h2>描述</h2>
+<p>在地图对象中，悬停的处理是用作模拟鼠标移出某个元素。例如可以使用这个处理发送到WMS/GetFeatureInfo请求作为用户移动到这个地图上。继承自OpenLayers.Handler</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <td><p align="center">属性项</p></td>
+    <td><p align="center">类型</p></td>
+    <td><p align="center">含义</p></td>
+    </tr>
+    
+    <tr>
+      <td><p>delay</p></td>
+      <td><p>Integer</p></td>
+      <td><p>在事件双击之前的单击间的毫秒数量。默认为500</p></td>
+    </tr>
+    <tr>
+      <td><p>pixelTolerance</p></td>
+      <td><p>Integer</p></td>
+      <td><p>最多数量的像素在鼠标移动之间被认为是一个悬停事件。默认为null</p></td>
+    </tr>
+    <tr>
+      <td><p>stopMove</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>停止移动</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Handler.Hover</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Handler.Hover(control,callbacks,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>control-类型：OpenLayers.Control，控件可利用这个事件，如果事件没有使用一个控件，那么这个事件的setMap方法必须重写</p>
+          <p>callbacks-类型：Object，一个对象的属性对应浏览器事件的序列化，这个值是这些属性在函数定义用控件调用事件的时候得到的</p>
+        <p>options-类型：Object，一个可选对象，其属性将会设置在事件中</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个悬停的处理事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>deactivate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>deactivate:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>关闭事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean</p></td>
+    </tr>
+  </tbody></table>
+
+<p>activate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>activate:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>激活事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean </p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Handler.Keyboard</h1>
+<h2>描述</h2>
+<p>处理键盘的事件。创建一个新的实例要用OpenLayers.Handler.Keyboard 构造方法.继承自 OpenLayers.Handler</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Handler.Keyboard</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Handler.Keyboard(control,callbacks,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>control-类型：OpenLayers.Control，控件利用这个事件，如果事件没有使用一个控件，那么这个事件的setMap方法必须重写</p>
+          <p>callbacks-类型：Object，当拖放操作完成的时候，一个对象包含一个单个的函数的回调。这个回调得到这个像素位置的单个参数，回调事件支持keydown，keypress，keyup</p>
+        <p>options-类型：Object，一个可选对象，其属性将会设置在事件中&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>返回一个新的键盘处理事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>deactivate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>deactivate:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>关闭当前的事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean</p></td>
+    </tr>
+  </tbody></table>
+
+<p>activate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>activate:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>激活当前的事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">常量名</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">描述</p></th>
+    <th><p align="center">域值说明</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>KEY_EVENTS</p></td>
+      <td><p>Array(String)</p></td>
+      <td><p>键盘事件：keydown,keyup。</p></td>
+      <td><p>Keydown:键盘按下去时候触发事件</p>
+          <p>Keyup：键盘按下去之后回馈的时候触发事件</p></td>
+    </tr>
+  </tbody></table>
+
+<p>&nbsp;</p>
+<h1>Handler.MouseWheel</h1>
+<h2>描述</h2>
+<p>处理上下滑动事件。继承自OpenLayers.Handler</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Handler.MouseWheel</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Handler.MouseWheel(control,callbacks,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>control-类型：OpenLayers.Control，控件对象</p>
+          <p>callbacks-类型：Object，当拖放操作完成的时候， 一个对象包含一个单个的函数的回调。这个回调得到点的几何图形的单个参数</p>
+        <p>options-Object，可选的对象&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的鼠标滑轮事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Handler.Path</h1>
+<h2>描述</h2>
+<p>在地图上处理绘制的路径。路径显示开始于在按下鼠标，然后移动鼠标，最后完成在松开鼠标。继承自OpenLayers.Handler</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Handler.Path</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Handler.Path(control,callbacks,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>control-类型：OpenLayers.Control， 控件对象</p>
+          <p>callbacks-类型：Object，当路径绘制完成时，一个对象用done属性值作为一个函数的回调。回调得到线性串的
+几何图形的单个参数。如果这个回调对象包含一个point属性，这个函数将会添加发送到每个点，如果这个回调对象包含cancel属性，当绘制时处理事件
+是关闭的时候，这个函数将会调用，这个方法将得到一个几何图形。</p>
+        <p>options-类型：Object，一个可选对象，其属性将会设置在事件中</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的路径处理事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Handler.Point</h1>
+<h2>描述</h2>
+<p>在地图上处理绘制点的事件，点显示开始于在按下鼠标，然后移动鼠标，最后完成在松开鼠标。这个处理事件的触发回调done和cancel方法。创建一个新的实例要用OpenLayers.Handler.Point构造方法。继承自OpenLayers.Handler</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>persist</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>离开这个渲染要素直到销毁要素的方法调用。默认的为false。如果设置为true，通常情况下关闭这个事件处理或者开始另外的绘制时，这个要素仍然会渲染直到销毁要素的方法调用</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Handler.Point</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Handler.Point(control,callbacks,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>control-类型：OpenLayers.Control，这个控件有自己的事件处理</p>
+          <p>callback-类型：Object，当点绘制完成时，一个对象用done属性值作为一个函数回调。回调得到点的几何图形的单个参数。如果这个回调对象包含cancel属性，当绘制时处理事件是关闭的时候，这个函数将会调用，这个方法得到一个几何图形。</p>
+        <p>options-类型：Object，一个可选对象，其属性将会设置在事件中</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的点的事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>deactivate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>deactivate:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>关闭当前的事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean</p></td>
+    </tr>
+  </tbody></table>
+
+<p>activate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>activate:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>激活当前的事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean</p></td>
+    </tr>
+  </tbody></table>
+
+<p>cancel</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>cancel:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>几何图形完成并且调用cancel回调</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Handler.Polygon</h1>
+<h2>描述</h2>
+<p>在地图上处理绘制多边形的事件，多边形显示是开始于在按下鼠标，然后移动鼠标，最后完成在松开鼠标。继承自OpenLayers,Handler和OpenLayers.Handler.Path</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Handler.Polygon</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Handler.Polygon(control,callbacks,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>control-类型：OpenLayers.Control，控件对象</p>
+          <p>callback-类型：Object，当路径绘制完成时，一个对象用done属性值作为一个函数回调。回调得到多边形的几何
+图形的单个参数。如果这个回调对象包含一个point属性，这个函数将会添加发送到每个点，如果这个回调对象包含cancel属性，当绘制时处理事件是关
+闭的时候，这个函数将会调用，这个方法得到一个几何图形。</p>
+        <p>options-类型：Object，可选项</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的多边形的事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Handler.RegularPolygon</h1>
+<h2>描述</h2>
+<p>在地图上处理绘制规则多边形的事件。多边形的显示是在按下鼠标，然后移动或者修改鼠标的方位，最后完成在松开鼠标。这个处理事件的触发回调done
+和cancel方法，创建一个新的实例要用OpenLayers.Handler.RegularPolygon构造方法。继承自
+OpenLayers.Handler</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>side</p></td>
+      <td><p>Integer</p></td>
+      <td><p>规则多边形的边的数量，需要大于2。默认的值为4</p></td>
+    </tr>
+    <tr>
+      <td><p>radius</p></td>
+      <td><p>Float</p></td>
+      <td><p>在地图单位上选择规则多边形的半径</p></td>
+    </tr>
+    <tr>
+      <td><p>persist</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>离开这个渲染要素直到销毁要素的方法调用。默认的为false。如果设置为true，通常情况下关闭这个事件处理或者开始另外的绘制时，这个要素仍然会渲染直到销毁要素的方法调用。</p></td>
+    </tr>
+    <tr>
+      <td><p>irregular</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>绘制一个不规则的多边形来代替一个规则的多边形。默认为false,如果为true鼠标下移时将描绘多边形范围的一个角，每次鼠标移动，多边形将鼠标位置展开对应的角</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Handler.RegularPolygon</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Handler.RegularPolygon(control,callbacks,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>control-类型：OpenLayers.Control，这个控件有自己的事件处理</p>
+          <p>callbacks-类型：Array，当路径绘制完成时，一个对象用done属性值作为一个函数回调。回调得到多边形的几何图形的单个参数。如果这个回调对象包含cancel属性，当绘制时处理事件是关闭的时候，这个函数将会调用，这个方法得到一个几何图形。</p>
+        <p>options-类型：Object，一个可选对象，其属性将会设置在事件中。如果这个可选择的边的属性没有特定的，这个边的数量默认为4</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个有规则多边形的事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>setOptions</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setOptions:function(newOptions)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>newOptions-类型：Object， 新的可选对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>设置选项</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>deactivate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>deactivate:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>关闭当前的事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，这个事件已经成功的被关闭</p></td>
+    </tr>
+  </tbody></table>
+
+<p>activate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>activate:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>激活当前的事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，这个事件已经成功的被激活</p></td>
+    </tr>
+  </tbody></table>
+
+<p>cancel</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>cancel:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>完成几何图形并且调用这个“cancel”回调函数</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>clear</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>clear:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在临时的图层上清除渲染的要素 </p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+
+</body></html>

@@ -1,0 +1,1274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>地图对象</title>
+<link type="text/css" rel="stylesheet" href="map_files/contentStyle.css">
+<script type="text/javascript" src="map_files/allscript.htm"></script>
+<link type="text/css" rel="stylesheet" href="map_files/shCore.css">		
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '../../../swf/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+  <h1>地图对象</h1>
+  <p>&nbsp;</p>
+<h1>Map</h1>
+  <h2>描述</h2>
+<p>OpenLayers.Map的实例是内嵌于网页的交互式地图，可以在一个地图上增加相关控件（OpenLayers.Control）和加载相应图层(OpenLayers.Layer)</p>
+
+<h2>属性</h2>
+
+<table border="1" cellpadding="0" cellspacing="0">
+  
+    <tbody><tr>
+      <th>属性项</th>
+      <th>类型</th>
+      <th>含义</th>
+  </tr>
+  <tr>
+    <td><p>Events</p></td>
+    <td><p>OpenLayers.Events</p></td>
+    <td><p>事件对象可以处理地图上的所有事件</p></td>
+  </tr>
+  <tr>
+    <td><p>div</p></td>
+    <td><p>DOMElement</p></td>
+    <td><p>地图所在的网页DOM元素，一般为div对象</p></td>
+  </tr>
+  <tr>
+    <td><p>layers</p></td>
+    <td><p>Array(OpenLayers.Layer)</p></td>
+    <td><p>地图中已加载的所有图层</p></td>
+  </tr>
+  <tr>
+    <td><p>baseLayer</p></td>
+    <td><p>OpenLayers.Layer</p></td>
+    <td><p>当前的基础图层</p></td>
+  </tr>
+  <tr>
+    <td><p>tileSize</p></td>
+    <td><p>OpenLayers.Size</p></td>
+    <td><p>地图默认的瓦片大小</p></td>
+  </tr>
+  <tr>
+    <td><p>units</p></td>
+    <td><p>String</p></td>
+    <td><p>地图单位</p></td>
+  </tr>
+  <tr>
+    <td><p>resolutions</p></td>
+    <td><p>Array(Float)</p></td>
+    <td><p>地图中能显示的分辩率（地图单位/像素）列表，以降序排列</p></td>
+  </tr>
+  <tr>
+    <td><p>maxResolution</p></td>
+    <td><p>Float</p></td>
+    <td><p>最大的分辨率，默认最高是360度/256像素，相当于缩放级别0</p></td>
+  </tr>
+  <tr>
+    <td><p>minResolution</p></td>
+    <td><p>Float</p></td>
+    <td><p>最小的分辨率</p></td>
+  </tr>
+  <tr>
+    <td><p>maxScale</p></td>
+    <td><p>Float</p></td>
+    <td><p>最大比例尺</p></td>
+  </tr>
+  <tr>
+    <td><p>minScale</p></td>
+    <td><p>Float</p></td>
+    <td><p>最小比例尺</p></td>
+  </tr>
+  <tr>
+    <td><p>maxExtent</p></td>
+    <td><p>OpenLayers.Bounds</p></td>
+    <td><p>地图的最大范围</p></td>
+  </tr>
+  <tr>
+    <td><p>minExtent</p></td>
+    <td><p>OpenLayers.Bounds</p></td>
+    <td><p>地图的最小范围</p></td>
+  </tr>
+  <tr>
+    <td><p>restrictedExtent</p></td>
+    <td><p>OpenLayers.Bounds</p></td>
+    <td><p>限制地图导航的范围</p></td>
+  </tr>
+  <tr>
+    <td><p>numZoomLevels</p></td>
+    <td><p>Integer</p></td>
+    <td><p>地图的缩放级别数</p></td>
+  </tr>
+  <tr>
+    <td><p>theme</p></td>
+    <td><p>String</p></td>
+    <td><p>地图的主题样式，相对路径的CSS文件</p></td>
+  </tr>
+  <tr>
+    <td><p>fallThrougth</p></td>
+    <td><p>Boolean</p></td>
+    <td><p>判断是否应该允许事件在地图上对下面的元素失效</p></td>
+  </tr>
+  <tr>
+    <td><p>eventListeners</p></td>
+    <td><p>Object</p></td>
+    <td><p>如果在构造方法中设置该选项，这个事件监听对象将要注册于OpenLayers.Events中</p></td>
+  </tr>
+</tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Map</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>OpenLayers.Map(div,options)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>div-类型：String，包含地图对象的div的id</p>
+      <p>options-类型：Object，地图相关的选项设置</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>构造新的    OpenLayers.Map对象的实例</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<h2>方法</h2>
+<p>destroy</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>destroy:function()</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>无</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>销毁地图</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<p>setOptions</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>setOptions:function(options)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>options-类型：Object，设置地图选项的相关信息</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>改变这个地图的相关选项设置</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<p>getTileSize</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>getTileSize:function()</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>无</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>获取当前瓦片的大小</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：OpenLayers.Size</p></td>
+  </tr>
+</tbody></table>
+
+<p>getBy</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>getBy:function(array,property,match)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>array-类型：String，在地图上一个属性值是一个数组</p>
+      <p>property-类型：String，属性</p>
+      <p>match-类型：String|Object，匹配一个字符串，可以是规则的表达式或者对象。另外，也可以是任何对象用一个方法名字来测试</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>得到一个对象的列表，并且给定一个属性和一个匹配元素</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：Array，得到一个数组元素的属性匹配</p></td>
+  </tr>
+</tbody></table>
+
+<p>getLayersBy</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>getLayersBy:function(property,match)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>property-类型：String，一个图层的属性</p>
+      <p>match-类型：String |    Object，匹配一个字符串，可以是规则的表达式或者对象。另外，也可以是任何对象用一个方法名字来测试</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>得到一个图层的列表，并且给定一个属性和一个匹配元素</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：Array(OpenLayers.Layer )，一个图层的列表规定的匹配标准。如果没有找到匹配就返回一个空的数组</p></td>
+  </tr>
+</tbody></table>
+
+<p>getLayersByName</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>getLayersByName:function(match)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>match-类型：String |    Object，匹配一个字符串，可以是规则的表达式或者对象。另外，也可以是任何对象用一个方法名字来测试</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>得到一个图层列表的名字来匹配已经给定的名字</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：Array(OpenLayers.Layer)，一个图层的列表匹配给定的名字。如果没有找到匹配就返回一个空的数组</p></td>
+  </tr>
+</tbody></table>
+
+<p>getLayersByClass</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getLayersByClass:function(match)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>match-类型：String |    Object，匹配一个字符串，可以是规则的表达式或者对象。另外，也可以是任何对象用一个方法名字来测试</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到一个图层列表给定的类（CLASS_NAME）</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Array(OpenLayers.Layer)，一个图层的列表匹配给定的类。如果没有找到匹配就返回一个空的数组</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getControlsBy</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getControlsBy:function(property)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>property-类型：String，一个控件属性,匹配一个字符串，可以是规则的表达式或者对象。另外，也可以是任何对象用一个方法名字来测试</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到一个控件列表的属性来匹配这个给定的标准</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Array(OpenLayers.Control)，返回一个控件的列表匹配给定的标准。如果没有找到匹配就返回一个空的数组</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getControlsByClass</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getControlsByClass:function(match)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>match-类型：String |    Object，匹配一个字符串，可以是规则的表达式或者对象。另外，也可以是任何对象用一个方法名字来测试</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到一个控件列表的给定的类(CLASS_NAME)</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Array(OpenLayers.Control)，返回一个控件的列表匹配给定的类。如果没有找到匹配就返回一个空的数组</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getLayer</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getLayer:function(id)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>id-类型：String，一个图层的id</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>通过指定的图层id得到一个图层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Layer，一个图层的id符合从地图的图层集合而来。如果没有找到就为空(null)</p></td>
+    </tr>
+  </tbody></table>
+
+<p>addLayer</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>addLayer:function(layer)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>layer-类型：OpenLayers.Layer，图层的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>增加图层，用地图的实例化对象来实现</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>addLayers</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>addLayers:function(layers)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>layers-类型：Array(OpenLayersLayer)，数组类型的图层对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>用数组来表示增加图层的集合，用地图的实例化对象来实现</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>removeLayer</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>removeLayer:function(layer,setNewBaseLayer)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>layer-类型：OpenLayers.Layer，图层对象</p>
+        <p>setNewBaseLayer-类型：Boolean，默认为真</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>从这个地图上删除这个图层，然后删除地图的内部的图层列表，最后设置图层的地图属性为空.</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getNumLayers</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getNumLayers:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到图层的数量</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Int</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getLayerIndex</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getLayerIndex:function(layer)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>layer-类型：OpenLayers.Layer，图层的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到当前图层的下标</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Integer，当前给定的图层下标在地图图层的堆里，如果这个图层不在地图上就返回-1 </p></td>
+    </tr>
+  </tbody></table>
+
+<p>setLayerIndex</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setLayerIndex:function(layer,idx)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>layer-类型：OpenLayers.Layer，图层对象</p>
+        <p>idx-类型：Int，设置图层的索引下标 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在图层列表中移动图层的索引下标，改变它的z-下标在地图的显示 </p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>raiseLayer</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>raiseLayer:function(layer,delta)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>layer-类型：OpenLayers.Layer}，图层的对象</p>
+        <p>delta-类型：Int，图层顺序的调整数</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>给定的图层索引下标,调整图层的顺序</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>setBaseLayer</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setBaseLayer:function(newBaseLayer)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>newBaseLayer-类型：OpenLayers.Layer，图层对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>允许用户指定当前加载的图层作为地图的新的基础层</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>addControl</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>addControl:function(control,px)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>control-类型：OpenLayers.Control，控件对象</p>
+        <p>px-类型：OpenLayers.Pixel，像素的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在地图上增加控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getControl</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getControl:function(id)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>id-类型：String，返回控件的ID</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Control，从地图的控件列表中找是否有匹配的id，如果没有找到，则返回空</p></td>
+    </tr>
+  </tbody></table>
+
+<p>removeControl</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>removeControl:function(control)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>control-类型：OpenLayers.Control，要删除的控件对象 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>从地图上删除当前需要删除的控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>addPopup</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>addPopup:function(popup,exclusive)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>popup-类型：OpenLayers.Popup，弹出浮云的对象</p>
+        <p>exclusive-类型：Boolea，如果为真，首先关闭其他的弹出窗口（浮云）&nbsp;&nbsp; </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>增加弹出窗口</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>removePopup</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>removePopup:function(popup)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>popup-类型：OpenLayers.Popup，弹出浮云的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>删除弹出的窗口</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getSize</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getSize:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到当前的大小</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Size，一个OpenLayers.Size对象代表大小，像素，以及被加载的div </p></td>
+    </tr>
+  </tbody></table>
+
+<p>updateSize</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>updateSize:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>这个函数应该调用外部的代码来改变这个地图的div的大小 </p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getCenter</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getCenter:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到地图的中心位置</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.LonLat</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getZoom</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getZoom:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到当前的缩放级别</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>pan</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>pan:function(dx,dy,options)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>dx-类型：Integer，x-坐标</p>
+      <p>dy-类型：Integer，y-坐标</p>
+      <p>options-类型：Object，上下左右移动的选项</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>允许用户使用屏幕像素的值</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<p>panTo</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>panTo:function(lonlat)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>lonlat-类型：OpenLayers.LonLat，经纬度的对象</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>如果新的经纬度要在当前地图范围要平稳的滑动，那么可以允许设置新的经纬度</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<p>setCenter</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>setCenter:function(lonlat,zoom,dragging,forceZoomChange)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>lonlat-类型：OpenLayers.LonLat，经纬度对象</p>
+        <p>zoom-类型：Integer，缩放大小</p>
+        <p>dragging-类型：Boolean判断是否触发移动开始/结束事件</p>
+        <p>forceZoomChange-类型：Boolean判断是否触发缩放改变事件</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>设置当前地图的中心位置</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getMaxResolution</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getMaxResolution:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到最大的图像分辨率</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：String</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getMaxExtent</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getMaxExtent:function(options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>options-类型：Object，可选对象&nbsp;&nbsp; </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>当前的基础层的最大范围属性</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Bounds</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getNumZoomLayers</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getNumZoomLevels:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>所有的缩放级别大小都可以显示在当前的基础层中</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Integer</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getExtent</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getExtent:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到当前的地图范围</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Bounds，一个边界的对象代表经/纬度跨越当前的视窗，如果没有基础层设置，则返回空</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getResolution</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getResolution:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到当前图像分辨率</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Float，如果没有基础层设置，则返回空。&nbsp; </p></td>
+    </tr>
+  </tbody></table>
+
+<p>getUnits</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getUnits:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到当前的地图单元</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Float，如果没有基础层设置，则返回空</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getScale</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getScale:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到当前的地图范围</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Float，如果没有设置基础层，则返回空</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getZoomForExtent</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getZoomForExtent:function(bounds,closest)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>bounds-类型：OpenLayers.Bounds，边界的对象</p>
+        <p>closest-类型Boolean，是否为最适合该范围的缩放级别，默认为假</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到在特定的边界范围内选择合适的缩放级别</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Integer，如果没有基础层的设置，则返回空值。</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getZoomForResolution</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getZoomForResolution:function(resolution,closest)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>resolution-类型：Float，分辨率大小</p>
+        <p>closest-类型：Boolea，是否为最适合该分辩率的缩放级别，默认为假</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在特定的分辨率下选择合适的缩放级别</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Integer，如果没有设置基础层，则返回为空值。</p></td>
+    </tr>
+  </tbody></table>
+
+<p>zoomTo</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>zoomTo:function(zoom)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>zoom-类型：Integer，缩放大小</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>缩放到指定的缩放级别</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>zoomIn</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>zoomIn:function(zoom)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>zoom-Int，缩放大小</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>缩放到指定的缩放级别，放大</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>zoomOut</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>zoomOut:function(zoom)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>zoom-类型：Int，缩放大小</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>缩放到指定的缩放级别，缩小</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>zoomToExtent</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>zoomToExtent:function(bounds,closest)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>bounds-类型：OpenLayers.Bounds，指定的地图范围</p>
+        <p>closest-类型:Boolean，是否精确定位，默认为假</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>通过指定边界范围来确定缩放级别。</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>zoomToMaxExtent</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>zoomToMaxExtent:function(options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>options-类型：Object，可选对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>缩放到整个范围并且重新定位地图中心</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>zoomToScale</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>zoomToScale:function(scale,closest)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>scale-类型：Float，比例尺</p>
+        <p>closest-类型：Float，默认为假</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>缩放到指定的比例尺</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getViewForPxFromLonLat</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getViewForPxFromLonLat:function(lonlat)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>lonlat-类型：OpenLayers.LonLat，经纬度对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>从地理坐标获取视口坐标</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Pixe，在当前的基础层下，一个OpenLayers.Pixel是通过OpenLayers.LonLat转换成的视口像素</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getLonLatFromPixel</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getLonLatFromPixel:function(px)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>px-类型：OpenLayers.Pixel，像素对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>从视口坐标获取地理坐标</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.LonLat，在当前的基础层下，一个OpenLayers.LonLat 给予相应的OpenLayers.Pixel转换成经/纬度</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getPixelFromLonLat</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getPixelFromLonLat:function(lonlat)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>lonlat-类型：OpenLayers.LonLat，地图的定位</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在当前的基础层下，给出一个地图位置从而返回一个像素位置。</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Pixel，在当前的基础层下，一个OpenLayers.Pixel给予相应的OpenLayers.LonLat,转化成视口像素</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getViewPortPxFromLayerPx</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>getViewPortPxFromLayerPx:function(layerPx)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>layerPx-类型：OpenLayers.Pixel，像素的对象</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>图层像素转换成视口像素的坐标</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：OpenLayers.Pixel,</p></td>
+  </tr>
+</tbody></table>
+
+<p>getLayerPxFromViewPortPx</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>getLayerPxFromViewPortPx:function(viewPortPx)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>viewPortPx-类型：OpenLayers.Pixel，像素的类型对象</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>视口像素转换成图层像素的坐标</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：OpenLayers.Pixel</p></td>
+  </tr>
+</tbody></table>
+
+<p>getLayerPxFromLonLat</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>getLayerPxFromLonLat:function(lonlat)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>lonlat-类型：OpenLayers.LonLat，经纬度</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>在当前的基础层下，一个OpenLayers.Pixel是通过OpenLayers.LonLat转换而成的图层像素</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：OpenLayers.Pixel</p></td>
+  </tr>
+</tbody></table>
+
+<h2>常量</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">常量名</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">描述</p></th>
+    <th><p align="center">域值说明</p></th>
+  </tr>
+    
+    <tr>
+      <td><p>Z_INDEX_BASE</p></td>
+      <td><p>Object</p></td>
+      <td><p>基本的Z-索引下标是不同的类</p></td>
+      <td><p>BaseLayer:基础层的下标，默认为100.</p>
+        <p>Overlay:覆盖层的下标，默认的为325.</p>
+        <p>Feature:要素的下标，默认的为725.</p>
+        <p>Popup:弹出浮云的下标，默认的为750.</p>
+        <p>Control:控件的下标，默认的为1000</p></td>
+    </tr>
+    <tr>
+      <td><p>EVENT_TYPES</p></td>
+      <td><p>Array(String)</p></td>
+      <td><p>支持应用事件的类型</p></td>
+      <td><p>addLayer:图层被添加时触发事件</p>
+        <p>removeLayer:图层被删除时触发事件</p>
+        <p>changeLayer:在改变图层名字，顺序改变，或者可见性改变之后触发事件</p>
+        <p>moveStart:开始拖拉，缩放之后触发事件</p>
+        <p>moveEnd:拖拉，缩放操作完成之后触发事件</p>
+        <p>Popupopen:弹出浮云打开之后触发事件</p>
+        <p>removeMarker:标记被删除时触发事件</p>
+        <p>addMarker:标记被增加时触发事件</p>
+        <p>drag:拖拉之后触发事件</p>
+        <p>mouseover:鼠标经过地图时触发事件</p>
+        <p>mouseout:鼠标移开地图时触发事件</p></td>
+    </tr>
+    <tr>
+      <td><p>TILE_WIDTH</p></td>
+      <td><p>Integer</p></td>
+      <td><p>默认为256瓦片的宽度</p></td>
+      <td><p>256:瓦片的宽度</p></td>
+    </tr>
+    <tr>
+      <td><p>TILE_HEIGHT</p></td>
+      <td><p>Integer</p></td>
+      <td><p>默认为256瓦片的长度</p></td>
+      <td><p>256:瓦片的长度</p></td>
+    </tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+
+</body></html>

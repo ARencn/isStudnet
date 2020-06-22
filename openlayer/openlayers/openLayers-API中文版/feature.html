@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>要素</title>
+<link type="text/css" rel="stylesheet" href="feature_files/contentStyle.css">
+<script type="text/javascript" src="feature_files/allscript.htm"></script>
+<link type="text/css" rel="stylesheet" href="feature_files/shCore.css">		
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '../../../swf/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<h1>要素</h1>
+<h1>&nbsp;</h1>
+<h1>Feature</h1>
+<h2>描述</h2>
+<p>要素包含地理和属性，这个特定的OpenLayers.Feature类包含一个标记和一个经纬度</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>popupClass</p></td>
+      <td><p>OpenLayers.Class</p></td>
+      <td><p>这个类将会用来初始化一个新的浮云.</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Feature</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Feature(layer,lonlat,data)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>layer-类型：OpenLayers.Layer，图层对象</p>
+          <p>lonlat-类型：OpenLayers.LonLat，经纬度对象</p>
+        <p>data-类型：Object，数据对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>构造要素</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Feature.Vector</h1>
+<h2>描述</h2>
+<p>矢量要素使用OpenLayers.Geometry类作为几何类型描述，他们有个“attributes”属性，和一个“style”属性，这些
+默认的值是定义在OpenLayers.Feature.Vector.Style对象中。继承于OpenLayers.Feature</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>geometry</p></td>
+      <td><p>OpenLayers.Geometry</p></td>
+      <td><p>几何图形.</p></td>
+    </tr>
+    <tr>
+      <td><p>Attributes</p></td>
+      <td><p>Object</p></td>
+      <td><p>属性.</p></td>
+    </tr>
+    <tr>
+      <td><p>style</p></td>
+      <td><p>Object</p></td>
+      <td><p>样式</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Feature.Vector</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Feature.Vector(geometry,attributes,style)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>geometry-类型：OpenLayers.Geometry，几何图形代表着这些要素</p>
+          <p>Attributes-类型：Objec，一个可选对象将要映射到属性中</p>
+        <p>Style-类型：Object，一个可选的样式对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个矢量要素</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Feature</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">常量名</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">描述</p></th>
+    <th><p align="center">域值说明</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>STYLE</p></td>
+      <td><p>Array(String)</p></td>
+      <td><p>OpenLayers要素可以有很多的样式属性，如果没有其它的指定样式，通常会使用这个“default”样式。</p></td>
+      <td><p>#ee9900：填充的颜色</p>
+          <p>0.4：设置的透明度</p></td>
+    </tr>
+  </tbody></table>
+<p>&nbsp;</p>
+<h1>Feature.WFS</h1>
+<h2>描述</h2>
+<p>WFS作为一个要素类在WFS图层上控制“点”的WFS类型。继承于OpenLayers.Feature</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Feature.WFS</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Feature.WFS(options,layer)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>Options-类型：Object,可选的对象</p>
+          <p>Layer-类型：OpenLayers.Layer,图层对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个格式化的WFS-T。这就要求一个图层应该有两个属性：几何图形列和类型名字。解析这个格式完全由GML的子类来完成:这里只有一个记录器，此记录器使用了大量的GML图层代码，并包装在事务处理元素里</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>destory</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>删除图层的引用</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>空</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+
+</body></html>

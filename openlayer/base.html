@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/ol.css">
+    <script src="assets/ol.js"></script>
+</head>
+<body>
+    <!-- 
+        
+        ol.Map   要与  div相对应
+
+        每一个 ol.map至少有两个属性
+
+        ol.layer        ol.view
+    每个ol.layer都对应一个
+        ol.source
+
+
+
+        //创建一个overlay叠加层对象用作弹窗显示
+        ol.Overlay({
+            element: dom元素,   //用于绑定dom对象
+            autoPan: true,   //当点击地图边缘的时候弹窗不完全 就自动进行平移
+            autoPanAnimation:{   //定义 平移的动画
+                duration:250     //定义平移动画的时间  ms
+            }
+
+        })
+
+        new ol.layer.Tile({
+            source:new ol.source.TileJSON({
+                url:'地址',
+                crossOrigin:"anonymous"   //跨域的声明
+            })
+        })
+
+
+
+
+
+
+
+
+
+        三种常见的overlay用法
+
+        let pos = ol.proj.formLonLat([16.3725,48.208889]);  //对经纬度坐标的转换
+        let marker = new ol.Overlay({
+            position:pos, //这个overlay的坐标
+            positioning:'center-center',  //overlay相对于 position的定位 center-center 中心 如果不声明 默认的就是与左上角对齐
+            element:  //元素
+            stopEvent:false
+
+        })
+
+        map.addOverlay()  //把overlay添加到map里
+
+        弹出窗口
+        点标记marker
+        文集标记label
+
+
+
+
+        //限制地图的缩放级别
+            new ol.View({
+                 center:pos,
+                 zoom:6,
+                 minZoom:3,
+                 maxZoom:8
+             }),
+        //地图分辨率
+             地图图像 1 像素与实地距离的比值
+             体现的是视图坐标系与地理坐标系之间的关系
+        对应每一个分辨率有一个缩放级别
+             openlayers最大支持29级分辨率
+             不是每种地图都有29级分辨率,一般最精细到20级(google,OSM)
+
+
+        
+
+        使用网页上的按钮控制地图缩放
+        ol.Map.getView()
+        ol.view.setZoom()
+        ol.view.getZoom()
+
+
+        单击激活地图启用交互
+             交互类型的传入
+           interaction:ol.interaction.defaults({
+                 
+             })
+
+        外部按钮切换地图容器
+        ol.Map.getTarget()
+        ol.Map.setTarget()
+
+
+        视图同步两个地图
+
+            利用同一个view
+
+            view负责地图的中心定位 分辨率级别 旋转等
+            view管理地图显示,但不包括对显示的数据进行控制
+
+        使用瓦片预读
+             ol.layer.Tile
+                preload:infinity
+
+
+        高级视图定位
+        var feature = source.getFeatures()[0];
+        var polygon = feature.getGeometry();
+        view.fit(几何要素,{
+             padding: [170, 50, 30, 150],  //边距
+             constrainResolution: false ,//是否强制分辨率
+             minResolution: 250 ,//局部的分辨率
+              nearest: true,//按照宽度来匹配最佳分辨率
+        })
+        将某多边形区域适配到某个范围内(外接,最匹配范围,最佳分辨率)
+        按某点以某分辨率居中
+
+        view.centerOn:将某点定位到某屏幕坐标的相对位置,定位时分辨率不变
+
+
+        使用地图切换动画
+
+        view.animate({
+            rotation: view.getRotation(), //旋转的角度
+            anchor: ,  //围绕旋转的坐标
+            easing:ol.easing.easeIn, //过场动画
+            center: '',//平移到的坐标
+            duration:2000,//动画的时间
+        },{
+            rotation: view.getRotation(), //旋转的角度
+            anchor: ,  //围绕旋转的坐标
+            easing:ol.easing.easeOut
+        })
+
+
+        核心是animate的使用
+            同一个animate过程可分入场和出场动画
+            多个animate过程并发执行
+        easing可以自定义过渡效果,返回值为0-1之间的小数,代表起点到终点的变化进度
+
+
+        旋转地图
+
+             new ol.View({
+                 center:pos,
+                 zoom:6,
+                 minZoom:3,
+                 maxZoom:8,
+                 rotation:   //初始化旋转的角度
+             }),
+
+             View.setRotation()
+
+        使用地图坐标网
+             ol.Graticule
+                strokeStyle:  //描边样式
+                showLabels:   //是否显示文字标签
+                setMap()     //与map对象关联
+
+        实现地震热力图
+
+             ol.layer.Heatmap({
+                 source: 
+                 blur:   //模糊
+                 radius :  //半径
+             })
+
+             //添加要素的时候对要素进行处理
+        vector.getSource().on('addfeature', function (event) {
+        var name = event.feature.get('name');
+        var magnitude = parseFloat(name.substr(2));
+        event.feature.set('weight', magnitude - 5);
+        });
+
+
+
+
+        控件类
+
+        ol.Control
+
+        比例尺控件的使用
+
+        new Map({
+            controls:ol.control.defaults().extend([
+                new ol.control.ScaleLine({
+                    units:'us'
+                })
+            ])
+        })
+
+        全屏控件的使用  
+        new ol.contorl.FullScreen()
+
+        导览控件的使用
+
+        new ol.contorl.ZoomToExtent({
+             extent: [
+              813079.7791264898, 5929220.284081122,
+              848966.9639063801, 5936863.986909639
+            ]
+        })
+
+        自定义概览控件
+
+        new ol.contorl.OverviewMap({
+            classname:'',  //地图的类样式
+            layers:[  //概览使用的地图
+                new ol.layer.Tile({
+                    source: new ol.source.OSM({
+                        'url': 'https://{a-c}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png' +
+                        '?apikey=0e6fc415256d4fbb9b5166a718591d71'
+                    })
+                })
+            ],
+            collapseLabel:"\u00BB",
+            label:"\u00AB",
+            collapse:false
+        })
+
+
+        鼠标位置控件
+
+        new ol.contorl.MousePosition({
+            coordinateFormat: ol.coordinate.createStringXY(4),   //要显示的小数点坐标精度
+            projection:'EPSG:4326',  //定义投影坐标系
+            target: mousePosition
+        })
+        
+        缩放滑块控件
+
+        new ol.control.ZoomSlider()
+
+
+        多图层切换
+
+        ol.layer.Group({
+            layers:[
+            ]
+        })
+
+        ol.layer.setOpacity()
+        ol.layer.setVisible()
+
+        控制图层位置关系
+
+        ol.layer.setZIndex()
+                getZIndex()
+
+        限制图层最大最小分辨率
+
+        ol.layer.Tile({
+            minResolution:  //最小分辨率
+            maxResolution:  //最大分辨率  当设置图层的分辨率不在最大最小区间的时候 就不会进行显示
+        })
+
+        按限定范围加载图层
+
+        ol.layer.Tile({
+            extent
+        })
+
+        ol.proj.transformExtent([],'EPSG:4326','EPSG:3857')
+
+         ol.layer.Tile.setExtent()
+
+        图层遮罩
+
+        事件:precompose    图层渲染前触发
+            postcompose  图层渲染后触发
+
+
+        ol.layer.on()
+
+        图层扫过效果
+
+
+        更改图层的源
+
+        ol.layer.setSource()
+
+        样式化矢量图层
+
+        ol.layer.Vector({
+            styles:ol.style.Style({ 
+                stroke: new ol.style.Stroke({  //边框
+                    color:'',
+                    width:3,  //宽度
+                }),
+                fill: new ol.style.Fill({ //填充
+                    color:' '  //
+                })
+            })
+        })
+
+        ol.layer.Vector({
+           image: new ol.style.Circle({
+               radius:5,
+           }),
+           geometry:function(feature){
+               //返回多边形polygon的第一个 环 的所有顶点坐标,作为一个多点几何体赋值给geometry
+           }
+        })
+
+
+        实现一个简单的标记
+        ol.layer.Vector({
+            source: ol.source.Vector({
+                
+            })
+        })
+
+     -->
+     <div id="mousePosition" style="width: 100%;height: 40px;"></div>
+     <div id="map" style="width: 100%;height: 500px;">
+        <div id="text" style="border-radius: 50%;background-color: aqua;width: 50px;height: 50px;text-align: center;line-height: 3rem;">北京</div>
+    </div>
+    <!-- <div id="map1" style="width: 100%;height: 500px;border: 1px solid #000;"> -->
+    </div>
+     <div id="overlay" style="width: 300px;height: 100px;">
+
+     </div>
+     <button onclick="map.getView().setZoom(map.getView().getZoom() + 1)">加</button>
+     <button onclick="map.getView().setZoom(map.getView().getZoom() - 1)">减</button>
+     <button onclick="map.setTarget('map1')">切换地图容器</button>
+     <button  onclick="map.getView().setRotation(map.getView().getRotation() + 90)">旋转90度</button>
+     <script>
+
+        let over = new ol.Overlay({
+                     element:overlay,
+                     autoPan:true,
+                     autoPanAnimation:{
+                         duration:250
+                     }
+                 })
+
+        let pos = ol.proj.fromLonLat([116.40,39.90]);
+        let textLayer = new ol.Overlay({
+            element:text,
+            position:pos,
+             positioning:'center-cneter'
+        })
+
+
+        let view = new ol.View({
+                 center:pos,
+                 zoom:6,
+                 minZoom:3,
+                 maxZoom:8,
+                 rotation:0
+             })
+
+         let map = new ol.Map({
+             target:'map',
+             layers:[
+                 new ol.layer.Tile({
+                     source: new ol.source.OSM(),
+                     preload:0,  //是否缓存瓦片地图
+                 })
+             ],
+             view:view,
+             overlays:[// 使用到的叠加弹出层
+                over,
+                textLayer
+             ],
+             interaction:ol.interaction.defaults({
+                 onFocusOnly:true  //默认的交互动作只有在或得焦点之后才会启动  默认是false
+             }),
+             loadTilesWhileAnimating:true,  //动画过渡时也允许加载瓦片
+             controls:ol.control.defaults().extend([   //控件类的覆盖
+                new ol.control.ScaleLine({  //比例尺控件
+                    units:'us'
+                }),
+                new ol.control.FullScreen(),
+                new ol.control.OverviewMap({
+                    classname:'',  //地图的类样式
+                    layers:[  //概览使用的地图
+                        new ol.layer.Tile({
+                            source: new ol.source.OSM({
+                                'url': 'https://{a-c}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png' +
+                                '?apikey=0e6fc415256d4fbb9b5166a718591d71'
+                            })
+                        })
+                    ],
+                    collapseLabel:"\u00BB",
+                    label:"\u00AB",
+                    collapse:false
+                }),
+                new ol.control.MousePosition({
+                    coordinateFormat: ol.coordinate.createStringXY(4),   //要显示的小数点坐标精度
+                    projection:'EPSG:4326',  //定义投影坐标系
+                    target: mousePosition
+                }),
+                new ol.control.ZoomSlider()
+            ])
+         })
+
+
+
+         console.log(ol)
+         //网格
+         let graticule = new ol.Graticule({
+             strokeStyle: new ol.style.Stroke({
+                 color:'#fff',
+                 width:2,
+                 lineDash:[0] //虚线的度
+             }), //显示边框
+             showLabels:true,//显示文字标签
+             map:map
+         });
+        //  graticule.setMap(map);
+
+
+
+
+        //  let map1 = new ol.Map({
+        //      target:'map1',
+        //      layers:[
+        //          new ol.layer.Tile({
+        //              source: new ol.source.OSM(),
+        //              preload:Infinity
+        //          })
+        //      ],
+        //      view:view,
+        //      overlays:[// 使用到的叠加弹出层
+        //         over,
+        //         textLayer
+        //      ],
+        //      interaction:ol.interaction.defaults({
+        //          onFocusOnly:true  //默认的交互动作只有在或得焦点之后才会启动  默认是false
+        //      })
+        //  })
+
+         //用于添加响应函数  moveend
+         map.on("singleclick",function(evt){
+          let coordinate =  evt.coordinate; //点击时 的位置坐标  ol获取的坐标是 3850坐标系 
+        
+            let hdms = ol.coordinate.toStringHDMS(ol.proj.toLonLat(coordinate)); //转换为 经纬度坐标 然后进行格式化
+            overlay.innerText = hdms;
+            over.setPosition(coordinate); //设置弹出层的位置
+         })
+     </script>
+    
+</body>
+</html>

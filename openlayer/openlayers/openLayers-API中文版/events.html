@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>事件</title>
+<link type="text/css" rel="stylesheet" href="events_files/contentStyle.css">
+<script type="text/javascript" src="events_files/allscript.htm"></script>
+<link type="text/css" rel="stylesheet" href="events_files/shCore.css">		
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '../../../swf/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<h1>事件</h1>
+<h1>&nbsp;</h1>
+<h1>Events</h1>
+<h2>描述</h2>
+<p>事件处理的函数</p>
+<h2>属性</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+  </tr>
+  
+  <tr>
+    <td><p>fallThrough</p></td>
+    <td><p>Boolean</p></td>
+    <td><p>判断是否已经失效</p></td>
+  </tr>
+  <tr>
+    <td><p>includeXY</p></td>
+    <td><p>Boolean</p></td>
+    <td><p>判断是否让XY属性自动的创建浏览器上的鼠标事件</p></td>
+  </tr>
+</tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Events</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>OpenLayers.Events(object,element,eventTypes,fallThrough,options)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>object-类型：Object，这个JS对象作为当前事件对象</p>
+        <p>element-类型：DOMELement，一个dom元素响应浏览器的事件</p>
+      <p>eventTypes-类型：Array(String)，自定义数组的应用事件</p>
+      <p>fallThrough-类型：Boolean，允许事件在这些处理之后失败</p>
+      <p>options-类型：Object，选择事件的对象</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>构造一个OpenLayers.Events对象</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<h2>方法</h2>
+<p>destroy</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>destroy:function()</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>无</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>删除这个矢量图层</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<p>addEventType</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>addEventType:function(eventName)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>eventName-类型：String，事件的名字</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>在此事件对象中添加新的事件类型，如果这个事件类型已经添加过了，则不做任何事情</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<p>register</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>register:function(type,obj,func)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>type-类型：String，事件注册者的名字.&nbsp; </p>
+        <p>obj-类型：Object，对象绑定的回调。如果没有特定的对象，则默认是事件的object属性</p>
+      <p>func-类型：Function，回调函数，如果没有特定的回调，则这个函数不做任何事情 </p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>在事件的对象上注册事件</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<p>registerPriority</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>registerPriority:function(type,obj,func)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>type-类型：String，事件注册者的名字</p>
+        <p>obj-类型：Object，对象绑定方面的回调。如果没有特定的对象，则默认是事件的object属性</p>
+      <p>func-类型：Function，回调函数，如果没有特定的回调，则这个函数不做任何事情&nbsp; </p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>相同的注册方法，但是在前面增加新的监听者事件查询而代替到方法的结束</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<p>unregister</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>unregister:function(obj,func)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>obj-类型：Object，如果没有特定的，则默认是这个对象</p>
+        <p>func-类型：Function，回调函数</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>反注册</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+
+<p>triggerEvent</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>trigger:function(type,evt)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>type-类型：String，触发事件类型的字符串</p>
+        <p>evt-类型：Event，事件</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>触发一个特定的注册事件.</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：Boolean,返回最后的监听者，如果一个监听者返回是faler(假)，则这个监听链将要停止得到回调</p></td>
+  </tr>
+</tbody></table>
+
+<p>clearMouseCache</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>clearMouseCache:function()</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>无</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>清除鼠标缓存。清除缓存数据的鼠标位置。</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无 </p></td>
+  </tr>
+</tbody></table>
+
+<h2>常量</h2>
+<table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">常量名</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">描述</p></th>
+    <th><p align="center">域值说明</p></th>
+  </tr>
+  
+  <tr>
+    <td><p>BROWSER_EVENTS</p></td>
+    <td><p>Array(String)</p></td>
+    <td><p>描述浏览器的响应事件的分类</p></td>
+    <td><p>Mouseover：鼠标经过时候触发事件</p>
+        <p>rightclick：鼠标右键点击触发事件</p>
+      <p>Mouseout:鼠标移出时触发事件</p>
+      <p>Click：单击时候触发事件</p>
+      <p>Dblclick:双击时触发事件</p></td>
+  </tr>
+</tbody></table>
+
+<p>&nbsp;</p>
+
+</body></html>

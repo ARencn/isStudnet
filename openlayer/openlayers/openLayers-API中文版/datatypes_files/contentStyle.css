@@ -1,0 +1,393 @@
+HTML {
+	HEIGHT: 100%
+}
+BODY {
+	HEIGHT: 100%
+}
+BODY {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; FONT-FAMILY: "΢���ź�", ����, arial, serif; BACKGROUND: #ffffff; FONT-SIZE: 12px; PADDING-TOP: 0px
+}
+BODY {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DIV {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+DD {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+UL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 10px
+}
+OL {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+LI {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H1 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H2 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H3 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H4 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H5 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+H6 {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+PRE {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+FORM {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+FIELDSET {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+INPUT {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TEXTAREA {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+BLOCKQUOTE {
+	PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; PADDING-TOP: 0px
+}
+TABLE {
+	FONT-SIZE: 12px
+}
+TD {
+	FONT-SIZE: 12px
+}
+TR {
+	FONT-SIZE: 12px
+}
+TH {
+	FONT-SIZE: 12px
+}
+LI {
+	LIST-STYLE-TYPE: none
+}
+TABLE {
+	MARGIN: 0px auto
+}
+IMG {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; VERTICAL-ALIGN: top; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+OL {
+	LIST-STYLE-TYPE: none; LIST-STYLE-IMAGE: none
+}
+UL {
+	LIST-STYLE-TYPE: none; LIST-STYLE-IMAGE: none
+}
+CAPTION {
+	TEXT-ALIGN: left
+}
+TH {
+	TEXT-ALIGN: left
+}
+H1 {
+	FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+H2 {
+	FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+H3 {
+	FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+H4 {
+	FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+H5 {
+	FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+H6 {
+	FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+Q:before {
+	CONTENT: ''
+}
+Q:after {
+	CONTENT: ''
+}
+ABBR {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+ACRONYM {
+	BORDER-BOTTOM: 0px; BORDER-LEFT: 0px; BORDER-TOP: 0px; BORDER-RIGHT: 0px
+}
+ADDRESS {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+CAPTION {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+CITE {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+CODE {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+DFN {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+EM {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+TH {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+VAR {
+	FONT-STYLE: normal; FONT-WEIGHT: normal
+}
+A {
+	COLOR: #2b2b2b; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #2b2b2b; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ba2636; TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: #ba2636
+}
+.cWhite {
+	COLOR: #fff
+}
+.cWhite:visited {
+	COLOR: #fff
+}
+.cWhite A {
+	COLOR: #fff
+}
+.cYellow {
+	COLOR: #ff0
+}
+.cYellow:visited {
+	COLOR: #ff0
+}
+.cGreen {
+	COLOR: #008000
+}
+.cGreen:visited {
+	COLOR: #008000
+}
+.cLGray {
+	COLOR: #333
+}
+.cLGray:visited {
+	COLOR: #333
+}
+.cLGray A {
+	COLOR: #333
+}
+.cLGray A:visited {
+	COLOR: #333
+}
+.cGray {
+	COLOR: #585858
+}
+.cGray:visited {
+	COLOR: #585858
+}
+.cGray A {
+	COLOR: #585858
+}
+.cGray A:visited {
+	COLOR: #585858
+}
+.cDGray {
+	COLOR: #727171
+}
+.cDGray:visited {
+	COLOR: #727171
+}
+.cDGray A {
+	COLOR: #727171
+}
+.cDGray A:visited {
+	COLOR: #727171
+}
+.cBlack {
+	COLOR: #000
+}
+.cBlack:visited {
+	COLOR: #000
+}
+.cBlack A {
+	COLOR: #000
+}
+.cBlack A:visited {
+	COLOR: #000
+}
+.cBlue {
+	COLOR: #1e50a2
+}
+.cBlue:visited {
+	COLOR: #1e50a2
+}
+.cBlue A {
+	COLOR: #1e50a2
+}
+.cBlue A:visited {
+	COLOR: #1e50a2
+}
+.cRed {
+	COLOR: red
+}
+.cRed:visited {
+	COLOR: red
+}
+.cRed A {
+	COLOR: red
+}
+.cRed A:visited {
+	COLOR: red
+}
+.cDRed {
+	COLOR: #ba2636
+}
+.cDRed:visited {
+	COLOR: #ba2636
+}
+.cDRed A {
+	COLOR: #ba2636
+}
+.cDRed A:visited {
+	COLOR: #ba2636
+}
+.cRed A:hover {
+	COLOR: #cae2f7
+}
+A.cRed:hover {
+	COLOR: #cae2f7
+}
+.cBlue A:hover {
+	COLOR: #cae2f7
+}
+A.cBlue:hover {
+	COLOR: #cae2f7
+}
+.cDRed A:hover {
+	COLOR: #cae2f7
+}
+A.cDRed:hover {
+	COLOR: #cae2f7
+}
+.cLGray A:hover {
+	COLOR: #cae2f7
+}
+A.cLGray:hover {
+	COLOR: #cae2f7
+}
+.cGray A:hover {
+	COLOR: #cae2f7
+}
+A.cGray:hover {
+	COLOR: #cae2f7
+}
+.cDGray A:hover {
+	COLOR: #cae2f7
+}
+A.cDGray:hover {
+	COLOR: #cae2f7
+}
+.cWhite A:hover {
+	COLOR: #cae2f7
+}
+A.cWhite:hover {
+	COLOR: #cae2f7
+}
+.cBlack A:hover {
+	COLOR: #cae2f7
+}
+A.cBlack:hover {
+	COLOR: #cae2f7
+}
+.cGreen A:hover {
+	COLOR: #cae2f7
+}
+A.cGreen:hover {
+	COLOR: #cae2f7
+}
+.cYellow A:hover {
+	COLOR: #cae2f7
+}
+A.cYellow:hover {
+	COLOR: #cae2f7
+}
+.cl {
+	CLEAR: both
+}
+.fB {
+	FONT-WEIGHT: bold
+}
+.fI {
+	FONT-STYLE: italic
+}
+.f12px {
+	FONT-SIZE: 12px
+}
+.f14px {
+	FONT-SIZE: 14px
+}
+.left {
+	FLOAT: left
+}
+.right {
+	FLOAT: right
+}
+.hidden {
+	DISPLAY: none
+}
+.unLine {
+	TEXT-DECORATION: none
+}
+.unLine A {
+	TEXT-DECORATION: none
+}
+.noBorder {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: medium none; BORDER-TOP: medium none; BORDER-RIGHT: medium none
+}
+BODY {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; PADDING-TOP: 10px
+}
+H1 {
+	LINE-HEIGHT: 150%; FONT-SIZE: 24px
+}
+H2 {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 200%; BACKGROUND-COLOR: #cbebf6; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; FONT-SIZE: 14px; PADDING-TOP: 0px
+}
+P {
+	LINE-HEIGHT: 18px; COLOR: #333; FONT-SIZE: 13px
+}
+TABLE {
+	MARGIN: 0px 20px 20px; WIDTH: 80%; BORDER-COLLAPSE: collapse; FONT-SIZE: 12px
+}
+TABLE TH {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: #fff 1px solid; PADDING-BOTTOM: 8px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #bbb; BORDER-TOP: #fff 1px solid; BORDER-RIGHT: #fff 1px solid; PADDING-TOP: 8px
+}
+TABLE TD {
+	BORDER-BOTTOM: medium none; BORDER-LEFT: #fff 1px solid; PADDING-BOTTOM: 8px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; BACKGROUND: #f4f4f4; COLOR: #666; BORDER-TOP: #fff 1px solid; BORDER-RIGHT: #fff 1px solid; PADDING-TOP: 8px
+}
+TABLE TD.titleClass {
+	BACKGROUND: #eee; FONT-WEIGHT: bold
+}
+UL LI {
+	PADDING-LEFT: 10px
+}

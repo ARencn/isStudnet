@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JavaScript对象扩展</title>
+<link type="text/css" rel="stylesheet" href="extend_files/contentStyle.css">
+<script type="text/javascript" src="extend_files/allscript.htm"></script>
+<link type="text/css" rel="stylesheet" href="extend_files/shCore.css">		
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '../../../swf/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<h1>JavaScript对象扩展</h1>
+<p>&nbsp;</p>
+<h1>OpenLayers. String</h1>
+<h2>描述</h2>
+<p>包含字符串处理功能。</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>无</p>
+<h2>方法</h2>
+<p>startsWith</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>startsWith:function(str,sub)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>str-类型：String，需要测试的字符串。</p>
+        <p>sub-类型：String，匹配子串</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>确定此实例的开头是否与指定的字符串匹配</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：Boolean，第一个字符串是以第二个字符串（子串）开头时为真，否则为假</p></td>
+  </tr>
+</tbody></table>
+
+<p>contains</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>sontains:function(str,sub)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>str-类型：String，需要测试的字符串。</p>
+        <p>sub-类型：String，匹配子串</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>确定此实例的开头是否与指定的字符串匹配</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：Boolean，第一个字符串如果包含第二个字符串则为真，否则为假</p></td>
+  </tr>
+</tbody></table>
+
+<p>trim</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>trim:function(str)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>str-类型：String,含有空格符的字符串，此字符串本身没被修改</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>确定此实例的开头是否与指定的字符串匹配</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：Boolean，第一个字符串如果包含第二个字符串则为真，否则为假</p></td>
+  </tr>
+</tbody></table>
+
+<p>camelize</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>camelize:function(str)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>str-类型：String, 要转换格式的字符串，方法执行后原始字符串并没改变</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>对含连字符（-）的字符串进行格式转换，如：“chicken-head”转换格式后为“chickenHead”， “-chicken-head” 转换格式后为“ChickenHead”</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：String，返回转换好的新的字符串</p></td>
+  </tr>
+</tbody></table>
+
+<p>format</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>format:function(template,context,args)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>template-类型：String，一个要被替换“token”的字符串。一个临时的含将被context[“token”]值替换“token”的字符串</p>
+        <p>context-类型Object，一个匹配token格式的可选对象。如果没有传送context，将使用窗口对象。</p>
+      <p>args-类型：Array，传给context中任何函数的可选自变量。如一个context属性时一个函数，token将被含此自变量的函数返回值替换</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>将$(token)利用上下文函数并带入参数计算的结果替代原标记token</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：String，返回转换好的新的字符串</p></td>
+  </tr>
+</tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Number</h1>
+<h2>描述</h2>
+<p>提供一些处理数字便捷的功能</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>无</p>
+<h2>方法</h2>
+<p>limitSigDigs</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>limitSigDigs:function(num,sig)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>num-类型：Float，限制的浮点数</p>
+        <p>sig-类型：Integer，标记的位数 </p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>得到一个对象的列表，并且给定一个属性和一个匹配元素</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：Float，返回一个向上取整到指定位数的新的浮点型数</p></td>
+  </tr>
+</tbody></table>
+
+<p>format</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>function(num,dec,tsep,dsep)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>num-类型：Float，浮点数</p>
+        <p>dec-类型：Integer，舍入操作的小数位数。缺省为0.设为空让小数位不改变。</p>
+      <p>tsep-类型：String，千位分隔符，缺省为“，”。</p>
+      <p>dsep-类型：String，小数点分隔符，缺省为“.”</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>格式化一个数字作为输出</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>返回描述格式化数的字符串</p></td>
+  </tr>
+</tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers. Function</h1>
+<h2>描述</h2>
+<p>包含简便的功能操作方法。</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>无</p>
+<h2>方法</h2>
+<p>bind</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>bind:function(func,object)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>func -类型：Function，作为事件监听的输入函数</p>
+        <p>object -类型：Object，函数所绑定的对象</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>把某一函数绑定于对象</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：Function,把传入的对象设置为一个带this的函数</p></td>
+  </tr>
+</tbody></table>
+
+<p>bindAsEventListener</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>bindAsEventListener:function(func,object)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>func -类型：Function ,作为事件监听的输入函数</p>
+        <p>object -类型：Object ,函数所绑定的对象</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>把某一函数绑定于对象，第一个参数必须为window.event</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：Function </p></td>
+  </tr>
+</tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Array</h1>
+<h2>描述</h2>
+<p>包含操作数组的简便方法。</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>无</p>
+<h2>方法</h2>
+<p>filter</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>filter:function(array,callback,caller)</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>array-类型：Array,需要过滤的数组。此数组没被改变。通过callback添加的元素将不能被访问。</p>
+        <p>callback-类型：Function，数组里每个元素调用的函数。如果函数返回true，元素将被包含在返回值中。带有三个自变量：数组中的元素、元素的索引、数组本身。可选的caller参数被指定为callback，作为caller的设置。.</p>
+      <p>caller-类型：Object，当调用callback时被设置的可选的对象。</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>过滤数组。</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>类型：Array，callback为true时传入数组的元素组成的一个数组</p></td>
+  </tr>
+</tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+
+</body></html>

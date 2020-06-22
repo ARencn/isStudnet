@@ -1,0 +1,2116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>控件</title>
+<link type="text/css" rel="stylesheet" href="control_files/contentStyle.css">
+<script type="text/javascript" src="control_files/allscript.htm"></script>
+<link type="text/css" rel="stylesheet" href="control_files/shCore.css">		
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '../../../swf/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<h1>控件</h1>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control</h1>
+<h2>描述</h2>
+<p>控件能影响地图的显示和操作。他们支持所有涉及平移和按比例尺缩放的操作，缺省控件被添加到所在的地图  ，通过传入div到参数项添加一个控件到一个外部的div</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+      <th><p align="center">属性项</p></th>
+      <th><p align="center">类型</p></th>
+      <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>eventListeners</p></td>
+      <td><p>OpenLayers.Events</p></td>
+      <td><p>事件监听者</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Control</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control(options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>options-类型：Object，可选的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>初始化控件，这个可选的对象可以通过作为一个参数直接扩展控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">常量名</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">描述</p></th>
+    <th><p align="center">域值说明</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>EVENT_TYPES</p></td>
+      <td><p>Array(String)</p></td>
+      <td><p>描述为支持的应用程序事件类型</p></td>
+      <td><p>Activate:当激活控件时触发事件</p>
+          <p>Deactivate:当钝化控件时触发事件</p></td>
+    </tr>
+  </tbody></table>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control.Attribution</h1>
+<h2>描述</h2>
+<p>从图层添加属性到地图显示。继承自OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>seperator</p></td>
+      <td><p>String</p></td>
+      <td><p>分离图层的字符串</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Control.Attribution</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.Attribution(options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>options-类型：Object，可选的控件对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>初始化一些对图层属性的控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control.Button</h1>
+<h2>描述</h2>
+<p>一个简单的用于OpenLayers.Control.Panel.按钮控件，点击会执行trigger()函数。继承自OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>type</p></td>
+      <td><p>Integer</p></td>
+      <td><p>按钮类型</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>无</p>
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control.DragFeature</h1>
+<h2>描述</h2>
+<p>拖动中移动一个要素，用OpenLayers.Control.DragFeature构造器创建一个新的control.继承自OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>geometryTypes</p></td>
+      <td><p>Array(String)</p></td>
+      <td><p>为限制一组图形的拖曳，传递一个匹配geometry类名的字符串序列</p></td>
+    </tr>
+    <tr>
+      <td><p>onStart</p></td>
+      <td><p>Function</p></td>
+      <td><p>定义拖曳开始</p></td>
+    </tr>
+    <tr>
+      <td><p>onDrag</p></td>
+      <td><p>Function</p></td>
+      <td><p>如果你想知道一个要素每次移动的情况就定义此函数</p></td>
+    </tr>
+    <tr>
+      <td><p>onComplete</p></td>
+      <td><p>Function</p></td>
+      <td><p>如果你想知道一个要素完成拖动的时间，就定义此函数</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Control.DragFeature </p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.DragFeature (layer, options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>layer-类型：OpenLayers.Layer.Vector，将要被拖动的含有要素的图层</p>
+          <p>options-类型：Object，可选的对象，其属性将在控件中设置</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的控件拖动要素</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+<p>无</p>
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control.DragPan</h1>
+<h2>描述</h2>
+<p>继承于OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>type</p></td>
+      <td><p>OpenLayers.Control.TYPES</p></td>
+      <td><p>控件类型</p></td>
+    </tr>
+    <tr>
+      <td><p>panned</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>地图是否移动。</p></td>
+    </tr>
+    <tr>
+      <td><p>interval</p></td>
+      <td><p>Integer</p></td>
+      <td><p>再次漫游地图前的毫秒数。默认为25毫秒。</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>无</p>
+<h2>方法</h2>
+<p>draw </p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>draw: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的控件，拖动要素，创建一个使用平移地图和平移地图操作完成作为回调的拖拉事件句柄</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>panMap </p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>panMap: function(xy)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>xy-类型：OpenLayers.Pixel，鼠标所在像素点</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>平移的控件在地图上显示</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>panMapDone </p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>panMapDone: function(xy)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>xy-类型：OpenLayers.Pixel，鼠标所在像素点</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>完成平移操作，如果地图已经移动了，只有通过panMap来定位地图的中心</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. DrawFeature</h1>
+<h2>描述</h2>
+<p>激活时向矢量层提取要素。继承自OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>layer</p></td>
+      <td><p>OpenLayers.Layer.Vector</p></td>
+      <td><p>地图中已加载的图层</p></td>
+    </tr>
+    <tr>
+      <td><p>callback</p></td>
+      <td><p>Object</p></td>
+      <td><p>作为回调发送给handler.</p></td>
+    </tr>
+    <tr>
+      <td><p>featureAdded</p></td>
+      <td><p>Function</p></td>
+      <td><p>每添加一个要素时被调用</p></td>
+    </tr>
+    <tr>
+      <td><p>handlerOptions</p></td>
+      <td><p>Object</p></td>
+      <td><p>常用于设置控件的handler的非缺省属性</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Control.DrawFeature</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.DrawFeature (layer, handler, options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>layer-类型：OpenLayers.Layer.Vector，图层对象</p>
+          <p>handler-类型：OpenLayers.Handler，事件句柄</p>
+        <p>options-类型：Object，可选对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>初始化一个绘制要素的控件。</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">常量名</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">描述</p></th>
+    <th><p align="center">域值说明</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>EVENT_TYPES</p></td>
+      <td><p>Array(String)</p></td>
+      <td><p>描述为支持的事件类型</p></td>
+      <td><p>Featureadded:当添加要素时候触发事件</p></td>
+    </tr>
+  </tbody></table>
+
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. EditingToolbar</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Control.Panel</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Control.EditingToolbar</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.EditingToolbar(layer,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>layer-类型：OpenLayers.Layer.Vector，图层对象</p>
+          <p>options-类型：Object，可选对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>为某一特定图层创建一个编辑工具栏</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. KeyboardDefaults</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>slideFactor</p></td>
+      <td><p>Int</p></td>
+      <td><p>滑动像素</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Control.KeyboardDefaults</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.KeyboardDefaults ()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>初始化键盘默认的控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>destroy</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁键盘默认的控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. LayerSwitcher</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>ascending</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>判断图层是否是上升顺序</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Control.LayerSwitcher</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.LayerSwitcher</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>options-类型：Object，可选对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>初始化图层开关的控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>destroy</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁图层开关控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. Measure</h1>
+<h2>描述</h2>
+<p>继承于OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>Events</p></td>
+      <td><p>OpenLayers.Events</p></td>
+      <td><p>事件对象可以处理地图上的所有事件</p></td>
+    </tr>
+    <tr>
+      <td><p>div</p></td>
+      <td><p>DOMElement</p></td>
+      <td><p>地图所在的网页DOM元素，一般为div对象</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Control.Measure</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.Measure(handler,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>handle-类型：OpenLayers.Handler,测量的事件句柄 </p>
+          <p>options-类型：Object,可选对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>初始化测量控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">常量名</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">描述</p></th>
+    <th><p align="center">域值说明</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>EVENT_TYPES</p></td>
+      <td><p>Array(String)</p></td>
+      <td><p>支持的事件类型</p></td>
+    <td><p>Measure:当绘制测量操作完成时触发事件</p>
+          <p>Measurepartial:当一个点添加到绘制测量时候触发事件</p></td>
+    </tr>
+  </tbody></table>
+
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. ModifyFeature</h1>
+<h2>描述</h2>
+<p>继承自  OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>geometryTypes</p></td>
+      <td><p>Array(String)</p></td>
+      <td><p>几何图形类型</p></td>
+    </tr>
+    <tr>
+      <td><p>clickout</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>当点击任何要素以外的地方时取消选择。默认为true.</p></td>
+    </tr>
+    <tr>
+      <td><p>toggle</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>当点击时取消已经被选择的要素。缺省为true</p></td>
+    </tr>
+    <tr>
+      <td><p>deleteCodes</p></td>
+      <td><p>Array(Integer)</p></td>
+      <td><p>删除的顶点的键码值表</p></td>
+    </tr>
+    <tr>
+      <td><p>virtualStyle</p></td>
+      <td><p>Object</p></td>
+      <td><p>虚拟顶点的样式</p></td>
+    </tr>
+    <tr>
+      <td><p>mode</p></td>
+      <td><p>Integer</p></td>
+      <td><p>指定的修改模型的域</p></td>
+    </tr>
+    <tr>
+      <td><p>onModificationStart</p></td>
+      <td><p>Function</p></td>
+      <td><p>事件在图层修改的开头触发</p></td>
+    </tr>
+    <tr>
+      <td><p>onModification</p></td>
+      <td><p>Function</p></td>
+      <td><p>在图层修改时触发</p></td>
+    </tr>
+    <tr>
+      <td><p>onModificationEnd</p></td>
+      <td><p>Function</p></td>
+      <td><p>在图层修改后触发</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Control. ModifyFeature</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.ModifyFeature(layer,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>layer-类型：OpenLayers.Layer.Vector，将被修改的要素包含在图层</p>
+          <p>options-类型：Object，将被在控件里设置属性的可选对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的修改要素的控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>destory</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁修改要素的控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>activate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>activate: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>激活当前的控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，成功激活控件返回true.否则返回false</p></td>
+    </tr>
+  </tbody></table>
+
+<p>deactivate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>deactivate: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>关闭当前的控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，控件成功关闭返回true，否则返回false</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">常量名</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">描述</p></th>
+    <th><p align="center">域值说明</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>RESHAPE</p></td>
+      <td><p>Integer</p></td>
+      <td><p>让控件在调整数组维数、大小操作时用到的常数</p></td>
+      <td><p>默认值为1</p></td>
+    </tr>
+    <tr>
+      <td><p>RESIZE</p></td>
+      <td><p>Integer</p></td>
+      <td><p>让控件处于调整尺寸操作时用到的常数</p></td>
+      <td><p>默认值为2</p></td>
+    </tr>
+    <tr>
+      <td><p>ROTATE</p></td>
+      <td><p>Integer</p></td>
+      <td><p>让控件处于旋转操作用到的常数</p></td>
+      <td><p>默认值为4</p></td>
+    </tr>
+    <tr>
+      <td><p>DRAG</p></td>
+      <td><p>Integer</p></td>
+      <td><p>让控件处于拖曳操作时用到的常数</p></td>
+      <td><p>默认值为8</p></td>
+    </tr>
+  </tbody></table>
+
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. MouseDefaults</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Control</p>
+<h2>构造方法</h2>
+<p>OpenLayers. Control. MouseDefaults</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.MouseDefaults()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>初始化鼠标默认的控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>destory</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁鼠标默认的控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. MousePosition</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>prefix</p></td>
+      <td><p>String</p></td>
+      <td><p>前缀字符串，默认为“”</p></td>
+    </tr>
+    <tr>
+      <td><p>separator</p></td>
+      <td><p>String</p></td>
+      <td><p>分割字符串，默认为“,”</p></td>
+    </tr>
+    <tr>
+      <td><p>suffix</p></td>
+      <td><p>String</p></td>
+      <td><p>后缀字符串，默认为“”</p></td>
+    </tr>
+    <tr>
+      <td><p>numDigits</p></td>
+      <td><p>Integer</p></td>
+      <td><p>数位，默认为：5</p></td>
+    </tr>
+    <tr>
+      <td><p>granularity</p></td>
+      <td><p>Integer</p></td>
+      <td><p>粒度，默认为：10</p></td>
+    </tr>
+    <tr>
+      <td><p>displayProjection</p></td>
+      <td><p>OpenLayers.Projection</p></td>
+      <td><p>鼠标定位的一个投影</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Control. MousePosition</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.MousePosition(options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>options-类型：DOMElement，可选控件项</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>初始化鼠标定位的控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. MouseToolbar</h1>
+<h2>描述</h2>
+<p>此类在2.4版本不推荐使用，3.0版本将被去掉。如果要使用其功能，用Control.NavToolbar代替。</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>direction</p></td>
+      <td><p>String</p></td>
+      <td><p>垂直或者水平</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Control. MouseToolbar</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.MouseToolbar(option,direction)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>option-类型：OpenLayers.Pixel，像素 </p>
+          <p>direction-类型：String，方位</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>初始化鼠标工具栏控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>destory</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁鼠标工具栏控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. Navigation</h1>
+<h2>描述</h2>
+<p>此控件处理伴随鼠标事件的地图浏览。继承自OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>zoomWheelEnabled</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>是否用鼠标滚轮缩放地图</p></td>
+    </tr>
+    <tr>
+      <td><p>handleRightClicks</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>是否处理正确的点击，缺省为否</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Control. Navigation </p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.Navigation(options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>options-类型：Object，将在控件里设置一个可选对象的属性</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个导航控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control.NavigationHistory</h1>
+<h2>描述</h2>
+<p>导航历史记录控件，这是一个创建从属previous 和 next控件的元控件。调用previous 和 
+next控件去恢复先前的和紧接着的历史状态。previous 和 
+next控件在有能激活的状态要恢复时激活，当没能激活的状态要恢复时关闭。继承于OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>previous</p></td>
+      <td><p>OpenLayers.Control</p></td>
+      <td><p>被此控件管理的触发恢复先前状态管理的按钮类型控件</p></td>
+    </tr>
+    <tr>
+      <td><p>previousOptions</p></td>
+      <td><p>Object</p></td>
+      <td><p>在previous控件上设置可选参数的控件</p></td>
+    </tr>
+    <tr>
+      <td><p>next</p></td>
+      <td><p>OpenLayers.Control</p></td>
+      <td><p>恢复下一状态的按钮类型控件的触发管理控件</p></td>
+    </tr>
+    <tr>
+      <td><p>nextOptions</p></td>
+      <td><p>Object</p></td>
+      <td><p>在为next控件设置可选参数的构造器</p></td>
+    </tr>
+    <tr>
+      <td><p>limit</p></td>
+      <td><p>Integer</p></td>
+      <td><p>可选的保留历史项的数目的限制，如果为空，则无限制，默认为50.</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Control. NavigationHistory </p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.NavigationHistroy(options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>options-类型：Object，一个属性被用于继承控件的可选对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建导航历史记录控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>destory</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>nextTrigger</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>nextTrigger: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>恢复下一状态。如果在下一个的历史堆栈中没用条款，则此方法无效。下一个历史堆栈被从先前的历史堆栈中恢复的状态填充。</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Object</p></td>
+    </tr>
+  </tbody></table>
+
+<p>clear</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>clear:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>清除历史记录</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>activate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>activate: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>激活控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，控件被成功激活则返回true</p></td>
+    </tr>
+  </tbody></table>
+
+<p>deactivate: function()</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>deactivate: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>关闭控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，控件被成功关闭</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. NavToolbar</h1>
+<h2>描述</h2>
+<p>继承于OpenLayers.Control.Panel</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers. Control. NavToolbar</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.NavToolbar(options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>options-类型：Object，一个可选的对象，此对象属性将被继承控件</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>添加两个鼠标默认控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. OverviewMap</h1>
+<h2>描述</h2>
+<p>创建一个缩略图显示主窗口图的扩展和提供附加的导航控件。用OpenLayers.Control.OverviewMap构造器创建一个新的缩略图。继承自OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>ovmap</p></td>
+      <td><p>OpenLayers.Map</p></td>
+      <td><p>缩略图自身的一个引用</p></td>
+    </tr>
+    <tr>
+      <td><p>size</p></td>
+      <td><p>OpenLayers.Size</p></td>
+      <td><p>屏幕缩略图尺寸</p></td>
+    </tr>
+    <tr>
+      <td><p>layers</p></td>
+      <td><p>Array(OpenLayers.Layer)</p></td>
+      <td><p>缩略图中安排好的图层序列</p></td>
+    </tr>
+    <tr>
+      <td><p>minRectSize</p></td>
+      <td><p>Integer</p></td>
+      <td><p>缩略图上矩形范围最小化的宽和高。当矩形范围达到此尺寸，他将被依据minRectDisplayClass属性的值所代替。缺省为15像素</p></td>
+    </tr>
+    <tr>
+      <td><p>minRectDisplayClass</p></td>
+      <td><p>String</p></td>
+      <td><p>达到minRectSize时矩形范围代替样式的类名，此字符串将被在显示类上添加后缀，缺省为“RectReplacement”</p></td>
+    </tr>
+    <tr>
+      <td><p>minRatio</p></td>
+      <td><p>Float</p></td>
+      <td><p>缩略图分辨率和主窗口地图分辨率的比例，在此基础上能更好缩小缩略图上的要素</p></td>
+    </tr>
+    <tr>
+      <td><p>maxRatio</p></td>
+      <td><p>Float</p></td>
+      <td><p>缩略图分辨率和主窗口地图分辨率的比例，在此基础上能更好放大缩略图上的要素</p></td>
+    </tr>
+    <tr>
+      <td><p>mapOptions</p></td>
+      <td><p>Object</p></td>
+      <td><p>缩略图的地图构造器的任何非缺省属性的对象</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Control. OverviewMap</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.OverviewMap(Object)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>object-类型：Object，对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的缩略图</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>destory</p>
+<table border="1" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+    <th><p>函数声明</p></th>
+    <td><p>destroy: function()</p></td>
+  </tr>
+  <tr>
+    <th><p>参数</p></th>
+    <td><p>无</p></td>
+  </tr>
+  <tr>
+    <th><p>描述</p></th>
+    <td><p>销毁控件</p></td>
+  </tr>
+  <tr>
+    <th><p>返回值</p></th>
+    <td><p>无</p></td>
+  </tr>
+</tbody></table>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. Pan</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>slideFactor</p></td>
+      <td><p>Integer</p></td>
+      <td><p>点击方向按钮向任何方向上下左右移动地图的像素数目</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Control.Pan</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers. Control.Pan（direction，options）</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>direction-类型：String，按钮移动的距离</p>
+          <p>options-类型：Object，一个可选对象，其属性被用于扩展控件</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>处理地图上各方向像素距离的移动控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. Panel</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>defaultControl</p></td>
+      <td><p>OpenLayers.Control</p></td>
+      <td><p>当控件被激活时激活此控件实例化时也会发生</p></td>
+    </tr>
+</tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Control.Panel</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers. Control.Panel（options）</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>options-类型：Object，一个可选对象，其属性被用于扩展控件</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新控制面板的控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>destory</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁面板控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>activate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>activate: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>激活控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>activateControl</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>activateControl: function(control)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>control-类型：OpenLayers.Control，控件对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>激活控制控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>addControls</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>addControl:function(controls)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>controls-类型：OpenLayers.Control，控件对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>为建一个工具栏，就得为它添加一套控件。addControls方法能让你为控件控制面板添加一个简单的控件或一组控件序列。</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getControlsBy</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getControlsBy:function(Property, match)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>property-类型：String，一个相匹配的控件属性。</p>
+          <p>match–类型：String | Object，一个相匹配的字符串</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>获取一个属性与所给标准匹配的控件序列</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Array(OpenLayers.Control)，返回一个与所给标准相匹配的控件序列。如果无相匹配控件则返回一个空数组</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getControlsByName</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getControlsByName:function(match)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>match-类型：String | Object，控件名。也可能是一个正则表达式或对象。另外，他可能是任何一个含有方法名为test的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>获取一个名字和所给名字匹配的控件序列</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Array(OpenLayers.Control),返回一个与所给标准相匹配的控件序列。如果无相匹配控件则返回一个空数组</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getControlsByClass</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getControlsByClass:function(match)</p></td>
+    </tr>
+    <tr>
+      <td><p>参数</p>
+          <p>&nbsp;</p></td>
+      <td><p>match-类型：String | 
+Object，控件类名。类型可能时一个正则表达式或对象。另外，他可能是任何一个含有方法名为test的对象。对于正则表达式或其他，如果
+(control.CLASS_NAME)结果为true,则控件将会被包含于返回的数组之中。如果找不到控件，则返回一个空数组</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>获取一个给定类型的控件序列</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Array(OpenLayers.Control)，一个与所给类型匹配的控件序列。无匹配则返回一个空数组</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. PanPanel</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Control.Panel</p>
+<h2>构造方法</h2>
+<p>OpenLayers. Control. PanPanel</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.PanPanel(options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>options-类型：Object，对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>添加按四个方向移动的按钮</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. PanZoom</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>slideFactor</p></td>
+      <td><p>Integer</p></td>
+      <td><p>我们点击箭头按钮移动地图的像素数目</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Control. PanZoom</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.PanZoom(options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>options-类型：Object，控件对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>添加缩放按钮</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>destory</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy: function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">常量名</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">描述</p></th>
+    <th><p align="center">域值说明</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>X</p></td>
+      <td><p>Integer</p></td>
+      <td><p>X坐标</p></td>
+      <td><p>默认值为4</p></td>
+    </tr>
+    <tr>
+      <td><p>Y</p></td>
+      <td><p>Integer</p></td>
+      <td><p>Y坐标</p></td>
+      <td><p>默认值为4</p></td>
+    </tr>
+  </tbody></table>
+
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. PanZoomBar</h1>
+<h2>描述</h2>
+<p>继承于OpenLayers.Control.PanZoom</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>zoomStopWidth</p></td>
+      <td><p>Int</p></td>
+      <td><p>缩放停止的宽度，默认为：18</p></td>
+    </tr>
+    <tr>
+      <td><p>zoomStopHeight</p></td>
+      <td><p>Int</p></td>
+      <td><p>缩放停止的长度，默认为：11</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Control. PanZoomBar</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.PanZoomBar()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>初始化缩放面板的工具控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>destroy </p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. Permalink</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>element</p></td>
+      <td><p>DOMElement</p></td>
+      <td><p>DOM元素，默认为：null</p></td>
+    </tr>
+    <tr>
+      <td><p>base</p></td>
+      <td><p>String</p></td>
+      <td><p>基本字符串,默认为: “”</p></td>
+    </tr>
+    <tr>
+      <td><p>displayProjection</p></td>
+      <td><p>OpenLayers.Projection</p></td>
+      <td><p>需要proj4js支持，显示投影</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers. Control. Permalink</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.Permalink (element, base, options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>element-类型：DOMElement，DOM元素</p>
+          <p>base-类型：String，基本的字符串</p>
+        <p>options-类型：Object，控件选项</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>初始化可超链接的控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>destroy </p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>createParams</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>createParams:function(center,zoom,layers)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>center-类型：OpenLayers.LonLat，中心坐标</p>
+          <p>zoom-类型：Integer，缩放级别</p>
+        <p>layers-类型：Array(OpenLayers.Layer)，图层</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建编码Permalink    URL的参数</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Object</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. Scale</h1>
+<h2>描述</h2>
+<p>在地图上显示一个小的比例尺指示器。继承自OpenLayers.Control</p>
+<h2>构造方法</h2>
+<p>OpenLayers. Control. Scale</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.Scale (element, options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>element-类型：DOMElement，DOM元素</p>
+          <p>options-类型：Object，控件选项</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在地图上显示一个小的比例尺指示器的控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. ScaleLine</h1>
+<h2>描述</h2>
+<p>显示一个小的线指示器表示当前地图的比例尺。继承自OpenLayers.Control</p>
+<h2>构造方法</h2>
+<p>OpenLayers. Control. ScaleLine</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.ScaleLine(options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>options-Object一个可选的对象，其参数将被用于扩展控件</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个标度线控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+  <p>无</p>
+  <h2>常量</h2>
+  <p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. SelectFeature</h1>
+<h2>描述</h2>
+<p>在给定图层上通过单击或悬停选取矢量要素。继承自OpenLayers.Control</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>multiple</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>允许选择复合几何图形。缺省为false</p></td>
+    </tr>
+    <tr>
+      <td><p>clickout</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>当点击要素以外的位置时取消选择要素。缺省为true</p></td>
+    </tr>
+    <tr>
+      <td><p>toggle</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>单击已经被选择的要素时取消选择。缺省为false.只是指悬停时为false</p></td>
+    </tr>
+    <tr>
+      <td><p>hover</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>鼠标在其上时选择，移开时取消选择。如果为true，将忽略单击只监听鼠标移动</p></td>
+    </tr>
+    <tr>
+      <td><p>box</p></td>
+      <td><p>Boolean</p></td>
+      <td><p>允许拉框选择</p></td>
+    </tr>
+    <tr>
+      <td><p>onSelect</p></td>
+      <td><p>Function</p></td>
+      <td><p>可选的函数，当要素被选择时调用</p></td>
+    </tr>
+    <tr>
+      <td><p>onUnselect</p></td>
+      <td><p>Function</p></td>
+      <td><p>可选的函数，当要素被取消选择时调用</p></td>
+    </tr>
+    <tr>
+      <td><p>geometryTypes</p></td>
+      <td><p>Array(String)</p></td>
+      <td><p>为限制有限集的几何类型，发送一个匹配geometry类名的字符串序列</p></td>
+    </tr>
+    <tr>
+      <td><p>callbacks</p></td>
+      <td><p>Object</p></td>
+      <td><p>功能是作为回调传给handlers.feature</p></td>
+    </tr>
+    <tr>
+      <td><p>selectStyle</p></td>
+      <td><p>Object</p></td>
+      <td><p>哈希类型的样式</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Control.SelectFeature</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control.SelectFeature(layer,options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>layer-类型：OpenLayers.Layer.Vector，图层</p>
+          <p>options-类型：Object，一个可选的对象，其参数将被用于扩展控件</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>给定图层上通过单击或悬停选取矢量要素</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. ZoomBox</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Control，包含缩放控件放大和缩小的功能。</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>无</p>
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. ZoomI</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Control,缩放控件放大功能。</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>无</p>
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. ZoomOut</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Control，缩放控件缩小功能</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>无</p>
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. ZoomPanel</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Control，缩放控件面板。</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers. Control. ZoomPanel</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Control. ZoomPanel    (options)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>options-类型：Object，一个可选的对象，其参数将被用于扩展控件</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>添加第三方控件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>OpenLayers.Control. ZoomToMaxExtent</h1>
+<h2>描述</h2>
+<p>继承自OpenLayers.Control，定位到最合适的范围</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>无</p>
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+
+</body></html>

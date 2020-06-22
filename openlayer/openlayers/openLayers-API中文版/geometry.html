@@ -1,0 +1,1065 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>几何对象</title>
+<link type="text/css" rel="stylesheet" href="geometry_files/contentStyle.css">
+<script type="text/javascript" src="geometry_files/allscript.htm"></script>
+<link type="text/css" rel="stylesheet" href="geometry_files/shCore.css">		
+<script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = '../../../swf/clipboard.swf';
+	SyntaxHighlighter.all();
+</script>
+</head>
+
+<body>
+<h1>几何对象</h1>
+<p>&nbsp;</p>
+<h1>Geometry</h1>
+<h2>描述</h2>
+<p>一个几何图形描述一个地理对象。创建一个实例类需要用到OpenLayers.Geometry构造方法。这是一个基类，通常几何类型描述在子类中</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Geometry</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Geomerty()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个几何图形的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>clone</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>clone:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个克隆的几何图形。没有设置非标准属性的克隆几何图形</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Geometry，克隆一个额外的几何图形</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getBounds</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getBounds:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到几何图形的边界。</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Bounds</p></td>
+    </tr>
+  </tbody></table>
+
+<p>calculareBounds</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>calculareBounds:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>重新计算几何图形的边界</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Geometry.Collection</h1>
+<h2>描述</h2>
+<p>Geometry.Collection是几何图形的集合，他们存储在本地的参数组件中。随着新的几何图形添加到集合中，他们不是克隆，当移动几何
+图形时，他们需要指定引用。 
+这个getArea和getLength函数只能通过遍历组件，总计他们各自的面积和长度。创建一个新的实例要构造
+OpenLayers.Geometry.Collection。继承自OpenLayers.Geometry</p>
+<h2>属性</h2>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+    <th><p align="center">属性项</p></th>
+    <th><p align="center">类型</p></th>
+    <th><p align="center">含义</p></th>
+    </tr>
+    
+    <tr>
+      <td><p>componens</p></td>
+      <td><p>Array(OpenLayers.Geometry)</p></td>
+      <td><p>组成几何图形的部分</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>构造方法</h2>
+<p>OpenLayers.Geometry.Collection</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Geometry.Collection(components)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>components-类型：Array(OpenLayers.Geometry)，可选的几何图形的数组</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个几何图形集合</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>clone</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>clone:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个克隆的几何图形。</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Geometry.Collection，克隆一个额外的集合</p></td>
+    </tr>
+  </tbody></table>
+
+<p>destroy</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>destroy:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>销毁几何图形</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>calculareBounds</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>calculare:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>通过遍历，重新计算边界的组成和在每一元素中调用extendBounds方法</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Geometry.Curve</h1>
+<h2>描述</h2>
+<p>曲线是由多个点组成的，这些点假设已经连接好了，为此，我们提供一个”getLength()”函数，通过遍历这些点，来总计算出他们之间的距离.继承自OpenLayers.Geometry.Multipoint</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Geometry.Curve</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Geometry.Curve(point)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>point-类型：Array(OpenLayers.Geometry.point)，点的对象 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个曲线几何图形</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>getLength</p>
+<table border="1" cellpadding="0" cellspacing="0">
+<tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getLength:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到曲线图形的长度</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Float</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Geometry.LinearRing</h1>
+<h2>描述</h2>
+<p>一个线性环是一个特殊的封闭的线串。它会自动关闭在每个addPoint/removePoint，用来添加一个复制的第一个点作为最后的一个点.。继承于OpenLayers.Geometry.LineString</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Geometry.LinearRing</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Geometry.LinearRing(points)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>Points-类型：Array(OpenLayers.Geometry.Point)，点对象 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>线性环构造了一个数组类型的点。这个数组可以表示一个关闭或者打开的环，如果这个环打开了，这个构造方法将要关闭这个环</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>addComponent</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>addComponent:function(point,index)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>Point-类型：OpenLayers.Geometry.Point，点对象&nbsp;&nbsp; </p>
+          <p>Index-类型：Integer，插入组件数组的下标</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>添加一个点到几何图形组件，如果这个点添加到组件数组的末端，并且相同的点作为最末端的点已经在数组中，重复的一点是不能被添加的，这已经影响了关闭的环</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean</p></td>
+    </tr>
+  </tbody></table>
+
+<p>removeComponent</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>removeComponent:function(point)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>Point-类型：OpenLayers.Geometry.point，点的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>从几何图形组件中删除一个点</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>move</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>move:function(x,y)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>x-类型：Float，x-位移</p>
+          <p>y-类型：Float，y-位移</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>在位置上移动一个集合</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>rotate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>rotate:function(angle,origin)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>angle-类型：Float，旋转角的度数</p>
+          <p>origin-类型：OpenLayers.Geometry.Point，旋转中心点</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>旋转一个几何图形周围的一些原点</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>resize</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>resize:function(scale,origin,ratio)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>scale-类型：Float，几何图形的尺寸，大小</p>
+          <p>origin-类型：OpenLayers.Geometry.Point，调整起始原点</p>
+        <p>ratio-类型：Float，调整可选的x,y的比例，默认的比例为1</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>调整一个几何图形的相对于一些原点的大小，使用这个方法适用于在一个几何图形上统一尺度</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>transform</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>transform:function(source,dest)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>source-类型：OpenLayers.Projection，源对象投影</p>
+          <p>dest-类型：OpenLayers.Projection，目标对象投影</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>从源对象到目标对象来投影几何元素组件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Geometry</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getArea</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getArea:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到这个区域大小，如果面向的是连续环，则这个区域是积极的，否则将要是负面的</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Float，在一个环上做一个区域的记号</p></td>
+    </tr>
+  </tbody></table>
+
+<p>intersects</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>instersects:function(geometry)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>geometry-类型：OpenLayers.Geometry，任意的几何类型</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>确定是否输入相交的几何图形</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，输入相交的几何图形</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Geometry.LineString</h1>
+<h2>描述</h2>
+<p>一个线串是一个曲线，一旦两个点被添加到线串里，那么它决不少于两个点的长度。继承自OpenLayers.Geometry.Curve</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Geometry.LineString</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Geometry.LineString(points)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>points-类型：Array(OpenLayers.Geometry.Point)，数组类型的点用来产生线串</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的线串的几何图形</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>removeComponent</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>removeComponent:function(point)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>point-类型：OpenLayers.Geometry.point，点的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>如果这里有三个或更多的点在这个线串上，那么只允许移动这个点</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>intersects</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>instersects:function(geometry)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>geometry-类型：OpenLayers.Geometry，任意的几何类型</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>测试两个几何图形之间的相交</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，输入几何图形与此几何图形相交</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Geometry.MultiLineString</h1>
+<h2>描述</h2>
+<p>一个复合的线串是由多种的几何图形OpenLayers.Geometry.LineString组件而成。继承自OpenLayers.Geometry.Collection和OpenLayers.Geometry</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Geometry.MultiLineString</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Geometry.MultiLineString(components)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>components-类型：Array(OpenLayers.Geometry.LineString)，几何组件对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>构造一个复合的线串几何图形</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Geometry.MultiPoint</h1>
+<h2>描述</h2>
+<p>复合点和点的集合，创建一个新的实例要构造OpenLayers.Geometry.MultiPoint。继承自OpenLayers.Geometry.Collection和OpenLayers.Geometry</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Geometry.MultiPoint</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Geometry.MultiPoint(components)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>components-类型：Array(OpenLayers.Geometry.LineString)，几何组件对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的多点几何图形</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Geometry.MultiPoint</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>addPoint</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>addPoint:function(point,index)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>point-类型：OpenLayers.Geometry.point，点的对象</p>
+          <p>index-类型：Integer，可选的下标</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>添加点</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>removePoint</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>removePoint:function(point)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>point-类型：OpenLayers.Geometry.point，移除的点对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>移除点</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Geometry.MultiPolygon</h1>
+<h2>描述</h2>
+<p>复合多边形是由多种几何图形OpenLayers.Geometry.Polygon组件而成，创建一个新的实例要构造OpenLayers.Geometry.Multipolygon。继承自OpenLayers.Geometry.Collection</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Geometry.MultiPolygon</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Geometry.MultiPolygon(components)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>components-类型： Array(OpenLayers.Geometry.Polygon)，复合多边形是由一个数组形式的多边形来产生的</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个新的复合多边形几何图形</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>无</p>
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Geometry.Point</h1>
+<h2>描述</h2>
+<p>点几何图形的类，继承自OpenLayers.Geometry</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Geometry.Point</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Geometry.Point(x,y)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>x-类型：float，x-坐标</p>
+          <p>y-类型：Float，y-坐标</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>构造一个点的几何图形</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>clone</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>clone:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>克隆一个额外的OpenLayers.Geometry.Point</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Geometry.Point</p></td>
+    </tr>
+  </tbody></table>
+
+<p>distanceTo</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>distanceTo:function(point)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>point-类型：OpenLayers.Geometry.Point，点对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>两点之间的距离</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>equals</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>equals:function(xy)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>xy-类型：OpenLayers.Geometry，几何组件的xy坐标</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>判断是够有相同的组件</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，布尔值表明传递OpenLayers.Geometry对象是否有相同的组件，如果传递的为空，则返回false(假)</p></td>
+    </tr>
+  </tbody></table>
+
+<p>move</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>move:function(x,y)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>x-类型：Float，x-坐标</p>
+          <p>y-类型：Float，y-坐标</p></td>
+    </tr>
+    <tr>
+      <td><p>描述&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p></td>
+      <td><p>移动点的位置</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>rotate</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>rotate:function(angle,origin)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>angle-类型：Float，旋转角的度数</p>
+          <p>origin-类型：OpenLayers.Geometry.Point，旋转的中心点 </p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>旋转一个点周围的其它的点</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>resize</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>resize:function(scale,origin,ratio)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>scale-类型：Float，新距离的起始点到原来距离的起始点的比例</p>
+          <p>origin-类型：OpenLayers.Geometry.Point，调整起始点</p>
+        <p>ratio-类型：Float，调整可选x,y的比例大小，默认的比例为1</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>调整一个点的大小相对于一些起始点，这些点影响了缩放的矢量。这个方法更多的使用在几何图形集合的子类中</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<p>transform</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>transform:function(source,dest)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+    <td><p>source-类型：OpenLayers.Projection，源对象投影</p>
+          <p>dest-类型：OpenLayers.Projection，目标对象投影</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>从源对象到目标对象转换x,y 点的属性</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Geometry</p></td>
+    </tr>
+  </tbody></table>
+
+<p>intersects</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>intersects:function(geometry)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>geometry-类型：OpenLayers.Geometry，任意类型的几何图形</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>确定是否输入相交的几何图形</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，输入相交的几何图形</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Geometry.Polygon</h1>
+<h2>描述</h2>
+<p>多边形是一个线性环几何图形的集合。继承自 OpenLayers.Geometry.Collection和OpenLayers.Geometry</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Geometry.Polygon</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Geometry.Polygon(components)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>components-类型：Array(OpenLayers.Geometry.LinearRing)，多边形对象的组件</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>构造一个多边形几何图形，第一个环是多边形的外部边界，并且所有随后的环是内部的口径</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>无</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>getArea</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getArea:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到这个区域，从这个区域的外部口径计算减去这个区域的内部口径</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Float，几何图形的区域</p></td>
+    </tr>
+  </tbody></table>
+
+<p>createRegularPolygon</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>createRegularPolygon:function(origin,redius,sides,rotation)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>origin-类型：OpenLayers.Geometry.Point，多边形的中心 </p>
+          <p>redius-类型：float，半径</p>
+        <p>sides-类型：Integer，边数 &nbsp;</p>
+        <p>rotation-类型：float，在原来的旋转角度</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个有规则的多边形的周围半径。</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：OpenLayers.Geometry</p></td>
+    </tr>
+  </tbody></table>
+
+<p>intersects</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>intersects:function(geometry)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>geometry-类型：OpenLayers.Geometry，任何类型的几何图形</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>确定是否输入相交的几何图形</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Boolean，确定是否输入相交的几何图形</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+<h1>Geometry.Rectangle</h1>
+<h2>描述</h2>
+<p>创建一个矩形几何图形。继承自：OpenLayers.Geometry</p>
+<h2>属性</h2>
+<p>无</p>
+<h2>构造方法</h2>
+<p>OpenLayers.Geometry.Rectangle</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>OpenLayers.Geometry.Rectangle(points)</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>points-类型：Array(OpenLayers.Geometry.Point)，多个点的对象</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>创建一个矩形几何图形</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Array(OpenLayers.Geometry.Point)</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>方法</h2>
+<p>getLength</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getLength:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到几何图形的长度</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Float</p></td>
+    </tr>
+  </tbody></table>
+
+<p>getArea</p>
+
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tbody><tr>
+      <th><p>函数声明</p></th>
+      <td><p>getArea:function()</p></td>
+    </tr>
+    <tr>
+      <th><p>参数</p></th>
+      <td><p>无</p></td>
+    </tr>
+    <tr>
+      <th><p>描述</p></th>
+      <td><p>得到这个区域的面积</p></td>
+    </tr>
+    <tr>
+      <th><p>返回值</p></th>
+      <td><p>类型：Float</p></td>
+    </tr>
+  </tbody></table>
+
+<h2>常量</h2>
+<p>无</p>
+<p>&nbsp;</p>
+
+</body></html>
