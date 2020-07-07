@@ -8,11 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="app"></div>
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script>
-
-    </script>
+   
     <!-- 
         
 
@@ -301,7 +297,103 @@
         然后利用 v-on= $listeners 绑定到需要的地方
 
 
-        v-model
+        v-model 也可以使用在组建中
+        v-bind .sync 会自动监听 @updata:prop
+        Vue.component('',{
+            model:{  //设置 组件的 v-model 绑定的特性
+                prop:'checked',
+                event:'change'
+            }
+        })
+
+
+    
+        插槽
+
+        slot
+
+        编译作用域
+
+        父级模板里的所有内容都是在父级作用域中编译,子模板里的所有内容都是在子作用域中编译的
+
+        Vue.component('btn',{
+            template:`
+            
+            <button>
+                <slot name="header">submit</slot>
+            </button>
+            `
+        })
+        
+        在 <slot>中写的值为默认值
+
+        具名插槽
+
+        在<slot> 中加上 name
+
+        在要插入的地方
+        嵌套一层 template 元素 加上 v-slot:header  不能用 = 只能:
+        默认的也可以直接 v-slot:default  来语义化
+
+        没有 v-slot的元素 会被放在默认 slot中
+
+
+        作用域插槽
+
+        在 子组件 插槽中可以绑定特性 
+        在调用时使用 <template v-slot.default="props">
+                    </template>
+
+        就可以在 template中使用 子组件绑定的数据
+
+        独占默认插槽的写法
+
+        当被提供的内容只有默认插槽时,组件的标签可以被当作插槽的模板来使用,此时,可以将v-slot直接用在组件上,
+
+        <my-cmp v-slot="prop">
+            {{prop}}
+        </my-cmp>
+
+
+        它不能与具名插槽混用  v-slot除此情况外只能写在template中
+
+        
+
+        解构插槽 prop
+
+         <my-cmp v-slot="{ user }">
+            {{user}}
+        </my-cmp>
+
+
+        动态插槽名
+
+        v-slot:[variable]
+
+        具名插槽的缩写
+
+        v-slot.header === #header
+
+
+        动态组件
+
+        <component is="">
+
+        is后面跟组件的名字
+        除了 名字还可以在后面跟 组件的实例
+
+        在组件的切换时, vue会不断的进行 组件的创建销毁,
+        此时可以使用 <keep-alive> 标签进行包裹这样组件在切换时不会被销毁
+
+
+        注意:keep-alive 要求被切换到的组件都有自己的名字  不论是通过组件的name选项还是局部全局注册
+
+        keep-alive  包裹动态    组件时,会缓存 不活动的组件实例,而不是销毁他们.keep-alive 是一个抽象组件:
+        它自身不会渲染一个dom元素,也不会出现在父组件链中.
+        当组件在 keep-alive内被切换,它的activated 和 deactivated 这两个生命周期钩子将会被对应执行
+
+        activated:keep-alive 组件被激活时调用
+        deactivated:keep-alive 组件被停用时调用
     -->
 
 
