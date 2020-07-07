@@ -394,6 +394,186 @@
 
         activated:keep-alive 组件被激活时调用
         deactivated:keep-alive 组件被停用时调用
+
+
+        处理边界情况
+
+            访问元素 组件
+
+            在绝大多数情况下 我们最好不要触达到另一个组件实例内部或手动操作dom元素
+
+            访问根实例
+
+            $root
+
+            在子组件中可以通过 $parent 访问父组件实例,这可以替代将数据以prop的方式传入子组件的方式
+
+            依赖注入 
+
+            provide 允许我们指定想要提供给后代组件的数据 方法
+
+            在组件中写入 provide return 想要共享的数据
+            Vue.component('my-cmp',{
+                provide(){
+                    return{
+
+                    }
+                }
+            })
+
+            使用时 
+             Vue.component('my-cmp-son',{
+               inject:['想要获取的provide数据']
+            })
+
+
+            访问子组件的
+
+            $refs 
+
+            当ref和 v-for一起使用时得到的是一个数组
+
+
+
+            程序化的事件
+
+            $on() 侦听一个事件  监听生命周期函数 就是 $on('hook:beforeCreate')
+            $once 侦听一次事件
+            $off() 停止侦听事件
+
+
+            循环引用
+
+            递归组件
+            需要设置name
+
+
+            x-template
+
+            inline-template
+
+
+            强制更新
+            $forceUpdate
+
+
+            通过v-once创建低开销的静态组件
+
+            加上了 v-once 的组件只会被渲染一次然后缓存起来
+
+
+            组件通信
+
+            prop
+
+            $emit()
+
+            v-model
+            .sync
+
+            $attrs
+
+            $listeners
+
+            $parent
+
+            $children
+
+            ref
+
+            provide inject
+
+            eventBus(事件总线)
+
+            Vue.prototype.$bus = new Vue()
+
+           this.$bus.$emit('bus')
+
+            this.$bus.$on('bus')
+
+
+            混入
+
+            数据的混入
+            以组件的数据为主
+
+            钩子函数的混入
+            会将钩子函数合并先调用 混入的 再调用自身
+
+            method 冲突会以组件内的为主
+
+            mixin = {
+                data(){
+                    return{
+
+                    }
+                },
+                methods:{
+
+                }
+            }
+
+            Vue.component('my-cmp-son',{
+              mixins:[mixin]
+            })
+
+
+
+            全局混入
+
+            Vue.mixin({
+                此时的混入对象会被混入至任意Vue 实例中
+            })
+
+
+
+            自定义指令
+
+
+            全局
+            Vue.directive('focus',{
+                inserted(el){
+                    插入到元素中的事件
+                }
+            })
+
+            局部
+
+            new Vue({
+                directives:{
+                    focus:{
+
+                    }
+                }
+            })
+
+            自定义指令对象提供了钩子函数供我们使用
+
+            bind
+
+            只调用一次,指令第一次绑定到元素时调用,在这里可以进行一次性的初始化设置 
+
+            inserted
+
+            被绑定的元素插入父节点时调用(仅保证父节点存在,但不一定已被插入文档中)
+
+            update
+
+            所在组件的VNode更新时调用, 但可能发生在其子VNode更新之前 
+
+            componentUpdated
+
+            指令所在组件的VNode 及其子 VNode全部更新后调用
+
+            unbind
+
+            只调用一次,指令与元素解绑时调用
+
+            
+
+
+
+            
     -->
 
 
