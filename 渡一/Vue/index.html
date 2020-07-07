@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+
+    </script>
+    <!-- 
+        
+
+        v-on 指令的修饰符:
+
+        事件修饰符
+        @click.stop 阻止 冒泡
+              .prevent 阻止默认事件
+              .capture 事件捕获
+              .self 只执行自身的触发的事件 冒泡和捕获都不管
+              .once 只执行一次
+              .passive 设置 addEventListener passive选项 提升移动端的性能
+
+              顺序很重要修饰符的
+
+        按键修饰符  使用 键盘的key-value值 尽量少使用按键码
+            keyup.enter
+            按键码当做修饰符
+            .tab
+            .delete
+            .esc
+            .space
+            .up 
+
+        系统按键修饰符
+
+            ctrl
+            alt
+            shift
+            meta mac中的command win
+            exact 精确的 按到才触发
+            可以连着 .ctrl.v
+
+        鼠标按钮修饰符
+        left 
+        right
+        middle
+        Vue.config.keyCodes.f1=112; 自己设置别名
+
+        计算属性
+
+        computed :function || object
+
+        模板过重 逻辑
+
+        computed:{
+            a:()=>{
+                //返回的值是 计算属性的值
+            },
+            b:{
+                get(){
+
+                },
+                set(newVal){
+
+                }
+            }
+
+            在设置b时 即 b = xxx时会调用 set函数 但是计算属性的值不会被更改 只有当依赖的数据变化了,才会发生变化
+        }
+
+        computed 和 methods的区别
+            method在页面发生改变的时候就会重新执行,
+            而 computed只有在 依赖的数据改变时才会重新执行
+
+        计算属性是基于响应式依赖进行缓存
+
+        节省了性能开销
+
+
+        侦听器 watch
+
+        侦听属性 可以响应数据的变化
+        
+        值 可以是一个方法也可以是一个字符串 如果是一个字符串就会调用 methods 中的方法      如果是数组 三种类型都可以写
+        还可以是一个对象 
+        {
+            handler:function(){
+                //响应的函数
+            },
+            deep:true  //深度监听 在默认情况下侦听器对象只在给对象赋值的时候才能被监听到,所以需要使用deep属性监听 对象内部属性的变化
+            immediate:true  //回调将会在侦听开始之后立刻被调用,而不是等待侦听数据更改之后   
+        }
+
+        侦听对象内部属性时
+        可以
+        'obj.name'(){
+
+        }
+
+        vm.$watch('属性',function(){
+            回调
+        },{
+            deep,
+            immediate
+        })
+
+        vm.$watch('属性',{
+            handler:(){
+
+            }
+        })
+
+        vm.$watch() 可以返回一个方法 执行此方法则会取消监听
+
+
+        computed 中不要做异步请求
+        watch 中可以 因为 watch 中不用return
+
+        1.两者都可以观察和响应vue实例上的数据变动,
+        2.watch 擅长处理的场景是: 一个数据影响多个数据,计算属性擅长处理的场景是 多个数据影响一个数据
+        3.computed中不可以异步
+
+
+
+        axios
+
+        默认配置:
+
+        axios.defaults.baseURL = '';
+        axios.defaults.timeout = 1000;
+
+        axios.create({
+            baseURL:'',
+        })
+
+        通过多个实例化 可配置不同的 公共配置
+
+
+        处理并发
+            all 的参数是一个数组 数组中的每一项是 需要使用到的请求  
+            同样会返回promise 对象,在 .then时需要传递 axios.spread(()=>{
+                    
+            }) 为参数 axios.spread 中传入的匿名函数的参数 由all中数组的数量决定
+                axios.all([
+                 axios.get('/a'),
+                 axios.get('/b')
+                ]).then(axios.spread(()=>{
+
+                }))
+        
+        拦截器
+            
+                axios.interceptors.request.use(config=>{
+                    return config
+
+                },error=>{
+                    //在请求时的错误,但是 取消请求的错误不会在这里被捕捉
+                    return Promise.reject(error)
+                })
+
+                axios.interceptors.response.use(response=>{
+
+                },error=>{
+                    if(error.response){
+                        swatch error.response.status
+                    }else if(error.request){
+
+                    }else{
+
+                    }
+                })
+
+                拦截器会返回一个变量
+                使用 axios.interceptors.response.eject(拦截器返回的变量可以 取消拦截器 )
+
+        取消请求
+
+        source = axios.CancelToken.source();
+
+
+        axios.get('/a',{
+            cancelToken:source.token
+        }).catch(error=>{
+           error.request  请求时错误
+           error.response 响应时的错误
+        })
+
+        source.cancel('返回的msg的信息')
+       
+        此时会出现错误 需要catch捕捉请求
+
+
+        axios会在发送请求前预检 服务器是否允许跨域如果不允许则会直接返回 405
+
+
+
+        组件
+
+        组件可被无限的复用
+
+        自闭合组件
+
+        在使用多个自闭合组件时 只会显示一个在html中
+
+        组件的data选项必须是一个函数 
+        防止组件的数据污染
+
+        组件 prop
+
+        将要注册的值放入 props中 
+        Vue.component('sa',{
+            props:[]
+        })
+
+        当涉及到 特性传递的大小写时使用 - 代替 因为html 的特性是对大小写不敏感的 浏览器最终会把大写字符转化为小写字符
+        但是在 props 注册时需要使用小驼峰命名
+
+        传递一个对象的所有属性
+
+        使用 v-bind
+
+        例如
+            person:{
+                name:1,
+                sex:male
+            } 
+
+            v-bind='person' 
+            等价于
+            :name="person.name"
+            :sex = "person.sex"
+
+        组件prop验证
+
+        为了验证props 所以可以使用一个对象而不是一个数组
+
+        可以写入一个数据类型的数组 可以填入任意 构造函数 但是当传入 null 或者 undefined时 props 不会进行校验
+
+        可以配置高级选项
+        props:{
+            list: [Array,String],
+            name:{
+                type:[], //类型
+                default: //默认值 必须是一个返回函数 防止数据污染
+            },
+            required: //是否必填,
+            validator(prop){
+                //自定义验证函数 会传入 prop 如果返回false就会校验失败
+            }
+        }
+
+
+        单向数据流
+
+        父级prop的更新会向下流动到子组件中,但是反过来则不行 ,
+    
+        不要去改变原数据
+
+            
+
+        组件的非prop特性
+
+        就是写在组件上而非 prop接受的数据   
+        非prop特性会替换已有特性
+        在style clss 的特性时会合并已有的
+
+
+        禁用特性继承
+
+        Vue.component('',{
+            inheritAttrs:false 这样根元素就不会继承父元素给的特性 这不会影响到 class 和 style
+        })
+        此时  特性会被放入 $attrs 中
+
+
+        监听组件事件
+
+
+        子组件内触发事件
+            this.$emit(name,param)
+        父组件监听事件
+            $event 中会存在子组件抛出的值
+
+        模板中事件名不存在自动化大小写转换
+
+        因此推荐始终使用 kebab-case的事件名 
+
+        事件修饰符
+
+        click.native
+
+        因为 组件默认监听的是自定义的事件
+
+        $listeners 中有所有的监听响应时间
+        然后利用 v-on= $listeners 绑定到需要的地方
+
+
+        v-model
+    -->
+
+
+</body>
+</html>
