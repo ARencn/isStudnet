@@ -644,6 +644,140 @@
             利用脚手架搭建项目
 
             项目名不能大写
+
+
+
+            渲染函数
+
+            运行时 缺少编译器 
+            new Vue({
+                template:'' 无法编译
+                render 的优先级比template更高
+            })
+
+            render(h){
+                return h(标签名必须,与模板中属性对应的数据对象,子级虚拟节点)
+                h('div',{
+                    class:{
+                        //与 v-bind相似
+                    },
+                    style:{
+
+                    },
+                    attrs:{
+                        //普通的html特性
+                    },
+                    props:{
+                        //组件的props
+                    },
+                    domProps:{
+                        //dom属性
+                        innerHTML
+                    },
+                    on:{
+                        //监听的事件
+                        click 
+                    },
+                    nativeOn:{
+                      //  仅用于组件监听原生事件
+                    },
+                    directives:[
+                     //使用的自定义指令
+                     {
+                         name:'',
+                         value:'',
+                         expression:'',
+                         arg:'',
+                         modifiers:{
+
+                         }
+                     }
+                    ],
+                    key:'',
+                    ref:'',
+                    refInFor:true  //如果在渲染函数中给多个元素都应用了相同的ref名,name 会变成一个数组
+                    slot:'',//使用的插槽
+                    scopedSlots:{
+                        名字:function(prop){
+                            prop传过来的值
+                        }
+                    }
+
+
+                })
+
+            }
+
+
+            事件 按键修饰符
+
+            对于 passive(&) capture(!) once(~) 这些修饰符 可以使用
+            on:{
+                '!click'
+            }
+
+            作用域插槽
+
+            render:(h){
+                return h('div',[{
+                    this.$solts.default({ //要传的值})
+                }])
+            }
+
+
+            JSX
+
+
+            render (){
+                return(
+                    <h1></h1>
+                )
+            }
+
+            插值
+            { js }  
+
+            指令
+
+            domPropsInnerHTML  
+            以 domProps为前缀设置 特性
+
+            v-html
+
+            <div domPropsInnerHTML="<div>inner</div>">
+
+            v-show
+
+            支持 
+
+            v-if
+
+            { true && <div></div>}
+            { this.vif()}
+
+            on:
+
+            onClick
+
+            on-click
+
+            nativeClick  
+
+            传参时
+
+            ()=>{
+                this.click(1)
+            }
+
+            v-model
+
+            过滤器
+
+            this.$options.filters('filter')(parm)
+
+            插槽
+
+            slot=" "
     -->
 
 
