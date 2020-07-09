@@ -598,11 +598,52 @@
 
             当想在bind 和 update 中触发相同行为,而不关心其他钩子时
 
+            可以直接把指令的参数写成函数
+
+            Vue.directive('my-directive',()=>{
+                //do someing
+            })
+
+            对象字面量
+
+
+
+
+
+
+
+            过滤器
+
+            自定义过滤器  用于一些常见的文本格式化处理
+
+            过滤器可用在两个地方   双括号插值 和 v-bind表达式  添加在 js表达式的尾部,由管道符号表示
+
+            {{content | filter('a') | filterB }}  此时会经过两个过滤器处理
+            可以在使用时 向 过滤器传参 此时 处理函数中第一个 值依旧是 content 第二个则为传入的值
             
 
 
+            Vue.filter('filter',(val)=>{
+                return val
+            })
+
+
+
+
+            脚手架
+
+            npm i -g @vue/cli
+
+            快速原型开发
+
+            npm i  -g @vue/cli-service-global
+
 
             
+
+            利用脚手架搭建项目
+
+            项目名不能大写
     -->
 
 
