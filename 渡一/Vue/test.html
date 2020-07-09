@@ -7,15 +7,43 @@
 </head>
 <body>
     <div id="app">
-        <btn>
+        <btn v-my-show="value">
             <template v-slot:header='props'>
                 <p>{{props}}</p>
             </template>
            
         </btn>
+        <input type="text" v-slice:4.number>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
+        Vue.directive('my-show',{
+            bind(){
+                console.log('bind')
+            },
+            inserted(ele,vbing){
+                console.log('inserted')
+               if(!vbing.value){
+                ele.style.display = 'none'
+               }
+            },
+            update(ele,vbing){
+                console.log('update')
+                console.log(vbing.value)
+                if(!vbing.value){
+                    ele.style.display = 'none'
+                }else{
+                    ele.style.display = 'block'
+                }
+            },
+            componentUpdate(){
+                console.log('componentUpdate')
+            },
+            unbind(){
+                console.log('unbind')
+            }
+        })
+
         Vue.component('my-cmp',{
             template:`
             <input type="text" :value="value" @input="$emit('update:value',$event.target.value)">
@@ -36,7 +64,6 @@
 
         Vue.component('btn',{
             template:`
-            
             <button>
                 <slot :text="text" name="header">submit</slot>
             </button>
@@ -54,6 +81,29 @@
                 return{
                     value:'123',
                     text:'哎哎哎啊'
+                }
+            },
+            directives:{
+                'my-model':{
+                    bind(){},
+                    inserted(el,binding,vnode,oldNode){
+                        el.value = binding.value;
+                        el.oninput = ()=>{
+                            console.log(this)
+                            vnode.context[binding.expression] =  el.value;
+                        }
+                    },
+                    update(el,binding,vnode,oldNode){
+                        el.value = binding.value;
+                    }
+                },
+                'slice':{
+                    bind(el,binding){
+                        console.log(binding)
+
+                        el.value = binding[expression].slice(0,binding)
+                        binding[expression] = binding[expression].slice(0,binding);
+                    }
                 }
             }
         })
