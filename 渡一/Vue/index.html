@@ -778,6 +778,214 @@
             插槽
 
             slot=" "
+
+
+            函数式组件
+
+            当一个组件不需要状态(即响应式数据),不需要任何生命周期场景,只接受一些props来显示组件时,我们可以将其标记为函数式组件
+
+
+
+            <script>
+
+                export default{
+                        functional:true, //标记为函数式组件 当标记为 functional 后  render的第二个形参会变成 上下文对象
+                        props:{
+                            level:{
+                                type: Number,
+                                required:true
+                            }
+                        },
+                        render(){
+                            let tag = 'div';
+                            return(
+                                <tag>
+                                    {this.$slots.default}
+                                </tag>
+                                <tag>
+                                    {scopedSlots.default({text:'作用域插槽的值'})}
+                                </tag>
+                            )
+                        }
+                }
+
+
+        
+            </script>
+
+            render 第二个参数,context包括如下字段
+
+                props:提供所有prop对象
+                slots:一个函数,返回了包括所有插槽(非作用域的对象)
+                scopedSlots:一个暴露传入的作用域插槽对象,也以函数形式暴露普通插槽
+                data:传递给组件的整个数据对象,作为createElement的第二个参数传入组件
+                parent 对父组件的引用
+                listeners:一个包含了所有父组件为当前组件注册的事件监听器对象,这是一个data.on的一个别名
+                injections:如果使用了 inject选项,则该对象包含了被注入的属性  
+                children:Vnode子节点组数,包含了所有的非作用域插槽和非具名插槽
+
+
+        
+        
+        直接在template中添加 functional
+
+        <template functional>
+
+
+
+
+        
+        过渡
+
+
+        单元素过渡  
+
+        Vue在插入 更新或 移除dom时,提供多种不同的应用过渡效果
+
+        <transition>
+
+        </transition>
+
+        使用transition 标签将需要过渡的元素包裹
+
+        Vue 会自动为其注入六个类名
+        分别
+        .v-enter{
+            进入的状态
+        }
+        .v-enter-active{
+            中间的状态
+        }
+        .v-enter-to{
+            结束的状态
+        }
+
+        .v-leave{
+            离开的状态
+            opacity:1
+        }
+        .v-leave-active{
+            transition: opacity 3s
+        }
+        .v-leave-to{
+            opacity:0
+        }
+
+
+        1.v-enter:
+            定义进入过渡的开始状态
+            在元素被插入之前生效,在元素被插入之后的下一帧移除
+        2.v-enter-active:
+            定义进入过渡生效时的状态
+            在整个进入过渡的阶段中应用,在元素被插入之前生效,在 过渡 完成之后移除
+            这个类可以被用来定义进入过渡的过程时间,延迟和曲线函数
+        3.v-enter-to:
+            定义进入过渡 的结束状态
+            在元素被插入之后的下一帧(与此同时,v-enter 被移除) 在过渡动画完成之后移除
+
+
+        假如同时需要控制两种以上的过渡效果 可以
+        为 <transition name=""> name设置名字
+            此时 自动注入的类名 应当是 name-enter
+
+
+        同时可以使用 @keyframes 来定义动画
+        此时只需要 在
+        v-xx-active 中使用此动画即可
+
+
+        我们可以通过一下 attribute 来自定义 类名
+        <transition name=""
+        enter-active="此处填写自定义的类名以此类推 可以填写多个 应用的类名"
+        >
+
+        他们的优先级高于普通的类名,这对于Vue的过渡系统和其他第三方css动画库(如 Animate.css)结合使用十分有用
+
+        Animate.css
+
+        当动画和 过渡同时出现时
+
+        可以为 <transition>
+        设置 type属性
+        type = "animation" 当动画结束整个就结束了 默认以最长时长的结束才算过渡完成
+
+        :duration=""  可以手动设置动画结束的时间
+        duration 可以设置为一个对象,分别定义进入的时长  和 离开的时长
+        {enter:4000,leave:6000}
+
+
+        初始渲染的过渡
+
+        可以通过 appear 设置节点在初始渲染的过渡
+        <transition appear>
+
+            和进入离开过渡一样,同样也可以自定义css类名如:
+            appear-active-class=""
+            appear-to-class=""
+            appear-class="appear-enter"
+
+
+        js钩子
+
+        before-enter 动画入场之前,可以在其中设置元素开始的动画之前的起始样式
+        enter 动画入场中,可以在其中写动画
+        after-enter 动画完成之后
+        enter-cancelled 取消动画
+
+        before-enter(el){
+            el:被包裹的元素
+        }
+        enter(el,done)
+        {
+            done执行 才after 执行 如果
+            在 enter 和 leave 函数中 必须放上第二个形参 done 不然就会直接跳过此函数 执行 after
+            done.canceled = true ; 取消动画 随后触发 enter-cancelled 函数
+        }
+
+
+        在 transition 上设置 :css=false    就不会再监听css的过渡效果
+
+
+        可以结合 Velocity.js 写动画
+    
+
+        多元素过渡
+
+        vue提供一个mode特性,可以给多个元素过渡应用不同的模式,mode的值可以为
+        in-out:新元素先进行过渡,完成之后当前元素过渡离开
+        out-in:当前元素先进行过渡,完成之后新元素过渡进入
+
+        <transition mode="in-out">
+
+
+        列表过渡
+
+        <transition-group>
+
+        v-move{
+            transition : transform .5s
+            在dom移动时也会触发过渡
+            假如是 inline 元素就不会有动效了
+        }
+
+        transition-group会动态生一个元素 span
+        可以通过 tag="div" 这样的方式改变 最后生成的元素
+        过渡模式不可用
+        内部元素总是需要唯一的一个key
+        css的类名不会给最外层的包裹元素添加而是给内部元素添加
+
+
+        复用过渡
+
+            函数式组件
+
+        异步组件
+
+        components:{ 
+            cmp:()=>import(/* webpackChunkName : "name"*/'url');
+            cmp1:()=>import(/* webpackChunkName : "name"*/'url');
+            名字一样的会被放入同一个文件
+        }
     -->
 
 
