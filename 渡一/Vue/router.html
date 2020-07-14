@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        什么是路由
+
+        路由是根据不同的url展示不同的内容
+        早期的路由都是后端直接根据url来重载页面实现的
+        后来 页面越来越复杂 服务器压力越来越大 随着ajax的出现,页面的实现非重载就能刷新数据,让前端
+        也可以控制url自行管理
+
+        前端路由更多用在单页面应用上 也就是 SPA(single Page Web Application)
+
+
+        Vue.use(VueRouter)
+
+        每一个路由应该映射一个组件
+        const routes=[
+            {path:'/foot',component:Foo}
+        ]
+
+        new VueRouter({
+            routes
+        })
+
+        new Vue({
+            router
+        })
+
+        <router-link to="/url" tag="">地址</router-link>
+        <router-view/> 会展示当前路由的组件
+        
+        router-link-exact-active:当路由完全匹配时的 class
+        router-link-active:当路由包含时的 class 
+
+
+        router link class
+        VueRouter({
+            linkActiveClass:'',
+            linkExactActiveClass:''
+        })
+
+        hash模式
+
+        vue-router默认 hash模式 ---使用Url的hash模拟一个完整的url
+
+        history 模式
+
+        需要处理Vue Router
+
+
+        嵌套路由
+
+
+        new VueRouter({
+            routes:[
+                {
+                    path:'/a',
+                    component:()=>import('url'),
+                    children:[
+                        {
+                            path:'ason',
+                            component:
+                        },
+                        {
+                            path:'',
+                            name:''
+                            component:'默认组件'
+                        }
+                    
+                    ]
+                }
+            ]
+        })
+
+        命名路由
+
+        配置name : 
+        在 router-link  :to="{name:''}"
+
+        重定向:
+        routes:[
+        {
+            path:'',
+            component:'',
+            redirect:{
+                name:''
+            } 可以配置为 function(to)   to:包含了点击时的路由信息
+        }
+        ]
+
+        别名
+
+        /a 的别名是 /b 意味着,当用户访问 /b时,路径仍是 /b 组件为 /a
+        routes:[
+            {path:'/a',alias:'/b'}
+        ]
+
+        {
+            path:'/'
+            redirect:'/home'
+        }
+
+
+        编程式导航
+
+        通过在Vue根实例 的 router 配置传入 router 实例, $router $route两个属性被注入每个子组件中
+
+        $router.push('') //向当前的路由中添加一条记录 === :to=""
+                replace('') //把当前路由的记录替换掉
+                go() //接受 整数参数 前进几个记录不够用就会失败 传入0会刷新
+
+        $route 只读 路由信息对象
+            path:总是解析为绝对路径
+            params :包含了动态片段和全匹配片段 如果没有路由参数,就是一个空对象
+            query:表示url查询参数
+            hash:#
+
+
+        动态路由匹配
+
+        当我们需要把某种模式匹配到的所有路由 全部映射到同个组件的时候
+        {
+            path:"/coures/:id",  id作为 $route .param的key值
+            component:
+        }
+
+        <router-link :to='{name:'',params:{ 动态路由 }}'>
+
+
+        命名视图
+
+        <router-view name="student">
+
+        {
+            components:{
+                default:()=>import(),
+                student 
+            },
+            path:'/a/:id',
+            props:{
+
+            } || true $route.params将会作为属性传递给组件
+
+            props:route=>({
+                name:route.name,
+                id:route.params.id   将 props设置为 函数返回的内容可以自定义返回的属性
+            })
+        }
+
+
+        导航守卫
+
+        导航守卫被 分成三种:全局的 单个路由独享的 组件内的
+
+
+        全局守卫
+
+        全局前置守卫 beforeEach
+    登录验证
+        router.beforeEach(to,from,next)=>{
+            to:目标路由对象
+            from:即将要离开的路由对象
+            next:
+                必须调用next()才能继续往下执行下一个钩子,否则路由跳转会停止
+                若要中断当前的导航,可以调用next(false);
+                可以使用next跳转到一个不同的地址,next参数值和$routes.push()的参数一致
+                next(error) 如果传入的参数是一个error实例,则导航会被终止,且该错误会被传递给router.onError注册过的回调
+        }
+
+        全局解析守卫 beforeResolve
+
+        在导航被确认之前 同时在所有组件内守卫和异步路由组件被解析之后,解析守卫就被调用
+
+        全局后置钩子 afterEach
+        路由跳转后触发
+
+        router.afterEach(to,from)=>{
+
+        }
+
+
+
+        路由独享守卫
+
+        beforeEnter
+
+        和beforeEach 一样 如果都设置 则在 beforeEach之后执行
+
+        routes:[
+            {
+                path:''
+                beforeEnter(to,form,next)
+            }
+        ]
+
+        组件内守卫
+
+        页面级的组件的新的周期函数
+
+        beforeRouteEnter
+        (to,from,next)=>{
+
+            next((vm)=>{
+                通过vm来访问实例
+            })
+        }
+            路由进入之前
+        beforeRouteUpdate
+          路由改变组件仍然是这个的时候调用
+            1.动态路由的更改
+            2.query的更改    
+      beforeRouteLeave
+      在离开组件时调用
+      next()
+
+
+      完整的导航解析流程
+
+      1.导航被触发
+      2.在失活的组件里调用离开守卫
+      3.调用全局的beforeEach守卫
+      4.在重用 的组件中调用beforeRouteUpdate
+      5.在路由配置里调用beforeEnter
+      6.解析异步路由组件
+      7.在被激活 的组件里调用beforeRouteEnter
+      8.调用全局的beforeResolve守卫
+      9导航被确认
+      10.调用全局的afterEach钩子
+      11.触发dom更新
+      12创建好的实例调用beforeRouteEnter守卫中传给next 的回调函数
+
+
+      {
+          path:'/a',
+          meta:{
+              存放信息
+          }
+      }
+     --> 
+</body>
+</html>
