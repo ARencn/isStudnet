@@ -242,6 +242,66 @@
               存放信息
           }
       }
+
+
+      过渡动效 和 滚动行为
+
+      可以直接给 
+
+      <transition>
+        <router-view>
+      </transition>
+
+
+      滚动行为
+
+      new VueRouter({
+          mode:'history',
+          scrollBehavior(to,from,savePosition){
+              return{
+                  x:0,
+                  y:0
+              }
+
+              return:{
+                  offset:{
+                      x:0,
+                      y:0 
+                  },
+                  selector:to.hash  //会跳转到锚点位置
+              }
+          }
+      })
+
+
+
+
+      router 原理
+      hash 模式
+      window.addEventListener('hashchange')
+      location.hash
+      history 模式
+
+      history.pushState(null,null,pathname)
+
+      window.addEventListener('popstate')
+
+
+      hash history
+      // hash:# url会更改 浏览器可以前进和后退 浏览器不刷新 请求永远不会发送到后台
+      // history: 服务端的配合
+
+
+
+      原理部分
+
+      在使用Vue.use()
+
+      必须 构造函数 有 install方法
+
+      install(Vue){
+          vue会作为参数传递给 install
+      }
      --> 
 </body>
 </html>
