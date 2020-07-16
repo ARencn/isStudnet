@@ -12,9 +12,74 @@
 
         Vue.use(Vuex)
 
-        new Vuex.Store({
-            
+        const store = new Vuex.Store({
+            state:{
+
+            }
         })
+
+        new Vue({
+            store
+        })
+
+        State
+
+        单一状态树,使用一个对象,就包含了全部的应用层级状态
+
+        在Vuex通过 store选项,提供了一种机制,将状态从跟组件 注入到每一个子组件中(调用Vue.use(Vuex))
+         
+        通过在根实例注册 store选项,该store实例会注入到跟组件下的所有组件中,且子组件能通过 this.$store访问
+
+
+        在页面中使用 store.state 中的属性时为了避免 冗余 可以在 computed中定义计算属性 来动态获取值
+
+        vuex提供了辅助函数 mapState
+
+        import {mapState } from 'vuex'
+
+        computed:{
+            ...mapState([])
+        }
+
+        当现有data数据与 state中的命名冲突时
+
+        computed:{
+            ...mapState({
+                storeCount:state => state.count
+                storeCount: 'count'
+            })
+        }
+
+        Vuex_Getter
+
+        store的计算属性 getter的返回值会根据它的依赖被缓存起来,且只有当它的依赖值发生了改变才会被重新计算  
+
+        getter 接收 state作为其第一个参数, getters 作为其第二个参数
+
+
+        new Vuex.Store({
+            state:{
+                count:1
+            },
+            getters:{
+                doubleCount(state){
+                    return state.count*2
+                }
+            }
+        })
+      
+        通过属性访问
+
+        Getter会暴露store.getters对象: this.$store.getters.doubleCount
+
+        getter的辅助函数
+
+        ...mapGetters([])
+
+
+        mutation
+
+        更改 vuex的 store中的状态的唯一的方法是 提交 mutation
      -->
 </body>
 </html>
