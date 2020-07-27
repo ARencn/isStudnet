@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //第一张 概述
+        /* 
+        ecmaScript  JavaScript NodeJs
+
+        ES3.0   1999
+        ES5.0   2009
+        ES6.0   2015
+        
+        
+         */
+
+
+         //第二章 块级绑定
+
+         /* 
+            声明变量的问题
+
+            1.允许重复的变量声明:导致数据覆盖
+            2.变量提升:怪异的数据访问,闭包问题
+            3.全局变量挂载到全局对象,全局对象成员污染的问题
+
+
+            关键字 let
+
+            let 声明的对象不会挂载全局对象上
+            let 声明的变量 不允许在当前作用域内 重复声明
+
+            引入了块级作用域
+
+            使用let 不会有变量提升 实际上也有提升 不过会被提升到 暂时性死区 
+            当代码运行到变量声明时 会将其从暂时性死区中移除
+
+            在循环中用let 声明的循环变量 会特殊处理,每次进入循环体都会开启新的作用域 并将循环变量绑定到作用域 
+            在循环中使用let 声明的循环变量会在结束后销毁
+
+
+            const 声明变量
+
+            const 和 let作用相同,区别,必须在声明时赋值,而且不可以重新赋值 
+
+            在开发中尽量使用const
+          */
+          //字符串和正则表达式
+          /* 
+            codePointAt() 通过字符串位置得到其码点
+
+            正则新增 flag
+
+            u ,如果增加了 该配置使用码点进行匹配
+
+
+            更多的字符串API
+
+            includes(content,position):判断字符串中是否包含指定的字符串  第二个参数为从指定位置开始查找
+
+            startsWith(content,position):判断字符串是否以指定的字符串开头
+            endsWith(content,position):判断字符串是否以指定的字符串结尾
+            repeat():将字符串重复指定的次数返回新字符串
+
+
+            正则中的粘连标记
+            
+            新增flag:y 会从 reg.lastIndex位置开始匹配
+
+
+            模板字符串
+
+            ``
+
+            模板字符串标记
+
+            在模板字符串前加上标记函数
+
+            const text = myFlag`这是一个${a}插值标记${b}函数.`
+
+            myFlag:()=>{
+                该函数第一个参数为 ${}分割开的字符串数组 [这是一个,插值标记,函数]
+                后面的参数 即为插值中的值 {a}{b}
+            }
+
+            const test = String.raw``
+            加上 String.raw 标记的模板字符串 表示该字符串内无任何需要转义的内容
+
+*/
+        //   函数
+           /*   'strict'
+
+            参数默认值对 arguments的影响 只要给函数加上参数默认值,该函数会自动变成 严格模式下的规则
+            arguments 与形参脱离
+
+            暂时性死区
+
+            形参和 es6中的 let const 一样,具有作用域,并且根据参数的声明顺序,存在暂时性死区
+
+            test(a=b,b){
+                形参不能和变量重名
+            }
+
+            剩余参数
+
+            function(...args)
+            收集剩余的所有参数
+
+            一个函数仅能出现一个剩余参数
+            一个函数如果有剩余参数,剩余参数必须是最后一个参数
+
+
+            展开运算符   ...
+
+            明确函数的用途
+
+            es6提供了特殊的api,可是使用该api在函数内部判断该函数是否使用new调用
+
+            new.target//表示  如果没有使用new来调用函数,则返回undefined  
+            如果使用了new调用函数,则得到的是new 关键字后面的函数本身
+
+            if(new.target === undefined){
+                throw new Error('')
+            }
+
+            箭头函数
+            之前的this
+            1.通过对象调用函数,this指向对象
+            2.直接调用函数,this指向全局对象
+            3.通过new调用函数,this指向新创建的对象
+            4.如果通过apply call bind调用函数,this指向指定的数据
+            5.dom事件函数,this指向事件源
+
+            箭头函数的this
+
+            箭头函数的函数体中的this,取决于箭头函数声明的位置的this位置
+
+
+            细节:
+            箭头函数中没有自己的this arguments new.target,如果使用了则使用的是外层的this
+            箭头函数没有原型
+            不能作为构造函数
+
+
+            应用场景
+
+            临时性使用的函数,并不会调用它
+                1.事件处理函数
+                2.异步处理函数
+                3.其他临时性函数
+            2.为了绑定外层this 的函数
+            3.数组中的回调函数,保持代码简介
+
+           */
+           //对象
+           /* 
+            
+            计算属性名
+
+            [a+b]:'s'
+
+
+            Objec新增API
+
+            object.is
+                用于判断两个对象是否相等 基本上与(===) 是一致的
+            object.assign
+                合并对象
+            将obj2的数据覆盖到obj1,并且对obj1产生改动,然后返回obj1
+
+
+
+            Object.getOwnPrototypeNames() 的枚举顺序
+
+            此方法之前就已经存在,只是没有明确要求对属性的顺序如何排序 
+            现在排序标准:排序方式如下
+            先排数字,并按照升序排序
+            再排其他
+
+
+            setPrototypeOf()
+            用于设置某个对象的隐式原型
+
+            Object.setPrototypeOf(obj1,obj2)
+            相当于 obj1.__proto__ = obj2
+
+            类:构造函数
+
+            特点
+
+                1.类声明不会被提升,与let const一样,存在暂时性死区
+                2.类中的所有代码均按照严格模式执行
+                3.类的所有方法都是不可枚举的
+                4.类的所有方法内部都无法被当做构造函数使用
+                5.类的构造器必须使用new来调用
+
+
+
+            可计算的成员名
+            getter setter 
+            静态成员
+            初始化器
+            使用static 的字段 是静态的
+            装饰器(decorator)
+
+
+            继承
+
+            
+            */
+       class Pro{
+           age = 1
+           constructor(age){
+                this.age = age;
+           }
+           get age(){
+               return this._age
+           }
+           set age(number){
+               this._age = number
+           }
+           static width=50;
+           
+       }
+       function s(target ,){
+
+       }
+       const a = new Pro(1);
+       a.age = 10
+    </script>
+</body>
+</html>
