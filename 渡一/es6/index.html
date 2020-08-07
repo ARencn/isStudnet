@@ -257,35 +257,41 @@
             Symbol.isConcatSpreadable
 
             */
-            class Pro{
-           age = 1
-           constructor(age){
-                this.age = age;
-           }
-           get age(){
-               return this._age
-           }
-           set age(number){
-               this._age = number
-           }
-           static width=50;
-           
-       }
 
-       class test extends Pro{
-        constructor(){
-            super();
-        }
-       }
+            function a (){
+                            class Pro{
+                    age = 1
+                    constructor(age){
+                            this.age = age;
+                    }
+                    get age(){
+                        return this._age
+                    }
+                    set age(number){
+                        this._age = number
+                    }
+                    static width=50;
+                    
+                }
 
-       
-       function s(target ,){
+                class test extends Pro{
+                    constructor(){
+                        super();
+                    }
+                }
 
-       }
-       const a = new Pro(1);
-       a.age = 10
-       console.log(a)
+                
+                function s(target ,){
 
+                }
+                const a = new Pro(1);
+                a.age = 10
+
+
+
+
+            }
+  
             // promise
 
          /* 
@@ -359,7 +365,7 @@
                 promise 串联
 
                 当后续的处理需要之前的promise 处理结果时,需要promise串联
-
+ 
                 promise对象无论是 then  还是catch 都是有返回值的,返回的是一个全新的promise 它的状态满足下面规则
 
                 1.如果当前promise 是挂起状态,得到新的promise是挂起状态
@@ -391,7 +397,18 @@
                 race
           */
 
+
+          //promise 实现
+
        
+    </script>
+    <script src="./myPromise.js"></script>
+    <script>
+        const pro = new MyPromise((resolve,reject)=>{
+
+        })
+
+        console.log(pro)
     </script>
 </body>
 </html>
