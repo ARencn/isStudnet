@@ -401,8 +401,107 @@
           //promise 实现
 
        
+
+
+          //fetch api
+
+          /**
+           * 
+           * 
+           
+
+           XMLHttpRequest的问题
+
+           1.所有的功能全部集中在同一个对象上,容易书写出混乱不易维护的代码
+           2.采用传统的事件驱动模式,无法适配新的 promise api
+
+           fetch api的特点
+
+           1.并非取代ajax 而是对 ajax传统api的改进
+           2.精细的功能分割:头部信息,请求信息,响应信息,等均分布到,不同的对象,更利于处理各种复杂的ajax 情景
+
+
+            fetch api特点
+
+            1.并非取代ajax,而是对ajax传统api取代
+            2.精细的功能分割,
+            3.使用 promise api更利于异步代码的书写
+            4.fetch api并非es6内容,属于h5 新增api
+            5.需要掌握网络通信知识
+
+
+
+            基础使用:
+
+
+                参数:
+                1.必填,String 请求地址
+                2.选填,对象,请求配置
+
+                请求配置对象:
+                fetch(url,{
+                    method:'psot',
+                    headers:{
+                        "Content-type":"application/json",
+
+                    },
+                    body:{
+
+                    },
+                    mode:"" cors:默认值会配置该值,会在请求头中加入,origin和referer; no-cors:不会加入 origin 和 referer; same-origin :指示请求必须在同一个域中发生,如果请求其他域,则报错
+                    credentials:如何携带凭据(cookie)
+                        omit:默认值,不携带cookie
+                        same-origin:请求同源时携带cookie
+                        include:请求任何地址都携带cookie
+                    cache:配置缓存模式
+                        default:表示请求前检查下http的缓存
+                        no-store 表示 fetch请求将完全忽略缓存,然后不更新缓存
+                        reload:表示先忽略缓存,之后再主动更新缓存
+                        force-cache:表示fetch请求不顾一切的依赖缓存,即使缓存过期,依旧从缓存读取,除非没有任何缓存 那么会发送请求
+                        only-if-cached:只读取缓存,没有缓存就报错
+                })
+
+                返回值:
+                fetch 函数返回一个 promise 对象
+
+                当收到服务器的返回结果后,promise进入 resolved状态,状态数据未 response对象
+                当网络请求发生错误(或其他导致无法完成交互的错误) 时,promise进入rejected状态 状态数据为错误信息
+
+                response对象:
+                ok:boolean当响应消息码在200-299之间,为true,其他为false
+                status.:number 响应的状态码
+                text():用于处理文本格式的ajax 响应,它从响应中获取文本流,将其读完,然后返回一个被解决为string对象的promise
+                json()
+
+
+
+                request对象
+
+                除了使用基本的fetch方法,還可以创建 一个request对象来完成请求
+
+                fetch(new Request(url,{}))
+
+                如果通过request 发送请求,尽量每次请求都创建新的request对象
+
+                request.clone()
+
+
+                response对象
+
+                headers 对象
+
+                has(key) 检查是否存在指定 key
+                get(key)
+                set(key,value)
+                append
+                keys:得到可 迭代
+                
+           **/
     </script>
     <script src="./myPromise.js"></script>
+    <script>
+
+    </script>
     <script>
         const pro = new MyPromise((resolve,reject)=>{
 
