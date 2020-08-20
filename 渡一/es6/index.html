@@ -497,6 +497,74 @@
                 keys:得到可 迭代
                 
            **/
+
+
+           //迭代器 生成器
+
+           /**
+                1.迭代
+
+                从一个数据集合中按照一定的顺序,不断取出数据的过程
+
+                2.迭代 和遍历的区别
+
+                迭代强调的是依次取数据 并不保证取多少,也不保证把所有数据取完
+
+                遍历强调的是吧所有数据依次全部取出来
+
+                迭代器
+
+                对迭代过程的封装,在不同语言中有不同的表现形式,通常为对象
+
+                4.迭代模式
+
+                一种设计模式,用于统一迭代过程,并规范了迭代器规格:
+
+                迭代器应该具有得到下一个数据的能力
+                迭代器应该具有判断是否还有后续数据的能力
+
+                js规定,如果一个对象具有next 方法,并且该方法返回一个对象,该对象的格式如下
+
+                {value:值,done:是否迭代完成}
+                则认为该对象是迭代器
+
+                含义:
+                next()  用于得到下一个数据
+                返回的对象
+                    value:下一个数据的值,
+                    done:是否迭代完成
+                
+
+                可迭代协议
+
+                es6规定,如果一个对象具有知名符号 Symbol.iterator ,并且属性值是一个迭代器创建函数,则该对象是可迭代的(iterable) 
+
+                dom伪数组 数组 也是可迭代对象
+
+                可使用 for of 循环迭代
+
+
+                可迭代对象就可以 用展开运算符
+
+
+
+                生成器
+
+                generator
+                是通过构造函数 Generator 创建的对象,生成器既是一个迭代器,同时又是一个可迭代对象  
+
+
+                生成器的创建 必须使用生成器函数 (Generator Function)
+
+                function *name(){
+
+                }
+                在function 关键字  后面加上 * 或者 函数名前面 则该函数为生成器函数,一定会返回一个可迭代对象
+
+
+           **/
+
+
     </script>
     <script src="./myPromise.js"></script>
     <script>
@@ -506,8 +574,31 @@
         const pro = new MyPromise((resolve,reject)=>{
 
         })
-
-        console.log(pro)
+    
     </script>
+    <script>
+        const arr= [1,2,3,4]
+        const iterator = {
+            i:0 ,//当前数组下标
+            next(){
+                const res = {
+                    value:arr[this.i],
+                    done: this.i >= arr.length  
+                }
+                this.i++;
+                return res;
+            }
+        }
+
+        // 1 1 2 3 5 8
+        function feibo(n){
+            if(n === 1){
+                return
+            }else{
+                return feibo(n) + feibo(n - 1)
+            }
+        }
+    </script>
+    
 </body>
 </html>
