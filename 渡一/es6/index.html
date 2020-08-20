@@ -496,6 +496,29 @@
                 append
                 keys:得到可 迭代
                 
+
+
+                文件上传:
+                1.客户端将文件数据发送给服务器
+                2.服务器保存上传的文件数据到服务器端
+                3.服务器响应给客户端一个文件访问地址
+                
+
+                使用 FormData 构建请求体
+                multiple 
+                function upload(){
+                    input.files
+                    const formData = new FormData();
+                    formData.append("imgflie",input.files[0])
+
+                    resp = await fetch(url,{
+                        method:post,
+                        // headers:{
+                        //     "content-type":"multipart/form-data"
+                        // },
+                        body:formData //会自动修改请求头
+                    })
+                }
            **/
 
 
@@ -561,6 +584,32 @@
                 }
                 在function 关键字  后面加上 * 或者 函数名前面 则该函数为生成器函数,一定会返回一个可迭代对象
 
+                    生成器内部是为了给生成器的每次迭代提供数据
+
+                    每次调用next方法,将导致 函数运行到下一个 yield
+
+                    yield是一个关键字,该关键字只能在生成器中使用,表达产生一个迭代数据
+
+                    1.生成器函数可以有返回值,返回值出现在第一次done为true时的value属性中
+
+                    2.调用构造器函数的next 时可以传入参数 ,传递的参数会交给yield表达式的返回值
+
+                    3.第一次调用next方法 传参没有意义
+
+                    4.在生成器函数内部可以调用其他生成器函数 
+                        function* test(){
+                            yield* t();
+                        }
+                        function* t(){
+                            yield 1
+                        }
+
+                    生成器的其他api
+
+                    return 方法:调用该方法可以提前结束 迭代器函数,从而让整个函数结束
+
+                    throw方法: 可以在生成器中产生一个错误
+
 
            **/
 
@@ -596,6 +645,35 @@
                 return
             }else{
                 return feibo(n) + feibo(n - 1)
+            }
+        }
+
+        function* task(){
+            const resp = yield  fetch('http://49.232.171.71:8888/sadikjawiodjawiud?u=ashduawhd')
+            const result = yield resp.json();
+            console.log(result)
+        }
+
+        run(task)
+        function run(generatorFunc){
+            const generator = generatorFunc()
+            let result = generator.next(); //启动任务
+            handleResult();
+            function handleResult(){
+                if(result.done){
+                    return; //迭代完成
+                }
+                if(typeof result.value.then === 'function'){
+                    //迭代数据是一个promise
+                    result.value.then(res=>{
+                        reuslt = generator.next(res);
+                        handleResult()
+                    })
+                }else{  
+                     //迭代的数据是其他数据进行下一次迭代
+                  reuslt = generator.next(result.value);
+                  handleResult( )
+                }
             }
         }
     </script>
