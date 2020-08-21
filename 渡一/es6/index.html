@@ -611,6 +611,38 @@
                     throw方法: 可以在生成器中产生一个错误
 
 
+                    set  集合
+
+                    set 用于存放不重复的数据 会自动出去重复数据
+
+                    1.如何创建set集合
+
+                    new Set() //建立一个空的set
+
+                    new Set(iterable) //创建一个具有初始内容的set 集合,内容来自于可迭代对象的每一次迭代结果
+
+                    2,如何对set集合进行后续操作
+
+                    add(数据):添加一个数据到set集合的末尾,如果数据已存在,则不进行操作
+                        set 使用Object.is的方式判断两个数据是否相等,但是针对+0 和 -0 set认为是相等的
+                    has(数据):判断set中是否存在对应的数据
+                    delete(数据):删除匹配的数据,返回是否删除成功
+                    clear():清空整个set集合
+
+                    3.如何与数据相互转换
+                        const s = new Set([1,2,3]);
+                        const arr = [...s];
+
+                    4. 如何遍历
+
+                        1.使用for of循环
+                        2.使用set的实例方法 forEach((val,val,s))
+                        set集合中不存在下标,所以set 的forEach中的回调函数 中的第一个值和第二个值都是一样的第三个值表示,set集合本身
+
+
+                set应用
+
+                两个数组的  并集,交集,差集 
            **/
 
 
@@ -654,7 +686,14 @@
             console.log(result)
         }
 
-        run(task)
+
+        const arr1 = [11,22,33,44,55,66]
+        const arr2 = [55,22,33,88,99,00]
+        //并集
+        const h= [...new Set([...arr1,...arr2])];
+        console.log(h)
+
+        //run(task)
         function run(generatorFunc){
             const generator = generatorFunc()
             let result = generator.next(); //启动任务
