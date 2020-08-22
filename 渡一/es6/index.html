@@ -628,7 +628,7 @@
                     has(数据):判断set中是否存在对应的数据
                     delete(数据):删除匹配的数据,返回是否删除成功
                     clear():清空整个set集合
-
+                    size:获取总数 只读
                     3.如何与数据相互转换
                         const s = new Set([1,2,3]);
                         const arr = [...s];
@@ -643,6 +643,109 @@
                 set应用
 
                 两个数组的  并集,交集,差集 
+
+
+                map集合 
+
+                    键值对集合的特点:键不可重复
+
+                    专门用于存储键值对数据
+
+                    在map出现之前使用对象存储键值对
+
+                    对象存储有以下问题:
+                        1.键名只能是字符串 或者symbol 
+                        2.获取数据的数量不方便
+                        3.键名容易与原型冲突
+
+
+                    1.如何创建map
+
+                    new Map(); //创建一个空的map
+                    new Map(iterable) //创建一个具有初始内容的 map,初始内容来自可迭代对象每一次迭代的结果 但是要求每一次迭代的结果必须是一个长度为2的数据 数组的第一项表示键 第二项表示值
+
+                    2.如何进行后续操作
+
+                    size:只读属性 获取当前map中键的数量
+                    set(键,值):设置一个键值对,键和值可以是任何一个类型
+                            如果键不存在则添加一项,如果已存在则覆盖之前的
+                            比较键的方式和 Set 是一样的 Object.is
+                    get(键) : 根据键获取值
+                    delete(键):删除指定的键
+                    clear():清空map
+
+                    3.和数组互相转换
+
+                    和 set一样
+
+                    4.遍历
+
+                    使用for of循环 每次迭代得到一个长度为二的数组
+
+                    forEach,
+                        参数1:每一项的值
+                        参数2:每一项的键
+                        参数3:map本身
+
+
+                    WeakSet 和 WeakMap
+
+                    WeakSet
+                    使用该集合可以实现和set相同的功能
+
+                    不同的点是    内部存储的对象的地址不会影响垃圾回收 
+                                只能添加对象
+                                不能遍历,没有size,没有forEach,不是可迭代对象
+                    
+                    可以用来记录某些对象是否被回收了
+
+
+                    WeakMap
+
+                    类似于map的集合,不同的是
+
+                    它的键存储的地址不会影响垃圾回收
+                    它的键只能是对象
+                    
+
+                    属性描述符
+
+                    property Descriptor 属性描述符,用于描述一个属性的相关信息,是一个普通对象
+
+                    通过 Object.getOwnPropertyDescriptor(对象,属性名) 得到对象的某个属性的属性描述符
+
+                    value:属性值
+                    configurable:该描述符本身  是否可以修改
+                    enumerable:该属性是否可枚举  会影响到 for in 循环 和 Object.keys Object.values
+                    writeable:该属性是否可以被重新赋值
+
+                    Object.getOwnPropertyDescriptors(对象)  得到这个对象的所有属性描述符
+
+                    如果需要为某个对象添加属性时,或修改属性时,配置其属性描述符 可以使用以下代码
+
+                    Object.defineProperty(对象,属性名,描述符); 此方法定义的属性不占用属性应当占用的栈内存
+
+                    Object.defineProperties(object,{
+                        a:{
+
+                        }
+                    })
+
+                    存取器属性:
+
+
+                    属性描述符中,如果配置了get 和 set 中的任何一个 则该属性不再是普通属性,而变成了存取器属性
+
+                    get 和 set 配置 均为函数,如果一个属性是存取器属性,则读取该属性时,会运行get方法将get方法得到的返回值作为属性值
+                                    赋值 会运行set 方法
+
+
+                                    可以控制属性的读取与赋值
+
+
+
+
+
            **/
 
 
@@ -691,7 +794,7 @@
         const arr2 = [55,22,33,88,99,00]
         //并集
         const h= [...new Set([...arr1,...arr2])];
-        console.log(h)
+       
 
         //run(task)
         function run(generatorFunc){
@@ -716,6 +819,21 @@
             }
         }
     </script>
-    
+    <script>
+        //map
+    //     let d = {
+    //         a:2,
+    //     }
+    //     const lo = new WeakSet([d]);
+    //    console.log(lo)
+    //    d = null;
+    //    console.log(lo)
+        const des = {
+            a:1
+        }
+
+        console.log(Object.getOwnPropertyDescriptor(des,'a '))
+
+    </script>
 </body>
 </html>
