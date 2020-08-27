@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // h5 api
+
+        /* 
+            获取地理信息
+            台式机 笔记本几乎都没GPS
+            网络定位 粗略估计位置
+
+            file https 协议下可以获取
+            经度 最大 180
+            纬度 最大 90
+         */
+         window.navigator.geolocation.getCurrentPosition(position=>{
+             console.log(position)
+         },(err)=>{
+             console.log(err)
+         })
+
+         /* 
+            四行写个服务器
+          */
+
+          //
+
+          window.addEventListener("deviceorientation",event=>{
+              //陀螺仪,只有带有陀螺仪才支持
+              //苹果设备的页面只有在https的协议下才能使用接口
+              //11.1.x以前支持
+              //event:{}
+              /*      alpha: 指北 [0,360) 当为0时指北  180指南
+                      beta: 平放 beta 为0  如果立起来,短边接触桌面,直立的时候bate为 90
+                      gamma:平方 gamma为0 如果立起来,长边接触桌面 直立时 gamma为 90
+              */ 
+
+
+          })
+
+          window.addEventListener("devicemotion",event=>{
+                /* 
+                    event.acceleration.x
+                                      .y
+                                      .z
+                 */
+          })
+
+          //requestAnimationFrame 每秒 60帧
+          // setInterval 设置的 1000/60 需要次计算在 1s内执行完才行
+          //requestAnimationFrame 可以准时执行  cancelAnimationFrame()
+          //requestAnimationFrame 兼容性极差
+
+
+          //localStorage.attribute 只能存储字符串 JSON
+          //长期存放在浏览器,无论窗口是否存在都需要存储
+          //sessionStorage 此次会话,临时存储的 窗口关闭 sessionStorage 自动清空
+          /* 
+          1\.localStorage在发送请求的时候不会把数据发送出去,cookie会把所有数据带出去
+          2.cookie存储 的内容比较少 4k,localStorage可以存放较多的内容  5M左右
+
+
+
+          history
+        history.pushState
+            addEventListener("popstate")
+            hashChange
+
+
+            worker 是多线程的,真多线程,不是伪多线程
+
+            worker 不能操作dom,没有window对象,不能读取文件 可以计算
+
+            worker = new Worker('./worker.js')
+
+          --worker.js
+            this.onMessage = function(e){
+                this.postMessage
+            }
+
+            worker.termniate
+            worker.postMessage()
+            worker.onMessage()
+           */
+     
+    </script>
+</body>
+</html>
