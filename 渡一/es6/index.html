@@ -919,7 +919,7 @@
         }
 
         function* task(){
-            const resp = yield  fetch('http://49.232.171.71:8888/sadikjawiodjawiud?u=ashduawhd')
+            const resp = yield  fetch('https://restapi.amap.com/v3/weather/weatherInfo?city=330200&key=db53c12818fdf2853806cd7cbe7121c2&extensions=all')
             const result = yield resp.json();
             console.log(result)
         }
@@ -931,7 +931,7 @@
         const h= [...new Set([...arr1,...arr2])];
        
 
-        //run(task)
+       run(task).next()
         function run(generatorFunc){
             const generator = generatorFunc()
             let result = generator.next(); //启动任务
@@ -949,7 +949,7 @@
                 }else{  
                      //迭代的数据是其他数据进行下一次迭代
                   reuslt = generator.next(result.value);
-                  handleResult( )
+                  handleResult()
                 }
             }
         }
@@ -1013,7 +1013,7 @@
                 }
             })
         }
-        const user = User('li',17,'female',3);
+        // const user = User('li',17,'female',3);
     </script>
 </body>
 </html>

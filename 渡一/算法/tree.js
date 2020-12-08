@@ -39,10 +39,10 @@ c.right = g;
 
 
 const a1 =new Node("a");
-const b1 =new Node("b");
+const b1 =new Node("b1");
 const c1 =new Node("c");
 const d1 =new Node("d");
-const e1 =new Node("e");
+const e1 =new Node("e1");
 const f1 =new Node("f");
 const g1 =new Node("g");
 // const h =new Node("h");
@@ -51,14 +51,16 @@ const g1 =new Node("g");
 // const l =new Node("l");
 // const m =new Node("m");
 // const r =new Node("r");
-// const n =new Node("n");
-// const o =new Node("o");
-a1.left = c1;
-a1.right = b1;
+ const n =new Node("n");
+ const o =new Node("o");
+a1.left = b1;
+a1.right = c1;
 b1.left = d1;
 b1.right = e1;
 c1.left = f1;
 c1.right = g1;
+
+
 function preorder(node){
     if(node === null) return;
     console.log(node.value);
@@ -111,14 +113,24 @@ function breadthSearchTree(rootList,target){
      
 }
 
-function compareTree(root1,root2){
-    if(root1 == root2) return true;
-     if(root1 === null && root2 !== null || root1 !== null && root2 === null)return false
-    if(root1.value !== root2.value) return false;
- return (compareTree(root1.left,root2.left) && compareTree(root1.right,root2.right))  || (compareTree(root1.left,root2.right) && compareTree(root1.right,root2.left))
-
-   
+let diffList =[];
+function compareTree(root1,root2,diffList = []){
+    if(root1 === root2) return diffList;
+    if(root1 === null && root2 !== null){
+        diffList.push({type:'新增',origin:root1,modified:root2});
+        return diffList
+    }else if(root1 !== null && root2 === null){
+        diffList.push({type:'删除',origin:root1,modified:root2});
+        return diffList
+    }
+    if(root1.value != root2.value){
+        diffList.push({type:'修改',origin:root1,modified:root2});
+    }
+       compareTree(root1.left,root2.left,diffList) 
+       compareTree(root1.right,root2.right,diffList);
+    
+    return diffList
 }
-console.log(compareTree(a,a1))
 
+console.log(compareTree(a,a1,[]))
 
