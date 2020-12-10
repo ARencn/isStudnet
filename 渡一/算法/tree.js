@@ -132,5 +132,49 @@ function compareTree(root1,root2,diffList = []){
     return diffList
 }
 
-console.log(compareTree(a,a1,[]))
+// console.log(compareTree(a,a1,[]))
+
+
+function addNode(root,num){
+    if(root.value === num) return;
+    if(root.value < num) {
+        if(root.right === null) root.right = new Node(num);
+        else addNode(root.right,num);
+    }else{
+        if(root.left === null) root.left = new Node(num);
+        else addNode(root.left,num);
+    }
+}
+
+function buildSearchTree(arr){
+    if(arr.length === 0 || arr === null) return;
+    let root = new Node(arr[0]);
+    for (let i = 1; i < arr.length; i++) {
+        addNode(root,arr[i])
+    }
+    return root;
+}
+
+function generatedArray(num){
+    let arr = [];
+    for (let i = 0; i < num; i++) {
+       arr.push(Math.floor(Math.random() * 10000) )
+    }
+    return arr
+}
+function searchForTree(target){
+    let root = buildSearchTree(generatedArray(1000));
+    function search(root,target){
+        if(root === null) return false;
+        if(root.value === target) return true;
+        if(root.value < target){
+         return  search(root.right,target);
+        }else{
+         return search(root.left,target);
+        }
+    }
+    return search(root,target)
+}
+
+// console.log(searchForTree(1000))
 

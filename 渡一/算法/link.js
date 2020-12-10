@@ -17,6 +17,11 @@ c.next = d;
 d.next = e;
 
 
+
+
+
+
+
 function recurrence(node){
     if(node === null) return
     console.log(node.value);
@@ -98,7 +103,38 @@ function quickSort(arr){
 console.log(quickSort(arr))
 
 
+function addNode(root,num){
+    if(root === null || root.value === num) return;
+    if(root.value < num){
+        if(root.right === null) root.right = new Tree(num);
+        else addNode(root.right,num);
+    }else{
+        if(root.left === null) root.left = new Tree(num);
+        else addNode(root.left,num);
+    }
+}
 
+function buildSearchTree(arr){
+    if(arr === null  || arr.length === 0)return 
+    let root = new Tree(arr[0]);
+    for (let i = 1; i < arr.length; i++) {
+      addNode(root,arr[i])
+    }
+    return root;
+}
+
+function search(root,target){
+    if(root === null) return false
+    if(root.value === target)return true;
+    if(root.value < target){
+     return   search(root.right,target);
+    }else{
+        return  search(root.left,target);
+    }
+}
+
+
+ 
 
 
 
