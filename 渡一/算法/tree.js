@@ -112,6 +112,12 @@ function breadthSearchTree(rootList,target){
     return  breadthSearchTree(children,target)
      
 }
+function compare(tree1,tree2){
+    if(tree1 === tree2) return true
+    if(tree1 === null && tree2 !== null || tree1 !==null && tree2 === null) return 
+    if(tree1.value != tree2.value) return false
+    return compare(tree1.left,tree2.left) && compare(tree1.right,tree2.right)
+}
 
 let diffList =[];
 function compareTree(root1,root2,diffList = []){
@@ -176,5 +182,55 @@ function searchForTree(target){
     return search(root,target)
 }
 
-// console.log(searchForTree(1000))
+function getDeep(node){
+    if(node ==null )return 0
+    let left = getDeep(node.left)
+    let right =getDeep(node.right)
+    return Math.max(left,right) + 1
+}
+function isBalance(node){
+    if(node === null) return true
+    let left = getDeep(node.left)
+    let right =getDeep(node.right)
+    if(Math.abs(left - right) > 1){
+        return false
+    }else{
+        return isBalance(node.left) && isBalance(node.right)
+    }
+}
+const node2 = new Node('2')
+const node5 = new Node('5')
+const node3 = new Node('3')
+const node6 = new Node('6')
+
+node2.right = node5
+node5.left = node3
+node5.right = node6
+
+
+
+function change(root){
+    if(isBalance(root)) return root
+    console.log(root.left);
+    if(root.left !== null){ root.left = change(root.left)}
+    if(root.right !== null){ root.right = change(root.right)}
+    let leftDeep = getDeep(root.left)
+    let rightDeep= getDeep(root.right)
+    if(Math.abs(leftDeep - rightDeep) < 2){
+        return true
+    }else if(leftDeep < rightDeep){
+        let newRoot = root.right;
+        let changeTree = root.right.left;
+        root.right = changeTree;
+        newRoot.left = root;
+        return newRoot
+    }else{
+        let newRoot = root.left;
+        let changeTree = root.left.right;
+        root.left = changeTree;
+        newRoot.right = root
+        return newRoot
+    }
+}
+console.log(isBalance(change(node2)));
 
